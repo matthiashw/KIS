@@ -21,7 +21,7 @@ development:
   database: KIS.github_development
   pool: 5
   username: root
-  password:
+  password: matze
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -34,7 +34,7 @@ test:
   database: KIS.github_test
   pool: 5
   username: root
-  password:
+  password: matze
   host: localhost
 
 production:
@@ -44,6 +44,6 @@ production:
   database: KIS.github_production
   pool: 5
   username: root
-  password:
+  password: matze
   host: localhost
 

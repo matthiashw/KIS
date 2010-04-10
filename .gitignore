@@ -1,8 +1,8 @@
 # Netbeans project files #
 ###################
-nbproject/project.properties
-nbproject/project.xml
-nbproject/*
+src/nbproject/project.properties
+src/nbproject/project.xml
+src/nbproject/*
 
 # Compiled source #
 ###################
