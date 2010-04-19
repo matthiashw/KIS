@@ -16,9 +16,9 @@
         </control>
       </groupChildrenDescriptors>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="624" y="240" w="-1" h="-1" measuredW="150" measuredH="300" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="624" y="240" w="-1" h="-1" measuredW="150" measuredH="337" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Patienten%0A-%20Kartei%0A-%20Aufnahme%0AEig.Aufgaben%0AKalender%0AVerwaltung</text>
+        <text>Patienten%0A-%20Kartei%0A-%20Aufnahme%0A-%20Arztbrief%0AEig.Aufgaben%0AKalender%0AVerwaltung</text>
       </controlProperties>
     </control>
     <control controlID="2" controlTypeID="com.balsamiq.mockups::IconLabel" x="623" y="116" w="59" h="-1" measuredW="59" measuredH="49" zOrder="2" locked="false" isInGroup="-1">

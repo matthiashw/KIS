@@ -16,9 +16,9 @@
         </control>
       </groupChildrenDescriptors>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="491" y="206" w="-1" h="-1" measuredW="150" measuredH="300" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="491" y="206" w="-1" h="-1" measuredW="150" measuredH="337" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Patienten%0A-%20Kartei%0A-%20Aufnahme%0AEig.%20Aufgaben%0AKalender%0AVerwaltung</text>
+        <text>Patienten%0A-%20Kartei%0A-%20Aufnahme%0A-%20Arztbrief%0AEig.%20Aufgaben%0AKalender%0AVerwaltung</text>
         <selectedIndex>1</selectedIndex>
       </controlProperties>
     </control>
@@ -54,7 +54,7 @@
         <text>search</text>
       </controlProperties>
     </control>
-    <control controlID="18" controlTypeID="com.balsamiq.mockups::DataGrid" x="669" y="256" w="551" h="236" measuredW="474" measuredH="298" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::DataGrid" x="669" y="256" w="551" h="236" measuredW="471" measuredH="298" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Nachname%2C%20Vorname%2C%20Geburtsdatum%2C%20Anschrift%2C%20Ausw%E4hlen%0AGiacomo%2C%20Guilizzoni%2C%2012.12.12%2C%20Musterstra%DFe....%2C%20ausw%E4hlen%0AGiacomo%2C%20Guilizzoni%2C%2012.12.12%2C%20Musterstra%DFe....%2C%20ausw%E4hlen%0AGiacomo%2C%20Guilizzoni%2C%2012.12.12%2C%20Musterstra%DFe....%2C%20ausw%E4hlen%0AGiacomo%2C%20Guilizzoni%2C%2012.12.12%2C%20Musterstra%DFe....%2C%20ausw%E4hlen%0AGiacomo%2C%20Guilizzoni%2C%2012.12.12%2C%20Musterstra%DFe....%2C%20ausw%E4hlen%0AGiacomo%2C%20Guilizzoni%2C%2012.12.12%2C%20Musterstra%DFe....%2C%20ausw%E4hlen%0AGiacomo%2C%20Guilizzoni%2C%2012.12.12%2C%20Musterstra%DFe....%2C%20ausw%E4hlen%0AGiacomo%2C%20Guilizzoni%2C%2012.12.12%2C%20Musterstra%DFe....%2C%20ausw%E4hlen%0A%20</text>
       </controlProperties>
