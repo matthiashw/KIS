@@ -62,9 +62,9 @@
         <text>new</text>
       </controlProperties>
     </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::DataGrid" x="811" y="330" w="564" h="271" measuredW="352" measuredH="178" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::DataGrid" x="811" y="330" w="564" h="271" measuredW="402" measuredH="178" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Typ%2C%20Datum%2C%20Erfasser%2C%20Status%2C%0AOP%2C%2012.12.12%2C%20Peldi%2C%20ausstehend%0AMadikation%2C%2012.12.12%2C%20Peldi%2C%20erledigt%0APhysio%2C%2012.12.12%2C%20Peldi%2C%20ausstehend%20%0A...%2C%2012.12.12%2C%20Peldi%2C%20...%0A...%2C%2012.12.12%2C%20Peldi%2C%20...</text>
+        <text>Typ%2C%20Datum%2C%20Erfasser%2C%20Status%2C%0AOP%20und%20Medikation%2C%2012.12.12%2C%20Peldi%2C%20ausstehend%0AMedikation%2C%2012.12.12%2C%20Peldi%2C%20erledigt%0APhysio%2C%2012.12.12%2C%20Peldi%2C%20ausstehend%20%0A...%2C%2012.12.12%2C%20Peldi%2C%20...%0A...%2C%2012.12.12%2C%20Peldi%2C%20...</text>
       </controlProperties>
     </control>
     <control controlID="11" controlTypeID="com.balsamiq.mockups::Button" x="1316" y="356" w="49" h="-1" measuredW="50" measuredH="28" zOrder="11" locked="false" isInGroup="-1">
