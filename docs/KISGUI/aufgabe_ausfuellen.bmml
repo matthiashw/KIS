@@ -38,12 +38,12 @@
         <text>Patienten%2CPatientXYZ%2C%20FallXYZ</text>
       </controlProperties>
     </control>
-    <control controlID="5" controlTypeID="com.balsamiq.mockups::TabBar" x="822" y="241" w="609" h="621" measuredW="629" measuredH="100" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::TabBar" x="822" y="241" w="609" h="621" measuredW="634" measuredH="100" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Stammdaten%2C%20Anamnese%2C%20Fall%FCbersicht%2C%20Befunde%2C%20Behandlung%2C%20Aufgaben%2C%20Diagnose%20</text>
         <hrefs>main%26bm%3Bmain.bmml%26bm%3Bmain.bmml%26bm%3Bmain.bmml%2CBefund%26bm%3BBefund.bmml%26bm%3BBefund.bmml%26bm%3BBefund.bmml%2Cfalluebersicht%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%2CBefund%26bm%3BBefund.bmml%26bm%3BBefund.bmml%26bm%3BBefund.bmml%2Cbehandlung%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%2Caufgabe%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%2Cdiagnose%26bm%3Bdiagnose.bmml%26bm%3Bdiagnose.bmml%26bm%3Bdiagnose.bmml</hrefs>
         <selectedIndex>5</selectedIndex>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22232%2C212%2C321%2C241%22%20href%3D%22main.bmml%22%20alt%3D%22main%22%20id%3D%225_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22321%2C212%2C395%2C241%22%20href%3D%22Befund.bmml%22%20alt%3D%22Befund%22%20id%3D%225_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22395%2C212%2C486%2C241%22%20href%3D%22falluebersicht.bmml%22%20alt%3D%22falluebersicht%22%20id%3D%225_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22486%2C212%2C549%2C241%22%20href%3D%22Befund.bmml%22%20alt%3D%22Befund%22%20id%3D%225_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22549%2C212%2C629%2C241%22%20href%3D%22behandlung.bmml%22%20alt%3D%22behandlung%22%20id%3D%225_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22629%2C212%2C698%2C241%22%20href%3D%22aufgabe.bmml%22%20alt%3D%22aufgabe%22%20id%3D%225_5%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22698%2C212%2C767%2C241%22%20href%3D%22diagnose.bmml%22%20alt%3D%22diagnose%22%20id%3D%225_6%22/%3E%0A</map>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22232%2C212%2C321%2C241%22%20href%3D%22main.bmml%22%20alt%3D%22main%22%20id%3D%225_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22321%2C212%2C395%2C241%22%20href%3D%22Befund.bmml%22%20alt%3D%22Befund%22%20id%3D%225_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22395%2C212%2C487%2C241%22%20href%3D%22falluebersicht.bmml%22%20alt%3D%22falluebersicht%22%20id%3D%225_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22487%2C212%2C550%2C241%22%20href%3D%22Befund.bmml%22%20alt%3D%22Befund%22%20id%3D%225_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22550%2C212%2C630%2C241%22%20href%3D%22behandlung.bmml%22%20alt%3D%22behandlung%22%20id%3D%225_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22630%2C212%2C702%2C241%22%20href%3D%22aufgabe.bmml%22%20alt%3D%22aufgabe%22%20id%3D%225_5%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22702%2C212%2C772%2C241%22%20href%3D%22diagnose.bmml%22%20alt%3D%22diagnose%22%20id%3D%225_6%22/%3E%0A</map>
       </controlProperties>
     </control>
     <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="1190" y="111" w="55" h="-1" measuredW="55" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
@@ -66,17 +66,17 @@
         <icon>AddPageIcon%7Csmall</icon>
       </controlProperties>
     </control>
-    <control controlID="74" controlTypeID="com.balsamiq.mockups::TextInput" x="1268" y="428" w="48" h="-1" measuredW="79" measuredH="29" zOrder="20" locked="false" isInGroup="-1">
+    <control controlID="74" controlTypeID="com.balsamiq.mockups::TextInput" x="1189" y="430" w="48" h="-1" measuredW="79" measuredH="29" zOrder="20" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="75" controlTypeID="com.balsamiq.mockups::TextInput" x="1267" y="459" w="48" h="-1" measuredW="79" measuredH="29" zOrder="21" locked="false" isInGroup="-1">
+    <control controlID="75" controlTypeID="com.balsamiq.mockups::TextInput" x="1188" y="461" w="48" h="-1" measuredW="79" measuredH="29" zOrder="21" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="76" controlTypeID="com.balsamiq.mockups::TextInput" x="1267" y="489" w="48" h="-1" measuredW="79" measuredH="29" zOrder="22" locked="false" isInGroup="-1">
+    <control controlID="76" controlTypeID="com.balsamiq.mockups::TextInput" x="1188" y="491" w="48" h="-1" measuredW="79" measuredH="29" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
@@ -96,17 +96,17 @@
         <text>12.12.12</text>
       </controlProperties>
     </control>
-    <control controlID="17" controlTypeID="com.balsamiq.mockups::Label" x="888" y="286" w="-1" h="-1" measuredW="56" measuredH="25" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Label" x="888" y="286" w="-1" h="-1" measuredW="61" measuredH="25" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Dom%E4ne%3A</text>
       </controlProperties>
     </control>
-    <control controlID="82" controlTypeID="com.balsamiq.mockups::Button" x="1348" y="652" w="-1" h="-1" measuredW="66" measuredH="28" zOrder="27" locked="false" isInGroup="-1">
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::Button" x="1358" y="715" w="-1" h="-1" measuredW="66" measuredH="28" zOrder="27" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Upload</text>
       </controlProperties>
     </control>
-    <control controlID="83" controlTypeID="com.balsamiq.mockups::TextInput" x="838" y="692" w="155" h="-1" measuredW="47" measuredH="29" zOrder="28" locked="false" isInGroup="-1">
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::TextInput" x="848" y="755" w="155" h="-1" measuredW="50" measuredH="29" zOrder="28" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Name</text>
       </controlProperties>
@@ -117,24 +117,34 @@
         <size>24</size>
       </controlProperties>
     </control>
-    <control controlID="85" controlTypeID="com.balsamiq.mockups::FieldSet" x="826" y="626" w="600" h="184" measuredW="200" measuredH="170" zOrder="24" locked="false" isInGroup="-1">
+    <control controlID="85" controlTypeID="com.balsamiq.mockups::FieldSet" x="836" y="689" w="600" h="184" measuredW="200" measuredH="170" zOrder="24" locked="false" isInGroup="-1">
       <controlProperties>
         <text>File</text>
       </controlProperties>
     </control>
-    <control controlID="22" controlTypeID="com.balsamiq.mockups::Label" x="849" y="322" w="-1" h="-1" measuredW="88" measuredH="25" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::Label" x="849" y="322" w="-1" h="-1" measuredW="92" measuredH="25" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Ablaufdatum%3A</text>
       </controlProperties>
     </control>
-    <control controlID="80" controlTypeID="com.balsamiq.mockups::TextInput" x="846" y="654" w="378" h="-1" measuredW="79" measuredH="29" zOrder="25" locked="false" isInGroup="-1">
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::TextInput" x="1309" y="461" w="98" h="-1" measuredW="79" measuredH="29" zOrder="31" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="81" controlTypeID="com.balsamiq.mockups::Button" x="1239" y="655" w="-1" h="-1" measuredW="99" measuredH="28" zOrder="26" locked="false" isInGroup="-1">
+    <control controlID="80" controlTypeID="com.balsamiq.mockups::TextInput" x="856" y="717" w="378" h="-1" measuredW="79" measuredH="29" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="81" controlTypeID="com.balsamiq.mockups::Button" x="1249" y="718" w="-1" h="-1" measuredW="101" measuredH="28" zOrder="26" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Durchsuchen</text>
+      </controlProperties>
+    </control>
+    <control controlID="90" controlTypeID="com.balsamiq.mockups::StickyNote" x="677" y="600" w="151" h="106" measuredW="109" measuredH="123" zOrder="34" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Feld%20hinzuf%FCgen%20in%20Popup%20fenster</text>
       </controlProperties>
     </control>
     <control controlID="28" controlTypeID="com.balsamiq.mockups::Icon" x="837" y="397" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="11" locked="false" isInGroup="-1">
@@ -142,7 +152,22 @@
         <icon>AddPageIcon%7Csmall</icon>
       </controlProperties>
     </control>
-    <control controlID="84" controlTypeID="com.balsamiq.mockups::TextArea" x="840" y="729" w="389" h="66" measuredW="200" measuredH="140" zOrder="29" locked="false" isInGroup="-1">
+    <control controlID="86" controlTypeID="com.balsamiq.mockups::TextInput" x="1311" y="430" w="98" h="-1" measuredW="79" measuredH="29" zOrder="30" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="88" controlTypeID="com.balsamiq.mockups::TextInput" x="1309" y="491" w="98" h="-1" measuredW="79" measuredH="29" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="89" controlTypeID="com.balsamiq.mockups::Button" x="838" y="633" w="-1" h="-1" measuredW="120" measuredH="28" zOrder="33" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Feld%20hinzuf%FCgen</text>
+      </controlProperties>
+    </control>
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::TextArea" x="850" y="792" w="389" h="66" measuredW="200" measuredH="140" zOrder="29" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Beschreibung</text>
       </controlProperties>
@@ -158,9 +183,9 @@
       </controlProperties>
     </control>
     <control controlID="55" controlTypeID="com.balsamiq.mockups::HelpButton" x="1383" y="321" w="-1" h="-1" measuredW="18" measuredH="18" zOrder="15" locked="false" isInGroup="-1"/>
-    <control controlID="56" controlTypeID="com.balsamiq.mockups::DataGrid" x="838" y="372" w="581" h="246" measuredW="452" measuredH="178" zOrder="12" locked="false" isInGroup="-1">
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::DataGrid" x="838" y="372" w="596" h="246" measuredW="576" measuredH="178" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Template%2C%20Feld%2C%20Kommentar%2C%20Wert%2C%20Einheit%0A%20%20%20Gro%DFes%20Blutbild%2C%20%2C%20brauch%20ich%2C%20%2C%0A%20%20%20-%2C%20H%E4moglobin%2C%20kommentar%2C%20%2Cg/ml%0A%20%20%20-%2C%20Hellokitty%2C%20kommentar%2C%20%2Cg/ml%0A%20%20%20-%2C%20Blutgruppe%2C%20kommentar%2C%20%2Cg/ml%0A%20%20%20Kleines%20Blutbild%2C%20%2C%20brauch%20ich%20nicht%2C%20%2C</text>
+        <text>Template%2C%20Feld%2C%20Erst.%20Komm.%2C%20Wert%2C%20Einheit%2C%20Mein%20Kommentar%0A%20%20%20Gro%DFes%20Blutbild%2C%20%2C%20brauch%20ich%2C%20%2C%20%2C%0A%20%20%20-%2C%20H%E4moglobin%2C%20kommentar%2C%20%2Cg/ml%2C%0A%20%20%20-%2C%20Hellokitty%2C%20kommentar%2C%20%2Cg/ml%2C%0A%20%20%20-%2C%20Blutgruppe%2C%20kommentar%2C%20%2Cg/ml%2C%0A%20%20%20Kleines%20Blutbild%2C%20%2C%20brauch%20ich%20nicht%2C%20%2C%20%2C</text>
       </controlProperties>
     </control>
   </controls>

@@ -1,6 +1,6 @@
 <mockup version="1.0" skin="sketch" measuredW="1248" measuredH="879" mockupW="850" mockupH="852">
   <controls>
-    <control controlID="0" controlTypeID="__group__" x="388" y="17" w="850" h="852" measuredW="850" measuredH="1121" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="0" controlTypeID="__group__" x="388" y="17" w="850" h="852" measuredW="850" measuredH="852" zOrder="0" locked="false" isInGroup="-1">
       <groupChildrenDescriptors>
         <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="850" h="852" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="2">
           <controlProperties>
@@ -105,6 +105,11 @@
     <control controlID="28" controlTypeID="com.balsamiq.mockups::Link" x="627" y="604" w="-1" h="-1" measuredW="265" measuredH="25" zOrder="18" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Neue%20Medikation%20erstellen%20und%20hinzuf%FCgen</text>
+      </controlProperties>
+    </control>
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::StickyNote" x="964" y="502" w="208" h="102" measuredW="109" measuredH="123" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>m%F6glicherweise%20mit%20Wizard</text>
       </controlProperties>
     </control>
   </controls>
