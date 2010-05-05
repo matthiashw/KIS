@@ -16,10 +16,10 @@
         </control>
       </groupChildrenDescriptors>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="491" y="206" w="-1" h="-1" measuredW="150" measuredH="263" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="491" y="206" w="-1" h="-1" measuredW="150" measuredH="226" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Patienten%0A-%20Kartei%0A-%20Aufnahme%0AEig.%20Aufgaben%0AKalender%0AVerwaltung%0A-%20Berechtigungen</text>
-        <selectedIndex>6</selectedIndex>
+        <text>Patienten%0A-%20Kartei%0A-%20Aufnahme%0AEig.%20Aufgaben%0AKalender%0AVerwaltung</text>
+        <selectedIndex>5</selectedIndex>
       </controlProperties>
     </control>
     <control controlID="2" controlTypeID="com.balsamiq.mockups::IconLabel" x="490" y="82" w="59" h="-1" measuredW="59" measuredH="49" zOrder="2" locked="false" isInGroup="-1">
@@ -34,6 +34,16 @@
         <icon>UsersIcon%7Csmall</icon>
       </controlProperties>
     </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::CheckBox" x="727" y="291" w="-1" h="-1" measuredW="55" measuredH="22" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Rolle</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::CheckBox" x="726" y="323" w="99" h="25" measuredW="70" measuredH="22" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dom%E4ne</text>
+      </controlProperties>
+    </control>
     <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="1027" y="82" w="55" h="-1" measuredW="55" measuredH="28" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Login</text>
@@ -44,19 +54,34 @@
         <text>Help</text>
       </controlProperties>
     </control>
-    <control controlID="9" controlTypeID="com.balsamiq.mockups::DataGrid" x="690" y="268" w="493" h="248" measuredW="348" measuredH="148" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::Button" x="719" y="411" w="-1" h="-1" measuredW="70" measuredH="28" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Berechtigung%2C%20Arzt%2C%20Labor%2C%20Administrator%0APatient%20anzeigen%2C%20%5Bx%5D%2C%20%5B%5D%2C%20%5Bx%5D%0AAufgaben%20anzeigen%2C%20%5Bx%5D%2C%20%5B%5D%2C%20%5Bx%5D%0AKalender%2C%20%5Bx%5D%2C%20%5Bx%5D%2C%20%5Bx%5D%0AVerwaltung%2C%20%5B%5D%2C%20%5B%5D%2C%20%5Bx%5D</text>
+        <text>anlegen</text>
       </controlProperties>
     </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::SubTitle" x="693" y="168" w="-1" h="-1" measuredW="293" measuredH="40" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::SubTitle" x="718" y="154" w="-1" h="-1" measuredW="253" measuredH="40" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Berechtigungen%20vergeben</text>
+        <text>Rolle/Dom%E4ne%20anlegen</text>
       </controlProperties>
     </control>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::Button" x="696" y="543" w="-1" h="-1" measuredW="83" measuredH="28" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::TextInput" x="969" y="321" w="170" h="-1" measuredW="79" measuredH="29" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>speichern</text>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Label" x="873" y="323" w="-1" h="-1" measuredW="87" measuredH="25" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Ergebnisname</text>
+      </controlProperties>
+    </control>
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::TextInput" x="724" y="237" w="189" h="-1" measuredW="79" measuredH="29" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::Label" x="721" y="213" w="-1" h="-1" measuredW="42" measuredH="25" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Name</text>
       </controlProperties>
     </control>
   </controls>

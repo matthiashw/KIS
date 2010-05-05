@@ -38,12 +38,12 @@
         <text>Patienten%2CPatientXYZ%2C%20FallXYZ</text>
       </controlProperties>
     </control>
-    <control controlID="5" controlTypeID="com.balsamiq.mockups::TabBar" x="558" y="218" w="609" h="388" measuredW="624" measuredH="100" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::TabBar" x="553" y="210" w="609" h="388" measuredW="624" measuredH="100" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Stammdaten%2C%20Anamnese%2C%20Fall%FCbersicht%2C%20Befunde%2C%20Behandlung%2C%20Aufgaben%2C%20Diagnose</text>
-        <hrefs>main%26bm%3Bmain.bmml%26bm%3Bmain.bmml%26bm%3Bmain.bmml%2C%2Cfalluebersicht%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%2CBefund%26bm%3BBefund.bmml%26bm%3BBefund.bmml%26bm%3BBefund.bmml%2Cbehandlung%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%2Caufgabe%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%2Cdiagnose%26bm%3Bdiagnose.bmml%26bm%3Bdiagnose.bmml%26bm%3Bdiagnose.bmml</hrefs>
         <selectedIndex>1</selectedIndex>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22224%2C205%2C313%2C234%22%20href%3D%22main.bmml%22%20alt%3D%22main%22%20id%3D%225_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22386%2C205%2C477%2C234%22%20href%3D%22falluebersicht.bmml%22%20alt%3D%22falluebersicht%22%20id%3D%225_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22477%2C205%2C540%2C234%22%20href%3D%22Befund.bmml%22%20alt%3D%22Befund%22%20id%3D%225_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22540%2C205%2C620%2C234%22%20href%3D%22behandlung.bmml%22%20alt%3D%22behandlung%22%20id%3D%225_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22620%2C205%2C689%2C234%22%20href%3D%22aufgabe.bmml%22%20alt%3D%22aufgabe%22%20id%3D%225_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22689%2C205%2C754%2C234%22%20href%3D%22diagnose.bmml%22%20alt%3D%22diagnose%22%20id%3D%225_5%22/%3E%0A</map>
+        <hrefs>main%26bm%3Bmain.bmml%26bm%3Bmain.bmml%26bm%3Bmain.bmml%2C%2Cfalluebersicht%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%2CBefund%26bm%3BBefund.bmml%26bm%3BBefund.bmml%26bm%3BBefund.bmml%2Cbehandlung%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%2Caufgabe%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%2Cdiagnose%26bm%3Bdiagnose.bmml%26bm%3Bdiagnose.bmml%26bm%3Bdiagnose.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22219%2C197%2C308%2C226%22%20href%3D%22main.bmml%22%20alt%3D%22main%22%20id%3D%225_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22381%2C197%2C472%2C226%22%20href%3D%22falluebersicht.bmml%22%20alt%3D%22falluebersicht%22%20id%3D%225_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22472%2C197%2C535%2C226%22%20href%3D%22Befund.bmml%22%20alt%3D%22Befund%22%20id%3D%225_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22535%2C197%2C615%2C226%22%20href%3D%22behandlung.bmml%22%20alt%3D%22behandlung%22%20id%3D%225_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22615%2C197%2C684%2C226%22%20href%3D%22aufgabe.bmml%22%20alt%3D%22aufgabe%22%20id%3D%225_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22684%2C197%2C749%2C226%22%20href%3D%22diagnose.bmml%22%20alt%3D%22diagnose%22%20id%3D%225_5%22/%3E%0A</map>
       </controlProperties>
     </control>
     <control controlID="7" controlTypeID="com.balsamiq.mockups::Button" x="934" y="98" w="55" h="-1" measuredW="55" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
@@ -56,30 +56,40 @@
         <text>Help</text>
       </controlProperties>
     </control>
-    <control controlID="9" controlTypeID="com.balsamiq.mockups::HelpButton" x="1047" y="279" w="-1" h="-1" measuredW="18" measuredH="18" zOrder="8" locked="false" isInGroup="-1"/>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="596" y="279" w="138" h="25" measuredW="119" measuredH="25" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::HelpButton" x="1101" y="270" w="-1" h="-1" measuredW="18" measuredH="18" zOrder="8" locked="false" isInGroup="-1"/>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Button" x="1026" y="261" w="49" h="-1" measuredW="48" measuredH="28" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Krankengeschichte</text>
+        <text>new</text>
       </controlProperties>
     </control>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::Label" x="594" y="302" w="164" h="25" measuredW="74" measuredH="25" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::DataGrid" x="583" y="303" w="564" h="271" measuredW="249" measuredH="178" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>-Diagnosen</text>
+        <text>Typ%2C%20Datum%2C%20Verantw.%2C%0AAllgemein%2C%2012.12.12%2C%20Peldi%0AFamilie%2C%2012.12.12%2C%20Peldi%0APhysio%2C%2012.12.12%2C%20Peldi%0A...%2C%2012.12.12%2C%20Peldi%0A...%2C%2012.12.12%2C%20Peldi</text>
       </controlProperties>
     </control>
-    <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="594" y="327" w="153" h="25" measuredW="95" measuredH="25" zOrder="11" locked="false" isInGroup="-1">
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Button" x="1086" y="329" w="49" h="-1" measuredW="50" measuredH="28" zOrder="11" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>-Behandlungen</text>
+        <text>view</text>
       </controlProperties>
     </control>
-    <control controlID="13" controlTypeID="com.balsamiq.mockups::Label" x="596" y="349" w="23" h="25" measuredW="23" measuredH="25" zOrder="12" locked="false" isInGroup="-1">
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Button" x="1087" y="359" w="49" h="-1" measuredW="50" measuredH="28" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>...</text>
+        <text>view</text>
       </controlProperties>
     </control>
-    <control controlID="14" controlTypeID="com.balsamiq.mockups::Button" x="982" y="278" w="49" h="-1" measuredW="50" measuredH="28" zOrder="13" locked="false" isInGroup="-1">
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Button" x="1088" y="389" w="49" h="-1" measuredW="50" measuredH="28" zOrder="13" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Edit</text>
+        <text>view</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Button" x="1088" y="419" w="49" h="-1" measuredW="50" measuredH="28" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>view</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Button" x="1088" y="449" w="49" h="-1" measuredW="50" measuredH="28" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>view</text>
       </controlProperties>
     </control>
   </controls>

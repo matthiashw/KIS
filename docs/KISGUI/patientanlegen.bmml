@@ -60,6 +60,11 @@
         <text>Abbrechen</text>
       </controlProperties>
     </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::StickyNote" x="1053" y="249" w="149" h="125" measuredW="109" measuredH="123" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>m%F6glicherweise%20Bild</text>
+      </controlProperties>
+    </control>
     <control controlID="19" controlTypeID="com.balsamiq.mockups::MultilineButton" x="681" y="206" w="536" h="39" measuredW="205" measuredH="60" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Neuen%20Patient%20anlegen</text>
