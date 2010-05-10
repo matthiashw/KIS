@@ -16,9 +16,9 @@
         </control>
       </groupChildrenDescriptors>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="623" y="208" w="-1" h="-1" measuredW="150" measuredH="300" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="623" y="208" w="-1" h="-1" measuredW="150" measuredH="337" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Patienten%0A-%20Kartei%0A-%20Aufnahme%0AEig.%20Aufgaben%0AKalender%0AVerwaltung</text>
+        <text>Patienten%0A-%20Kartei%0A-%20Aufnahme%0A-%20Arztbrief%0AEig.%20Aufgaben%0AKalender%0AVerwaltung</text>
       </controlProperties>
     </control>
     <control controlID="2" controlTypeID="com.balsamiq.mockups::IconLabel" x="622" y="84" w="59" h="-1" measuredW="59" measuredH="49" zOrder="2" locked="false" isInGroup="-1">
@@ -38,12 +38,12 @@
         <text>Patienten%2CPatientXYZ%2C%20FallXYZ</text>
       </controlProperties>
     </control>
-    <control controlID="5" controlTypeID="com.balsamiq.mockups::TabBar" x="787" y="204" w="609" h="388" measuredW="632" measuredH="100" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::TabBar" x="785" y="193" w="609" h="388" measuredW="632" measuredH="100" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Stammdaten%2C%20Anamnese%2C%20Fall%FCbersicht%2C%20Befunde%2C%20Behandlung%2C%20Aufgaben%2C%20Diagnose%20</text>
         <hrefs>main%26bm%3Bmain.bmml%26bm%3Bmain.bmml%26bm%3Bmain.bmml%2CBefund%26bm%3BBefund.bmml%26bm%3BBefund.bmml%26bm%3BBefund.bmml%2Cfalluebersicht%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%2CBefund%26bm%3BBefund.bmml%26bm%3BBefund.bmml%26bm%3BBefund.bmml%2Cbehandlung%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%2Caufgabe%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%2C</hrefs>
         <selectedIndex>6</selectedIndex>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22228%2C202%2C317%2C231%22%20href%3D%22main.bmml%22%20alt%3D%22main%22%20id%3D%225_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22317%2C202%2C391%2C231%22%20href%3D%22Befund.bmml%22%20alt%3D%22Befund%22%20id%3D%225_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22391%2C202%2C482%2C231%22%20href%3D%22falluebersicht.bmml%22%20alt%3D%22falluebersicht%22%20id%3D%225_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22482%2C202%2C545%2C231%22%20href%3D%22Befund.bmml%22%20alt%3D%22Befund%22%20id%3D%225_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22545%2C202%2C625%2C231%22%20href%3D%22behandlung.bmml%22%20alt%3D%22behandlung%22%20id%3D%225_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22625%2C202%2C694%2C231%22%20href%3D%22aufgabe.bmml%22%20alt%3D%22aufgabe%22%20id%3D%225_5%22/%3E%0A</map>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22226%2C191%2C315%2C220%22%20href%3D%22main.bmml%22%20alt%3D%22main%22%20id%3D%225_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22315%2C191%2C389%2C220%22%20href%3D%22Befund.bmml%22%20alt%3D%22Befund%22%20id%3D%225_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22389%2C191%2C480%2C220%22%20href%3D%22falluebersicht.bmml%22%20alt%3D%22falluebersicht%22%20id%3D%225_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22480%2C191%2C543%2C220%22%20href%3D%22Befund.bmml%22%20alt%3D%22Befund%22%20id%3D%225_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22543%2C191%2C623%2C220%22%20href%3D%22behandlung.bmml%22%20alt%3D%22behandlung%22%20id%3D%225_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22623%2C191%2C692%2C220%22%20href%3D%22aufgabe.bmml%22%20alt%3D%22aufgabe%22%20id%3D%225_5%22/%3E%0A</map>
       </controlProperties>
     </control>
     <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="1159" y="84" w="55" h="-1" measuredW="55" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
@@ -170,6 +170,12 @@
       <controlProperties>
         <text/>
         <icon>TrashIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::CheckBox" x="1022" y="261" w="-1" h="-1" measuredW="156" measuredH="22" zOrder="29" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>auch%20aus%20alten%20F%E4llen</text>
+        <state>selected</state>
       </controlProperties>
     </control>
   </controls>

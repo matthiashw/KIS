@@ -26,9 +26,9 @@
         <text>Help</text>
       </controlProperties>
     </control>
-    <control controlID="5" controlTypeID="com.balsamiq.mockups::Accordion" x="387" y="219" w="-1" h="-1" measuredW="150" measuredH="300" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Accordion" x="387" y="219" w="-1" h="-1" measuredW="150" measuredH="337" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Patienten%0A-%20Kartei%0A-%20Aufnahme%0AEig.Aufgaben%0AKalender%0AVerwaltung</text>
+        <text>Patienten%0A-%20Kartei%0A-%20Aufnahme%0A-%20Arztbrief%0AEig.Aufgaben%0AKalender%0AVerwaltung</text>
         <hrefs>%2C%2Caufnahme%26bm%3Baufnahme.bmml%26bm%3Baufnahme.bmml%26bm%3Baufnahme.bmml%2C%2C%2C</hrefs>
         <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2254%2C269.5%2C190%2C294.5%22%20href%3D%22aufnahme.bmml%22%20alt%3D%22aufnahme%22%20id%3D%225_0%22/%3E%0A</map>
       </controlProperties>
@@ -53,8 +53,8 @@
     <control controlID="9" controlTypeID="com.balsamiq.mockups::TabBar" x="547" y="215" w="609" h="388" measuredW="622" measuredH="100" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Stammdaten%2C%20Anamnese%2C%20Fall%FCbersicht%2C%20Befunde%2C%20Behandlung%2C%20Aufgaben%2C%20Diagnose</text>
-        <selectedIndex>0</selectedIndex>
         <hrefs>%2Canamnese%26bm%3Banamnese.bmml%26bm%3Banamnese.bmml%26bm%3Banamnese.bmml%2Cfalluebersicht%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%2CBefund%26bm%3BBefund.bmml%26bm%3BBefund.bmml%26bm%3BBefund.bmml%2Cbehandlung%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%2Caufgabe%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%2Cdiagnose%26bm%3Bdiagnose.bmml%26bm%3Bdiagnose.bmml%26bm%3Bdiagnose.bmml</hrefs>
+        <selectedIndex>0</selectedIndex>
         <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22310%2C205%2C384%2C234%22%20href%3D%22anamnese.bmml%22%20alt%3D%22anamnese%22%20id%3D%229_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22384%2C205%2C475%2C234%22%20href%3D%22falluebersicht.bmml%22%20alt%3D%22falluebersicht%22%20id%3D%229_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22475%2C205%2C538%2C234%22%20href%3D%22Befund.bmml%22%20alt%3D%22Befund%22%20id%3D%229_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22538%2C205%2C618%2C234%22%20href%3D%22behandlung.bmml%22%20alt%3D%22behandlung%22%20id%3D%229_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22618%2C205%2C687%2C234%22%20href%3D%22aufgabe.bmml%22%20alt%3D%22aufgabe%22%20id%3D%229_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22687%2C205%2C752%2C234%22%20href%3D%22diagnose.bmml%22%20alt%3D%22diagnose%22%20id%3D%229_5%22/%3E%0A</map>
       </controlProperties>
     </control>
