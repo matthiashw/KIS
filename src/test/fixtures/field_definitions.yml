@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  input_type: 1
+  field_entry_id: 1
+  example_ucum_id: 1
+  is_active: false
+  additional_type_info: MyString
+
+two:
+  input_type: 1
+  field_entry_id: 1
+  example_ucum_id: 1
+  is_active: false
+  additional_type_info: MyString
