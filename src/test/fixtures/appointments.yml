@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  start_date: 2010-05-14
+  end_date: 2010-05-14
+  name: MyString
+  description: MyText
+  task_id: 1
+  user_id: 1
+
+two:
+  start_date: 2010-05-14
+  end_date: 2010-05-14
+  name: MyString
+  description: MyText
+  task_id: 1
+  user_id: 1

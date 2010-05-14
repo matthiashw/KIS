@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  value: MyString
+  comment: MyString
+  field_id: 1
+  case_id: 1
+  template_id: 1
+
+two:
+  value: MyString
+  comment: MyString
+  field_id: 1
+  case_id: 1
+  template_id: 1
