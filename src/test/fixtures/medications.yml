@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: MyText
+  atc_entry_id: 1
+  treatment_id: 1
+
+two:
+  description: MyText
+  atc_entry_id: 1
+  treatment_id: 1
