@@ -1,0 +1,212 @@
+@CHARSET "ISO-8859-1";
+
+/*-------------------------------------------+
+|                                            |
+|             STYLE STYLESHEET               |
+|             master overrides               |
+|                                            |
++-------------------------------------------*/
+
+/*
+
+COLOUR REFERENCES
+-------------------------------------------------------- */
+
+
+/*MAIN NAVIGATION
+-------------------------------------------------------- */
+
+.main-navigation {
+  background-color: #414141; 
+  margin: 40px 0 0 0;
+  padding: 10px 0;
+  list-style: none;
+  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
+  -webkit-border-top-left-radius: 12px;
+  -webkit-border-bottom-left-radius: 12px;
+  -moz-border-radius-topleft: 12px;
+  -moz-border-radius-bottomleft: 12px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  float: left;
+  width: 140px; }
+
+.main-navigation-leaf {
+  margin: 0;
+  list-style: none;
+  float: left;
+  a {
+    background: #caae28 url('/images/overlay.png') repeat-x bottom left;
+    width: 132px;
+    height: 20px;
+    padding: 5px 4px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    float: left;
+    &:hover, &.active {
+      background: #bf1399 url('/images/overlay.png') repeat-x bottom left; } } }
+
+.navi-img {
+  width: 26px;
+  height: 30px;
+  display: block;
+  float: left;
+  margin: -5px 8px 0 4px;
+  background-image: url('/images/navi_img_all.png');
+  background-repeat: no-repeat; }
+
+.navi-img-patient {
+  background-position: 0 -30px; }
+
+.navi-img-termin {
+  background-position: 0 -60px; }
+
+.navi-img-aufgabe {
+  background-position: 0 0; }
+
+.navi-img-verwaltung {
+  background-position: 0 -90px; }
+
+/**
+ * subnavi
+ */
+
+.main-subnavigation {
+  margin: 0 0 0 16px;
+  list-style: none;
+  font-size: 12px; }
+
+.main-subnavigation-leaf {
+  margin: 0;
+  list-style: none;
+  a {
+    background: none;
+    background-color: transparent;
+    &:hover, &.active {
+      background: none;
+      background-color: transparent; }
+    &:hover, &.active {
+      text-decoration: underline; } } }
+
+/*SECONDARY TAB NAVIGATION
+-------------------------------------------------------- */
+
+.secondary-navigation {
+  margin: -4px 0 0 0;
+  padding: 0;
+  border-bottom: 1px solid #e2e2e2;
+  list-style: none;
+  height: 30px;
+  width: 100%;
+  background: #e7e7e7 url('/images/bg_tab.png') repeat-x top left;
+  -webkit-border-top-left-radius: 6px;
+  -moz-border-radius-topleft: 6px;
+  border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  border-top-right-radius: 6px; }
+
+.secondary-navigation-leaf {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-right: 1px solid #e2e2e2;
+  display: inline;
+  float: left;
+  &.first {
+    margin-left: 8px; }
+  &.last {
+    margin-right: 8px; }
+  a {
+    background: #e7e7e7 url('/images/bg_tab.png') repeat-x top left;
+    height: 20px;
+    padding: 5px 16px;
+    display: block;
+    color: #666666;
+    text-decoration: none;
+    &:hover {
+      background: none;
+      background-color: #fff; }
+    &.active {
+      background: none;
+      background-color: #fff;
+      border-bottom: 1px solid #fff;
+      color: #bf1399; } } }
+
+/*HEADER
+-------------------------------------------------------- */
+
+/**
+ * logo
+ */
+
+.logo {
+  float: right;
+  margin-top: 18px; }
+
+/**
+ * user, domain
+ */
+
+.user, .domain {
+  width: 100px;
+  height: 80px;
+  float: left; }
+
+.user {
+  background: transparent url('/images/user.png') no-repeat top center;
+  margin: 18px 0 0 140px; }
+
+.domain {
+  background: transparent url('/images/domain.png') no-repeat top center;
+  margin: 18px 0 0 18px; }
+
+.user .name, .domain .name {
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0px #eee;
+  color: #666;
+  display: block;
+  text-align: center;
+  margin-top: 33px; }
+
+/**
+ * logout, help
+ */
+
+.links {
+  text-align: right;
+  float: right;
+  width: 100%; }
+
+a.links-link {
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0px #eee;
+  color: #666;
+  text-decoration: none;
+  margin: 0 8px;
+  float: right; }
+
+.link-help img {
+  float: right;
+  margin-top: 4px; }
+
+/*CONTENT
+-------------------------------------------------------- */
+
+.content {
+  background-color: #fff;
+  padding-bottom: 18px; }
+
+/*FOOTER
+-------------------------------------------------------- */
+
+#footer p {
+  color: #9f9f9f;
+  margin: 4px 0 0 0;
+  font-size: 10px;
+  text-align: center; }

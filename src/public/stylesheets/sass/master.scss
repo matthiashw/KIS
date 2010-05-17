@@ -1,0 +1,248 @@
+@CHARSET "ISO-8859-1";
+
+/*-------------------------------------------+
+|                                            |
+|             MASTER STYLESHEET              |
+|                                            |
++-------------------------------------------*/
+
+/*
+
+COLOUR REFERENCES
+-------------------------------------------------------- */
+$magenta:#bf1399;
+$darkyellow:#caae28;
+
+
+html {
+  height: 100%; }
+
+body {
+  height: 100%;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  background: #ebebeb url('/images/bg_body.png') repeat-x top left;
+  min-width: 780px; }
+
+/*PARAGRAPHS
+-------------------------------------------------------- */
+
+p {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 18px; }
+
+/*HEADINGS
+-------------------------------------------------------- */
+
+h1 {
+  font-size: 40px;
+  line-height: 36px;
+  margin-bottom: 18px;
+  font-family: "Lucida Grande", "Lucida Sans", Verdana, "Lucida Sans Unicode", sans-serif; }
+
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+  font-family: "Lucida Grande", "Lucida Sans", Verdana, "Lucida Sans Unicode", sans-serif; }
+
+h3 {
+  font-size: 16px;
+  font-family: "Lucida Grande", "Lucida Sans", Verdana, "Lucida Sans Unicode", sans-serif;
+  text-transform: uppercase;
+  font-weight: normal; }
+
+h4, h5 {
+  font-size: 16px;
+  font-weight: bold; }
+
+h6 {
+  font-size: 16px; }
+
+h2, h3, h4, h5, h6 {
+  /*margin:12px 0 6px;
+  padding-top:12px;*/
+  margin-bottom: 18px; }
+
+/*LISTS
+-------------------------------------------------------- */
+
+ul, ol {
+  margin: 0 0 9px 18px; }
+
+ul li ul, ol li ol {
+  margin: 9px 0 9px 27px; }
+
+ul li ul li ul, ol li ol li ol {
+  margin: 9px 0 9px 36px; }
+
+ul {
+  list-style: square inside; }
+
+ol {
+  list-style: decimal inside; }
+
+/*LINKS
+-------------------------------------------------------- */
+
+a {
+  &:link {
+    color: #0f4680;
+    text-decoration: underline; }
+  &:visited {
+    color: #0f4680; }
+  &:hover, &:active {
+    color: #0f4680;
+    text-decoration: none; } }
+
+/*TABLES
+-------------------------------------------------------- */
+
+/*MISC
+-------------------------------------------------------- */
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.callout {
+  border: 1px solid #ddd;
+  background-color: #F1F2E7;
+  padding: 8px 10px;
+  margin-bottom: 18px;
+  color: #A39C8D;
+  p {
+    font-size: 12px; }
+  :last-child {
+    margin-bottom: 0; } }
+
+blockquote p {
+  font-size: 12px!important;
+  line-height: 18px!important;
+  margin-bottom: 18px!important;
+  font-style: italic;
+  font-weight: bold;
+  cite {
+    font-style: normal; } }
+
+abbr {
+  border-bottom: 1px dotted #666;
+  border-color: inherit;
+  cursor: help; }
+
+/*GRID
+-------------------------------------------------------- */
+
+#wrapper {
+  min-height: 100%;
+  position: relative;
+  height: auto; }
+
+#container {
+  margin: 0 auto;
+  max-width: 1270px;
+  padding: 0 20px;
+  display: block; }
+
+#header {
+  height: 140px; }
+
+#sidebar {
+  float: left;
+  position: relative;
+  width: 140px;
+  z-index: 2; }
+
+#center {
+  float: left;
+  width: 100%;
+  margin-left: -140px; }
+
+#squeeze {
+  position: relative;
+  margin-left: 140px; }
+
+#footer {
+  width: 100%;
+  background: #cccccc url('/images/bg_footer.png') repeat-x top left;
+  border-top: 1px solid #b1b1b1;
+  clear: both;
+  height: 29px;
+  margin-top: -30px;
+  position: relative;
+  z-index: 10; }
+
+.inner {
+  margin: 18px; }
+
+.left .inner, .callout.left {
+  margin: 0 18px 18px 0; }
+
+.right .inner, .callout.right {
+  margin: 0 0 18px 18px; }
+
+/*ERRORS WARNINGS OK
+------------------------------------------------------*/
+
+.error {
+  color: #e55; }
+
+div.error {
+  border: 1px solid #d77;
+  background: #fcc;
+  color: #200;
+  padding: 2px; }
+
+.warning {
+  color: #e09010; }
+
+div.warning {
+  border: 1px solid #f0c020;
+  background: #ffd;
+  color: #220;
+  padding: 2px; }
+
+.ok {
+  color: #008000; }
+
+div {
+  &.ok {
+    border: 1px solid #be7;
+    color: #360;
+    background: #cf8; }
+  &.messages {
+    padding: 9px;
+    margin: 0 0 8px 0;
+    p {
+      margin: 9px; } }
+  &.warning {
+    color: #840;
+    background: #fe6;
+    border-color: #ed5; }
+  &.error {
+    color: #fff;
+    background: #e63;
+    border-color: #d52;
+    p.error {
+      color: #333; } }
+  &.status {
+    color: #036;
+    background: #bdf;
+    border: 1px solid #ace; } }
+
+/**
+ * Messages.
+ */
+
+/*CUSTOM
+-------------------------------------------------------- */
+
+.sidebar {
+  font-size: 11px;
+  color: #a39c8d; }
+
+#biopic {
+  width: 98px; }
