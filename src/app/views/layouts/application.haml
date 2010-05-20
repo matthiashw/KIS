@@ -1,0 +1,28 @@
+!!! XML
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+    %head
+        %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'utf-8'}
+        %title HOPEN - Open Source Hospital Information System
+        %link{:rel => "stylesheet", :type => "text/css", :href  => "/stylesheets/reset.css", :media => "screen, projection"}
+        %link{:rel => "stylesheet", :type => "text/css", :href  => "/stylesheets/master.css", :media => "screen, projection"}
+        %link{:rel => "stylesheet", :type => "text/css", :href  => "/stylesheets/style.css", :media => "screen, projection"}
+    %body
+        #wrapper
+            #container
+                #header
+                    = render :partial => 'shared/header'
+                #sidebar
+                    = render :partial => 'shared/main_navigation'
+                #center
+                    #squeeze
+                        .content
+                            = render :partial => 'shared/tab_navigation'
+
+                            .inner
+                                - if flash[:message]
+                                    .messages{:class => "error"}
+                                        = h flash[:message]
+                                = yield
+
+        = render :partial => 'shared/footer'
