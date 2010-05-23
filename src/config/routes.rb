@@ -4,10 +4,6 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :user_sessions
   map.resources :users
- 
-  # root url points to this controller
-  map.root :controller => "users", :action => "index"
-  
 
   map.resources :catalog_types
 
@@ -23,6 +19,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :patients
 
+  # root url points to this controller
+  map.root :controller => "patients", :action => "index"
 
   # The priority is based upon order of creation: first created -> highest priority.
 
