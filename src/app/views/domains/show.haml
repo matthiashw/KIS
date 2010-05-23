@@ -1,0 +1,15 @@
+%p
+  %b Name:
+  = h @domain.name
+%p
+  %b Result name:
+  = h @domain.result_name
+%p
+  %b Is role:
+  = h @domain.is_role
+%p
+  %b Is userdomain:
+  = h @domain.is_userdomain
+= link_to 'Edit', edit_domain_path(@domain)
+|
+\#{link_to 'Back', domains_path}

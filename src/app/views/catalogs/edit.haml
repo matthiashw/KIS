@@ -1,0 +1,16 @@
+%h1 Editing catalog
+- form_for(@catalog) do |f|
+  = f.error_messages
+  %p
+    = f.label :year
+    %br/
+    = f.text_field :year
+  %p
+    = f.label :language
+    %br/
+    = f.text_field :language
+  %p
+    = f.submit 'Update'
+= link_to 'Show', @catalog
+|
+\#{link_to 'Back', catalogs_path}

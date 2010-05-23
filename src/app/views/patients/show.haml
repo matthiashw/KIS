@@ -1,0 +1,21 @@
+%p
+  %b First name:
+  = h @patient.first_name
+%p
+  %b Family name:
+  = h @patient.family_name
+%p
+  %b Birthdate:
+  = h @patient.birthdate
+%p
+  %b Address:
+  = h @patient.address
+%p
+  %b Sex:
+  = h @patient.sex
+%p
+  %b Phone:
+  = h @patient.phone
+= link_to 'Edit', edit_patient_path(@patient)
+|
+\#{link_to 'Back', patients_path}

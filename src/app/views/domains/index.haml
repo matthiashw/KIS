@@ -1,0 +1,18 @@
+%h1 Listing domains
+%table
+  %tr
+    %th Name
+    %th Result name
+    %th Is role
+    %th Is userdomain
+  - @domains.each do |domain|
+    %tr
+      %td= h domain.name
+      %td= h domain.result_name
+      %td= h domain.is_role
+      %td= h domain.is_userdomain
+      %td= link_to 'Show', domain
+      %td= link_to 'Edit', edit_domain_path(domain)
+      %td= link_to 'Destroy', domain, :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'New domain', new_domain_path
