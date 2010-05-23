@@ -1,0 +1,14 @@
+%h1 New catalog
+- form_for(@catalog) do |f|
+  = f.error_messages
+  %p
+    = f.label :year
+    %br/
+    = f.text_field :year
+  %p
+    = f.label :language
+    %br/
+    = f.text_field :language
+  %p
+    = f.submit 'Create'
+= link_to 'Back', catalogs_path

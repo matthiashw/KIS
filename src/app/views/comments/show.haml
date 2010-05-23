@@ -1,0 +1,9 @@
+%p
+  %b Comment:
+  = h @comment.comment
+%p
+  %b Date:
+  = h @comment.date
+= link_to 'Edit', edit_comment_path(@comment)
+|
+\#{link_to 'Back', comments_path}

@@ -1,0 +1,18 @@
+%h1 Listing appointments
+%table
+  %tr
+    %th Start date
+    %th End date
+    %th Name
+    %th Description
+  - @appointments.each do |appointment|
+    %tr
+      %td= h appointment.start_date
+      %td= h appointment.end_date
+      %td= h appointment.name
+      %td= h appointment.description
+      %td= link_to 'Show', appointment
+      %td= link_to 'Edit', edit_appointment_path(appointment)
+      %td= link_to 'Destroy', appointment, :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'New appointment', new_appointment_path

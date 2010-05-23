@@ -1,0 +1,10 @@
+%h1 New catalog_type
+- form_for(@catalog_type) do |f|
+  = f.error_messages
+  %p
+    = f.label :name
+    %br/
+    = f.text_field :name
+  %p
+    = f.submit 'Create'
+= link_to 'Back', catalog_types_path
