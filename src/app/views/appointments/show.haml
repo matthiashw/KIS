@@ -1,0 +1,15 @@
+%p
+  %b Start date:
+  = h @appointment.start_date
+%p
+  %b End date:
+  = h @appointment.end_date
+%p
+  %b Name:
+  = h @appointment.name
+%p
+  %b Description:
+  = h @appointment.description
+= link_to 'Edit', edit_appointment_path(@appointment)
+|
+\#{link_to 'Back', appointments_path}

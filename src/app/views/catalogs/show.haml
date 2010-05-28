@@ -1,0 +1,9 @@
+%p
+  %b Year:
+  = h @catalog.year
+%p
+  %b Language:
+  = h @catalog.language
+= link_to 'Edit', edit_catalog_path(@catalog)
+|
+\#{link_to 'Back', catalogs_path}

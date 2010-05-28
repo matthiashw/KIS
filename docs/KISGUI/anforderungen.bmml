@@ -1,0 +1,120 @@
+<mockup version="1.0" skin="sketch" measuredW="1299" measuredH="805" mockupW="850" mockupH="793">
+  <controls>
+    <control controlID="0" controlTypeID="__group__" x="439" y="2" w="850" h="793" measuredW="850" measuredH="793" zOrder="0" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="850" h="793" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="2">
+          <controlProperties>
+            <text>Easymed%0Aeasymed.com</text>
+            <verticalScrollbar>true</verticalScrollbar>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::IconLabel" x="750" y="109" w="69" h="-1" measuredW="69" measuredH="49" zOrder="1" locked="false" isInGroup="2">
+          <controlProperties>
+            <text>EASYMED</text>
+            <icon>PlusBigIcon%7Csmall</icon>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="475" y="231" w="-1" h="-1" measuredW="169" measuredH="337" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Patienten%0A-%20Kartei%0A-%20Aufnahme%0AAufgaben%20und%20Anforderungen%0A-%20Aufgaben%0A-%20Anforderungen%0AKalender%0AVerwaltung%0A%20</text>
+        <selectedIndex>5</selectedIndex>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::IconLabel" x="490" y="82" w="59" h="-1" measuredW="59" measuredH="49" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>ArztXYZ</text>
+        <icon>ContactIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::IconLabel" x="564" y="83" w="87" h="-1" measuredW="87" measuredH="49" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>AbteilungXYZ</text>
+        <icon>UsersIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::BreadCrumbs" x="495" y="151" w="-1" h="-1" measuredW="224" measuredH="25" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Patienten%2CPatientXYZ%2C%20FallXYZ</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="1027" y="82" w="55" h="-1" measuredW="55" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Login</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Button" x="1104" y="82" w="53" h="-1" measuredW="53" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Help</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::DataGrid" x="682" y="351" w="545" h="334" measuredW="393" measuredH="148" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Typ%2C%20Erstellt%20am%2C%20Ablaufdatum%2C%20Ersteller%2C%20Status%2C%0ALabor%2C%2012.12.12%2C%2012.12.12%2C%20Du%2C%20aktiv%2C%20%0ALabor%2C%2012.12.12%2C%2012.12.12%2C%20Du%2C%20aktiv%2C%0ALabor%2C%2012.12.12%2C%2012.12.12%2C%20Du%2C%20aktiv%0ALabor%2C%2012.12.12%2C%2012.12.12%2C%20Du%2C%20aktiv</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::ComboBox" x="1071" y="312" w="84" h="-1" measuredW="57" measuredH="25" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Alle</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::CheckBox" x="962" y="313" w="-1" h="-1" measuredW="90" measuredH="22" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>nur%20aktive</text>
+        <state>selected</state>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Icon" x="1187" y="377" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>EyeIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Icon" x="1187" y="410" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>EyeIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Icon" x="1187" y="436" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>EyeIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Icon" x="1187" y="467" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>EyeIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::HelpButton" x="1198" y="318" w="-1" h="-1" measuredW="18" measuredH="18" zOrder="14" locked="false" isInGroup="-1"/>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::SubTitle" x="686" y="193" w="-1" h="-1" measuredW="171" measuredH="40" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Anforderungen</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Button" x="682" y="308" w="-1" h="-1" measuredW="139" measuredH="28" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Neue%20Anforderung</text>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Button" x="1226" y="375" w="-1" h="-1" measuredW="49" measuredH="28" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>edit</text>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::Button" x="1225" y="408" w="-1" h="-1" measuredW="49" measuredH="28" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>edit</text>
+      </controlProperties>
+    </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::Button" x="1226" y="439" w="-1" h="-1" measuredW="49" measuredH="28" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>edit</text>
+      </controlProperties>
+    </control>
+    <control controlID="21" controlTypeID="com.balsamiq.mockups::Button" x="1230" y="469" w="-1" h="-1" measuredW="49" measuredH="28" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>edit</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

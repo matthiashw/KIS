@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  year: MyString
+  language: MyString
+  catalog_type_id: 1
+  root_node_id: 1
+
+two:
+  year: MyString
+  language: MyString
+  catalog_type_id: 1
+  root_node_id: 1

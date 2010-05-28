@@ -16,9 +16,9 @@
         </control>
       </groupChildrenDescriptors>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="624" y="240" w="-1" h="-1" measuredW="150" measuredH="300" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="624" y="240" w="-1" h="-1" measuredW="150" measuredH="337" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Patienten%0A-%20Kartei%0A-%20Aufnahme%0AEig.Aufgaben%0AKalender%0AVerwaltung</text>
+        <text>Patienten%0A-%20Kartei%0A-%20Aufnahme%0A-%20Arztbrief%0AEig.Aufgaben%0AKalender%0AVerwaltung</text>
       </controlProperties>
     </control>
     <control controlID="2" controlTypeID="com.balsamiq.mockups::IconLabel" x="623" y="116" w="59" h="-1" measuredW="59" measuredH="49" zOrder="2" locked="false" isInGroup="-1">
@@ -41,8 +41,8 @@
     <control controlID="5" controlTypeID="com.balsamiq.mockups::TabBar" x="789" y="230" w="609" h="388" measuredW="630" measuredH="100" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Stammdaten%2C%20Anamnese%2C%20Fall%FCbersicht%2C%20Befunde%2C%20Behandlung%2C%20Aufgaben%2C%20Diagnose%20</text>
-        <hrefs>main%26bm%3Bmain.bmml%26bm%3Bmain.bmml%26bm%3Bmain.bmml%2CBefund%26bm%3BBefund.bmml%26bm%3BBefund.bmml%26bm%3BBefund.bmml%2Cfalluebersicht%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%2CBefund%26bm%3BBefund.bmml%26bm%3BBefund.bmml%26bm%3BBefund.bmml%2Cbehandlung%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%2Caufgabe%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%2Cdiagnose%26bm%3Bdiagnose.bmml%26bm%3Bdiagnose.bmml%26bm%3Bdiagnose.bmml</hrefs>
         <selectedIndex>4</selectedIndex>
+        <hrefs>main%26bm%3Bmain.bmml%26bm%3Bmain.bmml%26bm%3Bmain.bmml%2CBefund%26bm%3BBefund.bmml%26bm%3BBefund.bmml%26bm%3BBefund.bmml%2Cfalluebersicht%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%26bm%3Bfalluebersicht.bmml%2CBefund%26bm%3BBefund.bmml%26bm%3BBefund.bmml%26bm%3BBefund.bmml%2Cbehandlung%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%26bm%3Bbehandlung.bmml%2Caufgabe%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%26bm%3Baufgabe.bmml%2Cdiagnose%26bm%3Bdiagnose.bmml%26bm%3Bdiagnose.bmml%26bm%3Bdiagnose.bmml</hrefs>
         <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22229%2C196%2C318%2C225%22%20href%3D%22main.bmml%22%20alt%3D%22main%22%20id%3D%225_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22318%2C196%2C392%2C225%22%20href%3D%22Befund.bmml%22%20alt%3D%22Befund%22%20id%3D%225_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22392%2C196%2C483%2C225%22%20href%3D%22falluebersicht.bmml%22%20alt%3D%22falluebersicht%22%20id%3D%225_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22483%2C196%2C546%2C225%22%20href%3D%22Befund.bmml%22%20alt%3D%22Befund%22%20id%3D%225_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22546%2C196%2C627%2C225%22%20href%3D%22behandlung.bmml%22%20alt%3D%22behandlung%22%20id%3D%225_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22627%2C196%2C696%2C225%22%20href%3D%22aufgabe.bmml%22%20alt%3D%22aufgabe%22%20id%3D%225_5%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22696%2C196%2C765%2C225%22%20href%3D%22diagnose.bmml%22%20alt%3D%22diagnose%22%20id%3D%225_6%22/%3E%0A</map>
       </controlProperties>
     </control>
@@ -62,9 +62,9 @@
         <text>new</text>
       </controlProperties>
     </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::DataGrid" x="811" y="330" w="564" h="271" measuredW="354" measuredH="178" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::DataGrid" x="811" y="330" w="564" h="271" measuredW="402" measuredH="178" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Typ%2C%20Datum%2C%20Verantw.%2C%20Status%2C%0AOP%2C%2012.12.12%2C%20Peldi%2C%20ausstehend%0AMadikation%2C%2012.12.12%2C%20Peldi%2C%20erledigt%0APhysio%2C%2012.12.12%2C%20Peldi%2C%20ausstehend%20%0A...%2C%2012.12.12%2C%20Peldi%2C%20...%0A...%2C%2012.12.12%2C%20Peldi%2C%20...</text>
+        <text>Typ%2C%20Datum%2C%20Erfasser%2C%20Status%2C%0AOP%20und%20Medikation%2C%2012.12.12%2C%20Peldi%2C%20ausstehend%0AMedikation%2C%2012.12.12%2C%20Peldi%2C%20erledigt%0APhysio%2C%2012.12.12%2C%20Peldi%2C%20ausstehend%20%0A...%2C%2012.12.12%2C%20Peldi%2C%20...%0A...%2C%2012.12.12%2C%20Peldi%2C%20...</text>
       </controlProperties>
     </control>
     <control controlID="11" controlTypeID="com.balsamiq.mockups::Button" x="1316" y="356" w="49" h="-1" measuredW="50" measuredH="28" zOrder="11" locked="false" isInGroup="-1">

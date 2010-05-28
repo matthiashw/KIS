@@ -1,0 +1,16 @@
+.user
+    %span.name
+        Dr. Maier
+.domain
+    %span.name
+        Labor
+.links
+    %a{:class => "links-link link-help", :href => ""}
+        %img{:src => "/images/help.png", :alt => "Help"}
+    - if current_user
+        = link_to "Edit Profile", edit_user_path(:current), :class => "links-link"
+        = link_to "Logout", logout_path, :class => "links-link"
+    - else
+        = link_to "Register", new_user_path, :class => "links-link"
+        = link_to "Login", login_path, :class => "links-link"
+    

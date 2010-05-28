@@ -1,0 +1,22 @@
+%h1 New domain
+- form_for(@domain) do |f|
+  = f.error_messages
+  %p
+    = f.label :name
+    %br/
+    = f.text_field :name
+  %p
+    = f.label :result_name
+    %br/
+    = f.text_field :result_name
+  %p
+    = f.label :is_role
+    %br/
+    = f.check_box :is_role
+  %p
+    = f.label :is_userdomain
+    %br/
+    = f.check_box :is_userdomain
+  %p
+    = f.submit 'Create'
+= link_to 'Back', domains_path

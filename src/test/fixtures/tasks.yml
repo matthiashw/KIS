@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  deadline: 2010-05-14
+  creator_comment: MyText
+  executor_comment: MyText
+  state: 1
+  case_id: 1
+  domain_id: 1
+
+two:
+  deadline: 2010-05-14
+  creator_comment: MyText
+  executor_comment: MyText
+  state: 1
+  case_id: 1
+  domain_id: 1
