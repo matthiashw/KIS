@@ -5,9 +5,11 @@ one:
   name: MyString
   description: MyText
   node_id: 1
+  type: UcumEntry
 
 two:
   code: MyString
   name: MyString
   description: MyText
   node_id: 1
+  type: UcumEntry

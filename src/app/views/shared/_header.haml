@@ -1,4 +1,3 @@
-%img.logo{:src => "/images/logo.png", :alt => "Hopen Logo"}
 .user
     %span.name
         Dr. Maier
@@ -8,5 +7,10 @@
 .links
     %a{:class => "links-link link-help", :href => ""}
         %img{:src => "/images/help.png", :alt => "Help"}
-    %a{:class => "links-link", :href => ""}
-        Logout
+    - if current_user
+        = link_to "Edit Profile", edit_user_path(:current), :class => "links-link"
+        = link_to "Logout", logout_path, :class => "links-link"
+    - else
+        = link_to "Register", new_user_path, :class => "links-link"
+        = link_to "Login", login_path, :class => "links-link"
+    

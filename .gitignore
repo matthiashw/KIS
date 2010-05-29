@@ -45,3 +45,4 @@ Thumbs.db
 *.css
 .sass-cache
 src/tmp/*
+schema.rb

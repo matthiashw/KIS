@@ -2,16 +2,16 @@
 
 one:
   comment: MyText
-  measured_value_id: 1
   template_id: 1
-  fielddefinition_id: 1
+  field_definition_id: 1
   task_id: 1
   ucum_entry_id: 1
+  
 
 two:
   comment: MyText
-  measured_value_id: 1
   template_id: 1
-  fielddefinition_id: 1
+  field_definition_id: 1
   task_id: 1
   ucum_entry_id: 1
+

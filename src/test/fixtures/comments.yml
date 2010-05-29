@@ -3,7 +3,8 @@
 one:
   comment: MyText
   date: 2010-05-14
-
+  patient_id: 1
 two:
   comment: MyText
   date: 2010-05-14
+  patient_id: 1

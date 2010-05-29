@@ -11,7 +11,16 @@
 
 COLOUR REFERENCES
 -------------------------------------------------------- */
+$magenta:#bf1399;
+$darkyellow:#caae28;
 
+$blue:#7690cf;
+
+$verydarkgray:#333333;
+$darkgray:#666666;
+$mediumgray:#999999;
+$lightgray:#cccccc;
+$verylightgray:#eeeeee;
 
 /*MAIN NAVIGATION
 -------------------------------------------------------- */
@@ -125,7 +134,7 @@ COLOUR REFERENCES
     height: 20px;
     padding: 5px 16px;
     display: block;
-    color: #666666;
+    color:$darkgray;
     text-decoration: none;
     &:hover {
       background: none;
@@ -134,7 +143,7 @@ COLOUR REFERENCES
       background: none;
       background-color: #fff;
       border-bottom: 1px solid #fff;
-      color: #bf1399; } } }
+      color:$magenta; } } }
 
 /*HEADER
 -------------------------------------------------------- */
@@ -167,8 +176,8 @@ COLOUR REFERENCES
 .user .name, .domain .name {
   font-size: 12px;
   font-weight: bold;
-  text-shadow: 1px 1px 0px #eee;
-  color: #666;
+  text-shadow: 1px 1px 0px $verylightgray;
+  color:$darkgray;
   display: block;
   text-align: center;
   margin-top: 33px; }
@@ -185,8 +194,8 @@ COLOUR REFERENCES
 a.links-link {
   font-size: 12px;
   font-weight: bold;
-  text-shadow: 1px 1px 0px #eee;
-  color: #666;
+  text-shadow: 1px 1px 0px $verylightgray;
+  color:$darkgray;
   text-decoration: none;
   margin: 0 8px;
   float: right; }
@@ -202,11 +211,20 @@ a.links-link {
   background-color: #fff;
   padding-bottom: 18px; }
 
+#frontpage {
+    .content {
+        -moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
+        border:1px solid $lightgray;
+    }
+}
+
 /*FOOTER
 -------------------------------------------------------- */
 
 #footer p {
-  color: #9f9f9f;
+  color:$mediumgray;
   margin: 4px 0 0 0;
   font-size: 10px;
   text-align: center; }

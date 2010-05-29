@@ -1,0 +1,14 @@
+%h1 Listing catalogs
+%table
+  %tr
+    %th Year
+    %th Language
+  - @catalogs.each do |catalog|
+    %tr
+      %td= h catalog.year
+      %td= h catalog.language
+      %td= link_to 'Show', catalog
+      %td= link_to 'Edit', edit_catalog_path(catalog)
+      %td= link_to 'Destroy', catalog, :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'New catalog', new_catalog_path
