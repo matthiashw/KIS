@@ -18,5 +18,30 @@
         %br/
         = f.password_field :password_confirmation
     %p
+        = f.label :first_name
+        %br/
+        = f.text_field :first_name
+    %p
+        = f.label :family_name
+        %br/
+        = f.text_field :family_name
+    %p
+        = f.label :address
+        %br/
+        = f.text_area :address, :size => '34x5'
+    %p
+        = f.label :phone
+        %br/
+        = f.text_field :phone
+    %p
+        = f.label :language
+        %br/
+        = f.text_field :language
+    %p
+        = f.label :domain_id
+        %br/
+        = f.collection_select( :domain_id, Domain.find(:all), :id, :name )
+
+    %p
         = f.submit
 

@@ -1,0 +1,28 @@
+%p
+  %b Username:
+  = h @user.username
+%p
+  %b E-Mail:
+  = h @user.email
+%p
+  %b First name:
+  = h @user.first_name
+%p
+  %b Family name:
+  = h @user.family_name
+%p
+  %b Address:
+  = h @user.address
+%p
+  %b Phone:
+  = h @user.phone
+%p
+  %b Language:
+  = h @user.language
+%p
+  %b Role:
+  = h @user.domain.name
+
+= link_to 'Edit', edit_user_path(@user)
+|
+\#{link_to 'Back', users_path}

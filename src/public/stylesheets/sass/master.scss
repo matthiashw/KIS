@@ -111,6 +111,66 @@ a {
 /*TABLES
 -------------------------------------------------------- */
 
+table {
+    -moz-box-shadow:0 1px 0 #FFFFFF;
+    background-color:#FFFFFF;
+    border-collapse:collapse;
+    border-color:#CCCCCC #DDDDDD #EEEEEE;
+    border-style:solid;
+    border-width:1px;
+    font-size:11px;
+    line-height:15px;
+    margin:0 0 10px;
+    width:100%;
+
+    td, th {
+        border-color:#DDDDDD;
+        border-style:solid;
+        border-width:1px 0;
+        padding:5px;
+        vertical-align:top;
+
+        &.active {
+            background:none repeat scroll 0 0 #E4F0F8;
+        }
+    }
+
+    th {
+        background:none repeat scroll 0 0 #EEEEEE;
+        color:#666666;
+        font-weight:normal;
+        text-align:left;
+        text-shadow:0 1px 0 #FFFFFF;
+    }
+
+    thead {
+        th {
+            border-top-color:#CCCCCC;
+        }
+    }
+
+    tr.odd td {
+        background:none repeat scroll 0 0 #FFFFFF;
+
+        &.active {
+            background:none repeat scroll 0 0 #ECF8FC;
+        }
+    }
+
+    tr.selected td.active,
+    tr.selected td {
+        background:none repeat scroll 0 0 #FFFFCC;
+        border-color:#EEEEBB;
+    }
+
+    tr:hover {
+        td {
+            background-color:$verylightgray;
+        }
+    }
+}
+
+
 /*MISC
 -------------------------------------------------------- */
 
@@ -291,6 +351,17 @@ textarea {
 .button:hover {
     background-color:$verydarkgray;
     color:#fff;
+}
+
+
+.fieldWithErrors {
+    input, textarea {
+        border-color:#F23D30;
+    }
+
+    label {
+        color:#F23D30;
+    }
 }
 
 
