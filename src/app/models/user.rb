@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_authentic
+  acts_as_permissible
 
   has_many :appointments
   belongs_to :domain

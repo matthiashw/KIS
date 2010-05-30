@@ -1,17 +1,10 @@
-class Permission < ActiveRecord::Base
-  # Permissions auf Rollen Basis oder User Basis
-  #
-  # permissible_type ist 'Domain' wenn Berechtigung fuer eine Rolle
-  # und 'User' wenn spezielle Berechtigung fuer User
-  #
-  # permissible_id ist dann entsprechend die ID der Domain oder des Users
-  #
-
-
-  belongs_to :user
-  
-  belongs_to :domain
-  
+class <%= class_name %> < ActiveRecord::Base
+  # uncomment any of the following lines which is relevant to your application,
+  # or create your own with the name of the model which acts_as_permissible.
+  #belongs_to :user
+  <% unless options[:skip_roles] %>
+  belongs_to :<%= role_model_file_name %>
+  <% end %>
   belongs_to :permissible, :polymorphic => true
   
   validates_presence_of :permissible_id, :permissible_type, :action
