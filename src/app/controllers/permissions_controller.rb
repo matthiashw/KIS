@@ -1,8 +1,13 @@
 class PermissionsController < ApplicationController
+  require 'yaml'
+
   # GET /permissions
   # GET /permissions.xml
   def index
     @permissions = Permission.all
+    
+    read_permissions
+    @domains = Domain.find(:all, :conditions => { :is_role => 1 })
 
     respond_to do |format|
       format.html # index.html.erb
@@ -81,5 +86,9 @@ class PermissionsController < ApplicationController
       format.html { redirect_to(permissions_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def read_permissions
+    @perms = YAML.load_file(RAILS_ROOT + "/config/permissions.yml")
   end
 end
