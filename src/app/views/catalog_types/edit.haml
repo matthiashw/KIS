@@ -6,6 +6,10 @@
     %br/
     = f.text_field :name
   %p
+    = f.label :import_method
+    %br/
+    = f.select(:import_method, ImporterManager.instance.import_methods.keys )
+  %p
     = f.submit 'Update'
 = link_to 'Show', @catalog_type
 |

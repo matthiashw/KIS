@@ -1,5 +1,5 @@
-%h1 New catalog
-- form_for(@catalog) do |f|
+%h1 Import catalog
+- form_for :catalog, @catalog,:url => {:action=> 'create'}, :html => { :multipart => true }, do |f|
   = f.error_messages
   %p
     = f.label :year
@@ -10,5 +10,14 @@
     %br/
     = f.text_field :language
   %p
-    = f.submit 'Create'
+    = f.label :catalog_type_id
+    %br/
+    = f.collection_select( :catalog_type_id, CatalogType.find(:all),:id,:name )
+  %p
+    = f.label :dump ,"Catalog"
+    %br/
+    = f.file_field :dump
+  %p
+    = f.submit 'Import'
+    %br/
 = link_to 'Back', catalogs_path

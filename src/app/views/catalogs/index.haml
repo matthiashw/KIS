@@ -3,10 +3,12 @@
   %tr
     %th Year
     %th Language
+    %th Catalog Type
   - @catalogs.each do |catalog|
     %tr
       %td= h catalog.year
       %td= h catalog.language
+      %td= h catalog.catalog_type.name
       %td= link_to 'Show', catalog
       %td= link_to 'Edit', edit_catalog_path(catalog)
       %td= link_to 'Destroy', catalog, :confirm => 'Are you sure?', :method => :delete

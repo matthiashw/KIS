@@ -1,3 +1,6 @@
+
+require 'csv'
+
 class CatalogsController < ApplicationController
   # GET /catalogs
   # GET /catalogs.xml
@@ -40,10 +43,12 @@ class CatalogsController < ApplicationController
   # POST /catalogs
   # POST /catalogs.xml
   def create
-    @catalog = Catalog.new(params[:catalog])
-
+    file = params[:catalog][:dump]
+    params[:catalog].delete(:dump)
+    @catalog = Catalog.new( params[:catalog])
+    @import
     respond_to do |format|
-      if @catalog.save
+      if @catalog.save!
         flash[:notice] = 'Catalog was successfully created.'
         format.html { redirect_to(@catalog) }
         format.xml  { render :xml => @catalog, :status => :created, :location => @catalog }
@@ -51,6 +56,9 @@ class CatalogsController < ApplicationController
         format.html { render :action => "new" }
         format.xml  { render :xml => @catalog.errors, :status => :unprocessable_entity }
       end
+
+      importer=ImporterManager.instance.import_methods[@catalog.catalog_type.import_method]
+      importer.import @catalog,file
     end
   end
 
@@ -70,6 +78,10 @@ class CatalogsController < ApplicationController
       end
     end
   end
+
+
+ 
+
 
   # DELETE /catalogs/1
   # DELETE /catalogs/1.xml

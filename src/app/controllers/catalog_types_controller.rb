@@ -1,4 +1,5 @@
 class CatalogTypesController < ApplicationController
+
   # GET /catalog_types
   # GET /catalog_types.xml
   def index

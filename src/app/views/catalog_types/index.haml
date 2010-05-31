@@ -2,9 +2,11 @@
 %table
   %tr
     %th Name
+    %th Import Method
   - @catalog_types.each do |catalog_type|
     %tr
       %td= h catalog_type.name
+      %td= h catalog_type.import_method
       %td= link_to 'Show', catalog_type
       %td= link_to 'Edit', edit_catalog_type_path(catalog_type)
       %td= link_to 'Destroy', catalog_type, :confirm => 'Are you sure?', :method => :delete

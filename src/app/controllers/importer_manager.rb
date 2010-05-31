@@ -1,0 +1,22 @@
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+
+class ImporterManager
+  include Singleton
+
+  def initialize
+
+    @import_methods = {
+        "Loinc Catalog Importer" => Importer::LoincCatalogImporter.new
+         }
+  end
+
+  def add importer
+    @import_methods.merge!(importer)
+  end
+
+  def import_methods
+    @import_methods
+  end
+
+end
