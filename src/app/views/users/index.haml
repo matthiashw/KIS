@@ -1,5 +1,23 @@
-- title 'Unobtrusive Login'
-
-%p Public Facing Content
-
-= link_to 'Login', new_user_session_path
+%h1 Listing users
+%table
+    %thead
+        %tr
+            %th Username
+            %th E-Mail
+            %th First name
+            %th Family name
+            %th Role
+            %th{ :colspan => '3' }
+    %tbody
+        - @users.each do |user|
+            %tr
+                %td= h user.username
+                %td= h user.email
+                %td= h user.first_name
+                %td= h user.family_name
+                %td= h user.domain_id
+                %td= link_to 'Show', user
+                %td= link_to 'Edit', edit_user_path(user)
+                %td= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete
+%p
+    = link_to 'New user', new_user_path

@@ -1617,7 +1617,7 @@ markierter erstellte Anforderung
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="XNpAvHc/CkyN4hgd0cGjQAAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="8pWJv4+BBk6wf/nZux8lnwAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Measured Value</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">MeasuredValue</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="ZSARY/LlCkGNRxITXeCFNQAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -3138,7 +3138,7 @@ markierter erstellte Anforderung
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="LZ23T22p1EWSfM7PBtXe3gAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="GBp7vGTpekCL1WDPYCQEywAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">OPSEntry</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">OpsEntry</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="/v8uIn1/t0ulgFo3CxIPpQAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -3169,7 +3169,7 @@ markierter erstellte Anforderung
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="IvFn/pFoT06wZVTT3w88gwAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="uLhDn6pm2EOkHQqcPidrFQAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">ICDEntry</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">IcdEntry</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="FfPnSF6JOkOaLOSYHwpREQAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -3430,7 +3430,7 @@ markierter erstellte Anforderung
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="ix/Px5Y9rku6c+sqYYVx4wAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="ycDUXY3uIUO1ed6IUhgK4wAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">ATCEntry</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">AtcEntry</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="VBLw75IbGU2hu1Mn6+RVCgAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -4105,7 +4105,7 @@ markierter erstellte Anforderung
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="i73QiM+q60S6vTGQezmktAAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="VoVG0MttrkG6SBunGx2HRgAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Fielddef</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">FieldDefinition</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="C5onb6uPjUaBm6mkRD/qWgAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -5972,7 +5972,7 @@ markierter erstellte Anforderung
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[11]" type="UMLClass" guid="Z0lU6CxAxUq74U4sLTqk/QAA">
-<XPD:ATTR name="Name" type="string">Measured Value</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">MeasuredValue</XPD:ATTR>
 <XPD:REF name="Namespace">HUuLqk383UOtBLwxEPMkFgAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">3Deg+u+27USJ2rYErXDuTAAA</XPD:REF>
@@ -6986,7 +6986,7 @@ markierter erstellte Anforderung
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[64]" type="UMLClass" guid="Q75p2miR/kK4Iypc2ciF0QAA">
-<XPD:ATTR name="Name" type="string">OPSEntry</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">OpsEntry</XPD:ATTR>
 <XPD:REF name="Namespace">HUuLqk383UOtBLwxEPMkFgAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">PlJIFgrf2kKhp8AhKtZc7wAA</XPD:REF>
@@ -7009,7 +7009,7 @@ markierter erstellte Anforderung
 <XPD:REF name="Namespace">HUuLqk383UOtBLwxEPMkFgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[66]" type="UMLClass" guid="sHFEpmjw8kW2KdGGYowqxQAA">
-<XPD:ATTR name="Name" type="string">ICDEntry</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">IcdEntry</XPD:ATTR>
 <XPD:REF name="Namespace">HUuLqk383UOtBLwxEPMkFgAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">nxtYEGrtzEaqbAcwJ2IRNAAA</XPD:REF>
@@ -7192,7 +7192,7 @@ markierter erstellte Anforderung
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[75]" type="UMLClass" guid="fVG7QYd1DEWKaZ/HujAbwwAA">
-<XPD:ATTR name="Name" type="string">ATCEntry</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">AtcEntry</XPD:ATTR>
 <XPD:REF name="Namespace">HUuLqk383UOtBLwxEPMkFgAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">i1TPSsTnv0St6jOVohn2uAAA</XPD:REF>
@@ -7484,7 +7484,7 @@ markierter erstellte Anforderung
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[87]" type="UMLClass" guid="TCcHseQm5UaG+KI7X9SmWgAA">
-<XPD:ATTR name="Name" type="string">Fielddef</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">FieldDefinition</XPD:ATTR>
 <XPD:REF name="Namespace">HUuLqk383UOtBLwxEPMkFgAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">A9xb4Ds2HEW8uaNk4UD4KQAA</XPD:REF>
@@ -8213,8 +8213,8 @@ markierter erstellte Anforderung
 <XPD:REF name="Participant">TCcHseQm5UaG+KI7X9SmWgAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">XteaX9TSrE2b7+JrnCi30AAA</XPD:REF>
-<XPD:REF name="Views[1]">7/UPYIiGCkey5ZjvhDo10QAA</XPD:REF>
-<XPD:REF name="Views[2]">ERvpmnYqCUuNmCDR6rm1GQAA</XPD:REF>
+<XPD:REF name="Views[1]">ERvpmnYqCUuNmCDR6rm1GQAA</XPD:REF>
+<XPD:REF name="Views[2]">7/UPYIiGCkey5ZjvhDo10QAA</XPD:REF>
 <XPD:REF name="Views[3]">/Uf1q+hbS0aZsg6FB+3YFwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="j8u4ivTsJEGQsZIkmIAoLwAA">
@@ -8223,8 +8223,8 @@ markierter erstellte Anforderung
 <XPD:REF name="Participant">kcQNYZVLIE2RPzfmRxE9YQAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">3yFrBx7o7EiEPuh0yPfIVwAA</XPD:REF>
-<XPD:REF name="Views[1]">6nj02q8NiUCUlJoreEMB7gAA</XPD:REF>
-<XPD:REF name="Views[2]">4ViaLR0Jg0mChP+X6rpLYAAA</XPD:REF>
+<XPD:REF name="Views[1]">4ViaLR0Jg0mChP+X6rpLYAAA</XPD:REF>
+<XPD:REF name="Views[2]">6nj02q8NiUCUlJoreEMB7gAA</XPD:REF>
 <XPD:REF name="Views[3]">OX24K+l0lE2UZpFWhhYVCAAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -8244,8 +8244,8 @@ markierter erstellte Anforderung
 <XPD:REF name="Participant">j5sT6L+WG0eo+nL/TLI0FAAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">FSe0LFBZy0WRX9a9NqU7jgAA</XPD:REF>
-<XPD:REF name="Views[1]">W7HOMoKZ7E+giWOCdT7fqgAA</XPD:REF>
-<XPD:REF name="Views[2]">1Nf/3kIhvkSMIzZGvPM0FwAA</XPD:REF>
+<XPD:REF name="Views[1]">1Nf/3kIhvkSMIzZGvPM0FwAA</XPD:REF>
+<XPD:REF name="Views[2]">W7HOMoKZ7E+giWOCdT7fqgAA</XPD:REF>
 <XPD:REF name="Views[3]">IA2kbJRKPEOgR5Wir22LLQAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="GodsltDLbkC8Kj9lrtHpJQAA">
@@ -8254,8 +8254,8 @@ markierter erstellte Anforderung
 <XPD:REF name="Participant">j/8fA/jv7EKEsma9znNyKwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">d896JR+iwkygShgB9xIq6AAA</XPD:REF>
-<XPD:REF name="Views[1]">rSvuPxiTgUatUYihMaqTgAAA</XPD:REF>
-<XPD:REF name="Views[2]">BfbtTc0m9U6la9J8yAFfzgAA</XPD:REF>
+<XPD:REF name="Views[1]">BfbtTc0m9U6la9J8yAFfzgAA</XPD:REF>
+<XPD:REF name="Views[2]">rSvuPxiTgUatUYihMaqTgAAA</XPD:REF>
 <XPD:REF name="Views[3]">sX4bTC8D2U6FvkuK82kkIQAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>

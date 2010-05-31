@@ -3,11 +3,11 @@
 one:
   name: MyString
   result_name: MyString
-  isRole: false
-  isUserdomain: false
+  is_role: false
+  is_userdomain: false
 
 two:
   name: MyString
   result_name: MyString
-  isRole: false
-  isUserdomain: false
+  is_role: false
+  is_userdomain: false

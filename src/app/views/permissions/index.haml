@@ -1,14 +1,38 @@
 %h1 Listing permissions
+
+/%table
+/  %tr
+/    %th Name
+/    %th Description
+/  - @permissions.each do |permission|
+/    %tr
+/      %td= h permission.action
+/      %td= h permission.description
+/      %td= link_to 'Show', permission
+/      %td= link_to 'Edit', edit_permission_path(permission)
+/      %td= link_to 'Destroy', permission, :confirm => 'Are you sure?', :method => :delete
+
 %table
   %tr
-    %th Name
+    %th Permission
     %th Description
-  - @permissions.each do |permission|
-    %tr
-      %td= h permission.name
-      %td= h permission.description
-      %td= link_to 'Show', permission
-      %td= link_to 'Edit', edit_permission_path(permission)
-      %td= link_to 'Destroy', permission, :confirm => 'Are you sure?', :method => :delete
+    - @domains.each do |d|
+      %th= d.name
+  - @perms.each do |pheadline, value|
+    %tr{:class => 'permission-group'}
+      %td{:class => 'permission-group'}= h pheadline
+      %td
+      - @domains.each do |d|
+        %td
+    - value.each do |p, desc|
+      %tr
+        %td{:class => 'permission'}= h p
+        %td{:class => 'description'}= h desc
+        - @domains.each do |d|
+          %td= check_box_tag 'features[]', 'scenarios'
+
+        
+
+
 %br/
 = link_to 'New permission', new_permission_path

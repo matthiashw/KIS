@@ -4,10 +4,10 @@ one:
   description: MyString
   icd_entry_id: 1
   user_id: 1
-  case_id: 1
+  case_file_id: 1
 
 two:
   description: MyString
   icd_entry_id: 1
   user_id: 1
-  case_id: 1
+  case_file_id: 1

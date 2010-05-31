@@ -228,3 +228,16 @@ a.links-link {
   margin: 4px 0 0 0;
   font-size: 10px;
   text-align: center; }
+
+/*Permissions
+-------------------------------------------------------- */
+
+tr.permission-group {
+    td {
+        background-color:$verylightgray;
+    }
+}
+
+td.permission-group {
+    font-weight:bold;
+}
