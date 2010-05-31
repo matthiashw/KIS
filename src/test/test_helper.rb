@@ -35,4 +35,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def login
+      Authlogic::Session::Base.controller = Authlogic::ControllerAdapters::RailsAdapter.new(self)
+       UserSession.create(users(:one))
+  end
+   
 end
