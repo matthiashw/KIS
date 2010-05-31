@@ -1,15 +1,8 @@
-%h1 Listing patients
-= link_to 'New patient', new_patient_path
-%br/
-or search for patient
-#search_form
-  = text_field_tag("query", params[:query], :autocomplete => "off" )
-  = observe_field 'query',  :frequency => 0.5,                |
-    :update => "search_results",                              |
-    :url => {:controller => "patients", :action => "search"}, |
-    :with => "query"                                          |
-%br/
-#search_results
+- if searchresults.length == 0
+  %p No patients found
+- elsif params[:query] == ""
+  %p Please enter patient name
+- else
   %table
     %tr
       %th First name
@@ -18,7 +11,7 @@ or search for patient
       %th Address
       %th Sex
       %th Phone
-    - @patients.each do |patient|
+    - for patient in searchresults
       %tr
         %td= h patient.first_name
         %td= h patient.family_name
@@ -29,4 +22,3 @@ or search for patient
         %td= link_to 'Show', patient
         %td= link_to 'Edit', edit_patient_path(patient)
         %td= link_to 'Destroy', patient, :confirm => 'Are you sure?', :method => :delete
-%br/
