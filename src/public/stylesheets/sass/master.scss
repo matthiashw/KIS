@@ -278,7 +278,8 @@ div {
   &.messages {
     margin: 0 0 9px 0;
     p {
-      margin:9px; } 
+      padding:9px;
+      margin:0; }
   }
   
   &.notice {
@@ -304,8 +305,11 @@ div {
 
 
 .errorExplanation {
+    margin:0 0 9px;
+
     h2, p, ul {
-        margin:9px;
+        padding:9px;
+        margin:0;
         color:#fff;
     }
     ul {

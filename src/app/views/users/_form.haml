@@ -37,11 +37,12 @@
         = f.label :language
         %br/
         = f.text_field :language
-    %p
-        = f.label :domain_id
-        %br/
-        = f.collection_select( :domain_id, Domain.find(:all), :id, :name )
-
+    %div
+        %label Domain
+        - Domain.all.each do |d|
+            %p
+                = check_box_tag :user_domain_ids, d.id, @user.domains.include?(d), :name => 'user[domain_ids][]'
+                = f.label :domain_ids, d.name
     %p
         = f.submit
 

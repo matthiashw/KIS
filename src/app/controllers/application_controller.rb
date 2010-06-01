@@ -30,4 +30,15 @@ class ApplicationController < ActionController::Base
    end
   end
 
+  protected
+  def authorize(permissions = [])
+    return current_user && current_user.has_permission?(*permissions)
+  end
+
+  def access_denied
+    flash[:error] = 'You have no permission to view this page.'
+    render :file => '/layouts/error.haml', :status => 403, :layout => false and return false
+  end
+
+
 end
