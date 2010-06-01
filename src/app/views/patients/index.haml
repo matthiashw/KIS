@@ -1,24 +1,34 @@
 %h1 Listing patients
-%table
-  %tr
-    %th First name
-    %th Family name
-    %th Birthdate
-    %th Address
-    %th Sex
-    %th Phone
-  - @patients.each do |patient|
-    %tr
-      %td= h patient.first_name
-      %td= h patient.family_name
-      %td= h patient.birthdate
-      %td= h patient.address
-      %td= h patient.sex
-      %td= h patient.phone
-      %td= link_to 'Show', patient
-      %td= link_to 'Edit', edit_patient_path(patient)
-      %td= link_to 'Destroy', patient, :confirm => 'Are you sure?', :method => :delete
 
 - if current_user.has_permission?('create_patient')
-  %br/
   = link_to 'New patient', new_patient_path
+%br/
+or search for patient
+#search_form
+  = text_field_tag("query", params[:query], :autocomplete => "off" )
+  = observe_field 'query',  :frequency => 0.5,                |
+    :update => "search_results",                              |
+    :url => {:controller => "patients", :action => "search"}, |
+    :with => "query"                                          |
+%br/
+#search_results
+  %table
+    %tr
+      %th First name
+      %th Family name
+      %th Birthdate
+      %th Address
+      %th Sex
+      %th Phone
+    - @patients.each do |patient|
+      %tr
+        %td= h patient.first_name
+        %td= h patient.family_name
+        %td= h patient.birthdate
+        %td= h patient.address
+        %td= h patient.sex
+        %td= h patient.phone
+        %td= link_to 'Show', patient
+        %td= link_to 'Edit', edit_patient_path(patient)
+        %td= link_to 'Destroy', patient, :confirm => 'Are you sure?', :method => :delete
+%br/

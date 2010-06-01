@@ -1,0 +1,24 @@
+- if searchresults.length == 0
+  %p No patients found
+- elsif params[:query] == ""
+  %p Please enter patient name
+- else
+  %table
+    %tr
+      %th First name
+      %th Family name
+      %th Birthdate
+      %th Address
+      %th Sex
+      %th Phone
+    - for patient in searchresults
+      %tr
+        %td= h patient.first_name
+        %td= h patient.family_name
+        %td= h patient.birthdate
+        %td= h patient.address
+        %td= h patient.sex
+        %td= h patient.phone
+        %td= link_to 'Show', patient
+        %td= link_to 'Edit', edit_patient_path(patient)
+        %td= link_to 'Destroy', patient, :confirm => 'Are you sure?', :method => :delete

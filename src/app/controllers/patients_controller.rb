@@ -82,4 +82,14 @@ class PatientsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  # search function for ajax search
+  def search
+
+      if params[:query] and request.xhr?
+        @patients = Patient.find(:all, :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{params[:query]}%","%#{params[:query]}%"], :order => "family_name ASC")
+        render :partial => "shared/patient_search_results", :layout => false, :locals => {:searchresults => @patients}
+      end
+   end
+
 end
