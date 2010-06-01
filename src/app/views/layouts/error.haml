@@ -1,0 +1,32 @@
+!!! XML
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+    %head
+        %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'utf-8'}
+        %title No Access
+        = stylesheet_link_tag 'reset'
+        = stylesheet_link_tag 'master'
+        = stylesheet_link_tag 'style'
+    %body#errorpage
+        #wrapper
+            #container
+                #header
+                    %img.logo{:src => "/images/logo.png", :alt => "Hopen Logo"}
+                    = render :partial => 'shared/header'
+                #sidebar
+                    = render :partial => 'shared/main_navigation'
+                #center
+                    #squeeze
+                        .content
+                            = render :partial => 'shared/tab_navigation'
+
+                            .inner
+                                - flash.each do |name, msg|
+                                    %div{ :class => "messages #{name}"}
+                                        = content_tag :p, msg, :id => "flash_#{name}"
+
+                                %h1 Forbidden! You have no access to this page
+
+                               
+
+        = render :partial => 'shared/footer'

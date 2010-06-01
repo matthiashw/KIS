@@ -1,3 +1,4 @@
+- title @user.username
 %p
   %b Username:
   = h @user.username
@@ -21,7 +22,8 @@
   = h @user.language
 %p
   %b Role:
-  = h @user.domain.name
+  - @user.domains.each do |d|
+    = d.name
 
 = link_to 'Edit', edit_user_path(@user)
 |

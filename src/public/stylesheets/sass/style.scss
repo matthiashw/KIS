@@ -209,7 +209,8 @@ a.links-link {
 
 .content {
   background-color: #fff;
-  padding-bottom: 18px; }
+  padding-bottom: 18px;
+  min-height:300px;}
 
 #frontpage {
     .content {
@@ -240,4 +241,8 @@ tr.permission-group {
 
 td.permission-group {
     font-weight:bold;
+}
+
+td.permission {
+    padding-left:18px;
 }

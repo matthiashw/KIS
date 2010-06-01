@@ -18,5 +18,7 @@
       %td= link_to 'Show', patient
       %td= link_to 'Edit', edit_patient_path(patient)
       %td= link_to 'Destroy', patient, :confirm => 'Are you sure?', :method => :delete
-%br/
-= link_to 'New patient', new_patient_path
+
+- if current_user.has_permission?('create_patient')
+  %br/
+  = link_to 'New patient', new_patient_path
