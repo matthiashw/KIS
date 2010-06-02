@@ -1,7 +1,7 @@
-%h1 Listing patients
+%h1=(:patient_listing)
 
 - if current_user.has_permission?('create_patient')
-  = link_to 'New patient', new_patient_path
+  = link_to t(:new_patient_button), new_patient_path
 %br/
 or search for patient
 #search_form
@@ -14,12 +14,12 @@ or search for patient
 #search_results
   %table
     %tr
-      %th First name
-      %th Family name
-      %th Birthdate
-      %th Address
-      %th Sex
-      %th Phone
+      %th=t(:first_name)
+      %th=t(:family_name)
+      %th=t(:birthdate)
+      %th=t(:address)
+      %th=t(:sex)
+      %th=t(:phone)
     - @patients.each do |patient|
       %tr
         %td= h patient.first_name
@@ -28,7 +28,7 @@ or search for patient
         %td= h patient.address
         %td= h patient.sex
         %td= h patient.phone
-        %td= link_to 'Show', patient
-        %td= link_to 'Edit', edit_patient_path(patient)
-        %td= link_to 'Destroy', patient, :confirm => 'Are you sure?', :method => :delete
+        %td= link_to t(:show), patient
+        %td= link_to t(:edit), edit_patient_path(patient)
+        %td= link_to t(:destroy), patient, :confirm => 'Are you sure?', :method => :delete
 %br/
