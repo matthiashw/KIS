@@ -1,32 +1,32 @@
-%h1 Editing patient
+%h1=t(:editing_Patient)
 - form_for(@patient) do |f|
   = f.error_messages
   %p
-    = f.label :first_name
+    = f.label t(:first_name)
     %br/
     = f.text_field :first_name
   %p
-    = f.label :family_name
+    = f.label t(:family_name)
     %br/
     = f.text_field :family_name
   %p
-    = f.label :birthdate
+    = f.label t(:birthdate)
     %br/
     = f.date_select :birthdate
   %p
-    = f.label :address
+    = f.label t(:address)
     %br/
     = f.text_area :address
   %p
-    = f.label :sex
+    = f.label t(:sex)
     %br/
     = f.text_field :sex
   %p
-    = f.label :phone
+    = f.label t(:phone)
     %br/
     = f.text_field :phone
   %p
-    = f.submit 'Update'
-= link_to 'Show', @patient
+    = f.submit t(:update)
+= link_to t(:show), @patient
 |
 \#{link_to 'Back', patients_path}
