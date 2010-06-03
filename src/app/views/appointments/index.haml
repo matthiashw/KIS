@@ -1,18 +1,18 @@
-%h1 Listing appointments
+%h1=t(:appointment_listing)
 %table
   %tr
-    %th Start date
-    %th End date
-    %th Name
-    %th Description
+    %th=t(:starting_date)
+    %th=t(:ending_date)
+    %th=t(:appointment_name)
+    %th=t(:appointment_description)
   - @appointments.each do |appointment|
     %tr
       %td= h appointment.start_date
       %td= h appointment.end_date
       %td= h appointment.name
       %td= h appointment.description
-      %td= link_to 'Show', appointment
-      %td= link_to 'Edit', edit_appointment_path(appointment)
-      %td= link_to 'Destroy', appointment, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to t(:show), appointment
+      %td= link_to t(:edit), edit_appointment_path(appointment)
+      %td= link_to t(:destroy), appointment, :confirm => 'Are you sure?', :method => :delete
 %br/
-= link_to 'New appointment', new_appointment_path
+= link_to t(:new_appointment_button), new_appointment_path

@@ -7,7 +7,7 @@ one:
   is_userdomain: false
 
 two:
-  name: MyString
+  name: MyString2
   result_name: MyString
   is_role: false
   is_userdomain: false

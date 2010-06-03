@@ -1,5 +1,80 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
   hello: "Hello world"
+
+  login:                  "Login"
+  logout:                 "Logout"
+  register:               "Register"
+  edit_profile:           "Edit Profile"
+  username:               "Username"
+  password:               "Password"
+  password_confirmation:  "Password confirmation"
+
+  create:       "Create"
+  update:       "Update"
+  back:         "Back"
+  cancel:       "Cancel"
+  destroy:      "Destroy"
+  show:         "Show"
+  edit:         "Edit"
+  save_changes: "Save changes"
+
+  navi:
+    main:
+      patients:       "Patients"
+      search_patient: "Search Patient"
+      tasks:          "Tasks"
+      appointments:   "Appointments"
+      administration: "Administration"
+      users:          "Users"
+      domains:        "Domains"
+      permissions:    "Permissions"
+      catalogs:       "Catalogs"
+    tabs:
+      master_data:    "Master Data"
+      anamnesis:      "Anamnesis"
+      case_Overview:  "Case Overview"
+      findings:       "Findings"
+      treatment:      "Treatment"
+      tasks:          "Tasks"
+      diagnoses:      "Diagnoses"
+
+  patient_listing:    "Listing patients"
+  new_patient_button: "Create new patient"
+  new_Patient:        "New Patient"
+  editing_Patient:    "Editing Patient"
+  first_name:         "First name"
+  family_name:        "Family name"
+  birthdate:          "Birthdate"
+  address:            "Address"
+  sex:                "Gender"
+  phone:              "phone"
+
+  users_listing:      "Listing users"
+  new_user_button:    "Create new user"
+  new_user:           "New User"
+  editing_user:       "Editing User"
+  username:           "Username"
+  email:              "E-mail"
+  language:           "Language"
+  role:               "Role"
+
+  domain_listing:     "All Domains"
+  editing_domain:     "Edit domain"
+  domain_name:        "Domain name"
+  result_name:        "Result name"
+  is_role:            "Is Role"
+  is_userdomain:      "Is Domain"
+  new_domain:         "New domain"
+
+
+  appointment_listing:      "Listing appointments"
+  new_appointment_button:   "Create new appointment"
+  new_appointment:          "New appointment"
+  editing_appointment:      "Editing appointment"
+  starting_date:            "Start Date"
+  ending_date:              "End Date"
+  appointment_name:         "Name"
+  appointment_description:  "Description"
+
+  permission_listing:   "Listing permissions"
+  permissions_update:   "Update permissions"

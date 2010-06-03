@@ -7,8 +7,8 @@
     %tr
       %td= h comment.comment
       %td= h comment.date
-      %td= link_to 'Show', comment
-      %td= link_to 'Edit', edit_comment_path(comment)
-      %td= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to t(:show), comment
+      %td= link_to t(:edit), edit_comment_path(comment)
+      %td= link_to t(:destroy), comment, :confirm => 'Are you sure?', :method => :delete
 %br/
 = link_to 'New comment', new_comment_path

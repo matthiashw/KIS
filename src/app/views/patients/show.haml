@@ -1,22 +1,22 @@
 %p
-  %b First name:
+  %b=t(:first_name)
   = h @patient.first_name
 %p
-  %b Family name:
+  %b=t(:family_name)
   = h @patient.family_name
 %p
-  %b Birthdate:
+  %b=t(:birthdate)
   = h @patient.birthdate
 %p
-  %b Address:
+  %b=t(:address)
   = h @patient.address
 %p
-  %b Sex:
+  %b=t(:sex)
   = h @patient.sex
 %p
-  %b Phone:
+  %b=t(:phone)
   = h @patient.phone
-= link_to 'Edit', edit_patient_path(@patient)
+= link_to t(:edit), edit_patient_path(@patient)
 |
 \#{link_to 'Destroy', @patient, :confirm => 'Are you sure?', :method => :delete}
 |

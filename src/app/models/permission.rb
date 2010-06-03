@@ -5,9 +5,7 @@ class Permission < ActiveRecord::Base
   # und 'User' wenn spezielle Berechtigung fuer User
   #
   # permissible_id ist dann entsprechend die ID der Domain oder des Users
-  #
-
-
+  
   belongs_to :user
   
   belongs_to :domain

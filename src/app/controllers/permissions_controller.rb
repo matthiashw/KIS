@@ -1,12 +1,16 @@
 class PermissionsController < ApplicationController
   require 'yaml'
 
+  before_filter :authorize
+
   # GET /permissions
   # GET /permissions.xml
   def index
     @permissions = Permission.all
-    
+
+    #read permissions from yaml file
     read_permissions
+    
     @domains = Domain.find(:all, :conditions => { :is_role => 1 })
 
     respond_to do |format|
@@ -15,80 +19,33 @@ class PermissionsController < ApplicationController
     end
   end
 
-  # GET /permissions/1
-  # GET /permissions/1.xml
-  def show
-    @permission = Permission.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @permission }
-    end
-  end
-
-  # GET /permissions/new
-  # GET /permissions/new.xml
-  def new
-    @permission = Permission.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @permission }
-    end
-  end
-
-  # GET /permissions/1/edit
-  def edit
-    @permission = Permission.find(params[:id])
-  end
-
-  # POST /permissions
-  # POST /permissions.xml
-  def create
-    @permission = Permission.new(params[:permission])
-
-    respond_to do |format|
-      if @permission.save
-        flash[:notice] = 'Permission was successfully created.'
-        format.html { redirect_to(@permission) }
-        format.xml  { render :xml => @permission, :status => :created, :location => @permission }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @permission.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /permissions/1
-  # PUT /permissions/1.xml
-  def update
-    @permission = Permission.find(params[:id])
-
-    respond_to do |format|
-      if @permission.update_attributes(params[:permission])
-        flash[:notice] = 'Permission was successfully updated.'
-        format.html { redirect_to(@permission) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @permission.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /permissions/1
-  # DELETE /permissions/1.xml
-  def destroy
-    @permission = Permission.find(params[:id])
-    @permission.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(permissions_url) }
-      format.xml  { head :ok }
-    end
-  end
-
   def read_permissions
     @perms = YAML.load_file(RAILS_ROOT + "/config/permissions.yml")
   end
+
+  def update_all_permissions
+    
+    # first delete all existing permissions
+    Permission.delete_all()
+    
+    if params[:perms]
+
+      # now set the permissions
+      params[:perms].each do |perm|
+        domainname = perm.match('^[A-Za-z]*;')[0].chomp(';')
+        action = perm.match(';[a-z_]*')[0].delete ";"
+        d = Domain.find(:first, :conditions => "name = '#{domainname}'")
+        d.permissions << Permission.new(:action => action, :granted => true) unless d == nil
+      end
+      
+    end
+    
+    redirect_to permissions_path
+  end
+
+  protected
+  def authorize(permissions = ["set_permissions"])
+    super(permissions)
+  end
+
 end

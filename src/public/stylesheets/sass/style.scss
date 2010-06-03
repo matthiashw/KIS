@@ -60,9 +60,10 @@ $verylightgray:#eeeeee;
 
 .navi-img {
   width: 26px;
-  height: 30px;
+  height: 26px;
   display: block;
   float: left;
+  padding:6px 0 0 34px;
   margin: -5px 8px 0 4px;
   background-image: url('/images/navi_img_all.png');
   background-repeat: no-repeat; }
@@ -209,7 +210,8 @@ a.links-link {
 
 .content {
   background-color: #fff;
-  padding-bottom: 18px; }
+  padding-bottom: 18px;
+  min-height:300px;}
 
 #frontpage {
     .content {
@@ -240,4 +242,8 @@ tr.permission-group {
 
 td.permission-group {
     font-weight:bold;
+}
+
+td.permission {
+    padding-left:18px;
 }
