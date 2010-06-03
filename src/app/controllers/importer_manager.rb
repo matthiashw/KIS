@@ -7,7 +7,8 @@ class ImporterManager
   def initialize
 
     @import_methods = {
-        "Loinc Catalog Importer" => Importer::LoincCatalogImporter.new
+        "Loinc Catalog Importer" => Importer::LoincCatalogImporter.new,
+        "Ucum Most Common Units Importer" => Importer::UcumCatalogImporter.new
          }
   end
 
