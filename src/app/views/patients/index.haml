@@ -19,14 +19,11 @@ or search for patient
       %th Sex
       %th Phone
     - @patients.each do |patient|
-      %tr
+      %tr{:onclick=>"location.href='#{url_for :controller => 'patients', :action => 'show', :id => patient.id}';",:style=>"cursor:pointer;"}
         %td= h patient.first_name
         %td= h patient.family_name
         %td= h patient.birthdate
         %td= h patient.address
         %td= h patient.sex
         %td= h patient.phone
-        %td= link_to 'Show', patient
-        %td= link_to 'Edit', edit_patient_path(patient)
-        %td= link_to 'Destroy', patient, :confirm => 'Are you sure?', :method => :delete
 %br/

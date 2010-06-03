@@ -75,7 +75,10 @@ class PatientsController < ApplicationController
   # DELETE /patients/1.xml
   def destroy
     @patient = Patient.find(params[:id])
-    @patient.destroy
+    
+    if @patient.destroy
+      flash[:notice] = 'Patient was successfully deleted.'
+    end
 
     respond_to do |format|
       format.html { redirect_to(patients_url) }
@@ -85,9 +88,12 @@ class PatientsController < ApplicationController
 
   # search function for ajax search
   def search
-
       if params[:query] and request.xhr?
-        @patients = Patient.find(:all, :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{params[:query]}%","%#{params[:query]}%"], :order => "family_name ASC")
+        if params[:query] == ""
+          @patients = Patient.all
+        else
+          @patients = Patient.find(:all, :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{params[:query]}%","%#{params[:query]}%"], :order => "family_name ASC")
+        end
         render :partial => "shared/patient_search_results", :layout => false, :locals => {:searchresults => @patients}
       end
    end
