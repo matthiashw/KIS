@@ -21,9 +21,14 @@ de:
   navi:
     main:
       patients:       "Patienten"
+      search_patient: "Patient suchen"
       tasks:          "Aufgaben"
       appointments:   "Termine"
       administration: "Verwaltung"
+      users:          "Benutzer"
+      domains:        "Domänen"
+      permissions:    "Berechtigungen"
+      catalogs:       "Kataloge"
     tabs:
       master_data:    "Stammdaten"
       anamnesis:      "Anamnese"
@@ -35,8 +40,8 @@ de:
 
   patient_listing:    "Patientenliste"
   new_patient_button: "Neuen Patienten anlegen"
-  new_Patient:        "Neuer Patient"
-  editing_Patient:    "Patient bearbeiten"
+  new_patient:        "Neuer Patient"
+  editing_patient:    "Patient bearbeiten"
   first_name:         "Vorname"
   family_name:        "Name"
   birthdate:          "Geburtstag"
@@ -53,6 +58,14 @@ de:
   language:           "Sprache"
   role:               "Rolle"
 
+  domain_listing:     "Alle Domänen"
+  editing_domain:     "Domäne bearbeiten"
+  domain_name:        "Domänen Name"
+  result_name:        "Ergebnis Name"
+  is_role:            "Ist Rolle"
+  is_userdomain:      "Ist Domäne"
+  new_domain:         "Neue Domäne"
+
   appointment_listing:      "Terminliste"
   new_appointment_button:   "Neuen Termin anlegen"
   new_appointment:          "Neuer Termin"
@@ -61,6 +74,9 @@ de:
   ending_date:              "Enddatum"
   appointment_name:         "Name"
   appointment_description:  "Beschreibung"
+
+  permission_listing:   "Alle Berechtigungen"
+  permissions_update:   "Berechtigungen aktualisieren"
 
   date:
     formats:

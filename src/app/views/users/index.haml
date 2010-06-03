@@ -17,7 +17,7 @@
                 %td= h user.family_name
                 %td
                     - user.domains.each do |d|
-                        = d.name + ' '
+                        = d.name + '<br />'
                 %td= link_to t(:show), user
                 %td= link_to t(:edit), edit_user_path(user)
                 %td= link_to t(:destroy), user, :confirm => 'Are you sure?', :method => :delete

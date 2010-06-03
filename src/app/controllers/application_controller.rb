@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
 
-  helper_method :current_user, :current_user_session
+  helper_method :current_user, :current_user_session, :authorize?
 
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
@@ -42,13 +42,26 @@ class ApplicationController < ActionController::Base
 
   protected
   def authorize(permissions = [])
-    return current_user && current_user.has_permission?(*permissions)
+    return true if current_user_is_admin?
+    return current_user_permission?(*permissions) || access_denied
+  end
+
+  def authorize?(permissions = [])
+    return current_user_is_admin? || current_user_permission?(*permissions)
   end
 
   def access_denied
     flash[:error] = 'You have no permission to view this page.'
-    render :file => '/layouts/error.haml', :status => 403, :layout => false and return false
+    #render :file => '/layouts/error.haml', :status => 403, :layout => false and return false
   end
 
+  private
+  def current_user_permission?(permissions = [])
+    return current_user && current_user.has_permission?(*permissions)
+  end
+
+  def current_user_is_admin?
+    return current_user && current_user.id == 1
+  end
 
 end

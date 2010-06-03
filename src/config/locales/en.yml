@@ -21,9 +21,14 @@ en:
   navi:
     main:
       patients:       "Patients"
+      search_patient: "Search Patient"
       tasks:          "Tasks"
       appointments:   "Appointments"
       administration: "Administration"
+      users:          "Users"
+      domains:        "Domains"
+      permissions:    "Permissions"
+      catalogs:       "Catalogs"
     tabs:
       master_data:    "Master Data"
       anamnesis:      "Anamnesis"
@@ -53,6 +58,15 @@ en:
   language:           "Language"
   role:               "Role"
 
+  domain_listing:     "All Domains"
+  editing_domain:     "Edit domain"
+  domain_name:        "Domain name"
+  result_name:        "Result name"
+  is_role:            "Is Role"
+  is_userdomain:      "Is Domain"
+  new_domain:         "New domain"
+
+
   appointment_listing:      "Listing appointments"
   new_appointment_button:   "Create new appointment"
   new_appointment:          "New appointment"
@@ -61,3 +75,6 @@ en:
   ending_date:              "End Date"
   appointment_name:         "Name"
   appointment_description:  "Description"
+
+  permission_listing:   "Listing permissions"
+  permissions_update:   "Update permissions"

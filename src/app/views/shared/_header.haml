@@ -1,9 +1,9 @@
 .user
-    %span.name
-        Dr. Maier
+    =link_to make_image_link(current_user.username, "name"), edit_user_path(:current)
 .domain
     %span.name
-        Labor
+        - current_user.domains.each do |d|
+            = d.name + ' '
 .links
     %a{:class => "links-link link-help", :href => ""}
         %img{:src => "/images/help.png", :alt => "Help"}

@@ -1,4 +1,4 @@
-%h1=(:patient_listing)
+%h1=t(:patient_listing)
 
 - if current_user.has_permission?('create_patient')
   = link_to t(:new_patient_button), new_patient_path

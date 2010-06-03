@@ -3,10 +3,11 @@ ActionController::Routing::Routes.draw do |map|
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
   
   map.resources :user_sessions, :users, :catalog_types, :catalogs, :appointments,
-                :domains, :comments, :patients
+                :domains, :comments, :patients, :admin
 
   map.resources :permissions, :collection => { :update_all_permissions => :put }
 
+  #map.page ":action", :controller => "admin"
 
   # root url points to this controller
   map.root :controller => "patients", :action => "index"
