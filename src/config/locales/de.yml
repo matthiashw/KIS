@@ -1,0 +1,91 @@
+de:
+  hello: "Hallo Welt!"
+
+  login:                  "Einloggen"
+  logout:                 "Ausloggen"
+  register:               "Registrieren"
+  edit_profile:           "Profil bearbeiten"
+  username:               "Benutzername"
+  password:               "Passwort"
+  password_confirmation:  "Passwort bestätigen"
+
+  create:       "Erstellen"
+  update:       "Aktualisieren"
+  back:         "Zurück"
+  cancel:       "Abbrechen"
+  destroy:      "Zerstören"
+  show:         "Anzeigen"
+  edit:         "Bearbeiten"
+  save_changes: "Änderungen übernehmen"
+
+  navi:
+    main:
+      patients:       "Patienten"
+      search_patient: "Patient suchen"
+      tasks:          "Aufgaben"
+      appointments:   "Termine"
+      administration: "Verwaltung"
+      users:          "Benutzer"
+      domains:        "Domänen"
+      permissions:    "Berechtigungen"
+      catalogs:       "Kataloge"
+    tabs:
+      master_data:    "Stammdaten"
+      anamnesis:      "Anamnese"
+      case_Overview:  "Fallübersicht"
+      findings:       "Befunde"
+      treatment:      "Behandlung"
+      tasks:          "Aufgaben"
+      diagnoses:      "Diagnosen"
+
+  patient_listing:    "Patientenliste"
+  new_patient_button: "Neuen Patienten anlegen"
+  new_patient:        "Neuer Patient"
+  editing_patient:    "Patient bearbeiten"
+  first_name:         "Vorname"
+  family_name:        "Name"
+  birthdate:          "Geburtstag"
+  address:            "Adresse"
+  sex:                "Geschlecht"
+  phone:              "Telefon"
+
+  users_listing:      "Benutzerliste"
+  new_user_button:    "Neuen Benutzer anlegen"
+  new_user:           "Neuer Benutzer"
+  editing_user:       "Benutzer bearbeiten"
+  username:           "Benutzername"
+  email:              "E-mail"
+  language:           "Sprache"
+  role:               "Rolle"
+
+  domain_listing:     "Alle Domänen"
+  editing_domain:     "Domäne bearbeiten"
+  domain_name:        "Domänen Name"
+  result_name:        "Ergebnis Name"
+  is_role:            "Ist Rolle"
+  is_userdomain:      "Ist Domäne"
+  new_domain:         "Neue Domäne"
+
+  appointment_listing:      "Terminliste"
+  new_appointment_button:   "Neuen Termin anlegen"
+  new_appointment:          "Neuer Termin"
+  editing_appointment:      "Termin bearbeiten"
+  starting_date:            "Anfangsdatum"
+  ending_date:              "Enddatum"
+  appointment_name:         "Name"
+  appointment_description:  "Beschreibung"
+
+  permission_listing:   "Alle Berechtigungen"
+  permissions_update:   "Berechtigungen aktualisieren"
+
+  date:
+    formats:
+      default: "%d/%M/%Y"
+      long: "%e %B %Y"
+      short: "%d/%M/%y"
+
+    order: [ :day, :month, :year ]
+
+    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August,
+    September, Oktober, November, Dezember]
+

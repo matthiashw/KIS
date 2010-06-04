@@ -9,8 +9,8 @@
       %td= h catalog.year
       %td= h catalog.language
       %td= h catalog.catalog_type.name
-      %td= link_to 'Show', catalog
-      %td= link_to 'Edit', edit_catalog_path(catalog)
-      %td= link_to 'Destroy', catalog, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to t(:show), catalog
+      %td= link_to t(:edit), edit_catalog_path(catalog)
+      %td= link_to t(:destroy), catalog, :confirm => 'Are you sure?', :method => :delete
 %br/
 = link_to 'New catalog', new_catalog_path

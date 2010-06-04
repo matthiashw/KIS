@@ -7,8 +7,8 @@
     %tr
       %td= h catalog_type.name
       %td= h catalog_type.import_method
-      %td= link_to 'Show', catalog_type
-      %td= link_to 'Edit', edit_catalog_type_path(catalog_type)
-      %td= link_to 'Destroy', catalog_type, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to t(:show), catalog_type
+      %td= link_to t(:edit), edit_catalog_type_path(catalog_type)
+      %td= link_to t(:destroy), catalog_type, :confirm => 'Are you sure?', :method => :delete
 %br/
 = link_to 'New catalog_type', new_catalog_type_path
