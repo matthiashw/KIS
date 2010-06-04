@@ -13,7 +13,7 @@ en:
   update:       "Update"
   back:         "Back"
   cancel:       "Cancel"
-  destroy:      "Destroy"
+  destroy:      "Delete"
   show:         "Show"
   edit:         "Edit"
   save_changes: "Save changes"
@@ -42,14 +42,15 @@ en:
 
   patient_listing:    "Listing patients"
   new_patient_button: "Create new patient"
-  new_Patient:        "New Patient"
-  editing_Patient:    "Editing Patient"
+  new_patient:        "New Patient"
+  editing_patient:    "Editing Patient"
   first_name:         "First name"
   family_name:        "Family name"
   birthdate:          "Birthdate"
   address:            "Address"
   sex:                "Gender"
   phone:              "phone"
+  active_patient:     "Active Patient"
 
   patient:
     create_success:   "Patient successfully created"

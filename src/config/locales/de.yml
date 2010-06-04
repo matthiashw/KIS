@@ -13,7 +13,7 @@ de:
   update:       "Aktualisieren"
   back:         "Zurück"
   cancel:       "Abbrechen"
-  destroy:      "Zerstören"
+  destroy:      "L&ouml;schen"
   show:         "Anzeigen"
   edit:         "Bearbeiten"
   save_changes: "Änderungen übernehmen"
@@ -48,6 +48,7 @@ de:
   address:            "Adresse"
   sex:                "Geschlecht"
   phone:              "Telefon"
+  active_patient:     "Aktiver Patient"
 
   users_listing:      "Benutzerliste"
   new_user_button:    "Neuen Benutzer anlegen"

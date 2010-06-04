@@ -80,6 +80,11 @@ $verylightgray:#eeeeee;
 .navi-img-verwaltung {
   background-position: 0 -90px; }
 
+.navi-img-active {
+    float:right;
+    margin-top:-25px;
+}
+
 /**
  * subnavi
  */
@@ -126,10 +131,7 @@ $verylightgray:#eeeeee;
   border-right: 1px solid #e2e2e2;
   display: inline;
   float: left;
-  &.first {
-    margin-left: 8px; }
-  &.last {
-    margin-right: 8px; }
+  
   a {
     background: #e7e7e7 url('/images/bg_tab.png') repeat-x top left;
     height: 20px;
@@ -163,8 +165,12 @@ $verylightgray:#eeeeee;
 
 .user, .domain {
   width: 100px;
-  height: 80px;
+  height: 62px;
   float: left; }
+
+.user a, .domain a {
+    text-decoration:none;
+}
 
 .user {
   background: transparent url('/images/user.png') no-repeat top center;
@@ -183,6 +189,19 @@ $verylightgray:#eeeeee;
   text-align: center;
   margin-top: 33px; }
 
+.patient.messages {
+    padding:9px;
+    display:inline;
+    max-width:500px;
+    float:left;
+    margin-left:140px;
+    text-align:left;
+}
+
+.patient a {
+    margin-left:10px;
+}
+
 /**
  * logout, help
  */
@@ -190,7 +209,8 @@ $verylightgray:#eeeeee;
 .links {
   text-align: right;
   float: right;
-  width: 100%; }
+  width: 100%;
+  margin-bottom:18px;}
 
 a.links-link {
   font-size: 12px;
@@ -198,7 +218,7 @@ a.links-link {
   text-shadow: 1px 1px 0px $verylightgray;
   color:$darkgray;
   text-decoration: none;
-  margin: 0 8px;
+  margin: 18px 8px 0;
   float: right; }
 
 .link-help img {

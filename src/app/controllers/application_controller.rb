@@ -25,7 +25,12 @@ class ApplicationController < ActionController::Base
   private
   def current_active_patient
     return @current_active_patient if defined?(@current_active_patient)
-    @current_active_patient = Patient.find(session[:active_patient_id])
+    
+    if session.has_key?(:active_patient_id)
+      @current_active_patient = Patient.find(session[:active_patient_id])
+    else
+      @current_active_patient = nil
+    end
   end
 
   def current_user_session

@@ -32,6 +32,13 @@ module LayoutHelper
     end
   end
 
+  def is_active_multiple_controller?(*args)
+    args.each do |a|
+      return "active" if params[:controller] == a
+    end
+    return ""
+  end
+
   def make_submenu?(*args)
     args.each do |a|
       return true if params[:controller] == a
