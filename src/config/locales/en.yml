@@ -17,6 +17,8 @@ en:
   show:         "Show"
   edit:         "Edit"
   save_changes: "Save changes"
+  back:         "Back"
+  activate:     "Activate"
 
   navi:
     main:
@@ -49,6 +51,11 @@ en:
   sex:                "Gender"
   phone:              "phone"
 
+  patient:
+    create_success:   "Patient successfully created"
+    update_success:   "Patient successfully updated"
+    delete_success:   "Patient successfully deleted"
+
   users_listing:      "Listing users"
   new_user_button:    "Create new user"
   new_user:           "New User"
@@ -78,3 +85,12 @@ en:
 
   permission_listing:   "Listing permissions"
   permissions_update:   "Update permissions"
+
+  case_file:
+    activated:           "Case activated."
+    activated_error:     "Case could not be activated."
+    success:             "Case was successfully created."
+    no_active_patient:   "No active Patient."
+    update_success:      "Case successfully updated"
+    listing:             "Listing Patient Cases"
+    new:                 "New Patient Case"

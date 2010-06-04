@@ -4,6 +4,12 @@
     %span.name
         - current_user.domains.each do |d|
             = d.name + ' '
+.user
+    %span.name
+        -if current_active_patient
+            =current_active_patient.family_name
+        -else
+            none
 .links
     %a{:class => "links-link link-help", :href => ""}
         %img{:src => "/images/help.png", :alt => "Help"}

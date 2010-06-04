@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
 
-  helper_method :current_user, :current_user_session, :authorize?
+  helper_method :current_active_patient, :current_user, :current_user_session, :authorize?
 
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
@@ -23,6 +23,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def current_active_patient
+    return @current_active_patient if defined?(@current_active_patient)
+    @current_active_patient = Patient.find(session[:active_patient_id])
+  end
+
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
