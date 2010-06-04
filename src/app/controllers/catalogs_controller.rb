@@ -18,10 +18,20 @@ class CatalogsController < ApplicationController
   def show
     @catalog = Catalog.find(params[:id])
 
+    if params.has_key?(:nodeid)
+     nodeid=params[:nodeid]
+     if nodeid=="-1"
+        @shownode=@catalog.root_node
+     else
+       node=Node.find nodeid
+        @shownode=node
+     end
+    end
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @catalog }
+      format.xml { render :partial => 'tree.xml.builder'}
     end
+
   end
 
   # GET /catalogs/new

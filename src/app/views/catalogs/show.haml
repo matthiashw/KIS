@@ -7,7 +7,9 @@
 %p
   %b Catalog Type:
   = h @catalog.catalog_type.name
-
+%p
+  #show_catalog_jtree 
+%br
 = link_to 'Edit', edit_catalog_path(@catalog)
 |
 \#{link_to 'Back', catalogs_path}
