@@ -1,26 +1,27 @@
-%ul.secondary-navigation
-    %li{:class => "secondary-navigation-leaf"}
-        =link_to t("navi.tabs.master_data"), {:controller => 'patients', :action => 'show', :id => current_active_patient.id}, :class => is_active?('patients', "show")
+-if current_active_patient != nil
+    %ul.secondary-navigation
+        %li{:class => "secondary-navigation-leaf"}
+            =link_to t("navi.tabs.master_data"), {:controller => 'patients', :action => 'show', :id => current_active_patient.id}, :class => is_active?('patients', "show")
 
-    %li{:class => "secondary-navigation-leaf"}
-        %a{:href => ""}
-            =t('navi.tabs.anamnesis')
+        %li{:class => "secondary-navigation-leaf"}
+            %a{:href => ""}
+                =t('navi.tabs.anamnesis')
 
-    %li{:class => "secondary-navigation-leaf"}
-        =link_to t("navi.tabs.case_Overview"), case_files_path, :class => is_active?('case_files')
+        %li{:class => "secondary-navigation-leaf"}
+            =link_to t("navi.tabs.case_Overview"), case_files_path, :class => is_active?('case_files')
 
-    %li{:class => "secondary-navigation-leaf"}
-        %a{:href => ""}
-            =t('navi.tabs.findings')
+        %li{:class => "secondary-navigation-leaf"}
+            %a{:href => ""}
+                =t('navi.tabs.findings')
 
-    %li{:class => "secondary-navigation-leaf"}
-        %a{:href => ""}
-            =t('navi.tabs.treatment')
+        %li{:class => "secondary-navigation-leaf"}
+            %a{:href => ""}
+                =t('navi.tabs.treatment')
 
-    %li{:class => "secondary-navigation-leaf"}
-        %a{:href => ""}
-            =t('navi.tabs.tasks')
+        %li{:class => "secondary-navigation-leaf"}
+            %a{:href => ""}
+                =t('navi.tabs.tasks')
 
-    %li{:class => "secondary-navigation-leaf"}
-        %a{:href => ""}
-            =t('navi.tabs.diagnoses')
+        %li{:class => "secondary-navigation-leaf"}
+            %a{:href => ""}
+                =t('navi.tabs.diagnoses')
