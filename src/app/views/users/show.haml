@@ -1,0 +1,30 @@
+- title @user.username
+%p
+  %b=t(:username)
+  = h @user.username
+%p
+  %b=t(:email)
+  = h @user.email
+%p
+  %b=t(:first_name)
+  = h @user.first_name
+%p
+  %b=t(:family_name)
+  = h @user.family_name
+%p
+  %b=t(:address)
+  = h @user.address
+%p
+  %b=t(:phone)
+  = h @user.phone
+%p
+  %b=t(:language)
+  = h @user.language
+%p
+  %b=t(:role)
+  - @user.domains.each do |d|
+    = d.name
+
+= link_to t(:edit), edit_user_path(@user)
+|
+\#{link_to t(:back), users_path}

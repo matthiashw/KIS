@@ -1,22 +1,48 @@
 - form_for @user do |f|
     = f.error_messages
     %p
-        = f.label :username
+        = f.label t(:username)
         %br/
         = f.text_field :username
 
     %p
-        = f.label :email
+        = f.label t(:email)
         %br/
         = f.text_field :email
     %p
-        = f.label :password
+        = f.label t(:password)
         %br/
         = f.password_field :password
     %p
-        = f.label :password_confirmation
+        = f.label t(:password_confirmation)
         %br/
         = f.password_field :password_confirmation
     %p
-        = f.submit
+        = f.label t(:first_name)
+        %br/
+        = f.text_field :first_name
+    %p
+        = f.label t(:family_name)
+        %br/
+        = f.text_field :family_name
+    %p
+        = f.label t(:address)
+        %br/
+        = f.text_area :address, :size => '34x5'
+    %p
+        = f.label t(:phone)
+        %br/
+        = f.text_field :phone
+    %p
+        = f.label t(:language)
+        %br/
+        = f.text_field :language
+    %div
+        %label Domain
+        - Domain.all.each do |d|
+            %p
+                = check_box_tag :user_domain_ids, d.id, @user.domains.include?(d), :name => 'user[domain_ids][]'
+                = f.label :domain_ids, d.name
+    %p
+        = f.submit t(:save_changes)
 

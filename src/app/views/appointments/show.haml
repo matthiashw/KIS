@@ -1,15 +1,15 @@
 %p
-  %b Start date:
+  %b=t(:starting_date)
   = h @appointment.start_date
 %p
-  %b End date:
+  %b=t(:ending_date)
   = h @appointment.end_date
 %p
-  %b Name:
+  %b=t(:appointment_name)
   = h @appointment.name
 %p
-  %b Description:
+  %b=t(:appointment_description)
   = h @appointment.description
-= link_to 'Edit', edit_appointment_path(@appointment)
+= link_to t(:edit), edit_appointment_path(@appointment)
 |
-\#{link_to 'Back', appointments_path}
+\#{link_to t(:back), appointments_path}

@@ -1,23 +1,21 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :case_files
+
+  map.resources :patients do |patient|
+    patient.resources :case_files do |case_file|
+      case_file.resources :treatments
+    end
+  end
+
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
   
-  map.resources :user_sessions
-  map.resources :users
+  map.resources :user_sessions, :users, :catalog_types, :catalogs, :appointments,
+                :domains, :comments, :patients, :admin
 
-  map.resources :catalog_types
+  map.resources :permissions, :collection => { :update_all_permissions => :put }
 
-  map.resources :catalogs
-
-  map.resources :permissions
-
-  map.resources :appointments
-
-  map.resources :domains
-
-  map.resources :comments
-
-  map.resources :patients
+  #map.page ":action", :controller => "admin"
 
   # root url points to this controller
   map.root :controller => "patients", :action => "index"

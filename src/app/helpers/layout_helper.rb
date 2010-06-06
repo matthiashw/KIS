@@ -19,4 +19,31 @@ module LayoutHelper
   def javascript(*args)
     content_for(:head) { javascript_include_tag(*args) }
   end
+
+  def make_image_link(linktext, cssclass = '')
+    content_tag(:span, linktext, :class => "#{cssclass}")
+  end
+
+  def is_active?(controller_name, action_name = "")
+    if action_name != ""
+      return "active" if params[:action] == action_name && params[:controller] == controller_name
+    else
+      return "active" if params[:controller] == controller_name
+    end
+  end
+
+  def is_active_multiple_controller?(*args)
+    args.each do |a|
+      return "active" if params[:controller] == a
+    end
+    return ""
+  end
+
+  def make_submenu?(*args)
+    args.each do |a|
+      return true if params[:controller] == a
+    end
+    return false
+  end
+
 end

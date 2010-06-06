@@ -15,6 +15,8 @@ class PatientsController < ApplicationController
   def show
     @patient = Patient.find(params[:id])
 
+    session[:active_patient_id] = @patient.id
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @patient }
@@ -41,16 +43,29 @@ class PatientsController < ApplicationController
   # POST /patients.xml
   def create
     @patient = Patient.new(params[:patient])
+    @case_file = CaseFile.new(:entry_date => Date.today())
 
-    respond_to do |format|
-      if @patient.save
-        flash[:notice] = 'Patient was successfully created.'
-        format.html { redirect_to(@patient) }
-        format.xml  { render :xml => @patient, :status => :created, :location => @patient }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @patient.errors, :status => :unprocessable_entity }
+    if @case_file.save
+      @patient.active_case_file_id = @case_file.id
+
+      respond_to do |format|
+        if @patient.save
+
+          session[:active_patient_id] = @patient.id
+
+          @case_file.update_attributes(:patient_id => @patient.id)
+          flash[:notice] = t("patient.create_success")
+          format.html { redirect_to(@patient) }
+          format.xml  { render :xml => @patient, :status => :created, :location => @patient }
+        else
+          @case_file.destroy
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @patient.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @case_file.errors, :status => :unprocessable_entity }
     end
   end
 
@@ -61,7 +76,7 @@ class PatientsController < ApplicationController
 
     respond_to do |format|
       if @patient.update_attributes(params[:patient])
-        flash[:notice] = 'Patient was successfully updated.'
+        flash[:notice] = t("patient.update_success")
         format.html { redirect_to(@patient) }
         format.xml  { head :ok }
       else
@@ -75,11 +90,27 @@ class PatientsController < ApplicationController
   # DELETE /patients/1.xml
   def destroy
     @patient = Patient.find(params[:id])
-    @patient.destroy
+    
+    if @patient.destroy
+      flash[:notice] = t("patient.delete_success")
+    end
 
     respond_to do |format|
       format.html { redirect_to(patients_url) }
       format.xml  { head :ok }
     end
   end
+
+  # search function for ajax search
+  def search
+      if params[:query] and request.xhr?
+        if params[:query] == ""
+          @patients = Patient.all
+        else
+          @patients = Patient.find(:all, :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{params[:query]}%","%#{params[:query]}%"], :order => "family_name ASC")
+        end
+        render :partial => "shared/patient_search_results", :layout => false, :locals => {:searchresults => @patients}
+      end
+   end
+
 end

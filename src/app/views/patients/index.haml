@@ -1,22 +1,31 @@
-%h1 Listing patients
-%table
-  %tr
-    %th First name
-    %th Family name
-    %th Birthdate
-    %th Address
-    %th Sex
-    %th Phone
-  - @patients.each do |patient|
-    %tr
-      %td= h patient.first_name
-      %td= h patient.family_name
-      %td= h patient.birthdate
-      %td= h patient.address
-      %td= h patient.sex
-      %td= h patient.phone
-      %td= link_to 'Show', patient
-      %td= link_to 'Edit', edit_patient_path(patient)
-      %td= link_to 'Destroy', patient, :confirm => 'Are you sure?', :method => :delete
+%h1=t(:patient_listing)
+
+- if current_user.has_permission?('create_patient')
+  = link_to t(:new_patient_button), new_patient_path
 %br/
-= link_to 'New patient', new_patient_path
+or search for patient
+#search_form
+  = text_field_tag("query", params[:query], :autocomplete => "off" )
+  = observe_field 'query',  :frequency => 0.5,                |
+    :update => "search_results",                              |
+    :url => {:controller => "patients", :action => "search"}, |
+    :with => "query"                                          |
+%br/
+#search_results
+  %table
+    %tr
+      %th=t(:first_name)
+      %th=t(:family_name)
+      %th=t(:birthdate)
+      %th=t(:address)
+      %th=t(:sex)
+      %th=t(:phone)
+    - @patients.each do |patient|
+      %tr{:onclick=>"location.href='#{url_for :controller => 'patients', :action => 'show', :id => patient.id}';",:style=>"cursor:pointer;"}
+        %td= h patient.first_name
+        %td= h patient.family_name
+        %td= h patient.birthdate
+        %td= h patient.address
+        %td= h patient.sex
+        %td= h patient.phone
+%br/

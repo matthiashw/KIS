@@ -1,17 +1,21 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  firstname: MyString
-  surname: MyString
+  first_name: MyString
+  family_name: MyString
   birthdate: 2010-05-14
   address: MyText
   sex: MyString
   phone: MyString
-
+  active_case_file_id: 1
+  extern_medication_treatment_id: 1
+  
 two:
-  firstname: MyString
-  surname: MyString
+  first_name: MyString
+  family_name: MyString
   birthdate: 2010-05-14
   address: MyText
   sex: MyString
   phone: MyString
+  active_case_file_id: 1
+  extern_medication_treatment_id: 1

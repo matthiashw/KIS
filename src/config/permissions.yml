@@ -1,0 +1,75 @@
+# All Permission
+# This permissions can be selected for every Role or User
+
+Administration:
+  access_administration: Grant access to the administration Area
+  set_permissions: Set Permissions for Roles
+  administer_catalog: Administer the Catalogs
+
+User:
+  create_user: Create a User
+  view_user: View all Users
+  view_own_user: View own Users
+  edit_user: Edit every User
+  edit_own_user: Edit own User
+  delete_user: Delete every User
+
+Appointment:
+  create_appointment: Create an Appointment
+  view_appointment: View all Appointments
+  view_own_appointment: View own Appointment
+  edit_appointment: Edit every Appointment
+  edit_own_appointment: Edit own Appointment
+  delete_appointment: Delete every Appointment
+
+Domain:
+  create_domain: Create a Domain
+  view_domain: View all Domains
+  edit_domain: Edit every Domain
+  delete_domain: Delete every Domain
+
+Task:
+  create_task: Create a Task
+  view_task: View all Tasks
+  view_own_task: View own Task
+  edit_task: Edit every Task
+  edit_own_task: Edit own Task
+  delete_task: Delete every Task
+
+Treatment:
+  create_treatment: Create a Treatment
+  view_treatment: View all Treatments
+  edit_treatment: Edit every Treatment
+  delete_treatment: Delete every Treatment
+
+Patient:
+  create_patient: Create a Patient
+  view_patient: View all Patients
+  edit_patient: Edit every Patients
+  delete_patient: Delete every Patients
+
+Comment:
+  create_comment: Create a Comment
+  view_comment: View all Comments
+  view_own_comment: View own Comment
+  edit_comment: Edit every Comment
+  edit_own_comment: Edit own Comment
+  delete_comment: Delete every Comment
+
+Medication:
+  create_medication: Create a Medication
+  view_medication: View all Medications
+  edit_medication: Edit every Medication
+  delete_medication: Delete every Medication
+
+Diagnosis:
+  create_diagnosis: Create a Diagnosis
+  view_diagnosis: View all Diagnosises
+  edit_diagnosis: Edit every Diagnosis
+  delete_diagnosis: Delete every Diagnosis
+
+CaseFile:
+  create_casefile: Create a CaseFile
+  view_casefile: View all CaseFiles
+  edit_casefile: Edit every CaseFile
+  delete_casefile: Delete every CaseFile

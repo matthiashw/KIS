@@ -1,0 +1,6 @@
+h1. HOPEN
+
+HOPEN is a free and open-source Hospital Information System (HIS) and is currently under heavy development.
+It is a students project from the Institue of Technology in Konstanz, Germany.
+
+You can find development information in the wiki.

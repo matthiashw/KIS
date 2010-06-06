@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class CatalogTypesControllerTest < ActionController::TestCase
+
+   setup :login
+
   test "should get index" do
     get :index
     assert_response :success

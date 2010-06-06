@@ -1,0 +1,19 @@
+- if searchresults.length == 0
+  %p No patients found
+- else
+  %table
+    %tr
+      %th First name
+      %th Family name
+      %th Birthdate
+      %th Address
+      %th Sex
+      %th Phone
+    - for patient in searchresults
+      %tr{:onclick=>"location.href='#{url_for :controller => 'patients', :action => 'show', :id => patient.id}';",:style=>"cursor:pointer;"}
+        %td= h patient.first_name
+        %td= h patient.family_name
+        %td= h patient.birthdate
+        %td= h patient.address
+        %td= h patient.sex
+        %td= h patient.phone

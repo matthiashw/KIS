@@ -1,14 +1,21 @@
-%h1 Listing permissions
-%table
-  %tr
-    %th Name
-    %th Description
-  - @permissions.each do |permission|
+- title t(:permission_listing)
+
+- form_tag update_all_permissions_permissions_path, :method => :put do
+  %table
     %tr
-      %td= h permission.name
-      %td= h permission.description
-      %td= link_to 'Show', permission
-      %td= link_to 'Edit', edit_permission_path(permission)
-      %td= link_to 'Destroy', permission, :confirm => 'Are you sure?', :method => :delete
-%br/
-= link_to 'New permission', new_permission_path
+      %th Permission
+      - @domains.each do |d|
+        %th= d.name
+    - @perms.each do |pheadline, value|
+      %tr{:class => 'permission-group'}
+        %td{:class => 'permission-group'}= h pheadline
+        - @domains.each do |d|
+          %td
+      - value.each do |p, desc|
+        %tr
+          %td{:class => 'permission'}= h desc
+          - @domains.each do |d|
+            %td= check_box_tag "perms[]", d.name + ";" + p, d.has_permission?(p)
+
+  = submit_tag t(:permissions_update)
+
