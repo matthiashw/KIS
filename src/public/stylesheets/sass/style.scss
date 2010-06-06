@@ -251,8 +251,55 @@ a.links-link {
   font-size: 10px;
   text-align: center; }
 
-/*Permissions
+/*ADMIN AREA
 -------------------------------------------------------- */
+
+.admin-list {
+    float:left;
+    width:45%;
+    margin:0 2% 36px;
+    padding-bottom:18px;
+
+    dt {
+        margin:0 0 9px;
+        font-size: 16px;
+        line-height: 18px;
+        color:$darkgray;
+        font-family: "Lucida Grande", "Lucida Sans", Verdana, "Lucida Sans Unicode", sans-serif;
+        font-weight:bold;
+        float:left;
+        width:100%;
+    }
+
+    dd {
+        float:left;
+        width:100%;
+        margin:10px 0 0;
+        padding:9px 0;
+        border-bottom:1px solid $verylightgray;
+
+        &.last {
+            border:none;
+        }
+
+        a {
+            text-decoration:none;
+            
+            float:left;
+            img {
+                text-decoration:none;
+                margin-right:18px;
+               float:left;
+               margin-top:-10px;
+            }
+        }
+    }
+}
+
+
+/**
+ * permissions
+ */
 
 tr.permission-group {
     td {

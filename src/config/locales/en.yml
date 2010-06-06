@@ -84,6 +84,13 @@ en:
   appointment_name:         "Name"
   appointment_description:  "Description"
 
+  treatment_listing:      "Listing treatment"
+  editing_treatment:      "Editing treatment"
+  action_treatment:       "Action"
+  new_treatment:          "New treatment"
+  treatment_description:  "Description"
+
+
   permission_listing:   "Listing permissions"
   permissions_update:   "Update permissions"
 
@@ -95,3 +102,14 @@ en:
     update_success:      "Case successfully updated"
     listing:             "Listing Patient Cases"
     new:                 "New Patient Case"
+
+  admin:
+    admin_area:             "Administration Area"
+    user_management:        "User Management"
+    users:                  "User"
+    domains:                "Domains"
+    permissions:            "Permissions"
+    catalog_management:     "Catalog Management"
+    catalogs:               "Catalogs"
+    file_management:        "File Management"
+    export:                 "Export"

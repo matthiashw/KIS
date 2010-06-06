@@ -76,8 +76,21 @@ de:
   appointment_name:         "Name"
   appointment_description:  "Beschreibung"
 
+  editing_treatment:      "Behandlung bearbeiten"
+
   permission_listing:   "Alle Berechtigungen"
   permissions_update:   "Berechtigungen aktualisieren"
+
+  admin:
+    admin_area:             "Administrations Bereich"
+    user_management:        "Benutzer Verwaltung"
+    users:                  "Benutzer"
+    domains:                "Domänen"
+    permissions:            "Berechtigungen"
+    catalog_management:     "Katalog Verwaltung"
+    catalogs:               "Kataloge"
+    file_management:        "Datei Verwaltung"
+    export:                 "Export"
 
   date:
     formats:
