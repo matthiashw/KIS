@@ -18,4 +18,6 @@
   = h @patient.phone
 = link_to t(:edit), edit_patient_path(@patient)
 |
+\#{link_to t(:destroy), @patient, :confirm => 'Are you sure?', :method => :delete}
+|
 \#{link_to t(:back), patients_path}

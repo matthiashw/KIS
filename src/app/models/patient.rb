@@ -1,4 +1,5 @@
 class Patient < ActiveRecord::Base
+  validates_presence_of :active_case_file_id
   has_many :case_files
   has_many :comments
   belongs_to :extern_medication_treatment , :class_name => "Treatment" , :foreign_key => "extern_medication_treatment_id"

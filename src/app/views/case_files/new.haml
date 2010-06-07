@@ -1,0 +1,10 @@
+%h1 New case_file
+- form_for(@case_file) do |f|
+  = f.error_messages
+  %p
+    = f.label :entry_date
+    %br/
+    = f.date_select :entry_date
+  %p
+    = f.submit t(:create)
+= link_to (:back), case_files_path

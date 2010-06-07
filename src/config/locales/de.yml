@@ -13,7 +13,7 @@ de:
   update:       "Aktualisieren"
   back:         "Zurück"
   cancel:       "Abbrechen"
-  destroy:      "Zerstören"
+  destroy:      "L&ouml;schen"
   show:         "Anzeigen"
   edit:         "Bearbeiten"
   save_changes: "Änderungen übernehmen"
@@ -48,6 +48,7 @@ de:
   address:            "Adresse"
   sex:                "Geschlecht"
   phone:              "Telefon"
+  active_patient:     "Aktiver Patient"
 
   users_listing:      "Benutzerliste"
   new_user_button:    "Neuen Benutzer anlegen"
@@ -75,8 +76,21 @@ de:
   appointment_name:         "Name"
   appointment_description:  "Beschreibung"
 
+  editing_treatment:      "Behandlung bearbeiten"
+
   permission_listing:   "Alle Berechtigungen"
   permissions_update:   "Berechtigungen aktualisieren"
+
+  admin:
+    admin_area:             "Administrations Bereich"
+    user_management:        "Benutzer Verwaltung"
+    users:                  "Benutzer"
+    domains:                "Domänen"
+    permissions:            "Berechtigungen"
+    catalog_management:     "Katalog Verwaltung"
+    catalogs:               "Kataloge"
+    file_management:        "Datei Verwaltung"
+    export:                 "Export"
 
   date:
     formats:

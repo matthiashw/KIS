@@ -13,10 +13,12 @@ en:
   update:       "Update"
   back:         "Back"
   cancel:       "Cancel"
-  destroy:      "Destroy"
+  destroy:      "Delete"
   show:         "Show"
   edit:         "Edit"
   save_changes: "Save changes"
+  back:         "Back"
+  activate:     "Activate"
 
   navi:
     main:
@@ -40,14 +42,20 @@ en:
 
   patient_listing:    "Listing patients"
   new_patient_button: "Create new patient"
-  new_Patient:        "New Patient"
-  editing_Patient:    "Editing Patient"
+  new_patient:        "New Patient"
+  editing_patient:    "Editing Patient"
   first_name:         "First name"
   family_name:        "Family name"
   birthdate:          "Birthdate"
   address:            "Address"
   sex:                "Gender"
   phone:              "phone"
+  active_patient:     "Active Patient"
+
+  patient:
+    create_success:   "Patient successfully created"
+    update_success:   "Patient successfully updated"
+    delete_success:   "Patient successfully deleted"
 
   users_listing:      "Listing users"
   new_user_button:    "Create new user"
@@ -76,5 +84,32 @@ en:
   appointment_name:         "Name"
   appointment_description:  "Description"
 
+  treatment_listing:      "Listing treatment"
+  editing_treatment:      "Editing treatment"
+  action_treatment:       "Action"
+  new_treatment:          "New treatment"
+  treatment_description:  "Description"
+
+
   permission_listing:   "Listing permissions"
   permissions_update:   "Update permissions"
+
+  case_file:
+    activated:           "Case activated."
+    activated_error:     "Case could not be activated."
+    success:             "Case was successfully created."
+    no_active_patient:   "No active Patient."
+    update_success:      "Case successfully updated"
+    listing:             "Listing Patient Cases"
+    new:                 "New Patient Case"
+
+  admin:
+    admin_area:             "Administration Area"
+    user_management:        "User Management"
+    users:                  "User"
+    domains:                "Domains"
+    permissions:            "Permissions"
+    catalog_management:     "Catalog Management"
+    catalogs:               "Catalogs"
+    file_management:        "File Management"
+    export:                 "Export"

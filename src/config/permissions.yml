@@ -73,3 +73,9 @@ CaseFile:
   view_casefile: View all CaseFiles
   edit_casefile: Edit every CaseFile
   delete_casefile: Delete every CaseFile
+
+Anamnese:
+  access_anamese: Access to Anamnese Data
+
+Findings:
+  access_finding: Access to Finding Data

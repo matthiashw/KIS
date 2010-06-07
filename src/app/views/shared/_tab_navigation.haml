@@ -1,22 +1,33 @@
 %ul.secondary-navigation
-    %li{:class => "first secondary-navigation-leaf"}
-        %a{:href => ""}
-            =t('navi.tabs.master_data')
-    %li{:class => "secondary-navigation-leaf"}
-        %a{:href => ""}
-            =t('navi.tabs.anamnesis')
-    %li{:class => "secondary-navigation-leaf"}
-        %a{:href => ""}
-            =t('navi.tabs.case_Overview')
-    %li{:class => "secondary-navigation-leaf"}
-        %a{:href => ""}
-            =t('navi.tabs.findings')
-    %li{:class => "secondary-navigation-leaf"}
-        %a{:href => ""}
-            =t('navi.tabs.treatment')
-    %li{:class => "secondary-navigation-leaf"}
-        %a{:href => ""}
-            =t('navi.tabs.tasks')
-    %li{:class => "last secondary-navigation-leaf"}
-        %a{:href => ""}
-            =t('navi.tabs.diagnoses')
+    -if current_active_patient != nil
+        - if authorize?('view_patient')
+            %li{:class => "secondary-navigation-leaf"}
+                =link_to t("navi.tabs.master_data"), {:controller => 'patients', :action => 'show', :id => current_active_patient.id}, :class => is_active?('patients', "show")
+
+        - if authorize?('access_anamnese')
+            %li{:class => "secondary-navigation-leaf"}
+                %a{:href => ""}
+                    =t('navi.tabs.anamnesis')
+
+        - if authorize?('view_casefile')
+            %li{:class => "secondary-navigation-leaf"}
+                =link_to t("navi.tabs.case_Overview"), case_files_path, :class => is_active?('case_files')
+
+        - if authorize?('access_finding')
+            %li{:class => "secondary-navigation-leaf"}
+                %a{:href => ""}
+                    =t('navi.tabs.findings')
+
+        - if authorize?('view_treatment')
+            %li{:class => "secondary-navigation-leaf"}
+                =link_to t('navi.tabs.treatment'), patient_case_file_treatments_path(:case_file_id => current_active_patient.active_case_file_id, :patient_id => current_active_patient.id)
+
+        - if authorize?('view_task')
+            %li{:class => "secondary-navigation-leaf"}
+                %a{:href => ""}
+                    =t('navi.tabs.tasks')
+
+        - if authorize?('view_diagnosis')
+            %li{:class => "secondary-navigation-leaf"}
+                %a{:href => ""}
+                    =t('navi.tabs.diagnoses')

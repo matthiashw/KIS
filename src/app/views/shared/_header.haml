@@ -4,7 +4,17 @@
     %span.name
         - current_user.domains.each do |d|
             = d.name + ' '
+ 
 .links
+    -if current_active_patient
+        .patient.messages.message
+            -if current_active_patient
+                =t(:active_patient) + ":"
+                =current_active_patient.first_name
+                =current_active_patient.family_name
+                =link_to t(:show), {:controller => 'patients', :action => 'show', :id => current_active_patient.id}
+                =link_to t(:edit), {:controller => 'patients', :action => 'edit', :id => current_active_patient.id}
+
     %a{:class => "links-link link-help", :href => ""}
         %img{:src => "/images/help.png", :alt => "Help"}
     - if current_user
@@ -13,3 +23,4 @@
     - else
         = link_to t(:register), new_user_path, :class => "links-link"
         = link_to t(:login), login_path, :class => "links-link"
+

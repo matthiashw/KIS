@@ -1,0 +1,16 @@
+%h1 Editing case_file
+- form_for(@case_file) do |f|
+  = f.error_messages
+  %p
+    = f.label :entry_date
+    %br/
+    = f.date_select :entry_date
+  %p
+    = f.label :leave_date
+    %br/
+    = f.date_select :leave_date
+  %p
+    = f.submit t(:update)
+= link_to t(:show), @case_file
+|
+\#{link_to t(:back), case_files_path}
