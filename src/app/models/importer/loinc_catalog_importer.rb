@@ -45,6 +45,8 @@ class Importer::LoincCatalogImporter
               if !(class_name.starts_with? "PANEL.") #Panel Elements
                  # Create Entry
                   entry = FieldEntry.new(:code => code,:name => name, :description => description )
+                  fielddef = FieldDefinition.new(:is_active => false,:input_type => "value",:field_entry => entry)
+
                   if !class_name_hash.has_key?(class_name)
                      # First Occurence of Class
                      class_node = Node.new(:name => class_name , :parent => root_node)
@@ -54,6 +56,7 @@ class Importer::LoincCatalogImporter
               # Hang Entry in Node
               entry.node=class_name_hash[class_name]
               entry.save
+              fielddef.save
               end
           end
         end
