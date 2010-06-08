@@ -9,32 +9,32 @@ $j(function () {
     $j("#show_catalog_jtree")
 		.jstree({
                         "core" : {
-
+                                "html_titles" :true,
+                                 "animation" : 0
                         },
                         "themes" : {
                                 "theme" : "default",
                                 "dots" : false,
-                                "icons" : false
+                                "icons" : true
                             },
-
-
-                        "xml_data" : {
+                        "json_data" : {
                             
                             "ajax" : {
-                                "url": this.herf,
-                                "dataType" : "xml",
+                                "dataType" : "json",
                                 "data" : function (n) {
                                     return {
                                     nodeid : n.attr ? n.attr("id") : -1
                                     }
                                 }
+                            
 
-                            }
-
+                            },
+                            "progressive_render"  : true
 
                         },
+                       
+                        "plugins" : [ "themes", "json_data"]
 
-                        "plugins" : [ "themes", "xml_data"]
 
                 });
 });

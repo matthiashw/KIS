@@ -6,13 +6,13 @@ module CatalogsHelper
            :parent_id => 0,
            :state => "" do
             xml.content do
-                xml.name h entry.code
+                xml.name do
+                  xml.cdata! "<b>Code:</b> "+entry.code+"<br/> <b>Description:</b> "+entry.description
+                end
             end
          end
       end
-  end
-
- if !@shownode.children.empty?
+  elsif !@shownode.children.empty?
    @shownode.children.each do |node|
         xml.item :id => node.id, :parent_id =>0, :state => 'closed' do
           xml.content do
@@ -21,6 +21,8 @@ module CatalogsHelper
          end
       end
 
-    end
+  else
+   xml.item
   end
+ end
 end
