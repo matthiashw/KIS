@@ -10,9 +10,10 @@ class Importer::LoincCatalogImporter
      # Create the Catalogs Helper Root Node
       
       catalog.transaction do
-        root_node=catalog.create_root_node
+        root_node=Node.new
         root_node.name=catalog.catalog_type.name + " Root Node"
-        root_node.save
+        catalog.root_node=root_node
+        
         # Iterate over Rows
         while (row=csv.shift)
           #  Get The Values
@@ -41,12 +42,12 @@ class Importer::LoincCatalogImporter
            code = row['LOINC_NUM']
            type = row['CLASSTYPE']
             if type=="1" # Laboratory
-              if row['PROPERTY']!="-" #Panel Elements
+              if !(class_name.starts_with? "PANEL.") #Panel Elements
                  # Create Entry
                   entry = FieldEntry.new(:code => code,:name => name, :description => description )
                   if !class_name_hash.has_key?(class_name)
                      # First Occurence of Class
-                    class_node = root_node.children.create(:name => class_name)
+                     class_node = Node.new(:name => class_name , :parent => root_node)
                     class_node.save
                     class_name_hash[class_name]=class_node
                   end
@@ -58,7 +59,7 @@ class Importer::LoincCatalogImporter
         end
 
       #Save Everything
-
+      root_node.save
       catalog.save
       end # End of Transaction
   end
