@@ -1,4 +1,5 @@
 class Entry < ActiveRecord::Base
-  belongs_to :node
+  validates_presence_of :node,:code,:name,:type
+  belongs_to :node 
 end
 

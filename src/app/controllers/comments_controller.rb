@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
   def index
-    @comments = Comment.all
+    @comments = Comment.find_all_by_patient_id(params[:patient_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +40,8 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
-    @comment = Comment.new(params[:comment])
+    @patient = Patient.find(params[:id])
+    @comment = Patient.comments.build(params[:comment])
 
     respond_to do |format|
       if @comment.save

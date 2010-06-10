@@ -15,4 +15,4 @@
       %td= link_to t(:edit), edit_domain_path(domain)
       %td= link_to t(:destroy), domain, :confirm => 'Are you sure?', :method => :delete
 %br/
-= link_to t(:new_domain), new_domain_path
+= link_to t(:new_domain), new_domain_path, :class => 'acts_as_button'

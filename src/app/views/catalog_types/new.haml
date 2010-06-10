@@ -10,5 +10,5 @@
     %br/
     = f.select(  :import_method, ImporterManager.instance.import_methods.keys )
   %p
-    = f.submit 'Create'
-= link_to 'Back', catalog_types_path
+    = f.submit t(:create)
+= link_to t(:back), catalog_types_path, :class => 'acts_as_button darkgray'

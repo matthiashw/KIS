@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
-    return access_denied unless authorize(permissions = ["view_user"])
+    return authorize(permissions = ["view_user"])
     
     @users = User.all
 

@@ -11,4 +11,4 @@
       %td= link_to t(:edit), edit_comment_path(comment)
       %td= link_to t(:destroy), comment, :confirm => 'Are you sure?', :method => :delete
 %br/
-= link_to 'New comment', new_comment_path
+= link_to 'New comment', new_comment_path, :class => 'acts_as_button'

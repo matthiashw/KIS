@@ -10,6 +10,6 @@
 %p
   %b=t(:appointment_description)
   = h @appointment.description
-= link_to t(:edit), edit_appointment_path(@appointment)
+= link_to t(:edit), edit_appointment_path(@appointment), :class => 'acts_as_button'
 |
-\#{link_to t(:back), appointments_path}
+=link_to t(:back), appointments_path, :class => 'acts_as_button darkgray'

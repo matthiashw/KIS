@@ -118,9 +118,9 @@ table {
     border-color:#CCCCCC #DDDDDD #EEEEEE;
     border-style:solid;
     border-width:1px;
-    font-size:11px;
-    line-height:15px;
-    margin:0 0 10px;
+    font-size:12px;
+    line-height:18px;
+    margin:0 0 18px;
     width:100%;
 
     td, th {
@@ -261,7 +261,15 @@ abbr {
   z-index: 10; }
 
 .inner {
-  margin: 18px 18px 18px 36px; }
+  margin: 18px 18px 18px 36px;
+  float:left;
+  }
+
+.inner-bg {
+  float:left;
+  background-color:#fff;
+  width:100%;
+}
 
 #frontpage {
     .inner {
@@ -323,7 +331,7 @@ div {
     }
 }
 
-/*FORMS
+/*FORMS and BUTTONS
 -------------------------------------------------------- */
 
 .text_field,
@@ -337,7 +345,8 @@ textarea {
     }
 }
 
-.button {
+.button,
+a.acts_as_button{
     border:none;
     background:$magenta url('/images/overlay.png') repeat-x;
     display: inline-block;
@@ -345,7 +354,7 @@ textarea {
     color: #fff;
     text-decoration: none;
     font-weight:bold;
-    line-height:1;
+    line-height:18px;
     border-radius:4px;
     -moz-border-radius:4px;
     -webkit-border-radius:4px;
@@ -356,11 +365,39 @@ textarea {
     position:relative;
     cursor:pointer;
     font-size:12px;
-}
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 
-.button:hover {
-    background-color:$verydarkgray;
-    color:#fff;
+    &:hover {
+        background-color:$verydarkgray;
+        color:#fff;
+    }
+
+    &.lightgray {
+       background-color:$lightgray;
+
+       &:hover {
+        background-color:$verydarkgray;
+        color:#fff;
+        }
+    }
+
+    &.mediumgray {
+       background-color:$mediumgray;
+
+       &:hover {
+        background-color:$verydarkgray;
+        color:#fff;
+        }
+    }
+
+    &.darkgray {
+       background-color:$darkgray;
+
+       &:hover {
+        background-color:$verydarkgray;
+        color:#fff;
+        }
+    }
 }
 
 
@@ -373,6 +410,41 @@ textarea {
         color:#F23D30;
     }
 }
+
+/*VIEWS
+-------------------------------------------------------- */
+
+/**
+ * show fields
+ */
+
+.fields {
+    float:left;
+    width:60%;
+
+    .field {
+        float:left;
+        width:100%;
+        margin-bottom:18px;
+
+        .field-label {
+            float:left;
+            width:30%;
+            text-align:right;
+            padding-right:9px;
+            font-weight:bold;
+        }
+
+        .field-content {
+            float:left;
+            width:60%;
+            text-align:left;
+        }
+    }
+}
+
+
+
 
 
 

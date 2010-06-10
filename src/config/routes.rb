@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
     patient.resources :case_files do |case_file|
       case_file.resources :treatments
     end
+
+    patient.resources :comments
   end
 
   map.login "login", :controller => "user_sessions", :action => "new"

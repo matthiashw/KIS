@@ -25,6 +25,6 @@
   - @user.domains.each do |d|
     = d.name
 
-= link_to t(:edit), edit_user_path(@user)
+= link_to t(:edit), edit_user_path(@user), :class => 'acts_as_button'
 |
-\#{link_to t(:back), users_path}
+= link_to t(:back), users_path, :class => 'acts_as_button darkgray'

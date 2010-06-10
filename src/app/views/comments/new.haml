@@ -1,14 +1,5 @@
 %h1 New comment
-- form_for(@comment) do |f|
-  = f.error_messages
-  %p
-    = f.label :comment
-    %br/
-    = f.text_area :comment
-  %p
-    = f.label :date
-    %br/
-    = f.date_select :date
-  %p
-    = f.submit 'Create'
-= link_to 'Back', comments_path
+
+= render :partial => 'form'
+
+= link_to t(:back), comments_path, :class => 'acts_as_button darkgray'

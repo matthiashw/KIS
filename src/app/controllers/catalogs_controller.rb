@@ -30,6 +30,7 @@ class CatalogsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml { render :partial => 'tree.xml.builder'}
+      format.json { render :partial => 'tree.js.erb' }
     end
 
   end
@@ -56,9 +57,20 @@ class CatalogsController < ApplicationController
     file = params[:catalog][:dump]
     params[:catalog].delete(:dump)
     @catalog = Catalog.new( params[:catalog])
-    @import
+    if file
+       importer=ImporterManager.instance.import_methods[@catalog.catalog_type.import_method]
+        begin
+          importer.import @catalog,file
+        rescue
+          @catalog.errors.add_to_base t("admin.catalog_errors.import_file_invalid")
+        end
+        
+    else
+       @catalog.errors.add_to_base t("admin.catalog_errors.import_file_not_blank")
+    end
+     
     respond_to do |format|
-      if @catalog.save!
+      if @catalog.errors.empty?
         flash[:notice] = 'Catalog was successfully created.'
         format.html { redirect_to(@catalog) }
         format.xml  { render :xml => @catalog, :status => :created, :location => @catalog }
@@ -67,8 +79,7 @@ class CatalogsController < ApplicationController
         format.xml  { render :xml => @catalog.errors, :status => :unprocessable_entity }
       end
 
-      importer=ImporterManager.instance.import_methods[@catalog.catalog_type.import_method]
-      importer.import @catalog,file
+     
     end
   end
 

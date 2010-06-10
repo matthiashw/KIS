@@ -2,9 +2,9 @@
     %li{:class => "first main-navigation-leaf"}
         - if authorize?('view_patient')
             =link_to make_image_link(t('navi.main.patients'), 'navi-img navi-img-patient'), patients_path, :class => is_active_multiple_controller?('patients', 'case_files')
-            - if make_submenu?('patients', 'case_files')
+            - if is_controller_active?('patients', 'case_files')
                 =image_tag "main_navi_active.png", :alt => 'active menu', :class => "navi-img-active"
-            - if make_submenu?('patients', 'case_files')
+            - if is_controller_active?('patients', 'case_files')
                 %ul.main-subnavigation
                     %li{:class => "main-subnavigation-leaf"}
                         =link_to t('navi.main.search_patient'), patients_path, :class => is_active?('patients', 'index')
@@ -13,14 +13,14 @@
     %li{:class => "main-navigation-leaf"}
         - if authorize?('view_patient')
             =link_to make_image_link(t('navi.main.tasks'), 'navi-img navi-img-aufgabe'), patients_path, :class => is_active?('')
-            - if is_active?('')
+            - if is_controller_active?('')
                 =image_tag "main_navi_active.png", :alt => 'active menu', :class => "navi-img-active"
     %li{:class => "main-navigation-leaf"}
         - if authorize?('view_appointment')
             =link_to make_image_link(t('navi.main.appointments'), 'navi-img navi-img-termin'), appointments_path, :class => is_active?('appointments')
-            - if is_active?('appointments')
+            - if is_controller_active?('appointments')
                 =image_tag "main_navi_active.png", :alt => 'active menu', :class => "navi-img-active"
-            - if make_submenu?('appointments')
+            - if is_controller_active?('appointments')
                 %ul.main-subnavigation
                     %li{:class => "main-subnavigation-leaf"}
                         =link_to t("appointment_listing"), appointments_path, :class => is_active?('appointments', "index")
@@ -28,10 +28,10 @@
                         =link_to t("new_appointment"), new_appointment_path, :class => is_active?('appointments', "new")
     %li{:class => "main-navigation-leaf"}
         - if authorize?('access_administration')
-            =link_to make_image_link(t('navi.main.administration'), 'navi-img navi-img-verwaltung'), {:controller => "admin", :action => "index"}, :class => is_active?('admin')
-            - if is_active?('admin')
+            =link_to make_image_link(t('navi.main.administration'), 'navi-img navi-img-verwaltung'), {:controller => "admin", :action => "index"}, :class => is_active_multiple_controller?('admin', 'users', 'domains', 'permissions', 'catalogs', 'catalog_types')
+            - if is_controller_active?('admin', 'users', 'domains', 'permissions', 'catalogs', 'catalog_types')
                 =image_tag "main_navi_active.png", :alt => 'active menu', :class => "navi-img-active"
-            - if make_submenu?('admin', 'users', 'domains', 'permissions', 'catalogs')
+            - if is_controller_active?('admin', 'users', 'domains', 'permissions', 'catalogs', 'catalog_types')
                 %ul.main-subnavigation
                     %li{:class => "main-subnavigation-leaf"}
                         =link_to t("navi.main.users"), users_path, :class => is_active?('users')
@@ -41,4 +41,6 @@
                         =link_to t("navi.main.permissions"), permissions_path, :class => is_active?('permissions')
                     %li{:class => "main-subnavigation-leaf"}
                         =link_to t("navi.main.catalogs"), catalogs_path, :class => is_active?('catalogs')
+                    %li{:class => "main-subnavigation-leaf"}
+                        =link_to t("navi.main.catalog_types"), catalog_types_path, :class => is_active?('catalog_types')
     

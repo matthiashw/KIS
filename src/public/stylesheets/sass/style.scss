@@ -231,16 +231,69 @@ a.links-link {
 .content {
   background-color: #fff;
   padding-bottom: 18px;
-  min-height:300px;}
+  min-height:100px;}
 
 #frontpage {
-    .content {
+    .inner-bg {
         -moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
         -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
         box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
         border:1px solid $lightgray;
     }
 }
+
+/**
+ * links
+ */
+
+.action-links {
+ float:left;
+ width:60%;
+}
+
+
+/**
+ * comments
+ */
+
+ #comments {
+     float:right;
+     width:39%;
+
+     .comments-list {
+        list-style:none;
+        margin:0;
+        padding:0;
+     }
+     .comment {
+        list-style:none;
+        padding:0;
+        margin:0 0 18px;
+
+
+        .comment-body {
+            background-color:$verylightgray;
+            padding:9px;
+        }
+
+        .comment-date {
+            color:$lightgray;
+            font-size:12px;
+        }
+     }
+
+     .comment_form {
+         margin-top:18px;
+         textarea {
+            width:90%;
+        }
+        input {
+            margin-top:9px;
+        }
+     }
+ }
+ 
+
 
 /*FOOTER
 -------------------------------------------------------- */
@@ -314,3 +367,61 @@ td.permission-group {
 td.permission {
     padding-left:18px;
 }
+
+/**
+* Catalog Show
+*/
+
+#node-description{
+    font-size:12px;
+    font-style:italic;
+    padding-left:25px;
+    color:$darkgray;
+}
+#node-name {  }
+#node-id { font-weight:bold;}
+
+.jstree {
+    ul.jstree-no-dots {
+        margin-left:18px !important;
+
+        ul {
+            margin-top:9px !important;
+        }
+    }
+}
+
+.jstree-default {
+    &.jstree-focused {
+        background-color:transparent !important;
+    }
+
+
+
+    .jstree-no-dots {
+        li {
+            margin-bottom:9px;
+        }
+
+        .jstree-closed > ins {
+            background:transparent  url('/images/plus.png') no-repeat 0 2px;
+            background-position:0 2px !important;
+
+            &:hover {
+                cursor:pointer;
+            }
+        }
+
+
+        .jstree-open > ins {
+            background:transparent  url('/images/minus.png') no-repeat 0 2px;
+            background-position:0 2px !important;
+
+            &:hover {
+                cursor:pointer;
+            }
+        }
+    }
+    
+}
+

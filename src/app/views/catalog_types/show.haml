@@ -4,6 +4,6 @@
   %br/
   %b Import Method:
   = h @catalog_type.import_method
-= link_to t(:edit), edit_catalog_type_path(@catalog_type)
+= link_to t(:edit), edit_catalog_type_path(@catalog_type), :class => 'acts_as_button'
 |
-\#{link_to 'Back', catalog_types_path}
+=link_to t(:back), catalog_types_path, :class => 'acts_as_button darkgray'
