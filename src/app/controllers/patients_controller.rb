@@ -2,6 +2,8 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
+    return access_denied unless authorize(permissions = ["view_patient"])
+    
     @patients = Patient.all
 
     respond_to do |format|
@@ -13,6 +15,8 @@ class PatientsController < ApplicationController
   # GET /patients/1
   # GET /patients/1.xml
   def show
+    return access_denied unless authorize(permissions = ["view_patient"])
+
     @patient = Patient.find(params[:id])
 
     session[:active_patient_id] = @patient.id
@@ -26,6 +30,8 @@ class PatientsController < ApplicationController
   # GET /patients/new
   # GET /patients/new.xml
   def new
+    return access_denied unless authorize(permissions = ["create_patient"])
+
     @patient = Patient.new
 
     respond_to do |format|
@@ -36,12 +42,15 @@ class PatientsController < ApplicationController
 
   # GET /patients/1/edit
   def edit
+    return access_denied unless authorize(permissions = ["edit_patient"])
     @patient = Patient.find(params[:id])
   end
 
   # POST /patients
   # POST /patients.xml
   def create
+    return access_denied unless authorize(permissions = ["create_patient"])
+
     @patient = Patient.new(params[:patient])
     @case_file = CaseFile.new(:entry_date => Date.today())
 
@@ -72,6 +81,8 @@ class PatientsController < ApplicationController
   # PUT /patients/1
   # PUT /patients/1.xml
   def update
+    return access_denied unless authorize(permissions = ["edit_patient"])
+
     @patient = Patient.find(params[:id])
 
     respond_to do |format|
@@ -89,6 +100,8 @@ class PatientsController < ApplicationController
   # DELETE /patients/1
   # DELETE /patients/1.xml
   def destroy
+    return access_denied unless authorize(permissions = ["destroy_patient"])
+    
     @patient = Patient.find(params[:id])
     
     if @patient.destroy

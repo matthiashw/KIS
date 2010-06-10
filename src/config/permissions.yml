@@ -69,6 +69,7 @@ Diagnosis:
   delete_diagnosis: Delete every Diagnosis
 
 CaseFile:
+  setactive_casefile: activate CaseFile
   create_casefile: Create a CaseFile
   view_casefile: View all CaseFiles
   edit_casefile: Edit every CaseFile
