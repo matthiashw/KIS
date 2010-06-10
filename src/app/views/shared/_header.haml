@@ -18,7 +18,7 @@
     %a{:class => "links-link link-help", :href => ""}
         %img{:src => "/images/help.png", :alt => "Help"}
     - if current_user
-        = link_to t(:edit_profile), edit_user_path(:current), :class => "links-link"
+        = link_to t(:edit_profile), edit_user_path(current_user.id), :class => "links-link"
         = link_to t(:logout), logout_path, :class => "links-link"
     - else
         = link_to t(:register), new_user_path, :class => "links-link"
