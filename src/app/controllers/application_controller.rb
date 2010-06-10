@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_active_patient, :current_user, :current_user_session, :authorize?
 
   def default_url_options(options={})
-    logger.debug "default_url_options is passed options: #{options.inspect}\n"
+    #logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { :locale => I18n.locale }
   end
 
@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
 
   def access_denied
     flash[:error] = 'You have no permission to view this page.'
-    #render :file => '/layouts/error.haml', :status => 403, :layout => false and return false
+    render :file => '/layouts/error.haml', :status => 403, :layout => false and return false
   end
 
   private

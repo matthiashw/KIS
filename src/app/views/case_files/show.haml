@@ -6,8 +6,8 @@
   = h @case_file.leave_date
 = link_to t(:edit), edit_case_file_path(@case_file)
 |
-\#{link_to t(:destroy), @case_file, :confirm => 'Are you sure?', :method => :delete}
+=link_to t(:destroy), @case_file, :confirm => 'Are you sure?', :method => :delete, :class => 'acts_as_button lightgray'
 |
-\#{link_to t(:activate), {:controller => 'case_files', :action => 'setactive', :id => @case_file.id}}
+=link_to t(:activate), {:controller => 'case_files', :action => 'setactive', :id => @case_file.id}, :class => 'acts_as_button'
 |
-\#{link_to t(:back), case_files_path}
+=link_to t(:back), case_files_path, :class => 'acts_as_button darkgray'

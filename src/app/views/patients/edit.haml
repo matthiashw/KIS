@@ -27,6 +27,6 @@
     = f.text_field :phone
   %p
     = f.submit t(:update)
-= link_to t(:show), @patient
+= link_to t(:show), @patient, :class => 'acts_as_button'
 |
-\#{link_to t(:back), patients_path}
+=link_to t(:back), patients_path, :class => 'acts_as_button darkgray'

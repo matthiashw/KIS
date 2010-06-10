@@ -31,6 +31,7 @@ en:
       domains:        "Domains"
       permissions:    "Permissions"
       catalogs:       "Catalogs"
+      catalog_types:  "Catalog Types"
     tabs:
       master_data:    "Master Data"
       anamnesis:      "Anamnesis"
@@ -111,6 +112,7 @@ en:
     permissions:            "Permissions"
     catalog_management:     "Catalog Management"
     catalogs:               "Catalogs"
+    catalog_types:          "Catalog Types"
     catalog_errors:
         import_file_not_blank: "Import file can't be blank!"
         import_file_invalid: "Import file invalid!"

@@ -14,7 +14,9 @@ class PatientsController < ApplicationController
   # GET /patients/1.xml
   def show
     @patient = Patient.find(params[:id])
-
+    #@comment = @patient.comments.build(params[:comment])
+    @comments = Comment.find_all_by_patient_id(params[:id], :order => "created_at DESC")
+    
     session[:active_patient_id] = @patient.id
 
     respond_to do |format|
@@ -22,6 +24,18 @@ class PatientsController < ApplicationController
       format.xml  { render :xml => @patient }
     end
   end
+
+  def comment
+    mycomment = params[:comment]
+    if mycomment[:comment].blank?
+      flash[:error] = 'Fill in a comment'
+    else
+      Patient.find(params[:id]).comments.create(params[:comment])
+      flash[:notice] = 'Added your comment'
+    end
+    redirect_to :action => "show", :id => params[:id]
+  end
+  
 
   # GET /patients/new
   # GET /patients/new.xml

@@ -15,4 +15,4 @@
       %td= link_to t(:edit), edit_appointment_path(appointment)
       %td= link_to t(:destroy), appointment, :confirm => 'Are you sure?', :method => :delete
 %br/
-= link_to t(:new_appointment_button), new_appointment_path
+= link_to t(:new_appointment_button), new_appointment_path, :class => 'acts_as_button'

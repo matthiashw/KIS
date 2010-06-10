@@ -11,6 +11,6 @@
     = f.select(:import_method, ImporterManager.instance.import_methods.keys )
   %p
     = f.submit 'Update'
-= link_to t(:show), @catalog_type
+= link_to t(:show), @catalog_type, :class => 'acts_as_button'
 |
-\#{link_to 'Back', catalog_types_path}
+=link_to t(:back), catalog_types_path, :class => 'acts_as_button darkgray'

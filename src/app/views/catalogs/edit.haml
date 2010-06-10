@@ -10,7 +10,7 @@
     %br/
     = f.text_field :language
   %p
-    = f.submit 'Update'
-= link_to t(:show), @catalog
+    = f.submit t(:update)
+= link_to t(:show), @catalog, :class => 'acts_as_button'
 |
-\#{link_to 'Back', catalogs_path}
+=link_to t(:back), catalogs_path, :class => 'acts_as_button darkgray'

@@ -10,6 +10,6 @@
 %p
   %b Is userdomain:
   = h @domain.is_userdomain
-= link_to t(:edit), edit_domain_path(@domain)
+= link_to t(:edit), edit_domain_path(@domain), :class => 'acts_as_button'
 |
-\#{link_to 'Back', domains_path}
+=link_to t(:back), domains_path, :class => 'acts_as_button darkgray'

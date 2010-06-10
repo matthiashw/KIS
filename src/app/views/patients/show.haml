@@ -1,23 +1,54 @@
-%p
-  %b=t(:first_name)
-  = h @patient.first_name
-%p
-  %b=t(:family_name)
-  = h @patient.family_name
-%p
-  %b=t(:birthdate)
-  = h @patient.birthdate
-%p
-  %b=t(:address)
-  = h @patient.address
-%p
-  %b=t(:sex)
-  = h @patient.sex
-%p
-  %b=t(:phone)
-  = h @patient.phone
-= link_to t(:edit), edit_patient_path(@patient)
-|
-\#{link_to t(:destroy), @patient, :confirm => 'Are you sure?', :method => :delete}
-|
-\#{link_to t(:back), patients_path}
+-title t('navi.tabs.master_data')
+
+.fields
+    .field
+        .field-label
+            =t(:first_name)
+        .field-content
+            = h @patient.first_name
+    .field
+        .field-label
+            =t(:family_name)
+        .field-content
+            = h @patient.family_name
+    .field
+        .field-label
+            =t(:birthdate)
+        .field-content
+            = h @patient.birthdate
+    .field
+        .field-label
+            =t(:address)
+        .field-content
+            = h @patient.address
+    .field
+        .field-label
+            =t(:sex)
+        .field-content
+            = h @patient.sex
+    .field
+        .field-label
+            =t(:phone)
+        .field-content
+            = h @patient.phone
+
+#comments
+    %h2 Comments
+    %ul.comments-list
+        -@comments.each do |comment|
+            %li.comment
+                .comment-body=comment.comment
+                .comment-date=show_date(comment.created_at)
+
+    .comment_form
+        -form_tag :action => "comment", :id => @patient do
+            =error_messages_for :comment
+            =text_area "comment", "comment", :size => '34x3'
+            =submit_tag "Comment"
+
+.action-links
+    = link_to t(:edit), edit_patient_path(@patient), :class => 'acts_as_button'
+    |
+    =link_to t(:destroy), @patient, :confirm => 'Are you sure?', :method => :delete, :class => 'acts_as_button lightgray'
+    |
+    =link_to t(:back), patients_path, :class => 'acts_as_button darkgray'

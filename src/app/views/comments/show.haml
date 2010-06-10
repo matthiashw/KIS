@@ -4,6 +4,6 @@
 %p
   %b Date:
   = h @comment.date
-= link_to t(:edit), edit_comment_path(@comment)
+= link_to t(:edit), edit_comment_path(@comment), :class => 'acts_as_button'
 |
-\#{link_to 'Back', comments_path}
+=link_to t(:back), comments_path, :class => 'acts_as_button darkgraa'

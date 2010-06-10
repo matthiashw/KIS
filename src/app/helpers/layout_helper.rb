@@ -39,11 +39,16 @@ module LayoutHelper
     return ""
   end
 
-  def make_submenu?(*args)
+  def is_controller_active?(*args)
     args.each do |a|
       return true if params[:controller] == a
     end
     return false
+  end
+
+  # formats the date
+  def show_date(date)
+    date.strftime("%d. %B, %Y - %H:%M")
   end
 
 end

@@ -8,7 +8,8 @@
 
 %dl.admin-list.catalog-management
     %dt=t('admin.catalog_management')
-    %dd.last=link_to image_tag("catalogs.png", :alt => "Catalogs") + t('admin.catalogs'), catalogs_path
+    %dd=link_to image_tag("catalogs.png", :alt => "Catalogs") + t('admin.catalogs'), catalogs_path
+    %dd.last=link_to image_tag("catalog_types.png", :alt => "Catalog Types") + t('admin.catalog_types'), catalog_types_path
 
 %dl.admin-list.file-management
     %dt=t('admin.file_management')
