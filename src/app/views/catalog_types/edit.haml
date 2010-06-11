@@ -1,16 +1,16 @@
-%h1 Editing catalog_type
+%h1=t('admin.catalog_type.edit')
 - form_for(@catalog_type) do |f|
   = f.error_messages
   %p
-    = f.label :name
+    = f.label t('admin.catalog_type.name')
     %br/
     = f.text_field :name
   %p
-    = f.label :import_method
+    = f.label t('admin.catalog_type.import_method')
     %br/
     = f.select(:import_method, ImporterManager.instance.import_methods.keys )
   %p
-    = f.submit 'Update'
-= link_to t(:show), @catalog_type, :class => 'acts_as_button'
+    = f.submit t('action.update')
+= link_to t('action.show'), @catalog_type, :class => 'acts_as_button'
 |
-=link_to t(:back), catalog_types_path, :class => 'acts_as_button darkgray'
+=link_to t('action.back'), catalog_types_path, :class => 'acts_as_button darkgray'

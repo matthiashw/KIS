@@ -1,16 +1,16 @@
-%h1 Import catalog
+%h1=t('admin.catalog.import')
 - form_for :catalog, @catalog,:url => {:action=> 'create'}, :html => { :multipart => true }, do |f|
   = f.error_messages
   %p
-    = f.label :year
+    = f.label t('admin.catalog.year')
     %br/
     = f.text_field :year
   %p
-    = f.label :language
+    = f.label t('admin.catalog.language')
     %br/
     = f.text_field :language
   %p
-    = f.label :catalog_type_id
+    = f.label t('admin.catalog.type_id')
     %br/
     = f.collection_select( :catalog_type_id, CatalogType.find(:all),:id,:name )
   %p
@@ -18,6 +18,6 @@
     %br/
     = f.file_field :dump
   %p
-    = f.submit 'Import'
+    = f.submit t('admin.catalog.import_button')
     %br/
-= link_to t(:back), catalogs_path, :class => 'acts_as_button darkgray'
+= link_to t('action.back'), catalogs_path, :class => 'acts_as_button darkgray'

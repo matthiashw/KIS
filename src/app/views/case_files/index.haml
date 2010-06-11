@@ -1,8 +1,8 @@
 %h1=t('case_file.listing')
 %table
   %tr
-    %th Entry date
-    %th Leave date
+    %th=t('case_file.entry_date')
+    %th=t('case_file.leave_date')
   - if @case_files
     - @case_files.each do |case_file|
       %tr{:onclick=>"location.href='#{url_for :controller => 'case_files', :action => 'show', :id => case_file.id}';",:style=>"cursor:pointer;"}

@@ -1,19 +1,19 @@
-%h1=t(:new_treatment)
+%h1=t('treatment.new')
 
 - form_for(@treatment, :url =>  patient_case_file_treatments_path(params[:patient_id], params[:case_file_id])) do |f|
   = f.error_messages
 
   %p
-    = f.label :description
+    = f.label t('treatment.description')
     %br/
     = f.text_area :description
 
   %p
-    = f.label :start_date
+    = f.label t('treatment.starting_date')
     %br/
     = f.date_select :start_date
 
   %p
-    = f.submit t(:create)
+    = f.submit t('action.create')
 
-= link_to t(:back),  patient_case_file_treatments_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id]), :class => 'acts_as_button darkgray'
+= link_to t('action.back'),  patient_case_file_treatments_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id]), :class => 'acts_as_button darkgray'

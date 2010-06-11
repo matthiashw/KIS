@@ -9,18 +9,18 @@
     -if current_active_patient
         .patient.messages.message
             -if current_active_patient
-                =t(:active_patient) + ":"
+                =t('patient.active') + ":"
                 =current_active_patient.first_name
                 =current_active_patient.family_name
-                =link_to t(:show), {:controller => 'patients', :action => 'show', :id => current_active_patient.id}
-                =link_to t(:edit), {:controller => 'patients', :action => 'edit', :id => current_active_patient.id}
+                =link_to t('action.show'), {:controller => 'patients', :action => 'show', :id => current_active_patient.id}
+                =link_to t('action.edit'), {:controller => 'patients', :action => 'edit', :id => current_active_patient.id}
 
     %a{:class => "links-link link-help", :href => ""}
         %img{:src => "/images/help.png", :alt => "Help"}
     - if current_user
-        = link_to t(:edit_profile), edit_user_path(current_user.id), :class => "links-link"
-        = link_to t(:logout), logout_path, :class => "links-link"
+        = link_to t('edit_profile'), edit_user_path(current_user.id), :class => "links-link"
+        = link_to t('logout'), logout_path, :class => "links-link"
     - else
-        = link_to t(:register), new_user_path, :class => "links-link"
-        = link_to t(:login), login_path, :class => "links-link"
+        = link_to t('register'), new_user_path, :class => "links-link"
+        = link_to t('login'), login_path, :class => "links-link"
 

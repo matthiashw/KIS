@@ -1,7 +1,7 @@
-%h1 Editing comment
+%h1=t('comment.edit')
 
 = render :partial => 'form'
 
-= link_to t(:show), @comment, :class => 'acts_as_button'
+= link_to t('action.show'), @comment, :class => 'acts_as_button'
 |
-=link_to t(:back), comments_path, :class => 'acts_as_button darkgray'
+=link_to t('action.back'), comments_path, :class => 'acts_as_button darkgray'

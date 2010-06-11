@@ -2,15 +2,15 @@
 - form_for(@case_file) do |f|
   = f.error_messages
   %p
-    = f.label :entry_date
+    = f.label t('case_file.entry_date')
     %br/
     = f.date_select :entry_date
   %p
-    = f.label :leave_date
+    = f.label t('case_file.leave_date')
     %br/
     = f.date_select :leave_date
   %p
-    = f.submit t(:update)
-= link_to t(:show), @case_file, :class => 'acts_as_button'
+    = f.submit t('action.update')
+= link_to t('action.show'), @case_file, :class => 'acts_as_button'
 |
-=link_to t(:back), case_files_path, :class => 'acts_as_button darkgray'
+=link_to t('action.back'), case_files_path, :class => 'acts_as_button darkgray'

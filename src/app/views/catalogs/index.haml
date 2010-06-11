@@ -1,16 +1,16 @@
-%h1 Listing catalogs
+%h1=t('admin.catalog.listing')
 %table
   %tr
-    %th Year
-    %th Language
-    %th Catalog Type
+    %th=t('admin.catalog.year')
+    %th=t('admin.catalog.language')
+    %th=t('admin.catalog.type')
   - @catalogs.each do |catalog|
     %tr
       %td= h catalog.year
       %td= h catalog.language
       %td= h catalog.catalog_type.name
-      %td= link_to t(:show), catalog
-      %td= link_to t(:edit), edit_catalog_path(catalog)
-      %td= link_to t(:destroy), catalog, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to t('action.show'), catalog
+      %td= link_to t('action.edit'), edit_catalog_path(catalog)
+      %td= link_to t('action.destroy'), catalog, :confirm => t('delete_confirmation'), :method => :delete
 %br/
-= link_to 'New catalog', new_catalog_path, :class => 'acts_as_button'
+= link_to t('admin.catalog.new_button'), new_catalog_path, :class => 'acts_as_button'

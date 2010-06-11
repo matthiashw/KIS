@@ -1,12 +1,12 @@
 - form_for @comment do |f|
   = f.error_messages
   %p
-    = f.label :comment
+    = f.label t('comment.string')
     %br/
     = f.text_area :comment, :size => '34x3'
   %p
-    = f.label :date
+    = f.label t('comment.date')
     %br/
     = f.date_select :date
   %p
-    = f.submit t(:save_changes)
+    = f.submit t('action.save')

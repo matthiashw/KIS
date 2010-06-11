@@ -1,18 +1,18 @@
-%h1=t(:domain_listing)
+%h1=t('domain.listing')
 %table
   %tr
-    %th=t(:domain_name)
-    %th=t(:result_name)
-    %th=t(:is_role)
-    %th{:colspan => "4"}=t(:is_userdomain)
+    %th=t('domain.name')
+    %th=t('domain.result_name')
+    %th=t('domain.is_role')
+    %th{:colspan => "4"}=t('domain.is_userdomain')
   - @domains.each do |domain|
     %tr
       %td= h domain.name
       %td= h domain.result_name
       %td= h domain.is_role
       %td= h domain.is_userdomain
-      %td= link_to t(:show), domain
-      %td= link_to t(:edit), edit_domain_path(domain)
-      %td= link_to t(:destroy), domain, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to t('action.show'), domain
+      %td= link_to t('action.edit'), edit_domain_path(domain)
+      %td= link_to t('action.destroy'), domain, :confirm => t('delete_confirmation'), :method => :delete
 %br/
-= link_to t(:new_domain), new_domain_path, :class => 'acts_as_button'
+= link_to t('domain.new_button'), new_domain_path, :class => 'acts_as_button'

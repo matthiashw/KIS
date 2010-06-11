@@ -1,30 +1,30 @@
-%h1=t(:new_patient)
+%h1=t('patient.new')
 - form_for(@patient) do |f|
   = f.error_messages
   %p
-    = f.label t(:first_name)
+    = f.label t('patient.first_name')
     %br/
     = f.text_field :first_name
   %p
-    = f.label t(:family_name)
+    = f.label t('patient.family_name')
     %br/
     = f.text_field :family_name
   %p
-    = f.label t(:birthdate)
+    = f.label t('patient.birthdate')
     %br/
     = f.date_select :birthdate , :start_year => 1900
   %p
-    = f.label t(:address)
+    = f.label t('patient.address')
     %br/
     = f.text_area :address
   %p
-    = f.label t(:sex)
+    = f.label t('patient.sex')
     %br/
     = f.select :sex, %w(male female)
   %p
-    = f.label t(:phone)
+    = f.label t('patient.phone')
     %br/
     = f.text_field :phone
   %p
-    = f.submit t(:create)
-= link_to t(:back), patients_path, :class => 'acts_as_button darkgray'
+    = f.submit t('action.create')
+= link_to t('action.back'), patients_path, :class => 'acts_as_button darkgray'

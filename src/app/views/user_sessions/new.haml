@@ -1,17 +1,17 @@
-- title t(:login)
+- title t('login')
 
 - form_for @user_session do |f|
     = f.error_messages
     %p
-        = f.label t(:username)
+        = f.label t('username')
         %br/
         = f.text_field :username
     %p
-        = f.label t(:password)
+        = f.label t('password')
         %br/
         = f.password_field :password
     %p
-        = f.submit t(:save_changes)
+        = f.submit t('login')
 
 %p
-    = link_to t(:register), new_user_path, :class => 'acts_as_button'
+    = link_to t('register'), new_user_path, :class => 'acts_as_button'

@@ -1,15 +1,15 @@
 %p
-  %b Name:
+  %b=t('domain.name') + ":"
   = h @domain.name
 %p
-  %b Result name:
+  %b=t('domain.result_name') + ":"
   = h @domain.result_name
 %p
-  %b Is role:
+  %b=t('domain.is_role') + ":"
   = h @domain.is_role
 %p
-  %b Is userdomain:
+  %b=t('domain.nameis_userdomain') + ":"
   = h @domain.is_userdomain
-= link_to t(:edit), edit_domain_path(@domain), :class => 'acts_as_button'
+= link_to t('action.edit'), edit_domain_path(@domain), :class => 'acts_as_button'
 |
-=link_to t(:back), domains_path, :class => 'acts_as_button darkgray'
+=link_to t('action.back'), domains_path, :class => 'acts_as_button darkgray'

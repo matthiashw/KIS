@@ -1,24 +1,24 @@
-%h1=t(:editing_appointment)
+%h1=t('appointment.edit')
 - form_for(@appointment) do |f|
   = f.error_messages
   %p
-    = f.label t(:starting_date)
+    = f.label t('appointment.starting_date')
     %br/
     = f.date_select :start_date
   %p
-    = f.label t(:ending_date)
+    = f.label t('appointment.ending_date')
     %br/
     = f.date_select :end_date
   %p
-    = f.label t(:appointment_name)
+    = f.label t('appointment.name')
     %br/
     = f.text_field :name
   %p
-    = f.label t(:appointment_description)
+    = f.label t('appointment.description')
     %br/
     = f.text_area :description
   %p
-    = f.submit t(:update)
-= link_to t(:show), @appointment, :class => 'acts_as_button'
+    = f.submit t('action.update')
+= link_to t('action.show'), @appointment, :class => 'acts_as_button'
 |
-=link_to t(:back), appointments_path, :class => 'acts_as_button darkgray'
+=link_to t('action.back'), appointments_path, :class => 'acts_as_button darkgray'

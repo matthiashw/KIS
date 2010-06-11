@@ -3,37 +3,37 @@
 .fields
     .field
         .field-label
-            =t(:first_name)
+            =t('patient.first_name')
         .field-content
             = h @patient.first_name
     .field
         .field-label
-            =t(:family_name)
+            =t('patient.family_name')
         .field-content
             = h @patient.family_name
     .field
         .field-label
-            =t(:birthdate)
+            =t('patient.birthdate')
         .field-content
             = h @patient.birthdate
     .field
         .field-label
-            =t(:address)
+            =t('patient.address')
         .field-content
             = h @patient.address
     .field
         .field-label
-            =t(:sex)
+            =t('patient.sex')
         .field-content
             = h @patient.sex
     .field
         .field-label
-            =t(:phone)
+            =t('patient.phone')
         .field-content
             = h @patient.phone
 
 #comments
-    %h2 Comments
+    %h2=t('comments')
     %ul.comments-list
         -@comments.each do |comment|
             %li.comment
@@ -44,11 +44,11 @@
         -form_tag :action => "comment", :id => @patient do
             =error_messages_for :comment
             =text_area "comment", "comment", :size => '34x3'
-            =submit_tag "Comment"
+            =submit_tag t('comment.submit')
 
 .action-links
-    = link_to t(:edit), edit_patient_path(@patient), :class => 'acts_as_button'
+    = link_to t('action.edit'), edit_patient_path(@patient), :class => 'acts_as_button'
     |
-    =link_to t(:destroy), @patient, :confirm => 'Are you sure?', :method => :delete, :class => 'acts_as_button lightgray'
+    =link_to t('action.destroy'), @patient, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
     |
-    =link_to t(:back), patients_path, :class => 'acts_as_button darkgray'
+    =link_to t('action.back'), patients_path, :class => 'acts_as_button darkgray'

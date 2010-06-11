@@ -1,14 +1,14 @@
-%h1 Listing comments
+%h1=t('comments.listing')
 %table
   %tr
-    %th Comment
-    %th Date
+    %th=t('comment.string')
+    %th=t('comment.date')
   - @comments.each do |comment|
     %tr
       %td= h comment.comment
       %td= h comment.date
-      %td= link_to t(:show), comment
-      %td= link_to t(:edit), edit_comment_path(comment)
-      %td= link_to t(:destroy), comment, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to t('action.show'), comment
+      %td= link_to t('action.edit'), edit_comment_path(comment)
+      %td= link_to t('action.destroy'), comment, :confirm => t('delete_confirmation'), :method => :delete
 %br/
-= link_to 'New comment', new_comment_path, :class => 'acts_as_button'
+= link_to t('comment.new_button'), new_comment_path, :class => 'acts_as_button'
