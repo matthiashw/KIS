@@ -1,9 +1,10 @@
 %p
-  %b=t('admin.catalog_type.name') + ":"
-  = h @catalog_type.name
-  %br/
-  %b=t('admin.catalog_type.import_method') + ":"
-  = h @catalog_type.import_method
-= link_to t('action.edit'), edit_catalog_type_path(@catalog_type), :class => 'acts_as_button'
-|
-=link_to t('action.back'), catalog_types_path, :class => 'acts_as_button darkgray'
+    %b=t('admin.catalog_type.name') + ":"
+    = h @catalog_type.name
+    %br/
+    %b=t('admin.catalog_type.import_method') + ":"
+    = h @catalog_type.import_method
+
+.action-links
+    = link_to t('action.edit'), edit_catalog_type_path(@catalog_type), :class => 'acts_as_button'
+    = link_to t('action.back'), catalog_types_path, :class => 'acts_as_button darkgray'

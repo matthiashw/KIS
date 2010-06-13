@@ -1,10 +1,11 @@
 %h1=t('case_file.new')
-- form_for(@case_file) do |f|
-  = f.error_messages
-  %p
-    = f.label t('case_file.entry_date')
-    %br/
-    = f.date_select :entry_date
-  %p
-    = f.submit t('action.create')
-= link_to (:back), case_files_path, :class => 'acts_as_button darkgray'
+
+- semantic_form_for @case_file do |f|
+    = f.error_messages
+
+    - f.inputs do
+        = f.input :entry_date
+    = f.buttons
+
+.action-links
+    = link_to (:back), case_files_path, :class => 'acts_as_button darkgray'

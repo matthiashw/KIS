@@ -2,6 +2,6 @@
 
 = render :partial => 'form'
 
-= link_to t('action.show'), @comment, :class => 'acts_as_button'
-|
-=link_to t('action.back'), comments_path, :class => 'acts_as_button darkgray'
+.action-links
+    = link_to t('action.destroy'), @comment, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
+    = link_to t('action.back'), patient_comment_path(:patient_id => params[:patient_id]), :class => 'acts_as_button darkgray'

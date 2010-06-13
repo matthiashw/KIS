@@ -14,5 +14,6 @@
       %td= link_to t('action.show'), domain
       %td= link_to t('action.edit'), edit_domain_path(domain)
       %td= link_to t('action.destroy'), domain, :confirm => t('delete_confirmation'), :method => :delete
-%br/
-= link_to t('domain.new_button'), new_domain_path, :class => 'acts_as_button'
+
+.action-links
+    = link_to t('domain.new_button'), new_domain_path, :class => 'acts_as_button'

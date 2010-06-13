@@ -1,15 +1,15 @@
 %p
-  %b=t('admin.catalog.year') + ":"
-  = h @catalog.year
+    %b=t('admin.catalog.year') + ":"
+    = h @catalog.year
 %p
-  %b=t('admin.catalog.language') + ":"
-  = h @catalog.language
+    %b=t('admin.catalog.language') + ":"
+    = h @catalog.language
 %p
-  %b=t('admin.catalog.type') + ":"
-  = h @catalog.catalog_type.name
+    %b=t('admin.catalog.type') + ":"
+    = h @catalog.catalog_type.name
 %p
-  #show_catalog_jtree 
-%br
-= link_to t('action.edit'), edit_catalog_path(@catalog), :class => 'acts_as_button'
+    #show_catalog_jtree
 
-=link_to t('action.back'), catalogs_path, :class => 'acts_as_button darkgray'
+.action-links
+    = link_to t('action.edit'), edit_catalog_path(@catalog), :class => 'acts_as_button'
+    = link_to t('action.back'), catalogs_path, :class => 'acts_as_button darkgray'

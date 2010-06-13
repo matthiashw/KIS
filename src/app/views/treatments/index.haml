@@ -1,21 +1,13 @@
 %h1=t('treatment.listing')
 
 %table
-  %tr
-    %th=t('treatment.description')
-    %th=t('treatment.starting_date')
-    %th=t('treatment.action')
-  %tr
-
-  - @treatments.each do |treatment|
     %tr
-      %td= h treatment.description
-      %td= h treatment.start_date
-      %td
-        = link_to t('action.show'), patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => treatment)
-        = link_to t('action.edit'), edit_patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => treatment)
-      /= link_to t('action.destroy'), patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => treatment),  :confirm => t('delete_confirmation'), :method => :delete
+        %th=t('treatment.description')
+        %th=t('treatment.starting_date')
+    - @treatments.each do |treatment|
+        %tr{:onclick=>"location.href='#{url_for patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => treatment)}';",:style=>"cursor:pointer;"}
+            %td= h treatment.description
+            %td= h treatment.start_date
 
-%br/
-
-= link_to t('treatment.new_button'), new_patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id]), :class => 'acts_as_button'
+.action-links
+    = link_to t('treatment.new_button'), new_patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id]), :class => 'acts_as_button'

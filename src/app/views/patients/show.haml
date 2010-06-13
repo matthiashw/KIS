@@ -3,52 +3,53 @@
 .fields
     .field
         .field-label
-            =t('patient.first_name')
+            =t('formtastic.labels.patient.first_name')
         .field-content
             = h @patient.first_name
     .field
         .field-label
-            =t('patient.family_name')
+            =t('formtastic.labels.patient.family_name')
         .field-content
             = h @patient.family_name
     .field
         .field-label
-            =t('patient.birthdate')
+            =t('formtastic.labels.patient.birthdate')
         .field-content
             = h @patient.birthdate
     .field
         .field-label
-            =t('patient.address')
+            =t('formtastic.labels.patient.address')
         .field-content
             = h @patient.address
     .field
         .field-label
-            =t('patient.sex')
+            =t('formtastic.labels.patient.sex')
         .field-content
             = h @patient.sex
     .field
         .field-label
-            =t('patient.phone')
+            =t('formtastic.labels.patient.phone')
         .field-content
             = h @patient.phone
 
 #comments
-    %h2=t('comments')
+    %h2=t('comment.comments')
     %ul.comments-list
         -@comments.each do |comment|
             %li.comment
                 .comment-body=comment.comment
                 .comment-date=show_date(comment.created_at)
 
+    = will_paginate @comments
+
+    %h2.comment_form_headline=t('comment.new_comment')
     .comment_form
         -form_tag :action => "comment", :id => @patient do
             =error_messages_for :comment
             =text_area "comment", "comment", :size => '34x3'
-            =submit_tag t('comment.submit')
+            =submit_tag t('comment.new_comment')
+
 
 .action-links
     = link_to t('action.edit'), edit_patient_path(@patient), :class => 'acts_as_button'
-    |
-    =link_to t('action.destroy'), @patient, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
-    |
-    =link_to t('action.back'), patients_path, :class => 'acts_as_button darkgray'
+    = link_to t('action.back'), patients_path, :class => 'acts_as_button darkgray'

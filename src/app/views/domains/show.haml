@@ -10,6 +10,7 @@
 %p
   %b=t('domain.nameis_userdomain') + ":"
   = h @domain.is_userdomain
-= link_to t('action.edit'), edit_domain_path(@domain), :class => 'acts_as_button'
-|
-=link_to t('action.back'), domains_path, :class => 'acts_as_button darkgray'
+
+.action-links
+    = link_to t('action.edit'), edit_domain_path(@domain), :class => 'acts_as_button'
+    = link_to t('action.back'), domains_path, :class => 'acts_as_button darkgray'

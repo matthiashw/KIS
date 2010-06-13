@@ -15,8 +15,8 @@ class PatientsController < ApplicationController
   def show
     @patient = Patient.find(params[:id])
     #@comment = @patient.comments.build(params[:comment])
-    @comments = Comment.find_all_by_patient_id(params[:id], :order => "created_at DESC")
-    
+    @comments = Comment.paginate :page => params[:page], :order => 'created_at DESC', :conditions => ['patient_id = ?', params[:id]]
+    #@posts = Post.paginate :page => params[:page], :order => 'created_at DESC'
     session[:active_patient_id] = @patient.id
 
     respond_to do |format|

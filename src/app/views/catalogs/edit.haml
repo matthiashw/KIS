@@ -1,16 +1,12 @@
 %h1=t('admin.catalog.edit')
-- form_for(@catalog) do |f|
-  = f.error_messages
-  %p
-    = f.label t('admin.catalog.year')
-    %br/
-    = f.text_field :year
-  %p
-    = f.label t('admin.catalog.language')
-    %br/
-    = f.text_field :language
-  %p
-    = f.submit t('action.update')
-= link_to t('action.show'), @catalog, :class => 'acts_as_button'
-|
-=link_to t('action.back'), catalogs_path, :class => 'acts_as_button darkgray'
+
+- semantic_form_for @catalog do |f|
+    = f.error_messages
+
+    - f.inputs do
+        = f.input :year
+        = f.input :language
+    = f.buttons
+
+.action-links
+    = link_to t('action.back'), catalogs_path, :class => 'acts_as_button darkgray'

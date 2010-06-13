@@ -1,12 +1,13 @@
-%p>
-  %b=t('treatment.description')
-  =h @treatment.description
+%p
+    %b=t('treatment.description')
+    =h @treatment.description
 
 %p
-  %b=t('treatment.starting_date')
-  = h @treatment.start_date
+    %b=t('treatment.starting_date')
+    = h @treatment.start_date
 
 
-= link_to t('action.edit'), edit_patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment), :class => 'acts_as_button'
-|
-= link_to t('action.back'), patient_case_file_treatments_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment), :class => 'acts_as_button darkgray'
+.action-links
+    = link_to t('action.edit'), edit_patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment), :class => 'acts_as_button'
+    = link_to t('action.destroy'), patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment),  :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
+    = link_to t('action.back'), patient_case_file_treatments_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment), :class => 'acts_as_button darkgray'

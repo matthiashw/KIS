@@ -1,15 +1,16 @@
 %p
-  %b=t('appointment.starting_date')
-  = h @appointment.start_date
+    %b=t('appointment.starting_date')
+    = h @appointment.start_date
 %p
-  %b=t('appointment.ending_date')
-  = h @appointment.end_date
+    %b=t('appointment.ending_date')
+    = h @appointment.end_date
 %p
-  %b=t('appointment.name')
-  = h @appointment.name
+    %b=t('appointment.name')
+    = h @appointment.name
 %p
-  %b=t('appointment.description')
-  = h @appointment.description
-= link_to t('action.edit'), edit_appointment_path(@appointment), :class => 'acts_as_button'
-|
-=link_to t('action.back'), appointments_path, :class => 'acts_as_button darkgray'
+    %b=t('appointment.description')
+    = h @appointment.description
+
+.action-links
+    = link_to t('action.edit'), edit_appointment_path(@appointment), :class => 'acts_as_button'
+    = link_to t('action.back'), appointments_path, :class => 'acts_as_button darkgray'

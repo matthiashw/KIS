@@ -10,6 +10,7 @@ class Domain < ActiveRecord::Base
   has_many :tasks
 
   validates_uniqueness_of :name
+  validates_presence_of :name
   
   acts_as_permissible
 end

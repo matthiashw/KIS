@@ -2,6 +2,6 @@
 
 = render :partial => 'form'
 
-= link_to t('action.show'), @domain, :class => 'acts_as_button'
-|
-= link_to t('action.back'), domains_path, :class => 'acts_as_button darkgray'
+.action-links
+    = link_to t('action.destroy'), @domain, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
+    = link_to t('action.back'), domains_path, :class => 'acts_as_button darkgray'

@@ -1,4 +1,6 @@
 de:
+  name:                   "Deutsch"
+
   login:                  "Einloggen"
   logout:                 "Ausloggen"
   register:               "Registrieren"

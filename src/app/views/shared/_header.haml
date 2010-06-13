@@ -1,6 +1,6 @@
-.user
+.user-info
     =link_to make_image_link(current_user.username, "name"), edit_user_path(:current)
-.domain
+.domain-info
     %span.name
         - current_user.domains.each do |d|
             = d.name + ' '

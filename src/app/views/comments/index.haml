@@ -1,14 +1,14 @@
-%h1=t('comments.listing')
+%h1=t('comment.listing')
 %table
-  %tr
-    %th=t('comment.string')
-    %th=t('comment.date')
-  - @comments.each do |comment|
     %tr
-      %td= h comment.comment
-      %td= h comment.date
-      %td= link_to t('action.show'), comment
-      %td= link_to t('action.edit'), edit_comment_path(comment)
-      %td= link_to t('action.destroy'), comment, :confirm => t('delete_confirmation'), :method => :delete
-%br/
-= link_to t('comment.new_button'), new_comment_path, :class => 'acts_as_button'
+        %th=t('comment.string')
+        %th=t('comment.date')
+    - @comments.each do |comment|
+        %tr{:onclick=>"location.href='#{url_for :controller => 'comments', :action => 'show', :id => comment.id}';",:style=>"cursor:pointer;"}
+            %td= h comment.comment
+            %td= h show_date(comment.created_at)
+
+= will_paginate @comments
+
+.action-links
+    = link_to t('comment.new_comment'), new_comment_path, :class => 'acts_as_button'

@@ -16,6 +16,7 @@ class ImporterManager
     @import_methods.merge!(importer)
   end
 
+  public
   def import_methods
     @import_methods
   end

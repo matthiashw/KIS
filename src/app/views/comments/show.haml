@@ -1,9 +1,10 @@
 %p
-  %b=t('comment.string') + ":"
-  = h @comment.comment
+    %b=t('comment.string') + ":"
+    = h @comment.comment
 %p
-  %b=t('comment.date') + ":"
-  = h @comment.date
-= link_to t('action.edit'), edit_comment_path(@comment), :class => 'acts_as_button'
-|
-=link_to t('action.back'), comments_path, :class => 'acts_as_button darkgraa'
+    %b=t('comment.date') + ":"
+    = h @comment.date
+
+.action-links
+    = link_to t('action.edit'), edit_comment_path(@comment), :class => 'acts_as_button'
+    = link_to t('action.back'), comments_path, :class => 'acts_as_button darkgray'
