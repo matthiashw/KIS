@@ -1,41 +1,33 @@
-// User $j not $ to have no Conflicts with prototype etc
+/*!
+ * Ext JS Library 3.2.1
+ * Copyright(c) 2006-2010 Ext JS, Inc.
+ * licensing@extjs.com
+ * http://www.extjs.com/license
+ */
 
-var $j = jQuery.noConflict();
-$j.jstree._themes = "/jstreethemes/";
+Ext.onReady(function(){
+   if (Ext.get('catalog_tree')) {
+    root = new Ext.tree.AsyncTreeNode({
+        text: 'Invisible Root',
+        id:'0'
+      });
+    
 
-// Catalog show tree Fuction
+    new Ext.tree.TreePanel({
+        renderTo: 'catalog_tree',
+         root: root,
+          rootVisible:false,
+           border: false,
+          loader: new Ext.tree.TreeLoader({
+          url: window.location.href,
+          requestMethod:'GET',
+          baseParams:{format:'json'}
+        })
+       
 
-$j(function () { 
-    $j("#show_catalog_jtree")
-		.jstree({
-                        "core" : {
-                                "html_titles" :true,
-                                 "animation" : 0
-                        },
-                        "themes" : {
-                                "theme" : "default",
-                                "dots" : false,
-                                "icons" : true
-                            },
-                        "json_data" : {
-                            
-                            "ajax" : {
-                                "dataType" : "json",
-                                "data" : function (n) {
-                                    return {
-                                    nodeid : n.attr ? n.attr("id") : -1
-                                    }
-                                }
-                            
+    });
+   root.expand();
 
-                            },
-                            "progressive_render"  : true
+   }
 
-                        },
-                       
-                        "plugins" : [ "themes", "json_data"]
-
-
-                });
 });
-

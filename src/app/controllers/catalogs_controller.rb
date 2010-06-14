@@ -18,9 +18,9 @@ class CatalogsController < ApplicationController
   def show
     @catalog = Catalog.find(params[:id])
 
-    if params.has_key?(:nodeid)
-     nodeid=params[:nodeid]
-     if nodeid=="-1"
+    if params.has_key?(:node)
+     nodeid=params[:node]
+     if nodeid=="0"
         @shownode=@catalog.root_node
      else
        node=Node.find nodeid
