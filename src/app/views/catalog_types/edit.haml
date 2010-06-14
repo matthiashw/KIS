@@ -10,6 +10,14 @@
     %br/
     = f.select(:import_method, ImporterManager.instance.import_methods.keys )
   %p
+    = f.label :application
+    %br/
+    = f.select(  :application, CatalogManager.instance.application_names )
+  %p
+    = f.label :active_catalog_id
+    %br/
+    = f.collection_select(  :active_catalog_id, @catalog_type.catalogs , :id, :catalog_select_name)
+  %p
     = f.submit 'Update'
 = link_to t(:show), @catalog_type, :class => 'acts_as_button'
 |

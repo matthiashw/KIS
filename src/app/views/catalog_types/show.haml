@@ -4,6 +4,9 @@
   %br/
   %b Import Method:
   = h @catalog_type.import_method
+  %br/
+  %b Application:
+  = h CatalogManager.instance.applications[@catalog_type.application]['name']
 = link_to t(:edit), edit_catalog_type_path(@catalog_type), :class => 'acts_as_button'
 |
 =link_to t(:back), catalog_types_path, :class => 'acts_as_button darkgray'

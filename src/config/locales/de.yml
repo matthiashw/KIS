@@ -29,6 +29,7 @@ de:
       domains:        "Domänen"
       permissions:    "Berechtigungen"
       catalogs:       "Kataloge"
+      catalog_types:  "Katalog Typen"
     tabs:
       master_data:    "Stammdaten"
       anamnesis:      "Anamnese"
@@ -89,6 +90,12 @@ de:
     permissions:            "Berechtigungen"
     catalog_management:     "Katalog Verwaltung"
     catalogs:               "Kataloge"
+    catalog_types:          "Katalog Typen"
+    catalog_errors:
+        import_file_not_blank: "Import Datei muss angegeben werden!"
+        import_file_invalid: "Falsches Importformat!"
+    catalog_type_errors:
+        application_error:  "Die Import-Methode kann die gewünschte Anwendung nicht bereitstellen!"
     file_management:        "Datei Verwaltung"
     export:                 "Export"
 

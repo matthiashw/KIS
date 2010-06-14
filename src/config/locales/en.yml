@@ -116,5 +116,7 @@ en:
     catalog_errors:
         import_file_not_blank: "Import file can't be blank!"
         import_file_invalid: "Import file invalid!"
+    catalog_type_errors:
+        application_error:  "The Importer can't provide catalogs for the application you chose!"
     file_management:        "File Management"
     export:                 "Export"
