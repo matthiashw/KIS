@@ -2,13 +2,12 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :set_locale
+  before_filter :set_locale, :login_required
   def set_locale
   # if params[:locale] is nil then I18n.default_locale will be used
     I18n.locale = params[:locale]
   end
 
-  before_filter :login_required
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
