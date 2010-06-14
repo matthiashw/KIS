@@ -1,15 +1,15 @@
 %ul.main-navigation
     %li{:class => "first main-navigation-leaf"}
         - if authorize?('view_patient')
-            =link_to make_image_link(t('navi.main.patients'), 'navi-img navi-img-patient'), patients_path, :class => is_active_multiple_controller?('patients', 'case_files')
-            - if is_controller_active?('patients', 'case_files')
+            =link_to make_image_link(t('navi.main.patients'), 'navi-img navi-img-patient'), patients_path, :class => is_active_multiple_controller?('patients', 'case_files', 'treatments')
+            - if is_controller_active?('patients', 'case_files', 'treatments')
                 =image_tag "main_navi_active.png", :alt => 'active menu', :class => "navi-img-active"
-            - if is_controller_active?('patients', 'case_files')
+            - if is_controller_active?('patients', 'case_files', 'treatments')
                 %ul.main-subnavigation
                     %li{:class => "main-subnavigation-leaf"}
                         =link_to t('navi.main.search_patient'), patients_path, :class => is_active?('patients', 'index')
                     %li{:class => "main-subnavigation-leaf"}
-                        =link_to t('new_patient'), new_patient_path, :class => is_active?('patients', 'new')
+                        =link_to t('patient.new'), new_patient_path, :class => is_active?('patients', 'new')
     %li{:class => "main-navigation-leaf"}
         - if authorize?('view_patient')
             =link_to make_image_link(t('navi.main.tasks'), 'navi-img navi-img-aufgabe'), patients_path, :class => is_active?('')

@@ -1,23 +1,12 @@
-%h1 Import catalog
-- form_for :catalog, @catalog,:url => {:action=> 'create'}, :html => { :multipart => true }, do |f|
-  = f.error_messages
-  %p
-    = f.label :year
-    %br/
-    = f.text_field :year
-  %p
-    = f.label :language
-    %br/
-    = f.text_field :language
-  %p
-    = f.label :catalog_type_id
-    %br/
-    = f.collection_select( :catalog_type_id, CatalogType.find(:all),:id,:name )
-  %p
-    = f.label :dump ,"Catalog"
-    %br/
-    = f.file_field :dump
-  %p
-    = f.submit 'Import'
-    %br/
-= link_to t(:back), catalogs_path, :class => 'acts_as_button darkgray'
+%h1=t('admin.catalog.import')
+
+- semantic_form_for @catalog do |f|
+    = f.error_messages
+
+    - f.inputs do
+        = f.input :year
+        = f.input :language
+        = f.input :catalog_type_id, :as => :select,  :collection => CatalogType.find(:all), :include_blank => false, :required => true
+        = f.input :dump, :as => :file, :required => true
+    = f.buttons
+

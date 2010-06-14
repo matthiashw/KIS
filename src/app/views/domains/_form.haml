@@ -1,20 +1,9 @@
-- form_for(@domain) do |f|
-  = f.error_messages
-  %p
-    = f.label t(:domain_name)
-    %br/
-    = f.text_field :name
-  %p
-    = f.label t(:result_name)
-    %br/
-    = f.text_field :result_name
-  %p
-    = f.label t(:is_role)
-    %br/
-    = f.check_box :is_role
-  %p
-    = f.label t(:is_userdomain)
-    %br/
-    = f.check_box :is_userdomain
-  %p
-    = f.submit t(:save_changes)
+- semantic_form_for @domain do |f|
+    = f.error_messages
+
+    - f.inputs do
+        = f.input :name
+        = f.input :result_name
+        = f.input :is_role
+        = f.input :is_userdomain
+    = f.buttons

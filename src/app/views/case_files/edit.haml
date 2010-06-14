@@ -1,16 +1,13 @@
 %h1 Editing case_file
-- form_for(@case_file) do |f|
-  = f.error_messages
-  %p
-    = f.label :entry_date
-    %br/
-    = f.date_select :entry_date
-  %p
-    = f.label :leave_date
-    %br/
-    = f.date_select :leave_date
-  %p
-    = f.submit t(:update)
-= link_to t(:show), @case_file, :class => 'acts_as_button'
-|
-=link_to t(:back), case_files_path, :class => 'acts_as_button darkgray'
+
+- semantic_form_for @case_file do |f|
+    = f.error_messages
+
+    - f.inputs do
+        = f.input :entry_date
+        = f.input :leave_date
+    = f.buttons
+
+.action-links
+    = link_to t('action.destroy'), @case_file, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
+    = link_to t('action.back'), case_files_path, :class => 'acts_as_button darkgray'

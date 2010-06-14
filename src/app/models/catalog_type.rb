@@ -4,7 +4,7 @@ class CatalogType < ActiveRecord::Base
   validate do |type|
     apclass=CatalogManager.instance.applications[type.application]['entry_classname']
     if !ImporterManager.instance.entry_types[type.import_method].constantize.new.is_a?(apclass.constantize)
-        type.errors.add_to_base I18n.t('admin.catalog_type_errors.application_error')
+        type.errors.add_to_base I18n.t('admin.catalog_type.errors.application')
     end
   end
 

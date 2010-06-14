@@ -4,9 +4,7 @@
     %head
         %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'utf-8'}
         %title= h(yield(:title) || "Untitled")
-        = stylesheet_link_tag 'reset'
-        = stylesheet_link_tag 'master'
-        = stylesheet_link_tag 'style'
+        = stylesheet_link_tag 'reset', 'formtastic', 'formtastic_changes','master', 'style', :cache => 'base'
         = javascript_include_tag 'prototype', 'jquery' , 'jstree' ,'application', :cache => true
     %body
         #wrapper
