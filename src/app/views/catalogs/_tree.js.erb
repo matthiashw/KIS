@@ -1,2 +1,15 @@
 
-[<% if !@shownode.children.empty?%><% commacount=@shownode.children.size %><% @shownode.children.each do |node| %>{"attr": { "id":"<%=  node.id %>"}, "data" : "<%=  node.name %>","state":"closed"}<% commacount=commacount-1;  if commacount!=0  %>,<% end %><%  end %><%end %><% if !@shownode.entries.empty?%><% commacount=@shownode.entries.size %><% @shownode.entries.each do |entry| %>{"attr": { "id":"entry<%=  entry.id %>"}, "data" : "<span id='node-id'><%=  entry.code %>:</span><span id='node-name'> <%= entry.name%> </span><br/> <span id='node-description'><%= entry.description %></span> "}<% commacount=commacount-1;  if commacount!=0  %>,<% end %><%  end %><%  end %>]
+[<% if !@shownode.children.empty?
+  commacount=@shownode.children.size
+  @shownode.children.each do |node| 
+  %>{text: '<%=  node.name %>' ,  id:'<%=  node.id %>' , cls : 'folder'}<%
+    commacount=commacount-1;  if commacount!=0
+    %>,<% end end end
+
+if !@shownode.entries.empty?
+commacount=@shownode.entries.size
+@shownode.entries.each do |entry|
+%>{ id:'entry<%=  entry.id %>', text : '<span id="node-id"><%= entry.code %>:</span><span id="node-name"><%= entry.name%></span><br/><span id="node-description"><%= entry.description %></span>', leaf : true}<%
+  commacount=commacount-1;  if commacount!=0
+  %>,<% end  end  end %>]
+

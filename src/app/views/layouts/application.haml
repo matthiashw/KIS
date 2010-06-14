@@ -4,8 +4,8 @@
     %head
         %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'utf-8'}
         %title= h(yield(:title) || "Untitled")
-        = stylesheet_link_tag 'reset', 'formtastic', 'formtastic_changes','master', 'style', :cache => 'base'
-        = javascript_include_tag 'prototype', 'jquery' , 'jstree' ,'application', :cache => true
+        = stylesheet_link_tag 'reset', 'formtastic', 'formtastic_changes','master', 'style','../ext/resources/css/ext-all.css', :cache => 'base'
+        = javascript_include_tag 'prototype', '../ext/adapter/ext/ext-base.js' ,'../ext/ext-all.js','application', :cache => true
     %body
         #wrapper
             #container
