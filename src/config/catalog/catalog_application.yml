@@ -1,0 +1,12 @@
+## Catalog Applications
+# key_to_catalog:
+#    name: Name of Application
+#    entry_classname: Max
+# The default template entry should always be present !!
+
+template:
+   name: Template system
+   entry_classname: FieldEntry
+ucum_units:
+   name: Ucum units
+   entry_classname: UcumEntry

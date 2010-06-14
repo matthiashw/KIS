@@ -142,6 +142,9 @@ de:
     catalog_management:     "Katalog Verwaltung"
 
     catalogs:               "Kataloge"
+
+    catalog_types:          "Katalogtypen"
+   
     catalog_type:
       listing:              "Liste der Katalogtypen"
       new_button:           "Neuen Katalogtyp hinzufügen"
@@ -149,6 +152,8 @@ de:
       edit:                 "Katalogtyp bearbeiten"
       import_method:        "Import-Methode"
       name:                 "Name"
+      errors:
+        application:        "Die Import-Methode kann die gewünschte Anwendung nicht bereitstellen!"
     catalog:
       listing:              "Liste der Kataloge"
       new_button:           "Neuen Katalog hinzufügen"
@@ -163,9 +168,8 @@ de:
       import:               "Katalog Importieren"
       import_button:        "Katalog Importieren"
       errors:
-        import_file_not_blank: "Import file can't be blank!"
-        import_file_invalid:   "Import file invalid!"
-
+        import_file_not_blank: "Import Datei muss angegeben werden!"
+        import_file_invalid: "Falsches Importformat!"
     file_management:        "Datei Verwaltung"
     export:                 "Export"
 

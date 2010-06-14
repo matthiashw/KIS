@@ -215,6 +215,8 @@ en:
       edit:                 "Editing catalog type"
       import_method:        "Import method"
       name:                 "Name"
+      errors:
+        application:  "The Importer can't provide catalogs for the application you chose!"
     catalog:
       listing:              "Listing catalogs"
       new_button:           "Add new catalog"
@@ -228,9 +230,8 @@ en:
       language:             "Language"
       import:               "Import catalog"
       import_button:        "Import catalog"
-    catalog_errors:
+      errors:
         import_file_not_blank: "Import file can't be blank!"
-        import_file_invalid:   "Import file invalid!"
-        
+        import_file_invalid: "Import file invalid!"
     file_management:        "File Management"
     export:                 "Export"
