@@ -8,8 +8,10 @@
     %b=t('admin.catalog.type') + ":"
     = h @catalog.catalog_type.name
 %p
-    #catalog_tree
-   
+    = show_tree @catalog
+
+    
+
 .action-links
     = link_to t('action.edit'), edit_catalog_path(@catalog), :class => 'acts_as_button'
     = link_to t('action.back'), catalogs_path, :class => 'acts_as_button darkgray'
