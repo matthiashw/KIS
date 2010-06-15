@@ -3,7 +3,7 @@ class CaseFilesController < ApplicationController
 
   #marks selected case as active case
   def setactive
-    return access_denied unless authorize(permissions = ["setactive_casefile"])
+    return authorize(permissions = ["setactive_casefile"])
 
     @case_file = CaseFile.find(params[:id])
     @patient = Patient.find(@case_file.patient_id)
@@ -25,7 +25,7 @@ class CaseFilesController < ApplicationController
   # GET /case_files
   # GET /case_files.xml
   def index
-    return access_denied unless authorize(permissions = ["view_casefile"])
+    return authorize(permissions = ["view_casefile"])
 
     @case_files = CaseFile.find_all_by_patient_id(session[:active_patient_id])
 
@@ -38,7 +38,7 @@ class CaseFilesController < ApplicationController
   # GET /case_files/1
   # GET /case_files/1.xml
   def show
-    return access_denied unless authorize(permissions = ["view_casefile"])
+    return authorize(permissions = ["view_casefile"])
 
     @case_file = CaseFile.find(params[:id])
 
@@ -51,7 +51,7 @@ class CaseFilesController < ApplicationController
   # GET /case_files/new
   # GET /case_files/new.xml
   def new
-    return access_denied unless authorize(permissions = ["create_casefile"])
+    return authorize(permissions = ["create_casefile"])
 
     @case_file = CaseFile.new
 
@@ -63,7 +63,7 @@ class CaseFilesController < ApplicationController
 
   # GET /case_files/1/edit
   def edit
-    return access_denied unless authorize(permissions = ["edit_casefile"])
+    return authorize(permissions = ["edit_casefile"])
 
     @case_file = CaseFile.find(params[:id])
   end
@@ -71,7 +71,7 @@ class CaseFilesController < ApplicationController
   # POST /case_files
   # POST /case_files.xml
   def create
-    return access_denied unless authorize(permissions = ["create_casefile"])
+    return authorize(permissions = ["create_casefile"])
 
     @case_file = CaseFile.new(params[:case_file])
 
@@ -99,7 +99,7 @@ class CaseFilesController < ApplicationController
   # PUT /case_files/1
   # PUT /case_files/1.xml
   def update
-    return access_denied unless authorize(permissions = ["update_casefile"])
+    return authorize(permissions = ["update_casefile"])
 
     @case_file = CaseFile.find(params[:id])
 
@@ -118,7 +118,7 @@ class CaseFilesController < ApplicationController
   # DELETE /case_files/1
   # DELETE /case_files/1.xml
   def destroy
-    return access_denied unless authorize(permissions = ["destroy_casefile"])
+    return authorize(permissions = ["destroy_casefile"])
 
     @case_file = CaseFile.find(params[:id])
     @case_file.destroy
