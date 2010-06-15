@@ -163,31 +163,35 @@ $verylightgray:#eeeeee;
  * user, domain
  */
 
-.user, .domain {
-  width: 100px;
-  height: 62px;
-  float: left; }
+.user-info, .domain-info {
+    width: 100px;
+    height: 62px;
+    float: left;
 
-.user a, .domain a {
-    text-decoration:none;
+    a {
+        text-decoration:none;
+    }
+
+    .name {
+        font-size: 12px;
+        font-weight: bold;
+        text-shadow: 1px 1px 0px $verylightgray;
+        color:$darkgray;
+        display: block;
+        text-align: center;
+        margin-top: 33px;
+    }
+
 }
 
-.user {
+
+.user-info {
   background: transparent url('/images/user.png') no-repeat top center;
   margin: 18px 0 0 140px; }
 
-.domain {
+.domain-info {
   background: transparent url('/images/domain.png') no-repeat top center;
   margin: 18px 0 0 18px; }
-
-.user .name, .domain .name {
-  font-size: 12px;
-  font-weight: bold;
-  text-shadow: 1px 1px 0px $verylightgray;
-  color:$darkgray;
-  display: block;
-  text-align: center;
-  margin-top: 33px; }
 
 .patient.messages {
     padding:9px;
@@ -247,8 +251,13 @@ a.links-link {
  */
 
 .action-links {
- float:left;
- width:60%;
+    float:left;
+    width:60%;
+    margin:18px 0 0;
+
+    a {
+        margin-right:9px;
+    }
 }
 
 
@@ -269,11 +278,13 @@ a.links-link {
         list-style:none;
         padding:0;
         margin:0 0 18px;
-
-
+       
         .comment-body {
             background-color:$verylightgray;
             padding:9px;
+            border-radius:6px;
+            -moz-border-radius:6px;
+            -webkit-border-radius:6px;
         }
 
         .comment-date {
@@ -290,6 +301,12 @@ a.links-link {
         input {
             margin-top:9px;
         }
+     }
+
+     .comment_form_headline {
+        margin:18px 0 9px;
+        padding-top:9px;
+        border-top:1px solid $verylightgray;
      }
  }
  

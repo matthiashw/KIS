@@ -18,9 +18,9 @@ class CatalogsController < ApplicationController
   def show
     @catalog = Catalog.find(params[:id])
 
-    if params.has_key?(:nodeid)
-     nodeid=params[:nodeid]
-     if nodeid=="-1"
+    if params.has_key?(:node)
+     nodeid=params[:node]
+     if nodeid=="0"
         @shownode=@catalog.root_node
      else
        node=Node.find nodeid
@@ -62,11 +62,11 @@ class CatalogsController < ApplicationController
         begin
           importer.import @catalog,file
         rescue
-          @catalog.errors.add_to_base t("admin.catalog_errors.import_file_invalid")
+          @catalog.errors.add_to_base t("admin.catalog.errors.import_file_invalid")
         end
         
     else
-       @catalog.errors.add_to_base t("admin.catalog_errors.import_file_not_blank")
+       @catalog.errors.add_to_base t("admin.catalog.errors.import_file_not_blank")
     end
      
     respond_to do |format|

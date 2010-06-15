@@ -1,24 +1,7 @@
-%h1=t(:editing_appointment)
-- form_for(@appointment) do |f|
-  = f.error_messages
-  %p
-    = f.label t(:starting_date)
-    %br/
-    = f.date_select :start_date
-  %p
-    = f.label t(:ending_date)
-    %br/
-    = f.date_select :end_date
-  %p
-    = f.label t(:appointment_name)
-    %br/
-    = f.text_field :name
-  %p
-    = f.label t(:appointment_description)
-    %br/
-    = f.text_area :description
-  %p
-    = f.submit t(:update)
-= link_to t(:show), @appointment, :class => 'acts_as_button'
-|
-=link_to t(:back), appointments_path, :class => 'acts_as_button darkgray'
+%h1=t('appointment.edit')
+
+= render :partial => 'form'
+
+.action-links
+    = link_to t('action.destroy'), @appointment, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
+    = link_to t('action.back'), appointments_path, :class => 'acts_as_button darkgray'

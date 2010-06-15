@@ -1,18 +1,16 @@
-%h1=t(:appointment_listing)
+%h1=t('appointment.listing')
 %table
-  %tr
-    %th=t(:starting_date)
-    %th=t(:ending_date)
-    %th=t(:appointment_name)
-    %th=t(:appointment_description)
-  - @appointments.each do |appointment|
     %tr
-      %td= h appointment.start_date
-      %td= h appointment.end_date
-      %td= h appointment.name
-      %td= h appointment.description
-      %td= link_to t(:show), appointment
-      %td= link_to t(:edit), edit_appointment_path(appointment)
-      %td= link_to t(:destroy), appointment, :confirm => 'Are you sure?', :method => :delete
-%br/
-= link_to t(:new_appointment_button), new_appointment_path, :class => 'acts_as_button'
+        %th=t('appointment.starting_date')
+        %th=t('appointment.ending_date')
+        %th=t('appointment.name')
+        %th=t('appointment.description')
+    - @appointments.each do |appointment|
+        %tr{:onclick=>"location.href='#{url_for :controller => 'appointments', :action => 'show', :id => appointment.id}';",:style=>"cursor:pointer;"}
+            %td= h appointment.start_date
+            %td= h appointment.end_date
+            %td= h appointment.name
+            %td= h appointment.description
+
+.action-links
+    = link_to t('appointment.new_button'), new_appointment_path, :class => 'acts_as_button'

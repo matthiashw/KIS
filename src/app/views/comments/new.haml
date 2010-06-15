@@ -1,5 +1,6 @@
-%h1 New comment
+%h1=t('comment.new')
 
 = render :partial => 'form'
 
-= link_to t(:back), comments_path, :class => 'acts_as_button darkgray'
+.action-links
+    = link_to t('action.back'), comments_path, :class => 'acts_as_button darkgray'

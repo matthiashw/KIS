@@ -1,14 +1,7 @@
-%h1 New catalog_type
-- form_for(@catalog_type) do |f|
-  = f.error_messages
-  %p
-    = f.label :name
-    %br/
-    = f.text_field :name
-  %p
-    = f.label :import_method
-    %br/
-    = f.select(  :import_method, ImporterManager.instance.import_methods.keys )
-  %p
-    = f.submit t(:create)
-= link_to t(:back), catalog_types_path, :class => 'acts_as_button darkgray'
+%h1=t('admin.catalog_type.new')
+
+= render :partial => 'form',:locals => { :active_catalogs_select => false}
+
+.action-links
+    = link_to t('action.back'), catalog_types_path, :class => 'acts_as_button darkgray'
+

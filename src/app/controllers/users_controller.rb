@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
-    return authorize(permissions = ["view_user"])
+    return false unless authorize(permissions = ["view_user"])
     
     @users = User.all
 
@@ -38,22 +38,22 @@ class UsersController < ApplicationController
     @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
     if @user.save
       flash[:notice] = "Registration successful."
-      redirect_to root_url
+      render :action => 'show'
     else
       render :action => 'new'
     end
   end
   
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
   
   def update
-    @user = current_user
+    @user = User.find(params[:id])
     @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
     if @user.update_attributes(params[:user])
       flash[:notice] = "Successfully updated profile."
-      redirect_to root_url
+      render :action => 'show'
     else
       render :action => 'edit'
     end
