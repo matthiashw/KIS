@@ -10,3 +10,6 @@ template:
 ucum_units:
    name: Ucum units
    entry_classname: UcumEntry
+treat:
+   name: Treatment Catalog
+   entry_classname: OpsEntry

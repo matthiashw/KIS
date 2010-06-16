@@ -10,3 +10,6 @@ Loinc Catalog Importer:
 Ucum Most Common Units Importer: 
         importer_classname: Importer::UcumCatalogImporter
         entry_classname: UcumEntry
+OPS/ICD-10-PCS Catalog Importer:
+        importer_classname: Importer::OpsAmericanCatalogImporter
+        entry_classname: OpsEntry
