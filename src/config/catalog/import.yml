@@ -4,7 +4,10 @@
 #    importer_classname: Import Class (Only valid entries here will show up later )
 #    entry_classname: Subclass of Entry this importer creates
 # Do not modify entries unless yoe are really sure what you are doing !
-Loinc Catalog Importer: 
+No Import (User Defined Fields/Template System):
+        importer_classname: Importer::DummyCatalogImporter
+        entry_classname: FieldEntry
+Loinc Catalog Importer (Template System):
         importer_classname: Importer::LoincCatalogImporter
         entry_classname: FieldEntry
 Ucum Most Common Units Importer: 
