@@ -29,7 +29,6 @@ class CatalogsController < ApplicationController
     end
     respond_to do |format|
       format.html # show.html.erb
-      format.xml { render :partial => 'tree.xml.builder'}
       format.json { render :partial => 'tree.js.erb' ,
         :locals => { :checkbox => params.has_key?('checkbox')?params['checkbox']:'false' } }
     end

@@ -34,23 +34,30 @@ class Importer::OpsAmericanCatalogImporter
          entry.node=root_node
          
          partial_code=""
+         last_node=nil
          pos=1
          code.each_char do |code_element|
-           last_code = String.new(partial_code)
-           partial_code << code_element
-           if partial_code!=code
+          
+           if pos<6
+            partial_code << code_element
+            if code_element!='Z'
             if !codehash.has_key?(partial_code)
-                if last_code==""
+                if last_node==nil
                   node = Node.new(:name => row[pos] , :parent => root_node)
-                  else
-                  node = Node.new(:name => row[pos] , :parent => codehash[last_code])
+                else
+                  node = Node.new(:name => row[pos] , :parent => last_node)
                 end
                 node.save!
                 codehash[partial_code]=node
+           end
+           last_node=codehash[partial_code]
             end
            else
-             entry.node=codehash[last_code]
+             entry.node=last_node
+             break
+             
            end
+
            pos=pos+1
          end
       entry.save!
