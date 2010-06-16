@@ -1,8 +1,15 @@
-/*!
- * Ext JS Library 3.2.1
- * Copyright(c) 2006-2010 Ext JS, Inc.
- * licensing@extjs.com
- * http://www.extjs.com/license
+/*
+ * Loading Bar feature ( use = render :partial => 'shared/loading_bar_element'
+ * and onSubmit  callback to present loading bar) :onSubmit => "showAjaxLoadingBar()"
+ */
+
+function showAjaxLoadingBar() {
+    document.getElementById('loading_ajax_image').style.display= "block"; 
+}
+
+
+/*
+ * Catalog Library
  */
 
 var tree;
