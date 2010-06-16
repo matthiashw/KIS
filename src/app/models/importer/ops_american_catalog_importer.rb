@@ -10,7 +10,7 @@ class Importer::OpsAmericanCatalogImporter
       # Create CSV Object from File
       csv=CSV.new(file,{:col_sep => "|" })
 
-     #catalog.transaction do
+     catalog.transaction do
 
       # Create the Catalogs Helper Root Node
       root_node=Node.new
@@ -62,7 +62,7 @@ class Importer::OpsAmericanCatalogImporter
       catalog.save!
 
 
-     #end
+     end
    end
    
 end

@@ -60,11 +60,11 @@ class CatalogsController < ApplicationController
     @catalog = Catalog.new( params[:catalog])
     if file
        importer=ImporterManager.instance.import_methods[@catalog.catalog_type.import_method]
-        #begin
+        begin
           importer.import @catalog,file
-        #rescue
+        rescue
           @catalog.errors.add_to_base t("admin.catalog.errors.import_file_invalid")
-        #end
+        end
         
     else
        @catalog.errors.add_to_base t("admin.catalog.errors.import_file_not_blank")
