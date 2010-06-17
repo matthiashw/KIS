@@ -1,9 +1,16 @@
-%p
-    %b=t('comment.string') + ":"
-    = h @comment.comment
-%p
-    %b=t('comment.date') + ":"
-    = h @comment.date
+- title truncate(@comment.comment, 40, "...")
+
+.fields
+    .field
+        .field-label
+            =t('comment.string')
+        .field-content
+            = h @comment.comment
+    .field
+        .field-label
+            =t('comment.date')
+        .field-content
+            = h show_date(@comment.created_at)
 
 .action-links
     = link_to t('action.edit'), edit_comment_path(@comment), :class => 'acts_as_button'

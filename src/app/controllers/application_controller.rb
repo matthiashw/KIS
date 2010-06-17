@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
 
   def access_denied
     flash[:error] = 'You have no permission to view this page.'
-    render :file => '/layouts/error.haml', :status => 403, :layout => false and return false
+    render :partial => 'shared/error403', :status => 403, :layout => true and return false
   end
 
   private

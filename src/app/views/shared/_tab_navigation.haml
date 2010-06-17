@@ -1,4 +1,4 @@
-%ul.secondary-navigation
+%ul{:class => "secondary-navigation" + " " + is_active?('patients')}
     -if current_active_patient != nil
         - if authorize?('view_patient')
             %li{:class => "secondary-navigation-leaf"}

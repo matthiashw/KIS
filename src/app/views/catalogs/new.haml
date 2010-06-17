@@ -1,4 +1,4 @@
-%h1=t('admin.catalog.import')
+- title t('admin.catalog.import')
 
 - form_for :catalog, @catalog,:url => {:action=> 'create'}, :html => {:onSubmit => "showAjaxLoadingBar()", :multipart => true }, do |f|
   = f.error_messages

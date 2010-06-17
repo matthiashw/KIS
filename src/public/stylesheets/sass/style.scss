@@ -122,7 +122,16 @@ $verylightgray:#eeeeee;
   border-top-left-radius: 6px;
   -webkit-border-top-right-radius: 6px;
   -moz-border-radius-topright: 6px;
-  border-top-right-radius: 6px; }
+  border-top-right-radius: 6px;
+
+  &.inactive {
+        .secondary-navigation-leaf a {
+            color:$lightgray;
+        }
+    }
+}
+
+  
 
 .secondary-navigation-leaf {
   margin: 0;
@@ -147,6 +156,7 @@ $verylightgray:#eeeeee;
       background-color: #fff;
       border-bottom: 1px solid #fff;
       color:$magenta; } } }
+    
 
 /*HEADER
 -------------------------------------------------------- */
@@ -309,7 +319,18 @@ a.links-link {
         border-top:1px solid $verylightgray;
      }
  }
- 
+
+/**
+ * override fields
+ */
+
+#page-patients {
+    &.show {
+        .fields {
+            width:50%;
+        }
+    }
+}
 
 
 /*FOOTER
@@ -397,47 +418,30 @@ td.permission {
 #node-name {  }
 #node-id { font-weight:bold;}
 
-.jstree {
-    ul.jstree-no-dots {
-        margin-left:18px !important;
-
-        ul {
-            margin-top:9px !important;
-        }
-    }
+.show-catalog-tree {
+    float:left;
+    width:100%;
 }
 
-.jstree-default {
-    &.jstree-focused {
-        background-color:transparent !important;
-    }
+ul.x-tree-root-ct {
+    list-style:none;
+    margin:0;
+    padding:0;
 
+    li.x-tree-node {
+        list-style:none;
+        margin:0;
+        padding:0;
 
-
-    .jstree-no-dots {
-        li {
-            margin-bottom:9px;
-        }
-
-        .jstree-closed > ins {
-            background:transparent  url('/images/plus.png') no-repeat 0 2px;
-            background-position:0 2px !important;
-
-            &:hover {
-                cursor:pointer;
-            }
-        }
-
-
-        .jstree-open > ins {
-            background:transparent  url('/images/minus.png') no-repeat 0 2px;
-            background-position:0 2px !important;
-
-            &:hover {
-                cursor:pointer;
-            }
+        a span {
+            color:$verydarkgray;
+            font-size:14px;
         }
     }
-    
+
+    ul.x-tree-node-ct {
+        list-style:none;
+        margin:0;
+        padding:0;
+    }
 }
-
