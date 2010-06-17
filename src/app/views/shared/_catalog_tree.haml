@@ -11,6 +11,9 @@
     #catalog_tree_multi_select
     - elsif checkbox=='single'
     <input type='hidden' id='#{param_name}' name='#{param_name}' value='-1'>
+    :javascript
+      var selected_node_path= "#{selected_node}";
     #catalog_tree_single_select
+
 - else
   #catalog_tree

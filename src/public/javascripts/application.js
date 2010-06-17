@@ -20,7 +20,7 @@ function submitTreeForm(){
                     if(msg.length > 0){
                         msg += ',';
                     }
-                    msg += node.id;
+                    msg += node.id.substr(1);
                 });
                 Ext.get(node_result_id).set({value:msg});
 }
@@ -55,8 +55,7 @@ Ext.onReady(function(){
         text: 'Invisible Root',
         id:'0'
       });
-
-
+    
     tree=new Ext.tree.TreePanel({
         renderTo: 'catalog_tree_single_select',
          root: root,
@@ -83,7 +82,18 @@ Ext.onReady(function(){
 
     });
    root.expand();
-   Ext.get(form_id).on('submit',submitTreeForm)
+   if(selected_node_path!="-1") {
+      
+      var sp = selected_node_path.lastIndexOf('/');
+      
+      tree.expandPath(selected_node_path.substr(0, sp), 'id', function(bSuccess, oLastNode) {
+                                
+				if (bSuccess && tree.getNodeById(selected_node_path.substr(sp+1))) {
+					tree.getNodeById(selected_node_path.substr(sp+1)).ui.toggleCheck(true);
+				}
+      });
+   }
+   Ext.get(form_id).on('submit',submitTreeForm);
 
    }
 
