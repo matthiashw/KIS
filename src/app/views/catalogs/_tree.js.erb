@@ -6,6 +6,9 @@
     %>,<% end end end
 
 if !@shownode.entries.empty?
+  if !@shownode.children.empty?
+    %>,<%
+  end
 commacount=@shownode.entries.size
 @shownode.entries.each do |entry|
 %>{ id:'_<%=  entry.id %>', text : '<span id="node-id"><%= entry.code %>:</span><span id="node-name"><%= entry.name%></span><span id="node-description">(<%= entry.description %>)</span>', leaf : true<% if checkbox=='true'%>, checked:false<%end%>}<%
