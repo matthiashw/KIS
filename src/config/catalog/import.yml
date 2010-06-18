@@ -16,3 +16,6 @@ Ucum Most Common Units Importer:
 OPS/ICD-10-PCS Catalog Importer:
         importer_classname: Importer::OpsAmericanCatalogImporter
         entry_classname: OpsEntry
+ATC Catalog Importer:
+        importer_classname: Importer::AtcCatalogImporter
+        entry_classname: AtcEntry
