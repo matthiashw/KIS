@@ -1,0 +1,15 @@
+%p
+  %b
+    Description:
+    =h @medical_report.description
+
+%p
+  %b
+    File:
+  =h @medical_report.file
+
+
+
+= link_to 'Edit', edit_medical_report_path(@medical_report)
+|
+= link_to 'Back', medical_reports_path

@@ -56,6 +56,7 @@ en:
     active:           "Active Patient"
     search:           "or search for patients"
     search_fail:      "No patients found"
+    medicalreport:    "Medical report"
     create_success:   "Patient successfully created"
     update_success:   "Patient successfully updated"
     delete_success:   "Patient successfully deleted"

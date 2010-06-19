@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale]
   end
 
-  before_filter :login_required
+  #before_filter :login_required
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 

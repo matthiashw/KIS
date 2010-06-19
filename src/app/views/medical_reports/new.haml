@@ -1,0 +1,14 @@
+%h1 New medical_report
+
+- form_for(@medical_report) do |f|
+  = f.error_messages
+
+  %p
+    = f.label :description
+    %br
+    = f.text_field :description
+
+  %p
+    = f.submit 'Create'
+
+= link_to 'Back', medical_reports_path 
