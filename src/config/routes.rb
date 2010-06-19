@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+ 
+  map.connect "/patients/search", :controller => "patients", :action => "search"
+
   map.resources :case_files
 
   map.resources :patients do |patient|
@@ -11,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
+
   
   map.resources :user_sessions, :users, :catalog_types, :catalogs, :appointments,
                 :domains, :comments, :patients, :admin

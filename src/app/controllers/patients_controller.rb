@@ -1,10 +1,13 @@
 class PatientsController < ApplicationController
+
+  RESULTSPERPAGE = 3
+
   # GET /patients
   # GET /patients.xml
   def index
     return access_denied unless authorize(permissions = ["view_patient"])
     
-    @patients = Patient.all
+    @patients = Patient.paginate :page => params[:page], :order => 'family_name ASC', :per_page => RESULTSPERPAGE
 
     respond_to do |format|
       format.html # index.html.erb
@@ -130,14 +133,27 @@ class PatientsController < ApplicationController
 
   # search function for ajax search
   def search
-      if params[:query] and request.xhr?
-        if params[:query] == ""
-          @patients = Patient.all
+    session[:query] = params[:query].strip if params[:query]
+
+      if session[:query]
+        if session[:query] == ""
+          @patients = Patient.paginate :page => params[:page], :order => 'family_name ASC', :per_page => RESULTSPERPAGE
         else
-          @patients = Patient.find(:all, :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{params[:query]}%","%#{params[:query]}%"], :order => "family_name ASC")
+          @patients = Patient.paginate :page => params[:page],:per_page => RESULTSPERPAGE,
+            :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{session[:query]}%","%#{session[:query]}%"], :order => "family_name ASC"
         end
-        render :partial => "shared/patient_search_results", :layout => false, :locals => {:searchresults => @patients}
       end
+
+    if request.xhr?
+         render :partial => "shared/patient_search_results", :layout => false, :locals => {:searchresults => @patients}
+    else
+        respond_to do |format|
+        format.html # search.haml
+        format.xml  { render :xml => @patient }
+        end
+    end
+
    end
+
 
 end
