@@ -1,4 +1,4 @@
-%h1=t('treatment.edit')
+- title t('treatment.edit')
 
 - semantic_form_for(@treatment, :url => patient_case_file_treatment_path(params[:patient_id], params[:case_file_id])) do |f|
     = f.error_messages

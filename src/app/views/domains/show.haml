@@ -1,15 +1,26 @@
-%p
-  %b=t('domain.name') + ":"
-  = h @domain.name
-%p
-  %b=t('domain.result_name') + ":"
-  = h @domain.result_name
-%p
-  %b=t('domain.is_role') + ":"
-  = h @domain.is_role
-%p
-  %b=t('domain.nameis_userdomain') + ":"
-  = h @domain.is_userdomain
+- title @domain.name
+
+.fields
+    .field
+        .field-label
+            =t('domain.name')
+        .field-content
+            = h @domain.name
+    .field
+        .field-label
+            =t('domain.result_name')
+        .field-content
+            = h @domain.result_name
+    .field
+        .field-label
+            =t('domain.is_role')
+        .field-content
+            = h @domain.is_role
+    .field
+        .field-label
+            =t('domain.is_userdomain')
+        .field-content
+            = h @domain.is_userdomain
 
 .action-links
     = link_to t('action.edit'), edit_domain_path(@domain), :class => 'acts_as_button'

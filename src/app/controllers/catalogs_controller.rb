@@ -29,8 +29,8 @@ class CatalogsController < ApplicationController
     end
     respond_to do |format|
       format.html # show.html.erb
-      format.xml { render :partial => 'tree.xml.builder'}
-      format.json { render :partial => 'tree.js.erb' }
+      format.json { render :partial => 'tree.js.erb' ,
+        :locals => { :checkbox => params.has_key?('checkbox')?params['checkbox']:'false' } }
     end
 
   end
@@ -57,8 +57,8 @@ class CatalogsController < ApplicationController
     file = params[:catalog][:dump]
     params[:catalog].delete(:dump)
     @catalog = Catalog.new( params[:catalog])
+    importer=ImporterManager.instance.import_methods[@catalog.catalog_type.import_method]
     if file
-       importer=ImporterManager.instance.import_methods[@catalog.catalog_type.import_method]
         begin
           importer.import @catalog,file
         rescue
@@ -66,7 +66,11 @@ class CatalogsController < ApplicationController
         end
         
     else
+      if importer.class!=Importer::DummyCatalogImporter
        @catalog.errors.add_to_base t("admin.catalog.errors.import_file_not_blank")
+      else
+        importer.import @catalog
+      end
     end
      
     respond_to do |format|

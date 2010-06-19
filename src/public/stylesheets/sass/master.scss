@@ -269,11 +269,16 @@ abbr {
   background-color:#fff;
   width:100%;
   padding-bottom:18px;
+  min-height:400px;
 }
 
 #frontpage {
     .inner {
         margin: 18px;
+    }
+
+    .inner-bg {
+        min-height:0;
     }
 }
 
@@ -437,7 +442,7 @@ a.acts_as_button{
 
 .fields {
     float:left;
-    width:60%;
+    width:90%;
 
     .field {
         float:left;
@@ -447,7 +452,7 @@ a.acts_as_button{
         .field-label {
             float:left;
             width:30%;
-            text-align:right;
+            text-align:left;
             padding-right:9px;
             font-weight:bold;
         }

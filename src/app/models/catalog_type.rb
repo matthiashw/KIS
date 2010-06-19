@@ -1,10 +1,12 @@
 class CatalogType < ActiveRecord::Base
-  validates_presence_of :name,:import_method,:application
-  validates_uniqueness_of :application , :if => Proc.new { |type| type.application!="template" }
+  validates_presence_of :name,:import_method
+  validates_uniqueness_of :application , :if => Proc.new { |type| type.application!="template"  } ,:allow_blank => true
   validate do |type|
-    apclass=CatalogManager.instance.applications[type.application]['entry_classname']
-    if !ImporterManager.instance.entry_types[type.import_method].constantize.new.is_a?(apclass.constantize)
-        type.errors.add_to_base I18n.t('admin.catalog_type.errors.application')
+    if type.application!=""
+      apclass=CatalogManager.instance.applications[type.application]['entry_classname']
+      if !ImporterManager.instance.entry_types[type.import_method].constantize.new.is_a?(apclass.constantize)
+          type.errors.add_to_base I18n.t('admin.catalog_type.errors.application')
+      end
     end
   end
 

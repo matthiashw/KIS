@@ -1,15 +1,27 @@
-%p
-    %b=t('admin.catalog.year') + ":"
-    = h @catalog.year
-%p
-    %b=t('admin.catalog.language') + ":"
-    = h @catalog.language
-%p
-    %b=t('admin.catalog.type') + ":"
-    = h @catalog.catalog_type.name
-%p
-    #catalog_tree
-   
+- title @catalog.catalog_type.name + " " + @catalog.year + " " + @catalog.language
+
+.fields
+    .field
+        .field-label
+            =t('admin.catalog.year')
+        .field-content
+            = h @catalog.year
+    .field
+        .field-label
+            =t('admin.catalog.language')
+        .field-content
+            = h @catalog.language
+    .field
+        .field-label
+            =t('admin.catalog.type')
+        .field-content
+            = h @catalog.catalog_type.name
+
+.show-catalog-tree
+    = show_tree @catalog
+
+    
+
 .action-links
     = link_to t('action.edit'), edit_catalog_path(@catalog), :class => 'acts_as_button'
     = link_to t('action.back'), catalogs_path, :class => 'acts_as_button darkgray'

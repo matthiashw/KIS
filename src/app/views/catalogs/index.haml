@@ -1,4 +1,4 @@
-%h1=t('admin.catalog.listing')
+- title t('admin.catalog.listing')
 %table
   %tr
     %th=t('admin.catalog.year')
@@ -11,7 +11,7 @@
         %td= h catalog.year
         %td= h catalog.language
         %td= h catalog.catalog_type.name
-        %td= catalog.catalog_type.active_catalog && catalog.catalog_type.active_catalog.id == catalog.id
+        %td= (catalog.catalog_type.active_catalog && catalog.catalog_type.active_catalog.id == catalog.id)?true:false
         %td= link_to t('action.show'), catalog
         %td= link_to t('action.edit'), edit_catalog_path(catalog)
         %td= link_to t('action.destroy'), catalog, :confirm => t('delete_confirmation'), :method => :delete

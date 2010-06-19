@@ -1,29 +1,46 @@
 - title @user.username
-%p
-    %b=t('user.username')
-    = h @user.username
-%p
-    %b=t('user.email')
-    = h @user.email
-%p
-    %b=t('user.first_name')
-    = h @user.first_name
-%p
-    %b=t('user.family_name')
-    = h @user.family_name
-%p
-    %b=t('user.address')
-    = h @user.address
-%p
-    %b=t('user.phone')
-    = h @user.phone
-%p
-    %b=t('user.language')
-    = h @user.language
-%p
-    %b=t('user.role')
-    - @user.domains.each do |d|
-        = d.name
+.fields
+    .field
+        .field-label
+            =t('user.username')
+        .field-content
+            = h @user.username
+    .field
+        .field-label
+            =t('user.email')
+        .field-content
+            = h @user.email
+    .field
+        .field-label
+            =t('user.first_name')
+        .field-content
+            = h @user.first_name
+    .field
+        .field-label
+            =t('user.family_name')
+        .field-content
+            = h @user.family_name
+    .field
+        .field-label
+            =t('user.address')
+        .field-content
+            = h @user.address
+    .field
+        .field-label
+            =t('user.phone')
+        .field-content
+            = h @user.phone
+    .field
+        .field-label
+            =t('user.phone')
+        .field-content
+            = h @user.phone
+    .field
+        .field-label
+            =t('user.role')
+        .field-content
+            - @user.domains.each do |d|
+                = d.name
 
 .action-links
     = link_to t('action.edit'), edit_user_path(@user), :class => 'acts_as_button'

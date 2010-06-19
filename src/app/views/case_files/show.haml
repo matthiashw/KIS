@@ -1,9 +1,16 @@
-%p
-    %b=t('case_file.entry_date') + ":"
-    = h @case_file.entry_date
-%p
-    %b=t('case_file.leave_date') + ":"
-    = h @case_file.leave_date
+- title @case_file.entry_date.to_s + " - " + @case_file.leave_date.to_s
+
+.fields
+    .field
+        .field-label
+            =t('case_file.entry_date')
+        .field-content
+            = h @case_file.entry_date
+    .field
+        .field-label
+            =t('case_file.leave_date')
+        .field-content
+            = h @case_file.leave_date
 
 .action-links
     = link_to t('action.edit'), edit_case_file_path(@case_file), :class => 'acts_as_button'
