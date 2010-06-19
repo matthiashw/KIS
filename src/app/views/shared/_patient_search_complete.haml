@@ -1,0 +1,32 @@
+%h1=t('patient.listing')
+
+.action-links
+    - if current_user.has_permission?('create_patient')
+        = link_to t('patient.new_button'), new_patient_path
+%br/
+=t('patient.search')
+#search_form
+    = text_field_tag("query", params[:query], :autocomplete => "off", :value => session[:query] )
+    = observe_field 'query',  :frequency => 0.5,                  |
+        :update => "search_results",                              |
+        :url => {:controller => "patients", :action => "search"}, |
+        :with => "query"                                          |
+%br/
+#search_results
+    %table
+        %tr
+            %th=t('formtastic.labels.patient.first_name')
+            %th=t('formtastic.labels.patient.family_name')
+            %th=t('formtastic.labels.patient.birthdate')
+            %th=t('formtastic.labels.patient.address')
+            %th=t('formtastic.labels.patient.sex')
+            %th=t('formtastic.labels.patient.phone')
+        - @patients.each do |patient|
+            %tr{:onclick=>"location.href='#{url_for :controller => 'patients', :action => 'show', :id => patient.id}';",:style=>"cursor:pointer;"}
+                %td= h patient.first_name
+                %td= h patient.family_name
+                %td= h patient.birthdate
+                %td= h patient.address
+                %td= h patient.sex
+                %td= h patient.phone
+    = will_paginate @patients
