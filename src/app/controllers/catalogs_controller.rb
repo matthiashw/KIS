@@ -62,7 +62,7 @@ class CatalogsController < ApplicationController
         begin
           importer.import @catalog,file
         rescue
-          @catalog.errors.add_to_base t("admin.catalog.errors.import_file_invalid")
+         @catalog.errors.add_to_base t("admin.catalog.errors.import_file_invalid")
         end
         
     else
