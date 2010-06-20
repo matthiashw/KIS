@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /patients.xml
   def index
     return false unless authorize(permissions = ["view_user"])
-    
+    render :layout => 'login' unless current_user
     @users = User.all
 
     respond_to do |format|
@@ -28,27 +28,32 @@ class UsersController < ApplicationController
   def new
     @user = User.new
 
-    if !current_user
-      render :layout => 'frontpage'
-    end
+    render :layout => 'login' unless current_user
   end
   
   def create
     @user = User.new(params[:user])
     @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
+
     if @user.save
       flash[:notice] = "Registration successful."
       render :action => 'show'
     else
-      render :action => 'new'
+      if !current_user
+        render :layout => 'login', :action => 'new' unless current_user
+      else
+        render :action => 'new'
+      end
     end
   end
   
   def edit
     @user = User.find(params[:id])
+    render :layout => 'login' unless current_user
   end
   
   def update
+    render :layout => 'login' unless current_user
     @user = User.find(params[:id])
     @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
     if @user.update_attributes(params[:user])
@@ -62,6 +67,11 @@ class UsersController < ApplicationController
   # DELETE /patients/1
   # DELETE /patients/1.xml
   def destroy
+    if params[:id] == 1
+      flash[:error] = "The User with the ID 1 can not be deleted!"
+      redirect_to(users_url) and return false
+    end
+
     @user = User.find(params[:id])
     @user.destroy
 

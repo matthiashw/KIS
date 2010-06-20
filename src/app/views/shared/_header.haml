@@ -7,9 +7,10 @@
  
 .links
     -if current_active_patient
-        .patient.messages.message
+        .active-patient
             -if current_active_patient
-                =t('patient.active') + ":"
+                %span
+                    =t('patient.active') + ":"
                 =current_active_patient.first_name
                 =current_active_patient.family_name
                 =link_to t('action.show'), {:controller => 'patients', :action => 'show', :id => current_active_patient.id}

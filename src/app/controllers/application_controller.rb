@@ -3,25 +3,47 @@
 
 class ApplicationController < ActionController::Base
   before_filter :set_locale, :login_required
-  def set_locale
-  # if params[:locale] is nil then I18n.default_locale will be used
-    I18n.locale = params[:locale]
-  end
-
+  
   helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  helper_method :current_active_patient, :current_user, :current_user_session, :authorize?
+
+  protect_from_forgery
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
 
-  helper_method :current_active_patient, :current_user, :current_user_session, :authorize?
+  def set_locale
+  # if params[:locale] is nil then I18n.default_locale will be used
+    I18n.locale = params[:locale]
+  end
 
   def default_url_options(options={})
     #logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { :locale => I18n.locale }
   end
 
+  protected
+
+  # returns true or access denied, based on given user permissions
+  def authorize(permissions = [])
+    return true if current_user_is_admin?
+    return current_user_permission?(*permissions) || access_denied
+  end
+
+  # returns true or false based on given user permissions
+  def authorize?(permissions = [])
+    return current_user_is_admin? || current_user_permission?(*permissions)
+  end
+
+  # render access denied if user has no permission
+  # to view the page
+  def access_denied
+    flash[:error] = 'You have no permission to view this page.'
+    render :partial => 'shared/error403', :status => 403, :layout => true and return false
+  end
+
   private
+  
   def current_active_patient
     return @current_active_patient if defined?(@current_active_patient)
     
@@ -43,34 +65,35 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-   unless current_user
-     #flash[:error] = 'You must be logged in to view this page.'
-     redirect_to new_user_session_path
-   end
+    if system_has_admin?
+      redirect_to new_user_session_path unless current_user
+    else
+      redirect_to new_user_path unless current_user
+    end
   end
 
-  protected
-  def authorize(permissions = [])
-    return true if current_user_is_admin?
-    return current_user_permission?(*permissions) || access_denied
-  end
-
-  def authorize?(permissions = [])
-    return current_user_is_admin? || current_user_permission?(*permissions)
-  end
-
-  def access_denied
-    flash[:error] = 'You have no permission to view this page.'
-    render :partial => 'shared/error403', :status => 403, :layout => true and return false
-  end
-
-  private
+  # check if current user has permission to
+  # view the page
   def current_user_permission?(permissions = [])
     return current_user && current_user.has_permission?(*permissions)
   end
 
+  # check if the current user is the superadmin
+  # of the system (if he has the id 1)
   def current_user_is_admin?
     return current_user && current_user.id == 1
+  end
+
+  # check if the superadmin is present in the system at login
+  def system_has_admin?
+    adminuser = User.find_by_id(1)
+
+    if adminuser == nil
+      flash[:message] = "There is no Administrator Account present in your system! You can now create one! After that you will be redirected to the login page!"
+      return false
+    end
+
+    return true
   end
 
 end

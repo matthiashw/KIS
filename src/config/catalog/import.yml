@@ -19,3 +19,6 @@ OPS/ICD-10-PCS Catalog Importer:
 ATC Catalog Importer:
         importer_classname: Importer::AtcCatalogImporter
         entry_classname: AtcEntry
+ICD By Letters Catalog Importer:
+        importer_classname: Importer::IcdByLettersAmericanCatalogImporter
+        entry_classname: IcdEntry

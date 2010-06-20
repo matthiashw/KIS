@@ -203,18 +203,30 @@ $verylightgray:#eeeeee;
   background: transparent url('/images/domain.png') no-repeat top center;
   margin: 18px 0 0 18px; }
 
-.patient.messages {
-    padding:9px;
+.active-patient {
+    padding:9px 3px;
     display:inline;
     max-width:500px;
     float:left;
     margin-left:140px;
     text-align:left;
+    
+    color:$magenta;
+    font-weight:bold;
+
+    span {
+      color:$darkgray;
+      font-weight:normal;
+    }
+
+    a {
+        margin-left:5px;
+        text-shadow:none;
+        font-size:12px;
+        font-weight:normal;
+    }
 }
 
-.patient a {
-    margin-left:10px;
-}
 
 /**
  * logout, help
@@ -262,11 +274,15 @@ a.links-link {
 
 .action-links {
     float:left;
-    width:60%;
+    width:100%;
     margin:18px 0 0;
 
     a {
         margin-right:9px;
+    }
+
+    .delete {
+        float:right;
     }
 }
 
@@ -325,8 +341,12 @@ a.links-link {
  */
 
 #page-patients {
-    &.show {
+    &.show-action {
         .fields {
+            width:50%;
+        }
+
+        .action-links {
             width:50%;
         }
     }
@@ -336,11 +356,18 @@ a.links-link {
 /*FOOTER
 -------------------------------------------------------- */
 
-#footer p {
-  color:$mediumgray;
-  margin: 4px 0 0 0;
-  font-size: 10px;
-  text-align: center; }
+#footer {
+    p {
+        color:$mediumgray;
+        margin: 4px 0 0 0;
+        font-size: 10px;
+        text-align: center;
+    }
+    
+    a {
+        color:$mediumgray;
+    }
+}
 
 /*ADMIN AREA
 -------------------------------------------------------- */
