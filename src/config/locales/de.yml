@@ -88,9 +88,6 @@ de:
     is_userdomain:    "Ist Domäne"
     new:              "Neue Domäne"
     new_button:       "Neue Domain anlegen"
-  
-  task:
-    calendar:         "Task-Calendar"
 
   appointment:
     listing:          "Terminliste"
@@ -101,6 +98,7 @@ de:
     ending_date:      "Enddatum"
     name:             "Name"
     description:      "Beschreibung"
+    calendar:         "Kalender"
 
   treatment:
     listing:            "Behandlungsliste"

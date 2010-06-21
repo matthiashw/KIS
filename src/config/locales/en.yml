@@ -154,9 +154,6 @@ en:
     new_domain:       "New domain"
     new_button:       "Add new Domain"
 
-  task:
-    calendar:         "Task-Calendar"
-
   appointment:
     listing:          "Listing appointments"
     new_button:       "Add new appointment"
@@ -166,6 +163,7 @@ en:
     ending_date:      "End Date"
     name:             "Name"
     description:      "Description"
+    calendar:         "Calendar"
 
   treatment:
     listing:            "Listing treatment"
