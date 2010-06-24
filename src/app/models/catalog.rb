@@ -4,4 +4,8 @@ class Catalog < ActiveRecord::Base
   belongs_to :catalog_type
   has_many :templates
 
+  def catalog_select_name
+      "#{year} #{language}"
+  end
+
 end

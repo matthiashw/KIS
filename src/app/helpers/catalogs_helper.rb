@@ -1,28 +1,27 @@
 module CatalogsHelper
-  def xml_tree xml
-  if !@shownode.entries.empty?
-    @shownode.entries.each do |entry|
-         xml.item :id => 'entry'+entry.id.to_s  ,
-           :parent_id => 0,
-           :state => "" do
-            xml.content do
-                xml.name do
-                  xml.cdata! "<b>Code:</b> "+entry.code+"<br/> <b>Description:</b> "+entry.description
-                end
-            end
-         end
-      end
-  elsif !@shownode.children.empty?
-   @shownode.children.each do |node|
-        xml.item :id => node.id, :parent_id =>0, :state => 'closed' do
-          xml.content do
-             xml.name h node.name
-          end
-         end
-      end
-
-  else
-   xml.item
+  def show_tree catalog
+     render :partial => 'shared/catalog_tree', :locals => {:catalog=>catalog , :checkbox => false }
   end
- end
+
+  def radio_tree catalog ,form_html_id, param_name ,selected_entry=-1
+      path="/0"
+      if selected_entry!= -1
+        patharray=Array.new
+        entry=Entry.find selected_entry
+        node=entry.node
+        while(node.parent!=nil)
+          patharray.push(node.id)
+          node=node.parent
+        end
+        patharray.reverse.each do |pathelement|
+          path = path +"/" + pathelement.to_s
+        end
+        path=path + "/_" + selected_entry.id.to_s
+      end
+      render :partial => 'shared/catalog_tree', :locals => {:catalog=>catalog , :checkbox => 'single', :form_html_id =>form_html_id, :param_name=> param_name ,:selected_node => path}
+  end
+
+  def checkbox_tree catalog ,form_html_id, param_name 
+      render :partial => 'shared/catalog_tree', :locals => {:catalog=>catalog , :checkbox => 'multi', :form_html_id =>form_html_id, :param_name=> param_name  }
+  end
 end
