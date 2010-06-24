@@ -1,7 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
- 
   map.connect "/patients/search", :controller => "patients", :action => "search"
-
+  map.calendar '/appointments/calendar/:year/:month', :controller => 'appointments', :action => 'calendar', :year => Time.zone.now.year, :month => Time.zone.now.month
   map.resources :case_files
 
   map.resources :patients do |patient|

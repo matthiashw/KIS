@@ -98,6 +98,7 @@ de:
     ending_date:      "Enddatum"
     name:             "Name"
     description:      "Beschreibung"
+    calendar:         "Kalender"
 
   treatment:
     listing:            "Behandlungsliste"
@@ -181,6 +182,9 @@ de:
 
     order: [ :day, :month, :year ]
 
-    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August,
-    September, Oktober, November, Dezember]
+    day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
+    abbr_day_names: [So, Mon, Di, Mi, Do, Fr, Sa]
+
+    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+    abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez]
 
