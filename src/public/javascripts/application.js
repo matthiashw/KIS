@@ -103,7 +103,7 @@ Ext.onReady(function(){
            }
          }
     });
-   tree.on('append',checkSelection)
+   tree.on('append',checkSelection);
    root.expand();
     // Open a node path
     if( selected_node_path!="-1") {
