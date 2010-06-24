@@ -10,4 +10,4 @@
                 %td= h case_file.leave_date
 
 .action-links
-    = link_to t('case_file.new'), new_case_file_path, :class => 'acts_as_button'
+    = link_to t('case_file.new'), new_case_file_path, :class => 'acts_as_button', :confirm => t('case_file.new_confirm')

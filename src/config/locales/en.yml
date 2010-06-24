@@ -177,6 +177,8 @@ en:
   permissions_update:   "Update permissions"
 
   case_file:
+    new_confirm:         "Please notice that any open Cases will be closed"
+    activate_for_view:   "Activate for View"
     listing:             "Listing Patient Cases"
     edit:                "Editing Case"
     new:                 "New Case"
