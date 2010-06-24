@@ -18,10 +18,8 @@
             = h @catalog.catalog_type.name
 
 .show-catalog-tree
-    <form id='test'>
-    = radio_tree @catalog, 'test' , 'result' , 657646
-    <input type='submit'/>
-    </form>
+    = show_tree @catalog 
+   
     
 
 .action-links
