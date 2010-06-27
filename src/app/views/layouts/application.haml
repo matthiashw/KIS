@@ -4,7 +4,7 @@
     %head
         %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'utf-8'}
         %title= h(yield(:title) || "Untitled") + " - Hopen"
-        = stylesheet_link_tag 'reset', '../ext/resources/css/ext-all.css', 'formtastic', 'formtastic_changes', 'master', 'style','themes/default', "event_calendar", :cache => 'base'
+        = stylesheet_link_tag 'reset', '../ext/resources/css/ext-all.css', 'master', 'formtastic', 'formtastic_changes', 'themes/default', 'style', :cache => 'base'
         = javascript_include_tag 'prototype', 'window', '../ext/adapter/ext/ext-base.js' ,'../ext/ext-all.js','application', :cache => true
     %body{ :id => make_body_id, :class => make_body_classes}
         #wrapper
@@ -26,7 +26,7 @@
 
                                     - if show_title?
                                         %h1=h yield(:title)
-
+                                    = render :partial => 'shared/help'
                                     = yield
 
         = render :partial => 'shared/footer'

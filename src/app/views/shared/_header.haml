@@ -5,15 +5,6 @@
         - current_user.domains.each do |d|
             = d.name + ' '
 
-:javascript
-        function show_help(){
-            win = new Window({className: "dialog", title: "Help", width:350, height:400, zIndex:100, resizable:true, title:#{t(current_controller_help_title).to_json}});
-
-            win.getContent().update(#{t(current_controller_help).to_json});
-            win.setStatusBar("Status bar info");
-            win.showCenter();
-        }
-
 .links
     -if current_active_patient
         .active-patient
@@ -25,8 +16,6 @@
                 =link_to t('action.show'), {:controller => 'patients', :action => 'show', :id => current_active_patient.id}
                 =link_to t('action.edit'), {:controller => 'patients', :action => 'edit', :id => current_active_patient.id}
 
-    %a{:class => "links-link link-help", :href => "javascript:show_help()"}
-        %img{:src => "/images/help.png", :alt => "Help"}
     - if current_user
         = link_to t('edit_profile'), edit_user_path(current_user.id), :class => "links-link"
         = link_to t('logout'), logout_path, :class => "links-link"

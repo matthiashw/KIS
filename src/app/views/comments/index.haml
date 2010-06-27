@@ -11,4 +11,4 @@
 = will_paginate @comments
 
 .action-links
-    = link_to t('comment.new_comment'), new_comment_path, :class => 'acts_as_button'
+    = link_to t('comment.new_comment'), new_patient_comment_path(:patient_id => params[:patient_id]), :class => 'acts_as_button'

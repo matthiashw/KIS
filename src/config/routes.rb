@@ -1,7 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
   map.connect "/patients/search", :controller => "patients", :action => "search"
   map.calendar '/appointments/calendar/:year/:month', :controller => 'appointments', :action => 'calendar', :year => Time.zone.now.year, :month => Time.zone.now.month
-  map.resources :case_files
+  map.login "login", :controller => "user_sessions", :action => "new"
+  map.logout "logout", :controller => "user_sessions", :action => "destroy"
+
+  map.resources :user_sessions, :users, :catalog_types, :catalogs, :appointments,
+                :domains, :comments, :patients, :admin, :case_files
 
   map.resources :patients do |patient|
     patient.resources :case_files do |case_file|
@@ -11,16 +15,7 @@ ActionController::Routing::Routes.draw do |map|
     patient.resources :comments
   end
 
-  map.login "login", :controller => "user_sessions", :action => "new"
-  map.logout "logout", :controller => "user_sessions", :action => "destroy"
-
-  
-  map.resources :user_sessions, :users, :catalog_types, :catalogs, :appointments,
-                :domains, :comments, :patients, :admin
-
   map.resources :permissions, :collection => { :update_all_permissions => :put }
-
-  #map.page ":action", :controller => "admin"
 
   # root url points to this controller
   map.root :controller => "patients", :action => "index"

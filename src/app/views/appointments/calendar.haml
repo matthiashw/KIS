@@ -1,2 +1,6 @@
 - title t('appointment.calendar')
+
 = event_calendar
+
+.action-links
+    = link_to t('appointment.new_button'), new_appointment_path, :class => 'acts_as_button'
