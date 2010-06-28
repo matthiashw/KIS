@@ -5,7 +5,8 @@ class ReportHeadersController < ApplicationController
     @report_headers = ReportHeader.all
 
     @config = YAML::load(File.open("#{RAILS_ROOT}/config/report.yml"))
-    @standard = ReportHeader.find(@config["header"])
+    @standard = ReportHeader.find_by_id(@config["header"])
+    
 
     respond_to do |format|
       format.html # index.html.erb
