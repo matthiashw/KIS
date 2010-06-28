@@ -23,9 +23,11 @@
             - if is_controller_active?('appointments')
                 %ul.main-subnavigation
                     %li{:class => "main-subnavigation-leaf"}
-                        =link_to t("appointment_listing"), appointments_path, :class => is_active?('appointments', "index")
+                        =link_to t('appointment.listing'), appointments_path, :class => is_active?('appointments', "index")
                     %li{:class => "main-subnavigation-leaf"}
-                        =link_to t("new_appointment"), new_appointment_path, :class => is_active?('appointments', "new")
+                        =link_to t("appointment.new"), new_appointment_path, :class => is_active?('appointments', "new")
+                    %li{:class => "main-subnavigation-leaf"}
+                        =link_to t('appointment.calendar'), calendar_path, :class => is_active?('appointments',"calendar")
     %li{:class => "main-navigation-leaf"}
         - if authorize?('access_administration')
             =link_to make_image_link(t('navi.main.administration'), 'navi-img navi-img-verwaltung'), {:controller => "admin", :action => "index"}, :class => is_active_multiple_controller?('admin', 'users', 'domains', 'permissions', 'catalogs', 'catalog_types')

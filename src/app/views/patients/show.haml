@@ -20,7 +20,7 @@
         .field-label
             =t('formtastic.labels.patient.address')
         .field-content
-            = h @patient.address
+            = simple_format(@patient.address)
     .field
         .field-label
             =t('formtastic.labels.patient.sex')

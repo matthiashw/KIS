@@ -127,8 +127,8 @@ en:
     new:              "New Patient"
     edit:             "Editing Patient"
     active:           "Active Patient"
-    search:           "or search for patients"
-    search_fail:      "No patients found"
+    search:           "search for first or family name"
+    search_fail:      "No patients found. Try changing your search parameters."
     medicalreport:    "Medical report"
     create_success:   "Patient successfully created"
     update_success:   "Patient successfully updated"
@@ -164,6 +164,7 @@ en:
     ending_date:      "End Date"
     name:             "Name"
     description:      "Description"
+    calendar:         "Calendar"
 
   treatment:
     listing:            "Listing treatment"
@@ -178,6 +179,8 @@ en:
   permissions_update:   "Update permissions"
 
   case_file:
+    new_confirm:         "Please notice that any open Cases will be closed"
+    activate_for_view:   "Activate for View"
     listing:             "Listing Patient Cases"
     edit:                "Editing Case"
     new:                 "New Case"

@@ -1,8 +1,13 @@
 class PatientsController < ApplicationController
+
+  RESULTSPERPAGE = 3
+
   # GET /patients
   # GET /patients.xml
   def index
-    @patients = Patient.all
+    return access_denied unless authorize(permissions = ["view_patient"])
+    
+    @patients = Patient.paginate :page => params[:page], :order => 'family_name ASC', :per_page => RESULTSPERPAGE
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,6 +18,8 @@ class PatientsController < ApplicationController
   # GET /patients/1
   # GET /patients/1.xml
   def show
+    return access_denied unless authorize(permissions = ["view_patient"])
+
     @patient = Patient.find(params[:id])
     #@comment = @patient.comments.build(params[:comment])
     @comments = Comment.paginate :page => params[:page], :order => 'created_at DESC', :conditions => ['patient_id = ?', params[:id]]
@@ -40,6 +47,8 @@ class PatientsController < ApplicationController
   # GET /patients/new
   # GET /patients/new.xml
   def new
+    return access_denied unless authorize(permissions = ["create_patient"])
+
     @patient = Patient.new
 
     respond_to do |format|
@@ -50,12 +59,15 @@ class PatientsController < ApplicationController
 
   # GET /patients/1/edit
   def edit
+    return access_denied unless authorize(permissions = ["edit_patient"])
     @patient = Patient.find(params[:id])
   end
 
   # POST /patients
   # POST /patients.xml
   def create
+    return access_denied unless authorize(permissions = ["create_patient"])
+
     @patient = Patient.new(params[:patient])
     @case_file = CaseFile.new(:entry_date => Date.today())
 
@@ -86,6 +98,8 @@ class PatientsController < ApplicationController
   # PUT /patients/1
   # PUT /patients/1.xml
   def update
+    return access_denied unless authorize(permissions = ["edit_patient"])
+
     @patient = Patient.find(params[:id])
 
     respond_to do |format|
@@ -103,6 +117,8 @@ class PatientsController < ApplicationController
   # DELETE /patients/1
   # DELETE /patients/1.xml
   def destroy
+    return access_denied unless authorize(permissions = ["destroy_patient"])
+    
     @patient = Patient.find(params[:id])
     
     if @patient.destroy
@@ -117,14 +133,27 @@ class PatientsController < ApplicationController
 
   # search function for ajax search
   def search
-      if params[:query] and request.xhr?
-        if params[:query] == ""
-          @patients = Patient.all
+    session[:query] = params[:query].strip if params[:query]
+
+      if session[:query]
+        if session[:query] == ""
+          @patients = Patient.paginate :page => params[:page], :order => 'family_name ASC', :per_page => RESULTSPERPAGE
         else
-          @patients = Patient.find(:all, :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{params[:query]}%","%#{params[:query]}%"], :order => "family_name ASC")
+          @patients = Patient.paginate :page => params[:page],:per_page => RESULTSPERPAGE,
+            :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{session[:query]}%","%#{session[:query]}%"], :order => "family_name ASC"
         end
-        render :partial => "shared/patient_search_results", :layout => false, :locals => {:searchresults => @patients}
       end
+
+    if request.xhr?
+         render :partial => "shared/patient_search_results", :layout => false, :locals => {:searchresults => @patients}
+    else
+        respond_to do |format|
+        format.html # search.haml
+        format.xml  { render :xml => @patient }
+        end
+    end
+
    end
+
 
 end

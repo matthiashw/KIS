@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  layout 'frontpage'
+  layout 'login'
   skip_before_filter :login_required
   
   def new

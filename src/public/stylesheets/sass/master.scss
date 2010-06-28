@@ -21,6 +21,11 @@ $mediumgray:#999999;
 $lightgray:#cccccc;
 $verylightgray:#eeeeee;
 
+$red:#ee6633;
+$green:#8cc746;
+$yellow:#ffee66;
+$activeblue:#bbddff;
+
 
 html {
   height: 100%; }
@@ -50,7 +55,9 @@ h1 {
   line-height: 36px;
   margin-bottom: 18px;
   color:$mediumgray;
-  font-family: "Lucida Grande", "Lucida Sans", Verdana, "Lucida Sans Unicode", sans-serif; }
+  font-family: "Lucida Grande", "Lucida Sans", Verdana, "Lucida Sans Unicode", sans-serif;
+  float:left;
+  width:90%;}
 
 h2 {
   font-size: 16px;
@@ -122,6 +129,8 @@ table {
     line-height:18px;
     margin:0 0 18px;
     width:100%;
+    clear:both;
+   
 
     td, th {
         border-color:#DDDDDD;
@@ -157,17 +166,22 @@ table {
         }
     }
 
-    tr.selected td.active,
-    tr.selected td {
-        background:none repeat scroll 0 0 #FFFFCC;
-        border-color:#EEEEBB;
-    }
-
     tr:hover {
         td {
             background-color:$verylightgray;
         }
     }
+
+    tr.active {
+        td {
+            background-color:$activeblue;
+        }
+
+        &:hover {
+            background-color:transparent;
+        }
+        
+    }    
 }
 
 
@@ -214,15 +228,22 @@ abbr {
   height: auto; }
 
 #container {
-  margin: 0 auto;
+  margin:0 auto;
   max-width: 1270px;
   padding: 0 20px;
   display: block; }
 
 #frontpage {
     #container {
-        max-width:310px;
-        width:310px;
+        max-width:240px;
+        width:240px;
+    }
+
+    &.page-users {
+        #container {
+            width:800px;
+            max-width:800px;
+        }
     }
 }
 
@@ -309,7 +330,7 @@ div {
   &.warning {
     color: #840;
     background: #fe6;
-    border-color: #ed5; }
+    border:1px solid #ed5; }
 
   &.error,
   .errorExplanation {
@@ -377,6 +398,11 @@ a.acts_as_button{
         color:#fff;
     }
 
+    &:active {
+        background-color:$darkgray;
+        color:#fff;
+    }
+
     &.lightgray {
        background-color:$lightgray;
 
@@ -415,6 +441,8 @@ a.acts_as_button{
 }
 
 .formtastic {
+    clear:both;
+
     span.required {
         font-size:11px;
         color:$darkyellow;
@@ -461,6 +489,10 @@ a.acts_as_button{
             float:left;
             width:60%;
             text-align:left;
+
+            p {
+                margin:0;
+            }
         }
     }
 }
