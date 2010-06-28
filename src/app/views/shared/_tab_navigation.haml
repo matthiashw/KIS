@@ -1,4 +1,4 @@
-%ul{:class => "secondary-navigation" + " " + is_active_multiple_controller?('patients', 'case_files', 'treatments')}
+%ul{:class => "secondary-navigation" + " " + is_active_multiple_controller?('patients', 'case_files', 'treatments', 'medical_reports')}
     -if current_active_patient != nil
         - if authorize?('view_patient')
             %li{:class => "secondary-navigation-leaf"}

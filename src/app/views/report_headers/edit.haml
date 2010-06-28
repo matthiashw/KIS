@@ -1,8 +1,8 @@
 = javascript_include_tag :ckeditor
 
-%h1 Editing report_header
+-title 'Editing report_header'
 
-- form_for(@report_header) do |f|
+- semantic_form_for(@report_header) do |f|
   = f.error_messages
 
   %p
@@ -13,13 +13,11 @@
   %p
     = f.label :html
     %br
-    = f.cktext_area :html, :toolbar=>'Full', :width=>'500px', :heigth=>'200px'
+    = f.cktext_area :html, :toolbar=>'Full', :width=>'70%', :heigth=>'200px'
 
   %p
     = f.submit 'Update'
   
 
-
-= link_to 'Show', @report_header
-|
-= link_to 'Back', report_headers_path 
+.action-links
+    = link_to t('action.back'), report_headers_path , :class => 'acts_as_button darkgray'

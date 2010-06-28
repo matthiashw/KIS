@@ -1,5 +1,4 @@
-%h1
-  =t('admin.medical_report.header')
+-title t('admin.medical_report.header')
 
 %table
   %tr
@@ -21,6 +20,5 @@
         =link_to 'Destroy', report_header, :confirm => 'Are you sure?', :method => :delete
 
 
-%br
-
-= link_to 'New report_header', new_report_header_path, :class => "acts_as_button"
+.action-links
+  = link_to 'New report_header', new_report_header_path , :class => 'acts_as_button'

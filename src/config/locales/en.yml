@@ -112,6 +112,7 @@ en:
       permissions:    "Permissions"
       catalogs:       "Catalogs"
       catalog_types:  "Catalog Types"
+      report_headers: "Report Headers"
     tabs:
       master_data:    "Master Data"
       anamnesis:      "Anamnesis"

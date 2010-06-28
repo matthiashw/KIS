@@ -1,6 +1,6 @@
-%h1 New medical_report
+-title 'New medical_report'
 
-- form_for(@medical_report) do |f|
+- semantic_form_for(@medical_report) do |f|
   = f.error_messages
 
   %p
@@ -11,4 +11,5 @@
   %p
     = f.submit 'Create'
 
-= link_to 'Back', medical_reports_path 
+.action-links
+  = link_to t('action.back'), medical_reports_path , :class => 'acts_as_button darkgray'
