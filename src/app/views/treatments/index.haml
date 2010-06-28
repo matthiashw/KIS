@@ -10,7 +10,7 @@
         %tr{:onclick=>"location.href='#{url_for patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => treatment)}';",:style=>"cursor:pointer;"}
             %td= h treatment.description
             %td= h treatment.start_date
-            %td= h treatment.ops_entry.name
+            /%td= h treatment.ops_entry.name
             %td
                 -treatment.diagnoses.each do |diagnosis|
                     =h diagnosis.description

@@ -1,9 +1,15 @@
-%p
-  %b Titel
-  =h @report_header.title 
+-title @report_header.title 
+
+.fields
+    .field
+        .field-label
+            Titel
+        .field-content
+            = h @report_header.title
 
 
 
-= link_to 'Edit', edit_report_header_path(@report_header)
-|
-= link_to 'Back', report_headers_path 
+
+.action-links
+    = link_to t('action.edit'), edit_report_header_path(@report_header), :class => 'acts_as_button'
+    = link_to t('action.back'), report_headers_path , :class => 'acts_as_button darkgray'

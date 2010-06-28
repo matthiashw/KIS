@@ -1,8 +1,8 @@
 = javascript_include_tag :ckeditor
 
-%h1 Editing medical_report
+-title 'Editing medical_report'
 
-- form_for(@medical_report) do |f|
+- semantic_form_for(@medical_report) do |f|
   = f.error_messages
 
   %p
@@ -13,12 +13,11 @@
   %p
     = f.label :file 
     %br
-    = f.cktext_area :file, :toolbar=>'Full', :width=>'500px', :heigth=>'200px'
+    = f.cktext_area :file, :toolbar=>'Full', :width=>'70%', :heigth=>'200px'
 
 
   %p
     = f.submit 'Update'
 
-= link_to 'Show', @medical_report
-|
-= link_to 'Back', medical_reports_path
+.action-links
+  = link_to t('action.back'), medical_reports_path, :class => 'acts_as_button darkgray'
