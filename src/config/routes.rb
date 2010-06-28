@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :diagnoses
+
  
   map.connect "/patients/search", :controller => "patients", :action => "search"
 
