@@ -1,6 +1,12 @@
 - title t('comment.edit')
 
-= render :partial => 'form'
+- semantic_form_for(@comment, :url => patient_comment_path(params[:patient_id])) do |f|
+    = f.error_messages
+
+    - f.inputs do
+        = f.input :comment, :input_html => { :rows => 4, :cols => 30 }
+    = f.buttons
+
 
 .action-links
     = link_to t('action.destroy'), @comment, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'

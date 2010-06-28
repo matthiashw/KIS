@@ -15,6 +15,3 @@ ucum_units:
 treat:
    name: Treatment Catalog
    entry_classname: OpsEntry
-diag:
-   name: Diagnose Catalog
-   entry_classname: IcdEntry

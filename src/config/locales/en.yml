@@ -112,6 +112,7 @@ en:
       permissions:    "Permissions"
       catalogs:       "Catalogs"
       catalog_types:  "Catalog Types"
+      report_headers: "Report Headers"
     tabs:
       master_data:    "Master Data"
       anamnesis:      "Anamnesis"
@@ -127,8 +128,9 @@ en:
     new:              "New Patient"
     edit:             "Editing Patient"
     active:           "Active Patient"
-    search:           "or search for patients"
-    search_fail:      "No patients found"
+    search:           "search for first or family name"
+    search_fail:      "No patients found. Try changing your search parameters."
+    medicalreport:    "Medical report"
     create_success:   "Patient successfully created"
     update_success:   "Patient successfully updated"
     delete_success:   "Patient successfully deleted"
@@ -163,6 +165,7 @@ en:
     ending_date:      "End Date"
     name:             "Name"
     description:      "Description"
+    calendar:         "Calendar"
 
   treatment:
     listing:            "Listing treatment"
@@ -237,3 +240,7 @@ en:
         import_file_invalid: "Import file invalid!"
     file_management:        "File Management"
     export:                 "Export"
+
+    medical_report:
+      report: "Medical report"
+      header: "Header"

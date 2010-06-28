@@ -1,1 +1,7 @@
+-title t('patient.listing')
+
 = render :partial => 'shared/patient_search_complete'
+
+.action-links
+    - if authorize?('create_patient')
+        = link_to t('patient.new_button'), new_patient_path, :class => "acts_as_button"

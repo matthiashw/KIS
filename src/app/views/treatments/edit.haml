@@ -1,11 +1,13 @@
 - title t('treatment.edit')
 
-- semantic_form_for(@treatment, :url => patient_case_file_treatment_path(params[:patient_id], params[:case_file_id])) do |f|
+- semantic_form_for(@treatment, :html => { :id => 'treadform' }, :url => patient_case_file_treatment_path(params[:patient_id], params[:case_file_id])) do |f|
     = f.error_messages
 
     - f.inputs do
         = f.input :description, :input_html => { :rows => 4, :cols => 30 }
         = f.input :start_date, :start_year => 1900
+        = f.input :diagnoses, :label_method => :description 
+        = radio_tree @catalog, 'treadform' , 'opscode', @treatment.ops_entry
     = f.buttons
 
 

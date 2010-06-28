@@ -1,14 +1,15 @@
 - if searchresults.length == 0
-  %p=t('patient.search_fail')
+  .messages.warning
+    %p=t('patient.search_fail')
 - else
   %table
     %tr
-      %th=t('patient.first_name')
-      %th=t('patient.family_name')
-      %th=t('patient.birthdate')
-      %th=t('patient.address')
-      %th=t('patient.sex')
-      %th=t('patient.phone')
+      %th=t('formtastic.labels.patient.first_name')
+      %th=t('formtastic.labels.patient.family_name')
+      %th=t('formtastic.labels.patient.birthdate')
+      %th=t('formtastic.labels.patient.address')
+      %th=t('formtastic.labels.patient.sex')
+      %th=t('formtastic.labels.patient.phone')
     - for patient in searchresults
       %tr{:onclick=>"location.href='#{url_for :controller => 'patients', :action => 'show', :id => patient.id}';",:style=>"cursor:pointer;"}
         %td= h patient.first_name

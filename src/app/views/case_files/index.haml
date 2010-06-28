@@ -5,7 +5,8 @@
         %th=t('case_file.leave_date')
     - if @case_files
         - @case_files.each do |case_file|
-            %tr{:onclick=>"location.href='#{url_for :controller => 'case_files', :action => 'show', :id => case_file.id}';",:style=>"cursor:pointer;"}
+            %tr{:onclick=>"location.href='#{url_for :controller => 'case_files', :action => 'show', :id => case_file.id}';",:style=>"cursor:pointer;",
+                :class => css_for_active_case_file(case_file.id)}
                 %td= h case_file.entry_date
                 %td= h case_file.leave_date
 
