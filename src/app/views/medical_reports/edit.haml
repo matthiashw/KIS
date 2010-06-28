@@ -1,0 +1,24 @@
+= javascript_include_tag :ckeditor
+
+%h1 Editing medical_report
+
+- form_for(@medical_report) do |f|
+  = f.error_messages
+
+  %p
+    = f.label :title
+    %br
+    = f.text_field :description
+
+  %p
+    = f.label :file 
+    %br
+    = f.cktext_area :file, :toolbar=>'Full', :width=>'500px', :heigth=>'200px'
+
+
+  %p
+    = f.submit 'Update'
+
+= link_to 'Show', @medical_report
+|
+= link_to 'Back', medical_reports_path

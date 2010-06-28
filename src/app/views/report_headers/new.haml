@@ -1,0 +1,22 @@
+= javascript_include_tag :ckeditor
+
+%h1 New report_header
+
+- form_for(@report_header) do |f|
+  = f.error_messages
+  %p
+    = f.label :title
+    %br
+    = f.text_field :title
+
+  %p
+    = f.label :html
+    %br
+    = f.cktext_area :html, :toolbar=>'Full', :width=>'500px', :heigth=>'200px'
+
+  %p
+    = f.submit 'Create'
+
+
+
+= link_to 'Back', report_headers_path 

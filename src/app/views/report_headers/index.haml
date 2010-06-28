@@ -1,0 +1,26 @@
+%h1
+  =t('admin.medical_report.header')
+
+%table
+  %tr
+    %th Titel
+    %th Standard
+    %th Actions
+
+  -@report_headers.each do |report_header|
+    %tr
+      %td
+        =h report_header.title
+      %td
+        -if @standard == report_header
+          S
+      %td
+        =link_to 'Show', report_header
+        =link_to 'Edit', edit_report_header_path(report_header)
+        =link_to 'Standard', :action => 'standard', :id => report_header
+        =link_to 'Destroy', report_header, :confirm => 'Are you sure?', :method => :delete
+
+
+%br
+
+= link_to 'New report_header', new_report_header_path
