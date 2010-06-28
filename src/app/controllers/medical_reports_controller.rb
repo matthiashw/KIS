@@ -17,7 +17,7 @@ class MedicalReportsController < ApplicationController
     @medical_report = MedicalReport.find(params[:id])
 
     @config = YAML::load(File.open("#{RAILS_ROOT}/config/report.yml"))
-    @header = ReportHeader.find(@config["header"])
+    @header = ReportHeader.find_by_id(@config["header"])
 
     @htmlOutput = @medical_report.file
     @breakPos = 0
@@ -35,8 +35,12 @@ class MedicalReportsController < ApplicationController
       @breakPos += @header.html.length
     end
     
+    if @header != nil
+      @medical_report.file = @header.html + @htmlOutput
+    else
+      @medical_report.file = @htmlOutput
+    end
     
-    @medical_report.file = @header.html + @htmlOutput
    
 
     respond_to do |format|
