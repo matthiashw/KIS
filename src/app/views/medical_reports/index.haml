@@ -2,7 +2,7 @@
 
 %table
   %tr
-    %th Description
+    %th Titel
     %th Actions
 
   - @medical_reports.each do |medical_report|
@@ -10,7 +10,7 @@
       %td=h medical_report.description
       %td
         = link_to 'Show', medical_report
-        /= link_to 'Edit', edit_medical_report_path(medical_report)
+        = link_to 'Edit', edit_medical_report_path(medical_report)
         = link_to 'Destroy', medical_report, :confirm => 'Are you sure?', :method => :delete
 %br
 

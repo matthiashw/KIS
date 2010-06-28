@@ -1,5 +1,6 @@
--title t('domain.new')
+-title t('domain.new_domain')
 
 = render :partial => 'form'
 
-= link_to t('action.back'), domains_path, :class => 'acts_as_button darkgray'
+.action-links
+    = link_to t('action.back'), domains_path, :class => 'acts_as_button darkgray'

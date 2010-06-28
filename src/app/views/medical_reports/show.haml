@@ -1,3 +1,5 @@
+= javascript_include_tag :ckeditor
+
 %p
   %b
     Description:
@@ -5,8 +7,9 @@
 
 %p
   %b
-    File:
-  =h @medical_report.file
+    Report:
+    = render :partial => "readonly_editor"
+
 
 
 

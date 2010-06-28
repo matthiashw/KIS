@@ -1,4 +1,6 @@
 en:
+  name:                   "English"
+
   login:                  "Login"
   logout:                 "Logout"
   register:               "Register"
@@ -9,6 +11,83 @@ en:
   delete_confirmation:    "Are you sure?"
   no_access:              "No Access"
   forbidden:              "Forbidden! You have no access to this page"
+
+  formtastic:
+    labels:
+      patient:
+        first_name:       "First name"
+        family_name:      "Family name"
+        birthdate:        "Birthdate"
+        address:          "Address"
+        sex:              "Gender"
+        phone:            "Phone"
+      user:
+        username:               "Username"
+        email:                  "E-mail"
+        password:               "Password"
+        password_confirmation:  "Password confirmation"
+        first_name:             "First name"
+        family_name:            "Family name"
+        address:                "Address"
+        phone:                  "Phone"
+        language:               "Language"
+        role:                   "Role"
+        domain:                 "Domain"
+      domain:
+        name:             "Domain name"
+        result_name:      "Result name"
+        is_role:          "Is Role"
+        is_userdomain:    "Is Domain"
+      catalog:
+        year:                 "Year"
+        language:             "Language"
+        catalog_type_id:      "Catalog type"
+        dump:                 "Catalog file"
+      catalog_type:
+        import_method:        "Import method"
+        name:                 "Name"
+      appointment:
+        start_date:       "Start Date"
+        end_date:         "End Date"
+        name:             "Name"
+        description:      "Description"
+    hints:
+      patient:
+        first_name:       "First name of Patient"
+        family_name:      "Family name of Patient"
+        birthdate:        "Birthdate of Patient"
+        address:          "Address of Patient"
+        sex:              "Gender of Patient"
+        phone:            "Phone number of Patient"
+      user:
+        username:               "Username"
+        email:                  "E-mail"
+        password:               "Password"
+        password_confirmation:  "Password confirmation"
+        first_name:             "First name"
+        family_name:            "Family name"
+        address:                "Address"
+        phone:                  "Phone"
+        language:               "Language"
+        role:                   "Role"
+        domain:                 "Domain"
+      domain:
+        name:             "Name of the Domain"
+        result_name:      "The Name which should be displayed as the Result of a Task"
+        is_role:          "If this Domain is a Role"
+        is_userdomain:    "If this Domain is a Domain"
+      catalog_type:
+        import_method:        "The import method for this catalog type"
+        name:                 "Name of the catalog type"
+      appointment:
+        start_date:       "Start Date"
+        end_date:         "End Date"
+        name:             "Name"
+        description:      "Description"
+    actions:
+      create:             "Create {{model}}"
+      update:             "Save changes"
+
 
   action:
     create:                 "Create"
@@ -47,12 +126,6 @@ en:
     new_button:       "Create new patient"
     new:              "New Patient"
     edit:             "Editing Patient"
-    first_name:       "First name"
-    family_name:      "Family name"
-    birthdate:        "Birthdate"
-    address:          "Address"
-    sex:              "Gender"
-    phone:            "Phone"
     active:           "Active Patient"
     search:           "or search for patients"
     search_fail:      "No patients found"
@@ -63,20 +136,14 @@ en:
 
   user:
     listing:                "Listing users"
+    username:               "Username"
+    first_name:             "First name"
+    family_name:            "Family name"
+    role:                   "Role"
+    email:                  "E-mail"
     new_button:             "Create new user"
     new:                    "New User"
     edit:                   "Editing User"
-    username:               "Username"
-    email:                  "E-mail"
-    password:               "Password"
-    password_confirmation:  "Password confirmation"
-    first_name:             "First name"
-    family_name:            "Family name"
-    address:                "Address"
-    phone:                  "Phone"
-    language:               "Language"
-    role:                   "Role"
-    domain:                 "Domain"
 
   domain:
     listing:          "All Domains"
@@ -122,14 +189,15 @@ en:
     no_active_patient:   "No active Patient."
     update_success:      "Case successfully updated"
 
-  comments:                 "Comments"
+ 
   comment:
+    comments:                 "Comments"
     string:                 "Comment"
     listing:                "Listing Comments"
     edit:                   "Editing comment"
-    date:                   "date"
+    date:                   "Date"
     submit:                 "Submit comment"
-    new_button:             "Add new comment"
+    new_comment:             "Add new comment"
     new:                    "New Comment"
 
   admin:
@@ -148,6 +216,8 @@ en:
       edit:                 "Editing catalog type"
       import_method:        "Import method"
       name:                 "Name"
+      errors:
+        application:  "The Importer can't provide catalogs for the application you chose!"
     catalog:
       listing:              "Listing catalogs"
       new_button:           "Add new catalog"
@@ -163,7 +233,10 @@ en:
       import_button:        "Import catalog"
       errors:
         import_file_not_blank: "Import file can't be blank!"
-        import_file_invalid:   "Import file invalid!"
-        
+        import_file_invalid: "Import file invalid!"
     file_management:        "File Management"
     export:                 "Export"
+
+    medical_report:
+      report: "Medical report"
+      header: "Header"

@@ -1,12 +1,31 @@
-%p>
-  %b=t('treatment.description')
-  =h @treatment.description
+- title truncate(@treatment.description, 40, "...")
 
-%p
-  %b=t('treatment.starting_date')
-  = h @treatment.start_date
+.fields
+    .field
+        .field-label
+            =t('treatment.description')
+        .field-content
+            = h @treatment.description
+    .field
+        .field-label
+            =t('treatment.starting_date')
+        .field-content
+            = h @treatment.start_date
 
+    .field
+        .field-label
+            =t('treatment.ops_name')
+        .field-content
+            = h @treatment.ops_entry.name
 
-= link_to t('action.edit'), edit_patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment), :class => 'acts_as_button'
-|
-= link_to t('action.back'), patient_case_file_treatments_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment), :class => 'acts_as_button darkgray'
+    .field
+        .field-label
+            =t('treatment.diagnosis')
+        .field-content
+            -@treatment.diagnoses.each do |diagnosis|
+                =diagnosis.description
+
+.action-links
+    = link_to t('action.edit'), edit_patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment), :class => 'acts_as_button'
+    = link_to t('action.destroy'), patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment),  :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
+    = link_to t('action.back'), patient_case_file_treatments_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment), :class => 'acts_as_button darkgray'

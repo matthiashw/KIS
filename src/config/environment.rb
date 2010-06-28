@@ -22,6 +22,7 @@ Rails::Initializer.run do |config|
   config.gem "haml", :version => '3.0.4'
   config.gem "authlogic", :version => '2.1.3'
   config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
+  config.gem 'formtastic', :source => 'http://gemcutter.org'
   #config.gem "rtf", :version => '0.1.0'
 
   # Only load the plugins named here, in the order given (default is alphabetical).

@@ -1,16 +1,20 @@
-%h1=t('admin.catalog.listing')
+- title t('admin.catalog.listing')
 %table
   %tr
     %th=t('admin.catalog.year')
     %th=t('admin.catalog.language')
     %th=t('admin.catalog.type')
-  - @catalogs.each do |catalog|
-    %tr
-      %td= h catalog.year
-      %td= h catalog.language
-      %td= h catalog.catalog_type.name
-      %td= link_to t('action.show'), catalog
-      %td= link_to t('action.edit'), edit_catalog_path(catalog)
-      %td= link_to t('action.destroy'), catalog, :confirm => t('delete_confirmation'), :method => :delete
-%br/
-= link_to t('admin.catalog.new_button'), new_catalog_path, :class => 'acts_as_button'
+    %th Active
+    %th{:colspan => 3}
+    - @catalogs.each do |catalog|
+      %tr
+        %td= h catalog.year
+        %td= h catalog.language
+        %td= h catalog.catalog_type.name
+        %td= (catalog.catalog_type.active_catalog && catalog.catalog_type.active_catalog.id == catalog.id)?true:false
+        %td= link_to t('action.show'), catalog
+        %td= link_to t('action.edit'), edit_catalog_path(catalog)
+        %td= link_to t('action.destroy'), catalog, :confirm => t('delete_confirmation'), :method => :delete
+
+.action-links
+  = link_to t('admin.catalog.new_button'), new_catalog_path, :class => 'acts_as_button'

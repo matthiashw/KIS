@@ -1,22 +1,6 @@
-%h1=t('appointment.new')
-- form_for(@appointment) do |f|
-  = f.error_messages
-  %p
-    = f.label t('appointment.starting_date')
-    %br/
-    = f.date_select :start_date
-  %p
-    = f.label t('appointment.ending_date')
-    %br/
-    = f.date_select :end_date
-  %p
-    = f.label t('appointment.name')
-    %br/
-    = f.text_field :name
-  %p
-    = f.label t('appointment.description')
-    %br/
-    = f.text_area :description
-  %p
-    = f.submit t('action.create')
-= link_to t('action.back'), appointments_path, :class => 'acts_as_button darkgray'
+- title t('appointment.new')
+
+= render :partial => 'form'
+
+.action-links
+    = link_to t('action.back'), appointments_path, :class => 'acts_as_button darkgray'

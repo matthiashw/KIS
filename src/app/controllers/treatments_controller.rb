@@ -5,7 +5,7 @@ class TreatmentsController < ApplicationController
   # GET /treatments.xml
   def index
     @treatments = Treatment.find_all_by_case_file_id(params[:case_file_id])
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @treatments }
@@ -29,6 +29,7 @@ class TreatmentsController < ApplicationController
   # GET /treatments/new.xml
   def new
     @treatment = Treatment.new
+    @catalog = CatalogManager.instance.catalog 'treat'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,6 +39,7 @@ class TreatmentsController < ApplicationController
 
   # GET /treatments/1/edit
   def edit
+    @catalog = CatalogManager.instance.catalog 'treat'
     @treatment = Treatment.find(params[:id])
   end
 
@@ -46,6 +48,7 @@ class TreatmentsController < ApplicationController
   def create
     @treatment = Treatment.new(params[:treatment])
     @treatment.case_file_id = params[:case_file_id]
+    @treatment.ops_entry_id = params[:opscode]
 
     respond_to do |format|
       if @treatment.save
@@ -63,6 +66,7 @@ class TreatmentsController < ApplicationController
   # PUT /treatments/1.xml
   def update
     @treatment = Treatment.find(params[:id])
+    @treatment.ops_entry_id = params[:opscode]
 
     respond_to do |format|
       if @treatment.update_attributes(params[:treatment])

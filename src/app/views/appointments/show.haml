@@ -1,15 +1,27 @@
-%p
-  %b=t('appointment.starting_date')
-  = h @appointment.start_date
-%p
-  %b=t('appointment.ending_date')
-  = h @appointment.end_date
-%p
-  %b=t('appointment.name')
-  = h @appointment.name
-%p
-  %b=t('appointment.description')
-  = h @appointment.description
-= link_to t('action.edit'), edit_appointment_path(@appointment), :class => 'acts_as_button'
-|
-=link_to t('action.back'), appointments_path, :class => 'acts_as_button darkgray'
+- title @appointment.name
+
+.fields
+    .field
+        .field-label
+            =t('appointment.starting_date')
+        .field-content
+            = h @appointment.start_date
+    .field
+        .field-label
+            =t('appointment.ending_date')
+        .field-content
+            = h @appointment.end_date
+    .field
+        .field-label
+            =t('appointment.name')
+        .field-content
+            = h @appointment.name
+    .field
+        .field-label
+            =t('appointment.description')
+        .field-content
+            = h @appointment.description
+
+.action-links
+    = link_to t('action.edit'), edit_appointment_path(@appointment), :class => 'acts_as_button'
+    = link_to t('action.back'), appointments_path, :class => 'acts_as_button darkgray'

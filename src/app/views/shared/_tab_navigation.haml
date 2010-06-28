@@ -1,4 +1,4 @@
-%ul.secondary-navigation
+%ul{:class => "secondary-navigation" + " " + is_active?('patients')}
     -if current_active_patient != nil
         - if authorize?('view_patient')
             %li{:class => "secondary-navigation-leaf"}
@@ -20,7 +20,7 @@
 
         - if authorize?('view_treatment')
             %li{:class => "secondary-navigation-leaf"}
-                =link_to t('navi.tabs.treatment'), patient_case_file_treatments_path(:case_file_id => current_active_patient.active_case_file_id, :patient_id => current_active_patient.id)
+                =link_to t('navi.tabs.treatment'), patient_case_file_treatments_path(:case_file_id => current_active_patient.active_case_file_id, :patient_id => current_active_patient.id), :class => is_active?('treatments')
 
         - if authorize?('view_task')
             %li{:class => "secondary-navigation-leaf"}

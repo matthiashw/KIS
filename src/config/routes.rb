@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :report_headers
+
   map.resources :medical_reports
 
   map.resources :case_files

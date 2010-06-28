@@ -1,18 +1,19 @@
-%h1=t('domain.listing')
+- title t('domain.listing')
 %table
-  %tr
-    %th=t('domain.name')
-    %th=t('domain.result_name')
-    %th=t('domain.is_role')
-    %th{:colspan => "4"}=t('domain.is_userdomain')
-  - @domains.each do |domain|
     %tr
-      %td= h domain.name
-      %td= h domain.result_name
-      %td= h domain.is_role
-      %td= h domain.is_userdomain
-      %td= link_to t('action.show'), domain
-      %td= link_to t('action.edit'), edit_domain_path(domain)
-      %td= link_to t('action.destroy'), domain, :confirm => t('delete_confirmation'), :method => :delete
-%br/
-= link_to t('domain.new_button'), new_domain_path, :class => 'acts_as_button'
+        %th=t('domain.name')
+        %th=t('domain.result_name')
+        %th=t('domain.is_role')
+        %th{:colspan => "4"}=t('domain.is_userdomain')
+    - @domains.each do |domain|
+        %tr
+            %td= h domain.name
+            %td= h domain.result_name
+            %td= h domain.is_role
+            %td= h domain.is_userdomain
+            %td= link_to t('action.show'), domain
+            %td= link_to t('action.edit'), edit_domain_path(domain)
+            %td= link_to t('action.destroy'), domain, :confirm => t('delete_confirmation'), :method => :delete
+
+.action-links
+    = link_to t('domain.new_button'), new_domain_path, :class => 'acts_as_button'

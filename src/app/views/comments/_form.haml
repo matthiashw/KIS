@@ -1,12 +1,6 @@
-- form_for @comment do |f|
-  = f.error_messages
-  %p
-    = f.label t('comment.string')
-    %br/
-    = f.text_area :comment, :size => '34x3'
-  %p
-    = f.label t('comment.date')
-    %br/
-    = f.date_select :date
-  %p
-    = f.submit t('action.save')
+- semantic_form_for @comment do |f|
+    = f.error_messages
+
+    - f.inputs do
+        = f.input :comment, :input_html => { :rows => 4, :cols => 30 }
+    = f.buttons

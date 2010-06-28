@@ -1,48 +1,17 @@
-- form_for @user do |f|
+- semantic_form_for @user do |f|
     = f.error_messages
-    %p
-        = f.label t('user.username')
-        %br/
-        = f.text_field :username
 
-    %p
-        = f.label t('user.email')
-        %br/
-        = f.text_field :email
-    %p
-        = f.label t('user.password')
-        %br/
-        = f.password_field :password
-    %p
-        = f.label t('user.password_confirmation')
-        %br/
-        = f.password_field :password_confirmation
-    %p
-        = f.label t('user.first_name')
-        %br/
-        = f.text_field :first_name
-    %p
-        = f.label t('user.family_name')
-        %br/
-        = f.text_field :family_name
-    %p
-        = f.label t('user.address')
-        %br/
-        = f.text_area :address, :size => '34x5'
-    %p
-        = f.label t('user.phone')
-        %br/
-        = f.text_field :phone
-    %p
-        = f.label t('user.language')
-        %br/
-        = f.text_field :language
-    %div
-        %label=t('user.domain')
-        - Domain.all.each do |d|
-            %p
-                = check_box_tag :user_domain_ids, d.id, @user.domains.include?(d), :name => 'user[domain_ids][]'
-                = f.label :domain_ids, d.name
-    %p
-        = f.submit t('action.save')
+    - f.inputs do
+        = f.input :username
+        = f.input :email
+        = f.input :password
+        = f.input :password_confirmation
+        = f.input :first_name
+        = f.input :family_name
+        = f.input :address, :input_html => { :rows => 4, :cols => 30 }
+        = f.input :phone
+        = f.input :language, :as => :select, :collection => I18n.available_locales.to_a.map{ |locale| [t('name', :locale => locale), locale] }, :include_blank => false
+        = f.input :domains, :as => :check_boxes, :collection => Domain.all       
+    = f.buttons
+
 

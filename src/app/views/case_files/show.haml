@@ -1,13 +1,18 @@
-%p
-  %b=t('case_file.entry_date') + ":"
-  = h @case_file.entry_date
-%p
-  %b=t('case_file.leave_date') + ":"
-  = h @case_file.leave_date
-= link_to t('action.edit'), edit_case_file_path(@case_file)
-|
-=link_to t('action.destroy'), @case_file, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
-|
-=link_to t('action.activate'), {:controller => 'case_files', :action => 'setactive', :id => @case_file.id}, :class => 'acts_as_button'
-|
-=link_to t('action.back'), case_files_path, :class => 'acts_as_button darkgray'
+- title @case_file.entry_date.to_s + " - " + @case_file.leave_date.to_s
+
+.fields
+    .field
+        .field-label
+            =t('case_file.entry_date')
+        .field-content
+            = h @case_file.entry_date
+    .field
+        .field-label
+            =t('case_file.leave_date')
+        .field-content
+            = h @case_file.leave_date
+
+.action-links
+    = link_to t('action.edit'), edit_case_file_path(@case_file), :class => 'acts_as_button'
+    = link_to t('action.activate'), {:controller => 'case_files', :action => 'setactive', :id => @case_file.id}, :class => 'acts_as_button darkyellow'
+    = link_to t('action.back'), case_files_path, :class => 'acts_as_button darkgray'

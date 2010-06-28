@@ -1,14 +1,16 @@
-%h1=t('admin.catalog_type.listing')
+- title t('admin.catalog_type.listing')
 %table
-  %tr
-    %th=t('admin.catalog_type.name')
-    %th=t('admin.catalog_type.import_method')
-  - @catalog_types.each do |catalog_type|
     %tr
-      %td= h catalog_type.name
-      %td= h catalog_type.import_method
-      %td= link_to t('action.show'), catalog_type
-      %td= link_to t('action.edit'), edit_catalog_type_path(catalog_type)
-      %td= link_to t('action.destroy'), catalog_type, :confirm => t('delete_confirmation'), :method => :delete
-%br/
-= link_to t('admin.catalog_type.new_button'), new_catalog_type_path, :class => 'acts_as_button'
+        %th=t('admin.catalog_type.name')
+        %th=t('admin.catalog_type.import_method')
+        %th{:colspan => 3}
+    - @catalog_types.each do |catalog_type|
+        %tr
+            %td= h catalog_type.name
+            %td= h catalog_type.import_method
+            %td= link_to t('action.show'), catalog_type
+            %td= link_to t('action.edit'), edit_catalog_type_path(catalog_type)
+            %td= link_to t('action.destroy'), catalog_type, :confirm => t('delete_confirmation'), :method => :delete
+
+.action-links
+    = link_to t('admin.catalog_type.new_button'), new_catalog_type_path, :class => 'acts_as_button'

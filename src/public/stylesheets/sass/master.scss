@@ -268,11 +268,17 @@ abbr {
   float:left;
   background-color:#fff;
   width:100%;
+  padding-bottom:18px;
+  min-height:400px;
 }
 
 #frontpage {
     .inner {
         margin: 18px;
+    }
+
+    .inner-bg {
+        min-height:0;
     }
 }
 
@@ -318,7 +324,7 @@ div {
 
 
 .errorExplanation {
-    margin:0 0 9px;
+    margin:0 0 18px;
 
     h2, p, ul {
         padding:9px;
@@ -352,7 +358,7 @@ a.acts_as_button{
     padding:4px 8px 4px;
     color: #fff;
     text-decoration: none;
-    font-weight:bold;
+    font-weight:bold !important;
     line-height:18px;
     border-radius:4px;
     -moz-border-radius:4px;
@@ -363,8 +369,8 @@ a.acts_as_button{
     border-bottom:1px solid rgba(0,0,0,0.25);
     position:relative;
     cursor:pointer;
-    font-size:12px;
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size:12px !important;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif !important;
 
     &:hover {
         background-color:$verydarkgray;
@@ -397,18 +403,35 @@ a.acts_as_button{
         color:#fff;
         }
     }
-}
 
+    &.darkyellow {
+       background-color:$darkyellow;
 
-.fieldWithErrors {
-    input, textarea {
-        border-color:#F23D30;
-    }
-
-    label {
-        color:#F23D30;
+       &:hover {
+        background-color:$verydarkgray;
+        color:#fff;
+        }
     }
 }
+
+.formtastic {
+    span.required {
+        font-size:11px;
+        color:$darkyellow;
+        margin-left:4px;
+    }
+
+    .error {
+        input, textarea {
+            border-color:#F23D30;
+        }
+
+        label {
+            color:#F23D30;
+        }
+    }
+}
+
 
 /*VIEWS
 -------------------------------------------------------- */
@@ -419,7 +442,7 @@ a.acts_as_button{
 
 .fields {
     float:left;
-    width:60%;
+    width:90%;
 
     .field {
         float:left;
@@ -429,7 +452,7 @@ a.acts_as_button{
         .field-label {
             float:left;
             width:30%;
-            text-align:right;
+            text-align:left;
             padding-right:9px;
             font-weight:bold;
         }
@@ -440,6 +463,52 @@ a.acts_as_button{
             text-align:left;
         }
     }
+}
+
+/**
+ * show fields
+ */
+
+.pagination {
+    font-size:12px;
+    font-weight:bold;
+
+    a {
+        &:link, &:visited {
+            padding:2px 6px;
+            border:1px solid $verylightgray;
+            background-color:$lightgray;
+            text-decoration:none;
+            color:$blue;
+        }
+
+        &:hover, &:active {
+            background-color:$verydarkgray;
+            color:#fff;
+        }
+
+        &.next_page, &.prev_page {
+            background-color:transparent;
+            border:none;
+
+            &:hover {
+                color:$blue;
+            }
+        }
+    }
+
+    .current {
+        padding:2px 6px;
+        border:1px solid $verylightgray;
+        background-color:$magenta;
+        color:#fff;
+    }
+
+    .disabled {
+        color:$lightgray;
+    }
+
+    
 }
 
 
