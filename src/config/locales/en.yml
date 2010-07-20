@@ -51,6 +51,9 @@ en:
         end_date:         "End Date"
         name:             "Name"
         description:      "Description"
+      template:
+        name:           "Template name"
+        domain:         "Domain"
     hints:
       patient:
         first_name:       "First name of Patient"
@@ -84,6 +87,9 @@ en:
         end_date:         "End Date"
         name:             "Name"
         description:      "Description"
+      template:
+        name:             "Name of the Template"
+        domain:           "The templates domain"
     actions:
       create:             "Create {{model}}"
       update:             "Save changes"
@@ -172,6 +178,14 @@ en:
     new:                "New treatment"
     description:        "Description"
     starting_date:      "Starting Date"
+
+  template:
+    listing:            "Listing templates"
+    edit:               "Edit template"
+    new:                "New template"
+    name:               "Name"
+    domain:             "Domain"
+    new_button:         "Add new Template"
 
   permission_listing:   "Listing permissions"
   permissions_update:   "Update permissions"

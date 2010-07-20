@@ -17,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
 
   
   map.resources :user_sessions, :users, :catalog_types, :catalogs, :appointments,
-                :domains, :comments, :patients, :admin
+                :domains, :comments, :patients, :admin , :templates
 
   map.resources :permissions, :collection => { :update_all_permissions => :put }
 
