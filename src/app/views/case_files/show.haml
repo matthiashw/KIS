@@ -14,5 +14,5 @@
 
 .action-links
     = link_to t('action.edit'), edit_case_file_path(@case_file), :class => 'acts_as_button'
-    = link_to t('action.activate'), {:controller => 'case_files', :action => 'setactive', :id => @case_file.id}, :class => 'acts_as_button darkyellow'
+    = link_to t('case_file.activate_for_view'), {:controller => 'case_files', :action => 'setcaseforview', :id => @case_file.id}, :class => 'acts_as_button darkyellow'
     = link_to t('action.back'), case_files_path, :class => 'acts_as_button darkgray'

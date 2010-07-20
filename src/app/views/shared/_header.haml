@@ -4,7 +4,7 @@
     %span.name
         - current_user.domains.each do |d|
             = d.name + ' '
- 
+
 .links
     -if current_active_patient
         .active-patient
@@ -16,8 +16,6 @@
                 =link_to t('action.show'), {:controller => 'patients', :action => 'show', :id => current_active_patient.id}
                 =link_to t('action.edit'), {:controller => 'patients', :action => 'edit', :id => current_active_patient.id}
 
-    %a{:class => "links-link link-help", :href => ""}
-        %img{:src => "/images/help.png", :alt => "Help"}
     - if current_user
         = link_to t('edit_profile'), edit_user_path(current_user.id), :class => "links-link"
         = link_to t('logout'), logout_path, :class => "links-link"

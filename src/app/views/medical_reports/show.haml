@@ -1,0 +1,20 @@
+= javascript_include_tag :ckeditor
+
+-title @medical_report.description
+
+.fields
+    %p
+        %b
+            Description:
+        =h @medical_report.description
+
+    %p
+        %b
+            Report:
+            = render :partial => "readonly_editor"
+
+
+
+.action-links
+    = link_to t('action.edit'), edit_medical_report_path(@medical_report), :class => 'acts_as_button'
+    = link_to t('action.back'), medical_reports_path, :class => 'acts_as_button darkgray'

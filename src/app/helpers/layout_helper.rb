@@ -59,10 +59,17 @@ module LayoutHelper
   # returns active if the current controller
   # is one of the given controllers
   def is_active_multiple_controller?(*args)
+    activeclass = ""
+
     args.each do |a|
-      return "active" if params[:controller] == a
+      activeclass = "active" if params[:controller] == a
     end
-    return ""
+    
+    if activeclass == ""
+      activeclass = "inactive"
+    end
+
+    activeclass
   end
 
   # returns true if the current controller

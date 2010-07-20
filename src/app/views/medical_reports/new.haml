@@ -1,0 +1,15 @@
+-title 'New medical_report'
+
+- semantic_form_for(@medical_report) do |f|
+  = f.error_messages
+
+  %p
+    = f.label :title
+    %br
+    = f.text_field :description
+
+  %p
+    = f.submit 'Create'
+
+.action-links
+  = link_to t('action.back'), medical_reports_path , :class => 'acts_as_button darkgray'

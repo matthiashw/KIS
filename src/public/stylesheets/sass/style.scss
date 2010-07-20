@@ -22,6 +22,11 @@ $mediumgray:#999999;
 $lightgray:#cccccc;
 $verylightgray:#eeeeee;
 
+$red:#ee6633;
+$green:#8cc746;
+$yellow:#ffee66;
+$activeblue:#bbddff;
+
 /*MAIN NAVIGATION
 -------------------------------------------------------- */
 
@@ -247,9 +252,19 @@ a.links-link {
   margin: 18px 8px 0;
   float: right; }
 
-.link-help img {
-  float: right;
-  margin-top: 4px; }
+.link-help {
+    float:right;
+    width:24px;
+    height:24px;
+    display:block;
+    background:transparent url('/images/help.png') no-repeat top left;
+    text-decoration:none;
+    border:none;
+  
+    &:hover {
+        background-position:bottom left;
+    }
+}
 
 /*CONTENT
 -------------------------------------------------------- */
@@ -265,6 +280,11 @@ a.links-link {
         -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
         box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
         border:1px solid $lightgray;
+    }
+
+    .text_field,
+    .password_field {
+        width:190px;
     }
 }
 
@@ -316,6 +336,7 @@ a.links-link {
         .comment-date {
             color:$lightgray;
             font-size:12px;
+            text-align:right;
         }
      }
 
@@ -347,10 +368,58 @@ a.links-link {
         }
 
         .action-links {
-            width:50%;
+            width:55%;
         }
     }
 }
+
+/**
+ * search
+ */
+
+#search_form {
+    float:left;
+    width:100%;
+    text-align:center;
+
+    label {
+        font-size:12px;
+        color:$mediumgray;
+    }
+
+    .patient-search {
+        margin:0 auto;
+        width:200px;
+        border:4px solid $darkgray;
+        border-radius:6px;
+        -moz-border-radius:6px;
+        -webkit-border-radius:6px;
+        text-align:left;
+
+        .text_field {
+            border:none;
+            background-color:#fff;
+            width:158px;
+            
+        }
+
+        img {
+            width:20px;
+            height:20px;
+            float:right;
+            margin:2px 6px 0 0;
+        }
+    }
+}
+
+#search_results {
+    margin-top:18px;
+    float:left;
+    width:100%;
+
+    
+}
+
 
 
 /*FOOTER
@@ -368,6 +437,334 @@ a.links-link {
         color:$mediumgray;
     }
 }
+
+/*DIALOG
+-------------------------------------------------------- */
+
+.dialog {
+    table.table_window {
+        border:none;
+        background-color:transparent;
+
+        td, th {
+            border:none;
+        }
+
+        tr:hover {
+            td, th {
+                background-color:transparent;
+            }
+
+            td.dialog_content {
+                background-color:$activeblue;
+            }
+        }
+
+    }
+
+    .title_window {
+        padding-top:2px;
+    }
+
+    
+    .dialog_content {
+        background-color:$activeblue;
+        color:$verydarkgray;
+        font-size:12px;
+    }
+
+    td.dialog_content {
+        min-height:282px !important;
+        min-width:282px !important;
+    }
+
+    div.dialog_content {
+        float:left;
+        width:auto !important;
+        height:auto !important;
+        min-height:282px !important;
+        min-width:282px !important;
+        margin:9px;
+    }
+}
+
+/*CALENDAR
+-------------------------------------------------------- */
+
+/* Outer most container */
+.ec-calendar {
+  font-size: 11px;
+  line-height: 14px;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #d5d5d5;
+
+  table {
+        -moz-box-shadow:none;
+        background-color:transparent;
+        border:none;
+        font-size:12px;
+        line-height:14px;
+        margin:0;
+        width:100%;
+        float:none;
+
+        td, th {
+            border:none;
+            padding:0;
+            vertical-align:middle;
+        }
+
+        th {
+            background-color:transparent;
+            color:$darkgray;
+            font-weight:normal;
+            text-align:left;
+            text-shadow:none;
+        }
+
+        thead {
+            th {
+                border-color:transparent;
+            }
+        }
+
+        tr:hover {
+            td {
+                background-color:transparent;
+            }
+        }
+    }
+
+    /* Month name header & links */
+    table.ec-calendar-header {
+        padding: 5px 0;
+        width: 100%;
+        table-layout: fixed;
+
+        th.ec-month-name {
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        td.ec-month-nav {
+
+        }
+
+        th {
+            text-align:center;
+            padding:5px 0;
+        }
+    }
+
+    /* Containers */
+    .ec-body {
+      position: relative;
+      border-right: 1px solid $mediumgray;
+      white-space: nowrap;
+    }
+
+    /* Day names */
+    table.ec-day-names {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        table-layout: fixed;
+        padding: 2px 0;
+        background-color:$mediumgray;
+        color: white;
+
+        th.ec-day-name, td.ec-day-name {
+            text-align:center;
+            font-weight: normal;
+            color:#fff;
+            background-color:$mediumgray;
+        }
+    }
+
+
+    /* Rows container and Row */
+    .ec-rows {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background: white;
+      overflow: hidden;
+      border-right: 1px solid #d5d5d5;
+    }
+
+    .ec-row {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* Background */
+    table.ec-row-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        table-layout: fixed;
+
+        td.ec-day-bg {
+            border-left: 1px solid #d5d5d5;
+        }
+
+        td.ec-today-bg {
+            background-color: #ffffdd;
+        }
+
+        td.ec-today-bg {
+            background-color:$activeblue;
+        }
+    }
+
+
+
+    table.ec-row-table {
+        position: relative;
+        width: 100%;
+        table-layout: fixed;
+
+        /* Day header */
+        .ec-day-header {
+            color: #444;
+            text-align: right;
+            padding: 0 5px;
+            line-height: 16px;
+            border-top: 1px solid #d5d5d5;
+            border-left: 1px solid #d5d5d5;
+            border-bottom: 1px dotted #bbbbbb;
+            background-color: #ecede2;
+            overflow: hidden;
+        }
+
+        a.ec-day-link {
+            color: #444;
+        }
+
+        .ec-today-header {
+            background-color: #d7d7ba;
+        }
+
+        .ec-weekend-day-header {
+
+        }
+
+        .ec-today-header {
+            background-color:$blue;
+        }
+
+        .ec-other-month-header {
+            background-color: #efefef;
+            color: #777;
+        }
+
+        /* Event cell and container */
+        .ec-event-cell {
+            cursor: pointer;
+            vertical-align: top;
+            padding-right: 1px;
+            padding-left: 2px;
+        }
+
+        .ec-event-cell a {
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ec-no-event-cell {
+            cursor: default;
+        }
+
+        .ec-event {
+            color: white;
+            padding-right: 1px;
+            padding-left: 11px;
+            -webkit-border-radius: 3px;
+            -khtml-border-radius: 3px;
+            -moz-border-radius: 3px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ec-event :hover {
+            /* doesn't look as good as js highlighting */
+            /* background-color: #2eac6a; */
+        }
+
+        .ec-event-bg a {
+            color: white;
+        }
+
+        /* used to distinguish non-all_day events */
+        .ec-event-no-bg {
+            position: relative;
+            /* padding-left: 5px; */
+        }
+
+        .ec-event-no-bg a {
+            /* isn't implemented in all browsers */
+            color: inherit;
+        }
+
+        .ec-event-time {
+            font-size: 85%;
+            font-weight: bold;
+            padding-right: 3px;
+        }
+    }
+
+    /* Left and right arrows */
+    /* Doesn't work in IE6, use bg images instead */
+    .ec-left-arrow, .ec-right-arrow {
+      position: relative;
+      top: 3px;
+      width: 0;
+      height: 0;
+      font-size: 0;
+      line-height: 0;
+      margin-bottom: -8px;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+    }
+
+    .ec-left-arrow {
+      margin-left: -7px;
+      margin-right: auto;
+      border-right: 4px solid white;
+    }
+
+    .ec-right-arrow {
+      margin-left: auto;
+      margin-right: 3px;
+      border-left: 4px solid white;
+    }
+
+    /* remove this to not have a bullet */
+    /* don't look as good in ie */
+    .ec-bullet {
+      position: absolute;
+      top: 7px;
+      width: 4px;
+      height: 4px;
+      margin-left: -7px;
+      margin-right: auto;
+      -webkit-border-radius: 2px;
+      -khtml-border-radius: 2px;
+      -moz-border-radius: 2px;
+    }
+}
+
+
+
 
 /*ADMIN AREA
 -------------------------------------------------------- */

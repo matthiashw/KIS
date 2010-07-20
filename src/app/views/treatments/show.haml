@@ -12,6 +12,19 @@
         .field-content
             = h @treatment.start_date
 
+    .field
+        .field-label
+            =t('treatment.ops_name')
+        .field-content
+            = h @treatment.ops_entry.name
+
+    .field
+        .field-label
+            =t('treatment.diagnosis')
+        .field-content
+            -@treatment.diagnoses.each do |diagnosis|
+                =diagnosis.description
+
 .action-links
     = link_to t('action.edit'), edit_patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment), :class => 'acts_as_button'
     = link_to t('action.destroy'), patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment),  :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
