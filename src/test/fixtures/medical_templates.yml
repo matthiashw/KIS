@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  is_active: false
+  domain_id: 1
+  catalog_id: 1
+
+two:
+  name: MyString
+  is_active: false
+  domain_id: 1
+  catalog_id: 1
