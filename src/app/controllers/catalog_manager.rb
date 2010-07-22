@@ -43,11 +43,9 @@ class CatalogManager
      }
      active_catalogs
 
-     active_catalogs
   end
 
   def applications 
      @applications
   end
 end
-
