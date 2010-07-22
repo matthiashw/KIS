@@ -2,7 +2,7 @@
 
 one:
   comment: MyText
-  template_id: 1
+  medical_template_id: 1
   field_definition_id: 1
   task_id: 1
   ucum_entry_id: 1
@@ -10,7 +10,7 @@ one:
 
 two:
   comment: MyText
-  template_id: 1
+  medical_template_id: 1
   field_definition_id: 1
   task_id: 1
   ucum_entry_id: 1

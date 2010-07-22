@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.resources :user_sessions, :users, :catalog_types, :catalogs, :appointments,
-                :domains, :comments, :patients, :admin, :case_files , :templates
+                :domains, :comments, :patients, :admin, :case_files , :medical_templates
 
   map.resources :patients do |patient|
     patient.resources :case_files do |case_file|
