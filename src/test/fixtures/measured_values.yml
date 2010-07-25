@@ -4,12 +4,12 @@ one:
   value: MyString
   comment: MyString
   field_id: 1
-  template_id: 1
+  medical_template_id: 1
   task_id: 1
 
 two:
   value: MyString
   comment: MyString
   field_id: 1
-  template_id: 1
+  medical_template_id: 1
   task_id: 1

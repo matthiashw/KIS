@@ -6,7 +6,7 @@ class Domain < ActiveRecord::Base
   has_many :subdomains, :through => :roleables, :source => :roleable, :source_type => 'Domain'
   has_many :users, :through => :roleables, :source => :roleable, :source_type => 'User'
   
-  has_many :templates
+  has_many :medical_templates
   has_many :tasks
 
   validates_uniqueness_of :name
