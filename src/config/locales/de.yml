@@ -12,6 +12,95 @@ de:
   no_access:              "Kein Zugriff"
   forbidden:              "Zugriff verweigert! Sie haben nicht die nötige Berechtigung dazu, diese Seite zu betrachten."
 
+  formtastic:
+      labels:
+        patient:
+          first_name:       "Vorname"
+          family_name:      "Nachname"
+          birthdate:        "Geburtsdatum"
+          address:          "Addresse"
+          sex:              "Geschlecht"
+          phone:            "Telefon"
+        user:
+          username:               "Username"
+          email:                  "E-mail"
+          password:               "Passwort"
+          password_confirmation:  "Passwort bestätigen"
+          first_name:             "Vorname"
+          family_name:            "Nachname"
+          address:                "Addresse"
+          phone:                  "Telefon"
+          language:               "Sprache"
+          role:                   "Rolle"
+          domain:                 "Domäne"
+        domain:
+          name:             "Name der Domäne"
+          result_name:      "Name eines Domänenprodukts"
+          is_role:          "Ist Rolle"
+          is_userdomain:    "Ist Domäne"
+        catalog:
+          year:                 "Jahr"
+          language:             "Sprache"
+          catalog_type_id:      "Katalog Typ"
+          dump:                 "Katalog Datei"
+        catalog_type:
+          import_method:        "Import Methode"
+          name:                 "Name"
+        appointment:
+          start_date:       "Startdatum"
+          end_date:         "Enddatum"
+          name:             "Name"
+          description:      "Beschreibung"
+        template:
+          name:           "Template Name"
+          domain:         "Domäne"
+        field_definition:
+          input_type: "Eingabetyp"
+          additional_type_info: "Drop-Down Werte"
+      hints:
+        patient:
+          first_name:       "Vorname des Patienten"
+          family_name:      "Nachname des Patienten"
+          birthdate:        "Geburtsdatum des Patienten"
+          address:          "Addresse des Patienten"
+          sex:              "Geschlecht des Patienten"
+          phone:            "Telefonnummer des Patienten"
+        user:
+          username:               "Username"
+          email:                  "E-mail"
+          password:               "Passwort"
+          password_confirmation:  "Passwort bestätigen"
+          first_name:             "Vorname"
+          family_name:            "Nachname"
+          address:                "Addresse"
+          phone:                  "Telefon"
+          language:               "Sprache"
+          role:                   "Rolle"
+          domain:                 "Domäne"
+        domain:
+          name:             "Name der Domäne"
+          result_name:      "Der Name der das Resultat einer Aufgabe dieser Domäne beschreibt."
+          is_role:          "Ist die Domäne eine Rolle"
+          is_userdomain:    "Ist die Domäne eine Userdomäne"
+        catalog_type:
+          import_method:        "Die Importmethode des Katalogtyps"
+          name:                 "Name des Katalogtyps"
+        appointment:
+          start_date:       "Startdatum"
+          end_date:         "Enddatum"
+          name:             "Name"
+          description:      "Beschreibung"
+        template:
+          name:             "Name des Templates"
+          domain:           "Domäne des Templates"
+        field_definition:
+          input_type: "Der Eingabetyp der für dieses Feld verwendet wird"
+          additional_type_info: "Für den Eingabetyp 'Dropdown' können hier die Auswahlwerte festgelegt werden. Die Werte sollten durch ';' getrennt angegeben werden."
+      actions:
+        create:             "Erstelle {{model}}"
+        update:             "Speichere Änderungen"
+
+
   action:
     create:                 "Erstellen"
     update:                 "Aktualisieren"
@@ -110,6 +199,33 @@ de:
     description:        "Beschreibung"
     starting_date:      "Beginn der Behandlung"
 
+  template:
+    heading:            "Template: "
+    listing:            "Templateliste"
+    edit:               "Template bearbeiten"
+    new:                "Neues Template"
+    name:               "Name"
+    domain:             "Domäne"
+    new_button:         "Neues Template hinzufügen"
+    count_fields:       "Anzahl Felder"
+    field_definitions:
+      edit_button:      "Felder editieren"
+      title:            "Felder editieren"
+      catalog:          "Aus Katalog"
+      field_name:       "Feld"
+      input_type:       "Eingabetyp"
+      unit:             "UCUM Referenz-Einheit"
+      code:             "Katalog-Code"
+    fields:
+      edit_button:      "Felder aus Katalog hinzufügen"
+      title:            "Felder aus Katalog hinzufügen"
+      catalog_source:   "Quellkatalog"
+  field_definition:
+    input_type:
+      default: "Textfeld"
+      checkbox: "Checkbox (Ja/Nein)"
+      multiline: "Mehrzeilige Eingabe"
+      dropdown: "Drop-Down Liste"
   permission_listing:   "Alle Berechtigungen"
   permissions_update:   "Berechtigungen aktualisieren"
 

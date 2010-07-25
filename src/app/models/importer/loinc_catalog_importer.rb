@@ -41,6 +41,7 @@ class Importer::LoincCatalogImporter
            name = row ['LONG_COMMON_NAME']
            code = row['LOINC_NUM']
            type = row['CLASSTYPE']
+           startcode=code[0,2]
             if type=="1" # Laboratory
               if !(class_name.starts_with? "PANEL.") #Panel Elements
                  # Create Entry
@@ -53,8 +54,13 @@ class Importer::LoincCatalogImporter
                     class_node.save
                     class_name_hash[class_name]=class_node
                   end
+                  if !class_name_hash.has_key?(class_name + startcode)
+                    code_node = Node.new(:name => startcode , :parent => class_name_hash[class_name])
+                    code_node.save
+                    class_name_hash[class_name + startcode] = code_node
+                  end
               # Hang Entry in Node
-              entry.node=class_name_hash[class_name]
+              entry.node=class_name_hash[class_name + startcode]
               entry.save
               fielddef.save
               end

@@ -13,4 +13,8 @@ class Domain < ActiveRecord::Base
   validates_presence_of :name
   
   acts_as_permissible
+
+  def self.userdomains
+    Domain.find(:all, :conditions => { :is_userdomain => true})
+  end
 end

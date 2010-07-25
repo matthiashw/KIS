@@ -1,9 +1,16 @@
 module CatalogsHelper
   def show_tree catalog
-     render :partial => 'shared/catalog_tree', :locals => {:catalog=>catalog , :checkbox => false }
+     if catalog.root_node.children.empty?
+         render :partial => 'shared/empty_catalog'
+     else
+      render :partial => 'shared/catalog_tree', :locals => {:catalog=>catalog , :checkbox => false }
+     end
   end
 
   def radio_tree catalog ,form_html_id, param_name ,selected_entry_id = -1
+    if catalog.root_node.children.empty?
+         render :partial => 'shared/empty_catalog'
+     else
       path="/0"
       selected_nodes="";
       if selected_entry_id!= -1
@@ -21,9 +28,14 @@ module CatalogsHelper
        
       end
       render :partial => 'shared/catalog_tree', :locals => {:catalog=>catalog , :checkbox => 'single', :form_html_id =>form_html_id, :param_name=> param_name ,:selected_nodes => selected_nodes ,:selected_node_path => path}
+
+    end
   end
 
   def checkbox_tree catalog ,form_html_id, param_name , selected_entry_ids = []
+   if catalog.root_node.children.empty?
+         render :partial => 'shared/empty_catalog'
+    else
       selected_nodes=""
       selected_entry_ids.each do |node_id|
         if selected_nodes!=""
@@ -32,5 +44,6 @@ module CatalogsHelper
         selected_nodes+="\'_"+node_id.to_s+"\'"
       end
       render :partial => 'shared/catalog_tree', :locals => {:catalog=>catalog , :checkbox => 'multi', :form_html_id =>form_html_id, :param_name=> param_name ,:selected_nodes => selected_nodes  }
+   end
   end
 end
