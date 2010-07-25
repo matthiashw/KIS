@@ -1,18 +1,31 @@
 
 # New Importers are Defined here
-# Name of the Catalog Importer:
+# Catalog Importer Key (freely defined unique key):
 #    importer_classname: Import Class (Only valid entries here will show up later )
 #    entry_classname: Subclass of Entry this importer creates
+#    importer_name: Name of the Catalog Importer
 # Do not modify entries unless yoe are really sure what you are doing !
-No Import (User Defined Fields/Template System):
+dummy:
         importer_classname: Importer::DummyCatalogImporter
         entry_classname: FieldEntry
-Loinc Catalog Importer (Template System):
+        importer_name: No Import (User Defined Fields/Template System)
+loinc:
         importer_classname: Importer::LoincCatalogImporter
         entry_classname: FieldEntry
-Ucum Most Common Units Importer: 
+        importer_name: Loinc Catalog Importer (Template System)
+ucum:
         importer_classname: Importer::UcumCatalogImporter
         entry_classname: UcumEntry
-OPS/ICD-10-PCS Catalog Importer:
+        importer_name: Ucum Most Common Units Importer
+ops_am:
         importer_classname: Importer::OpsAmericanCatalogImporter
         entry_classname: OpsEntry
+        importer_name: OPS/ICD-10-PCS Catalog Importer
+atc:
+        importer_classname: Importer::AtcCatalogImporter
+        entry_classname: AtcEntry
+        importer_name: ATC Catalog Importer
+icd_by_letters_am:
+        importer_classname: Importer::IcdByLettersAmericanCatalogImporter
+        entry_classname: IcdEntry
+        importer_name: American-ICD by letters Catalog Importer

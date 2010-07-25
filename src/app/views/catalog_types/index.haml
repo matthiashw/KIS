@@ -8,7 +8,7 @@
     - @catalog_types.each do |catalog_type|
         %tr
             %td= h catalog_type.name
-            %td= h catalog_type.import_method
+            %td= h (ImporterManager.instance.importer_names[catalog_type.import_method])
             %td= h (catalog_type.application!="" ? CatalogManager.instance.applications[catalog_type.application]['name'] : "-")
             %td= link_to t('action.show'), catalog_type
             %td= link_to t('action.edit'), edit_catalog_type_path(catalog_type)
