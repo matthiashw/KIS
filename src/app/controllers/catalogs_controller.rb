@@ -6,7 +6,7 @@ class CatalogsController < ApplicationController
   # GET /catalogs.xml
   def index
     @catalogs = Catalog.all
-
+    @catalog_types = CatalogType.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @catalogs }
@@ -76,6 +76,10 @@ class CatalogsController < ApplicationController
     respond_to do |format|
       if @catalog.errors.empty?
         flash[:notice] = 'Catalog was successfully created.'
+        if(!@catalog.catalog_type.active_catalog)
+            @catalog.catalog_type.active_catalog_id = @catalog.id
+            @catalog.catalog_type.save
+        end
         format.html { redirect_to(@catalog) }
         format.xml  { render :xml => @catalog, :status => :created, :location => @catalog }
       else
@@ -119,4 +123,17 @@ class CatalogsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def activate
+    @catalog = Catalog.find(params[:id])
+    @catalog.catalog_type.active_catalog_id = @catalog.id
+    @catalog.catalog_type.save
+    respond_to do |format|
+      flash[:notice] = 'Catalog was activated.'
+      format.html { redirect_to(catalogs_url) }
+      format.xml  { head :ok }
+    end
 end
+
+end
+

@@ -264,6 +264,7 @@ de:
     catalog_types:          "Katalogtypen"
    
     catalog_type:
+      application:          "Anwendung des Katalogs"
       listing:              "Liste der Katalogtypen"
       new_button:           "Neuen Katalogtyp hinzufügen"
       new:                  "Neuer Katalogtyp"
@@ -273,6 +274,7 @@ de:
       errors:
         application:        "Die Import-Methode kann die gewünschte Anwendung nicht bereitstellen!"
     catalog:
+      empty_catalog:        "Der Katalog ist leer."
       listing:              "Liste der Kataloge"
       new_button:           "Neuen Katalog hinzufügen"
       new:                  "Neuer Katalog"

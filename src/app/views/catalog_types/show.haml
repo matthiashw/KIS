@@ -17,6 +17,8 @@
         .field-content
             - if @catalog_type.application != ""
                 = h CatalogManager.instance.applications[@catalog_type.application]['name']
+            - else
+                -
 
 .action-links
     = link_to t('action.edit'), edit_catalog_type_path(@catalog_type), :class => 'acts_as_button'

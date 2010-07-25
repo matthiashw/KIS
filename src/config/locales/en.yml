@@ -254,6 +254,7 @@ en:
 
     catalogs:               "Catalogs"
     catalog_type:
+      application:          "Catalog Application"
       listing:              "Listing catalog types"
       new_button:           "Add new catalog type"
       new:                  "New catalog type"
@@ -263,6 +264,7 @@ en:
       errors:
         application:  "The Importer can't provide catalogs for the application you chose!"
     catalog:
+      empty_catalog:        "The catalog is empty."
       listing:              "Listing catalogs"
       new_button:           "Add new catalog"
       new:                  "New catalog"
