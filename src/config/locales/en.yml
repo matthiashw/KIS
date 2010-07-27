@@ -114,17 +114,18 @@ en:
   
   navi:
     main:
-      patients:       "Patients"
-      search_patient: "Search Patient"
-      tasks:          "Tasks"
-      appointments:   "Appointments"
-      administration: "Administration"
-      users:          "Users"
-      domains:        "Domains"
-      permissions:    "Permissions"
-      catalogs:       "Catalogs"
-      catalog_types:  "Catalog Types"
-      report_headers: "Report Headers"
+      patients:           "Patients"
+      search_patient:     "Search Patient"
+      tasks:              "Tasks"
+      appointments:       "Appointments"
+      administration:     "Administration"
+      users:              "Users"
+      domains:            "Domains"
+      permissions:        "Permissions"
+      catalogs:           "Catalogs"
+      catalog_types:      "Catalog Types"
+      report_headers:     "Report Headers"
+      medical_templates:  "Medical Templates"
     tabs:
       master_data:    "Master Data"
       anamnesis:      "Anamnesis"
@@ -282,6 +283,9 @@ en:
         import_file_invalid: "Import file invalid!"
     file_management:        "File Management"
     export:                 "Export"
+    medical_template:
+      template:             "Medical Templates"
+      medical_template:     "Medical Templates"
 
     medical_report:
       report: "Medical report"
