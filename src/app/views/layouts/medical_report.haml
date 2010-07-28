@@ -28,7 +28,7 @@
 
                                     - if show_title?
                                         %h1=h yield(:title)
-
-                                    = yield
+                                    .main-content
+                                        = yield
 
         = render :partial => 'shared/footer'

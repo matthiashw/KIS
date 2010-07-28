@@ -1,5 +1,5 @@
 - title @catalog.catalog_type.name + " " + @catalog.year + " " + @catalog.language
-
+- is_active = @catalog.catalog_type.active_catalog && @catalog.catalog_type.active_catalog.id == @catalog.id
 .fields
     .field
         .field-label
@@ -20,8 +20,10 @@
 .show-catalog-tree
     = show_tree @catalog 
    
-    
+ 
 
 .action-links
     = link_to t('action.edit'), edit_catalog_path(@catalog), :class => 'acts_as_button'
+    - if !is_active
+        = link_to t('action.activate'), {:controller => :catalogs, :action => :activate, :id => @catalog.id} , :class => 'acts_as_button'
     = link_to t('action.back'), catalogs_path, :class => 'acts_as_button darkgray'

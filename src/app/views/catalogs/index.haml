@@ -5,16 +5,24 @@
     %th=t('admin.catalog.language')
     %th=t('admin.catalog.type')
     %th Active
-    %th{:colspan => 3}
-    - @catalogs.each do |catalog|
+    %th{:colspan => 4}
+    - @catalog_types.each do |catalog_type|
       %tr
-        %td= h catalog.year
-        %td= h catalog.language
-        %td= h catalog.catalog_type.name
-        %td= (catalog.catalog_type.active_catalog && catalog.catalog_type.active_catalog.id == catalog.id)?true:false
-        %td= link_to t('action.show'), catalog
-        %td= link_to t('action.edit'), edit_catalog_path(catalog)
-        %td= link_to t('action.destroy'), catalog, :confirm => t('delete_confirmation'), :method => :delete
-
+      -catalog_type.catalogs.each do |catalog|
+        - is_active=catalog.catalog_type.active_catalog && catalog.catalog_type.active_catalog.id == catalog.id
+        - tr_class = is_active ? 'active':''
+        %tr{:class => tr_class }
+          %td= h catalog.year
+          %td= h catalog.language
+          %td= h catalog.catalog_type.name
+          %td= is_active
+          %td= link_to t('action.show'), catalog
+          %td
+            -if !is_active
+              = link_to t('action.activate'), {:controller => :catalogs, :action => :activate, :id => catalog.id} 
+          %td= link_to t('action.edit'), edit_catalog_path(catalog)
+          %td= link_to t('action.destroy'), catalog, :confirm => t('delete_confirmation'), :method => :delete
+      %tr
+        %td{:colspan => 7}
 .action-links
   = link_to t('admin.catalog.new_button'), new_catalog_path, :class => 'acts_as_button'

@@ -1,6 +1,6 @@
 class CatalogType < ActiveRecord::Base
   validates_presence_of :name,:import_method
-  validates_uniqueness_of :application , :if => Proc.new { |type| type.application!="template"  } ,:allow_blank => true
+  validates_uniqueness_of :application , :if => Proc.new { |type| (type.application!="template"&&type.application!="user_defined")  } ,:allow_blank => true
   validate do |type|
     if type.application!=""
       apclass=CatalogManager.instance.applications[type.application]['entry_classname']

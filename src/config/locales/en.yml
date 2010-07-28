@@ -54,6 +54,9 @@ en:
       template:
         name:           "Template name"
         domain:         "Domain"
+      field_definition:
+        input_type: "Input Type"
+        additional_type_info: "Drop-Down values"
     hints:
       patient:
         first_name:       "First name of Patient"
@@ -78,7 +81,7 @@ en:
         name:             "Name of the Domain"
         result_name:      "The Name which should be displayed as the Result of a Task"
         is_role:          "If this Domain is a Role"
-        is_userdomain:    "If this Domain is a Domain"
+        is_userdomain:    "If this Domain is a Userdomain"
       catalog_type:
         import_method:        "The import method for this catalog type"
         name:                 "Name of the catalog type"
@@ -90,6 +93,9 @@ en:
       template:
         name:             "Name of the Template"
         domain:           "The templates domain"
+      field_definition:
+        input_type: "The input field type that is used for this field"
+        additional_type_info: "For input type 'Dropdown' you can specify dropdown values in this field. The valus must be seperated by ';'."
     actions:
       create:             "Create {{model}}"
       update:             "Save changes"
@@ -108,17 +114,18 @@ en:
   
   navi:
     main:
-      patients:       "Patients"
-      search_patient: "Search Patient"
-      tasks:          "Tasks"
-      appointments:   "Appointments"
-      administration: "Administration"
-      users:          "Users"
-      domains:        "Domains"
-      permissions:    "Permissions"
-      catalogs:       "Catalogs"
-      catalog_types:  "Catalog Types"
-      report_headers: "Report Headers"
+      patients:           "Patients"
+      search_patient:     "Search Patient"
+      tasks:              "Tasks"
+      appointments:       "Appointments"
+      administration:     "Administration"
+      users:              "Users"
+      domains:            "Domains"
+      permissions:        "Permissions"
+      catalogs:           "Catalogs"
+      catalog_types:      "Catalog Types"
+      report_headers:     "Report Headers"
+      medical_templates:  "Medical Templates"
     tabs:
       master_data:    "Master Data"
       anamnesis:      "Anamnesis"
@@ -183,13 +190,33 @@ en:
     starting_date:      "Starting Date"
 
   template:
+    heading:            "Template: "
     listing:            "Listing templates"
     edit:               "Edit template"
     new:                "New template"
     name:               "Name"
     domain:             "Domain"
     new_button:         "Add new Template"
+    count_fields:       "Number of fields"
+    field_definitions:
+      edit_button:      "Edit fields"
+      title:            "Edit fields"
+      catalog:          "From Catalog"
+      field_name:       "Field"
+      input_type:       "Input type"
+      unit:             "Ucum Unit"
+      code:             "Catalog code"
+    fields:
+      edit_button:      "Add fields from catalog"
+      title:            "Add fields from catalog"
+      catalog_source:   "Catalog source"
 
+  field_definition:
+    input_type:
+      default: "Text field"
+      checkbox: "Checkbox"
+      multiline: "Multi-Line input"
+      dropdown: "Drop-Down list"
   permission_listing:   "Listing permissions"
   permissions_update:   "Update permissions"
 
@@ -228,6 +255,7 @@ en:
 
     catalogs:               "Catalogs"
     catalog_type:
+      application:          "Catalog Application"
       listing:              "Listing catalog types"
       new_button:           "Add new catalog type"
       new:                  "New catalog type"
@@ -237,6 +265,7 @@ en:
       errors:
         application:  "The Importer can't provide catalogs for the application you chose!"
     catalog:
+      empty_catalog:        "The catalog is empty."
       listing:              "Listing catalogs"
       new_button:           "Add new catalog"
       new:                  "New catalog"
@@ -254,6 +283,9 @@ en:
         import_file_invalid: "Import file invalid!"
     file_management:        "File Management"
     export:                 "Export"
+    medical_template:
+      template:             "Medical Templates"
+      medical_template:     "Medical Templates"
 
     medical_report:
       report: "Medical report"

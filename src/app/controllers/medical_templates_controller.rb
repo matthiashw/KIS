@@ -2,7 +2,60 @@ class MedicalTemplatesController < ApplicationController
   def edit
      @medical_template = MedicalTemplate.find(params[:id])
   end
+  def edit_field_definition
+    @medical_template = MedicalTemplate.find(params[:id])
+    @field_definition = FieldDefinition.find(params[:field_id])
+  end
+  def update_field_definition
+    @medical_template = MedicalTemplate.find(params[:id])
+    @field_definition = FieldDefinition.find(params[:field_id])
+    if(params[:example_ucum_unit])
+      @field_definition.example_ucum_id=params[:example_ucum_unit]
+      @field_definition.save
+    end
+     respond_to do |format|
+      if @field_definition.update_attributes(params[:field_definition])
+        flash[:notice] = 'FieldDefinition was successfully updated.'
+        format.html { redirect_to(@medical_template) }
+      else
+        format.html { render :action => "edit_field_definition" }
 
+      end
+    end
+  end
+  def change_fields
+    @medical_template = MedicalTemplate.find(params[:id])
+    @catalog_source = Catalog.find(params[:catalog_source])
+   
+  end
+  def delete_field
+    @medical_template = MedicalTemplate.find(params[:id])
+    field = FieldDefinition.find (params[:field_id])
+    @medical_template.field_definitions.delete(field)
+    @medical_template.save
+     respond_to do |format|
+        format.html { redirect_to(@medical_template) }
+    end
+  end
+  def update_fields
+    @medical_template = MedicalTemplate.find(params[:id])
+    new_field_ids=params[:new_field_ids]
+    if( new_field_ids!= "")
+       field_ids = new_field_ids.split(',')
+       field_ids.each { |fieldentry|
+            entry = FieldEntry.find fieldentry
+            if !@medical_template.field_definitions.find_index entry.field_definition
+              @medical_template.field_definitions.push entry.field_definition
+            end
+       }
+       @medical_template.save
+       flash[:notice] = 'Fields successfully added.'
+    end
+    respond_to do |format|
+       
+        format.html { redirect_to(@medical_template) }
+    end
+  end
   def new
     @medical_template = MedicalTemplate.new
 
@@ -23,7 +76,11 @@ class MedicalTemplatesController < ApplicationController
 
   def show
      @medical_template = MedicalTemplate.find(params[:id])
-
+     template_catalogs = CatalogManager.instance.template_catalogs
+     @catalog_sources = Hash.new
+     template_catalogs.each { |catalog|
+      @catalog_sources[catalog.catalog_select_name]=catalog.id
+     }
     respond_to do |format|
       format.html 
       format.xml  { render :xml => @medical_template }
