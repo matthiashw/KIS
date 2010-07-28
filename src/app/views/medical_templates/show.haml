@@ -28,7 +28,10 @@
                     %td= h definition.field_entry.name
                     %td= h definition.field_entry.node.root.catalog.catalog_select_name
                     %td= h InputTypeManager.input_type_description(definition.input_type)
-                    %td= h (definition.example_ucum_id ? Entry.find(definition.example_ucum_id).code : "-")
+                    - begin
+                        %td= h (definition.example_ucum_id  ? Entry.find(definition.example_ucum_id).code : "-")
+                    - rescue
+                        %td= "-"
                     %td= h definition.field_entry.code
                     %td= link_to t('action.edit') ,{ :controller => "medical_templates" , :action => "edit_field_definition" , :id => @medical_template.id , :field_id => definition.id}
                     %td= link_to t('action.destroy'), { :controller => "medical_templates" , :action => "delete_field" , :id => @medical_template.id , :field_id=> definition.id }, :confirm => t('delete_confirmation')
