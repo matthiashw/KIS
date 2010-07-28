@@ -135,12 +135,15 @@ class PatientsController < ApplicationController
   def search
     session[:query] = params[:query].strip if params[:query]
 
+    
       if session[:query]
         if session[:query] == ""
           @patients = Patient.paginate :page => params[:page], :order => 'family_name ASC', :per_page => RESULTSPERPAGE
         else
-          @patients = Patient.paginate :page => params[:page],:per_page => RESULTSPERPAGE,
-            :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{session[:query]}%","%#{session[:query]}%"], :order => "family_name ASC"
+          patientname = session[:query]
+          patientname.each_line(' ') { |namepart|
+            @patients = Patient.paginate :page => params[:page],:per_page => RESULTSPERPAGE,
+            :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{namepart}%","%#{namepart}%"], :order => "family_name ASC"}
         end
       end
 
