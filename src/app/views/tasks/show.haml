@@ -1,0 +1,15 @@
+%p
+  %b Deadline:
+  = h @task.deadline
+%p
+  %b Creator comment:
+  = h @task.creator_comment
+%p
+  %b Executor comment:
+  = h @task.executor_comment
+%p
+  %b State:
+  = h @task.state
+= link_to 'Edit', edit_task_path(@task)
+|
+\#{link_to 'Back', tasks_path}
