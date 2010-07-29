@@ -1,7 +1,7 @@
 [<% if !@shownode.children.empty?
   commacount=@shownode.children.size
   @shownode.children.each do |node| 
-  %>{text: '<%=  node.name %>' ,  id:'<%=  node.id %>' , cls : 'folder'}<%
+  %>{text: '<%= escape_javascript (h ( node.name)) %>' ,  id:'<%= node.id %>' , cls : 'folder'}<%
     commacount=commacount-1;  if commacount!=0
     %>,<% end end end
 
@@ -11,6 +11,6 @@ if !@shownode.entries.empty?
   end
 commacount=@shownode.entries.size
 @shownode.entries.each do |entry|
-%>{ id:'_<%=  entry.id %>', text : '<span id="node-id"><%= entry.code %>:</span><span id="node-name"><%= entry.name%></span><% if entry.description%> <span id="node-description">(<%= entry.description %>)</span><%end%>', leaf : true<% if checkbox=='true'%>, checked:false<%end%>}<%
+%>{ id:'_<%=  entry.id %>', text : '<span id="node-id"><%= escape_javascript (h (entry.code)) %>:</span><span id="node-name"><%= escape_javascript (h (entry.name))%></span><% if entry.description%> <span id="node-description">(<%= escape_javascript (h ( entry.description)) %>)</span><%end%>', leaf : true<% if checkbox=='true'%>, checked:false<%end%>}<%
   commacount=commacount-1;  if commacount!=0
   %>,<% end  end  end %>]
