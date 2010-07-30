@@ -290,3 +290,6 @@ en:
     medical_report:
       report: "Medical report"
       header: "Header"
+
+    tasks:
+      newTask:  "New Task"

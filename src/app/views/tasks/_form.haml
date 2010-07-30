@@ -1,6 +1,15 @@
 - semantic_form_for @task do |f|
     = f.error_messages
 
+    - @templates.each do |t|
+        %a{:onclick=>"togglethis('t#{t.id}')", :style=>"cursor:pointer;"}
+            = t.name
+        %div{:id=>"t#{t.id}", :style=>"display: block;"}
+            - t.field_definitions.each do |f|
+                =  Entry.find(f.field_entry_id).name
+                - fields_for f do |fcheck|
+                    = check_box_tag "fields[]", f.id.to_s + ";" + t.id.to_s
+
     - f.inputs do
         = f.input :deadline
         = f.input :creator_comment

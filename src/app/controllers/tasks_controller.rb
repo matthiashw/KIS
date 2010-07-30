@@ -25,6 +25,7 @@ class TasksController < ApplicationController
   # GET /tasks/new.xml
   def new
     @task = Task.new
+    @templates = MedicalTemplate.find_all_by_domain_id(2)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,9 +42,33 @@ class TasksController < ApplicationController
   # POST /tasks.xml
   def create
     @task = Task.new(params[:task])
+    @selectedfields = params[:fields]
 
     respond_to do |format|
       if @task.save
+
+        @selectedfields.each do |f|
+          splittedstr = f.split(';')
+          fieldDefId = splittedstr[0]
+          fieldDef = FieldDefinition.find(fieldDefId)
+
+          tempId = splittedstr[1]
+
+          if fieldDef.nil?
+            field = Field.new(:medical_template_id => tempId, :field_definition_id => fieldDefId,
+                              :task_id => @task.id)
+          else
+            field = Field.new(:medical_template_id => tempId, :field_definition_id => fieldDefId,
+              :task_id => @task.id, :ucum_entry_id => fieldDef.example_ucum_id )
+          end
+
+          unless field.save
+            format.html { render :action => "new" }
+            format.xml  { render :xml => field.errors, :status => :unprocessable_entity }
+          end
+
+        end
+
         flash[:notice] = 'Task was successfully created.'
         format.html { redirect_to(@task) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
