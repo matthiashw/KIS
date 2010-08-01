@@ -25,6 +25,7 @@ class Importer::IcdByLettersAmericanCatalogImporter
         code =  row[0]
         row[0] = ""
 
+
         # Create Entry
         entry = IcdEntry.new(:code => code,:name => row.join(" "))
          entry.node=root_node
@@ -33,12 +34,18 @@ class Importer::IcdByLettersAmericanCatalogImporter
          partial_code=""
          last_node=nil
          pos=1
+         
+         letterlevel = 4
+         if code.length == 3
+            letterlevel = 3
+         end
+
          code.each_char do |code_element|
 
-           if pos<3
+           if pos<letterlevel
             partial_code << code_element
 
-            if !codehash.has_key?(partial_code)
+            unless codehash.has_key?(partial_code)
                 if last_node==nil
                   node = Node.new(:name => code_element , :parent => root_node)
                 else

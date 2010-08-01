@@ -55,3 +55,6 @@
     |
     = link_to t('action.edit'), edit_patient_path(@patient), :class => 'acts_as_button'
     = link_to t('action.back'), patients_path, :class => 'acts_as_button darkgray'
+    - if session.has_key?(:origin)
+        - if session[:origin] == 'tasks'
+            = link_to t('task.totask'), '/tasks/new', :class => 'acts_as_button darkgray'

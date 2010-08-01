@@ -318,4 +318,14 @@ en:
       destroy_error:         "The User with the ID 1 can not be deleted!"
       update_success:        "Successfully updated profile."
       registration_success:  "Registration successful."
-      
+
+  task:
+    new_task:  "New Task"
+    choose_domain: "Target Patient and Domain"
+    choose_domain_select: "Please select Target Domain"
+    ok: "OK"
+    select: "choose"
+    other: "other Patient"
+    totask: "Back to Task-Creation"
+    no_active_patient: "No active Patient present"
+

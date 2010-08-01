@@ -40,7 +40,7 @@ class CaseFilesController < ApplicationController
   def index
    return false unless authorize(permissions = ["view_casefile"])
 
-    @case_files = CaseFile.find_all_by_patient_id(session[:active_patient_id])
+    @case_files = CaseFile.find_all_by_patient_id(session[:active_patient_id],:order => 'entry_date DESCf')
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,0 +1,3 @@
+- form_tag 'taskcreation' do
+    = collection_select :domain, :id, @domains, :id, :name, options ={:prompt => t('task.choose_domain_select')}, :class =>"domain"
+    = submit_tag t('task.ok')
