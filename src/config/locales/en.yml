@@ -218,6 +218,18 @@ en:
     new_comment:             "Add new comment"
     new:                    "New Comment"
 
+  medical_report:
+      cases:                "Cases"
+      case:                 "Case"
+      case_id:              "Case id"
+      master_data:          "Master Data"
+      entry_date:           "Entry Date"
+      leave_date:           "Leave Date"
+      anamnesis:            "Anamnesis"
+      findings:             "Findings"
+      treatments:           "Treatment"
+      diagnoses:            "Diagnoses"
+
   admin:
     admin_area:             "Administration Area"
     user_management:        "User Management"
@@ -256,5 +268,6 @@ en:
     export:                 "Export"
 
     medical_report:
-      report: "Medical report"
-      header: "Header"
+      report:       "Medical report"
+      header:       "Header"
+      

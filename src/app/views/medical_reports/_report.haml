@@ -1,9 +1,69 @@
+%h2=t('medical_report.master_data')
 %table
   %tr
-    %td Name
+    %td
+      =t('formtastic.labels.patient.family_name')
     %td
       = patient.family_name
   %tr
-    %td Vorname
+    %td
+      =t('formtastic.labels.patient.first_name')
     %td
       = patient.first_name
+  %tr
+    %td
+      =t('formtastic.labels.patient.birthdate')
+    %td
+      = patient.birthdate
+  %tr
+    %td
+      =t('formtastic.labels.patient.address')
+    %td
+      = patient.address
+  %tr
+    %td
+      =t('formtastic.labels.patient.sex')
+    %td
+      = patient.sex
+  %tr
+    %td
+      =t('formtastic.labels.patient.phone')
+    %td
+      = patient.phone
+
+- i=0
+- case_files.each do |case_file|
+  -i+=1
+  %div{"style" => "page-break-after: always;"}
+  %h2
+    Case
+    =i
+
+  %table
+    %tr
+      %td
+        =t('medical_report.case_id')
+      %td
+        =case_file.id
+    %tr
+      %td
+        =t('medical_report.entry_date')
+      %td
+        =case_file.entry_date
+    %tr
+      %td
+        =t('medical_report.leave_date')
+      %td
+        =case_file.leave_date
+
+  -if properties.include?("1")
+    %h3=t('medical_report.anamnesis')
+
+  -if properties.include?("2")
+    %h3=t('medical_report.findings')
+
+  -if properties.include?("3")
+    %h3=t('medical_report.diagnoses')
+
+  -if properties.include?("4")
+    %h3=t('medical_report.treatments')
