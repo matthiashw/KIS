@@ -6,6 +6,8 @@ class PatientsController < ApplicationController
   # GET /patients.xml
   def index
     return access_denied unless authorize(permissions = ["view_patient"])
+
+    session[:origin] = params[:origin] if params.has_key?(:origin)
     
     @patients = Patient.paginate :page => params[:page], :order => 'family_name ASC', :per_page => RESULTSPERPAGE
 

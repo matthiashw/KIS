@@ -291,5 +291,12 @@ en:
       report: "Medical report"
       header: "Header"
 
-    tasks:
-      newTask:  "New Task"
+  task:
+    new_task:  "New Task"
+    choose_domain: "Target Patient and Domain"
+    choose_domain_select: "Please select Target Domain"
+    ok: "OK"
+    select: "choose"
+    other: "other Patient"
+    totask: "Back to Task-Creation"
+    no_active_patient: "No active Patient present"

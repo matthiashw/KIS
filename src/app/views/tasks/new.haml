@@ -1,7 +1,13 @@
-= javascript_include_tag 'toggle'
--title t('tasks.newTask')
+-title t('task.choose_domain')
 
-= render :partial => 'form'
+- if @current_active_patient.nil?
+    = t('task.no_active_patient')
+    = link_to t('task.select'), {:controller => 'patients', :origin=> 'tasks'}, :class => 'acts_as_button darkgray'
+- else
+    = @current_active_patient.family_name + ', ' + @current_active_patient.first_name
+    = link_to t('task.other'), {:controller => 'patients', :origin=> 'tasks'}, :class => 'acts_as_button darkgray'
+
+= render :partial => 'form2'
 
 .action-links
     = link_to t('action.back'), tasks_path, :class => 'acts_as_button darkgray'

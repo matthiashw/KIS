@@ -311,5 +311,12 @@ de:
     month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
     abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez]
 
-  tasks:
-      newTask:  "Neue Aufgabe erstellen"
+  task:
+      new_task:  "Neue Aufgabe erstellen"
+      choose_domain: "Zielpatient und Zieldomäne"
+      choose_domain_select: "Bitte Zieldomäne wählen"
+      ok: "OK"
+      select: "auswählen"
+      other: "anderer Patient"
+      totask: "Zurück zur Aufgaben-Erstellung"
+      no_active_patient: "Kein aktiver Patient vorhanden"

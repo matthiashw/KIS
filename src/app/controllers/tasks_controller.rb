@@ -21,21 +21,58 @@ class TasksController < ApplicationController
     end
   end
 
-  # GET /tasks/new
-  # GET /tasks/new.xml
-  def new
+  # GET /tasks/taskcreation
+  # GET /tasks/taskcreation.xml
+  def taskcreation
     @task = Task.new
-    @templates = MedicalTemplate.find_all_by_domain_id(2)
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @task }
+
+      if session.has_key?(:active_patient_id)
+
+        if params[:domain][:id] == ""
+          flash[:error] = 'Please select a valid Domain'
+          format.html { redirect_to :action => "new" }
+          format.xml  { render :xml => @domain }
+        else
+          @templates = MedicalTemplate.find_all_by_domain_id(params[:domain][:id])
+
+          format.html # taskcreation.html.erb
+          format.xml  { render :xml => @task }
+        end
+      else
+         flash[:error] = 'No active Patient'
+         format.html { redirect_to :action => "new" }
+         format.xml  { render :xml => @task }
+      end
+
     end
   end
 
   # GET /tasks/1/edit
   def edit
     @task = Task.find(params[:id])
+  end
+
+  # GET /tasks/new
+  # GET /tasks/new.xml
+  def new
+    if session.has_key?(:active_patient_id)
+      @current_active_patient = Patient.find(session[:active_patient_id])
+    else
+      @current_active_patient = nil
+    end
+
+    if session.has_key?(:origin)
+      session[:origin] = nil
+    end
+    
+    @domains = Domain.find_all_by_is_userdomain("1")
+
+     respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @domain }
+     end
   end
 
   # POST /tasks
@@ -63,6 +100,7 @@ class TasksController < ApplicationController
           end
 
           unless field.save
+            @task.destroy
             format.html { render :action => "new" }
             format.xml  { render :xml => field.errors, :status => :unprocessable_entity }
           end
@@ -73,6 +111,7 @@ class TasksController < ApplicationController
         format.html { redirect_to(@task) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
+        flash[:error] = 'Task could not be created.'
         format.html { render :action => "new" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
       end
@@ -100,8 +139,17 @@ class TasksController < ApplicationController
   # DELETE /tasks/1.xml
   def destroy
     @task = Task.find(params[:id])
-    @task.destroy
+    @fields = Field.find_all_by_task_id(params[:id])
 
+
+    if @task.destroy
+      @fields.each do  |f|
+        f.destroy
+      end
+
+
+    end
+    flash[:notice] = 'Task was successfully destroyed.'
     respond_to do |format|
       format.html { redirect_to(tasks_url) }
       format.xml  { head :ok }
