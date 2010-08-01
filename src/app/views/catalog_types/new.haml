@@ -1,6 +1,6 @@
 - title t('admin.catalog_type.new')
 
-= render :partial => 'form',:locals => { :active_catalogs_select => false}
+= render :partial => 'form',:locals => { :edit => false}
 
 .action-links
     = link_to t('action.back'), catalog_types_path, :class => 'acts_as_button darkgray'

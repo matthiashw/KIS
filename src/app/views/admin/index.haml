@@ -11,10 +11,14 @@
     %dd=link_to image_tag("catalogs.png", :alt => "Catalogs") + t('admin.catalogs'), catalogs_path
     %dd.last=link_to image_tag("catalog_types.png", :alt => "Catalog Types") + t('admin.catalog.types'), catalog_types_path
 
-%dl.admin-list.file-management
-    %dt=t('admin.file_management')
-    %dd.last=link_to image_tag("export.png", :alt => "Export") + t('admin.export'), {:controller => "admin", :action => "index"}
-
 %dl.admin-list.medical-report-management
     %dt=t('admin.medical_report.report')
     %dd.last=link_to image_tag("reportheader.png", :alt => "Header festlegen") + t('admin.medical_report.header'), {:controller => "report_headers", :action => "index"}
+
+%dl.admin-list.medical-template-management
+    %dt=t('admin.medical_template.template')
+    %dd.last=link_to image_tag("medical_template.png", :alt => "Medical Template") + t('admin.medical_template.medical_template'), {:controller => "medical_templates", :action => "index"}
+
+%dl.admin-list.file-management
+    %dt=t('admin.file_management')
+    %dd.last=link_to image_tag("export.png", :alt => "Export") + t('admin.export'), {:controller => "admin", :action => "index"}

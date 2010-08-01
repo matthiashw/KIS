@@ -30,10 +30,10 @@
                         =link_to t('appointment.calendar'), calendar_path, :class => is_active?('appointments',"calendar")
     %li{:class => "main-navigation-leaf"}
         - if authorize?('access_administration')
-            =link_to make_image_link(t('navi.main.administration'), 'navi-img navi-img-verwaltung'), {:controller => "admin", :action => "index"}, :class => is_active_multiple_controller?('admin', 'users', 'domains', 'permissions', 'catalogs', 'catalog_types', 'report_headers')
-            - if is_controller_active?('admin', 'users', 'domains', 'permissions', 'catalogs', 'catalog_types', 'report_headers')
+            =link_to make_image_link(t('navi.main.administration'), 'navi-img navi-img-verwaltung'), {:controller => "admin", :action => "index"}, :class => is_active_multiple_controller?('admin', 'users', 'domains', 'permissions', 'catalogs', 'catalog_types', 'report_headers', 'medical_templates')
+            - if is_controller_active?('admin', 'users', 'domains', 'permissions', 'catalogs', 'catalog_types', 'report_headers', 'medical_templates')
                 =image_tag "main_navi_active.png", :alt => 'active menu', :class => "navi-img-active"
-            - if is_controller_active?('admin', 'users', 'domains', 'permissions', 'catalogs', 'catalog_types', 'report_headers')
+            - if is_controller_active?('admin', 'users', 'domains', 'permissions', 'catalogs', 'catalog_types', 'report_headers', 'medical_templates')
                 %ul.main-subnavigation
                     %li{:class => "main-subnavigation-leaf"}
                         =link_to t("navi.main.users"), users_path, :class => is_active?('users')
@@ -47,4 +47,6 @@
                         =link_to t("navi.main.catalog_types"), catalog_types_path, :class => is_active?('catalog_types')
                     %li{:class => "main-subnavigation-leaf"}
                         =link_to t("navi.main.report_headers"), report_headers_path, :class => is_active?('report_headers')
+                    %li{:class => "main-subnavigation-leaf"}
+                        =link_to t("navi.main.medical_templates"), medical_templates_path, :class => is_active?('medical_templates')
     

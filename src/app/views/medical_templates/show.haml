@@ -1,4 +1,4 @@
-- title @medical_template.name
+- title t('template.heading')+@medical_template.name
 
 .fields
     .field
@@ -12,6 +12,34 @@
                 =t('template.domain')
             .field-content
                 = h @medical_template.domain.name
+    .field
+        = link_to t('action.edit'), edit_medical_template_path(@medical_template), :class => 'acts_as_button'
+    .field
+        %table
+            %tr
+                %th=t('template.field_definitions.field_name')
+                %th=t('template.field_definitions.catalog')
+                %th=t('template.field_definitions.input_type')
+                %th=t('template.field_definitions.unit')
+                %th=t('template.field_definitions.code')
+                %th{:colspan => "2"}
+            - @medical_template.field_definitions.each do |definition|
+                %tr
+                    %td= h definition.field_entry.name
+                    %td= h definition.field_entry.node.root.catalog.catalog_select_name
+                    %td= h InputTypeManager.input_type_description(definition.input_type)
+                    %td= h (definition.example_ucum_id ? Entry.find(definition.example_ucum_id).code : "-")
+                    %td= h definition.field_entry.code
+                    %td= link_to t('action.edit') ,{ :controller => "medical_templates" , :action => "edit_field_definition" , :id => @medical_template.id , :field_id => definition.id}
+                    %td= link_to t('action.destroy'), { :controller => "medical_templates" , :action => "delete_field" , :id => @medical_template.id , :field_id=> definition.id }, :confirm => t('delete_confirmation')
+
+    - form_tag  :controller => "medical_templates" , :action => "change_fields" , :id => @medical_template.id do
+        .field
+            .field-label
+                = submit_tag t('template.fields.edit_button'), :class => 'acts_as_button'
+            .field-content
+                = select_tag :catalog_source, options_for_select(@catalog_sources)
 .action-links
-    = link_to t('action.edit'), edit_medical_template_path(@medical_template), :class => 'acts_as_button'
+    
+   
     = link_to t('action.back'), medical_templates_path, :class => 'acts_as_button darkgray'

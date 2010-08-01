@@ -1,0 +1,14 @@
+- title t('template.field_definitions.title')
+- semantic_form_for @field_definition, :url => { :controller => "medical_templates" , :action => "update_field_definition" ,:id=> @medical_template.id , :field_id => @field_definition.id }, :html => { :id => 'field_definitions_form'} do |f|
+  = f.error_messages
+  - f.inputs do
+    = f.input :input_type, :as => :select , :collection => InputTypeManager.input_type_descriptions
+    = f.input :additional_type_info
+    - if CatalogManager.instance.catalog('ucum_units')
+      - if @field_definition.example_ucum_id
+        = radio_tree CatalogManager.instance.catalog('ucum_units'),'field_definitions_form', 'example_ucum_unit' ,@field_definition.example_ucum_id
+      - else
+        = radio_tree CatalogManager.instance.catalog('ucum_units'),'field_definitions_form', 'example_ucum_unit'
+  = f.buttons
+.action-links
+  = link_to t('action.back'), @medical_template, :class => 'acts_as_button darkgray'
