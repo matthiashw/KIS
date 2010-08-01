@@ -12,8 +12,8 @@
     %dd.last=link_to image_tag("catalog_types.png", :alt => "Catalog Types") + t('admin.catalog.types'), catalog_types_path
 
 %dl.admin-list.medical-report-management
-    %dt=t('admin.medical_report.report')
-    %dd.last=link_to image_tag("reportheader.png", :alt => "Header festlegen") + t('admin.medical_report.header'), {:controller => "report_headers", :action => "index"}
+    %dt=t('admin.medical_reports.report')
+    %dd.last=link_to image_tag("reportheader.png", :alt => "Header festlegen") + t('admin.medical_reports.header'), {:controller => "report_headers", :action => "index"}
 
 %dl.admin-list.medical-template-management
     %dt=t('admin.medical_template.template')

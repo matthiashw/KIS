@@ -300,10 +300,16 @@ en:
     medical_template:
       template:             "Medical Templates"
       medical_template:     "Medical Templates"
+    medical_reports:
+      report:                 "Medical report"
+      header:                 "Header"
 
-    medical_report:
-      report: "Medical report"
-      header: "Header"
+  medical_reports:
+    listing:                "Medical Reports"
+    report:                 "Medical report"
+    header:                 "Header"
+    title:                  "Title"
+    actions:                "Actions"
 
   messages:
     application:

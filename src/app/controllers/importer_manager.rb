@@ -43,7 +43,7 @@ class ImporterManager
   end
 
   def importer_names_selection
-    @importer_names
+    @importer_names_selection
   end
 
 end

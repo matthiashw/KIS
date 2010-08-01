@@ -10,7 +10,7 @@
         .field-label
             =t('admin.catalog_type.import_method')
         .field-content
-            = h @catalog_type.import_method
+            = h ImporterManager.instance.importer_names[@catalog_type.import_method]
     .field
         .field-label
             =t('admin.catalog_type.application')
