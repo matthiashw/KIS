@@ -1,9 +1,9 @@
--title 'Listing medical_reports'
+-title t('medical_reports.listing')
 
 %table
   %tr
-    %th Titel
-    %th Actions
+    %th=t('medical_reports.title')
+    %th=t('medical_reports.actions')
 
   - @medical_reports.each do |medical_report|
     %tr

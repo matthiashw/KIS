@@ -9,6 +9,14 @@
     = f.text_field :description
 
   %p
+    %label Cases
+    =swapselectmanual :medical_report, @case_files, :entry_date, :id, params = {:size => 6}
+
+  %p
+    %label Properties
+    =swapselectmanual :medical_report, @properties, :name, :id, params = {:size => 6}
+
+  %p
     = f.submit 'Create'
 
 .action-links

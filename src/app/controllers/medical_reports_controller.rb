@@ -55,6 +55,16 @@ class MedicalReportsController < ApplicationController
   # GET /medical_reports/new.xml
   def new
     @medical_report = MedicalReport.new
+    @patient = Patient.find(session[:active_patient_id])
+    
+    @case_files = CaseFile.find_all_by_patient_id(session[:active_patient_id])
+    
+    @properties = Array.new
+    @properties.push(MedicalReportsProperties.new(1, "anamnesis"));
+    @properties.push(MedicalReportsProperties.new(2, "findings"));
+    @properties.push(MedicalReportsProperties.new(3, "diagnoses"));
+    @properties.push(MedicalReportsProperties.new(4, "treatments"));
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -73,7 +83,18 @@ class MedicalReportsController < ApplicationController
     @medical_report = MedicalReport.new(params[:medical_report])
     @patient = Patient.find(session[:active_patient_id])
 
-    @cached_content = ActionView::Base.new(Rails::Configuration.new.view_path).render(:partial => "medical_reports/report", :patient => @patient, :locals => {:page => self, :patient => @patient})
+    @cases = Array.new
+    params[:special][:CaseFile].each { |item|
+      @cases.push CaseFile.find(item)
+    }
+
+    @cached_content = ActionView::Base.new(Rails::Configuration.new.view_path).render(
+      :partial => "medical_reports/report",
+      :patient => @patient,
+      :locals => {:page => self,
+                  :patient => @patient,
+                  :case_files => @cases,
+                  :properties => params[:special][:MedicalReportsProperties]})
 
     
     @medical_report.file = @cached_content
@@ -117,5 +138,20 @@ class MedicalReportsController < ApplicationController
       format.html { redirect_to(medical_reports_url) }
       format.xml  { head :ok }
     end
+  end
+end
+
+class MedicalReportsProperties
+  def initialize(id, name)
+    @name     = name
+    @id       = id
+  end
+
+  def id
+    return @id
+  end
+
+  def name
+    return @name
   end
 end

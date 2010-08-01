@@ -245,6 +245,18 @@ en:
     new_comment:             "Add new comment"
     new:                    "New Comment"
 
+  medical_report:
+      cases:                "Cases"
+      case:                 "Case"
+      case_id:              "Case id"
+      master_data:          "Master Data"
+      entry_date:           "Entry Date"
+      leave_date:           "Leave Date"
+      anamnesis:            "Anamnesis"
+      findings:             "Findings"
+      treatments:           "Treatment"
+      diagnoses:            "Diagnoses"
+
   admin:
     admin_area:             "Administration Area"
     status_report:          "Status Report"
@@ -300,3 +312,4 @@ en:
       destroy_error:         "The User with the ID 1 can not be deleted!"
       update_success:        "Successfully updated profile."
       registration_success:  "Registration successful."
+      
