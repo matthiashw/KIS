@@ -1,19 +1,21 @@
 - title t('template.heading')+@medical_template.name
 
 .fields
-    .field
-        .field-label
-            =t('template.name')
-        .field-content
-            = h @medical_template.name
-    - if @medical_template.domain
-        .field
-            .field-label
-                =t('template.domain')
-            .field-content
-                = h @medical_template.domain.name
-    .field
-        = link_to t('action.edit'), edit_medical_template_path(@medical_template), :class => 'acts_as_button'
+    .box
+        .box-inner
+            .field
+                .field-label
+                    =t('template.name')
+                .field-content
+                    = h @medical_template.name
+            - if @medical_template.domain
+                .field
+                    .field-label
+                        =t('template.domain')
+                    .field-content
+                        = h @medical_template.domain.name
+            .field
+                = link_to t('action.edit'), edit_medical_template_path(@medical_template), :class => 'acts_as_button'
     .field
         %table
             %tr

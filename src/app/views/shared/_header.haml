@@ -7,14 +7,12 @@
 
 .links
     -if current_active_patient
-        .active-patient
+        .active-patient{:onclick=>"location.href='#{url_for :controller => 'patients', :action => 'show', :id => current_active_patient.id}';"}
             -if current_active_patient
                 %span
                     =t('patient.active') + ":"
                 =current_active_patient.first_name
                 =current_active_patient.family_name
-                =link_to t('action.show'), {:controller => 'patients', :action => 'show', :id => current_active_patient.id}
-                =link_to t('action.edit'), {:controller => 'patients', :action => 'edit', :id => current_active_patient.id}
 
     - if current_user
         = link_to t('edit_profile'), edit_user_path(current_user.id), :class => "links-link"

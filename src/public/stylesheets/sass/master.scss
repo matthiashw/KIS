@@ -142,6 +142,10 @@ table {
         &.active {
             background:none repeat scroll 0 0 #E4F0F8;
         }
+
+        &.center {
+            text-align:center;
+        }
     }
 
     th {

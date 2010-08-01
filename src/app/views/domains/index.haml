@@ -3,14 +3,19 @@
     %tr
         %th=t('domain.name')
         %th=t('domain.result_name')
-        %th=t('domain.is_role')
-        %th{:colspan => "4"}=t('domain.is_userdomain')
+        %th.center=t('domain.is_role')
+        %th.center=t('domain.is_userdomain')
+        %th{:colspan => "3"}
     - @domains.each do |domain|
+        - role = domain.is_role ? '<img src="/images/check.png" alt="check" />' : '-'
+        - result = domain.is_userdomain ? '<img src="/images/check.png" alt="check" />' : '-'
+        
         %tr
             %td= h domain.name
             %td= h domain.result_name
-            %td= h domain.is_role
-            %td= h domain.is_userdomain
+            
+            %td.center= role
+            %td.center= result
             %td= link_to t('action.show'), domain
             %td= link_to t('action.edit'), edit_domain_path(domain)
             %td= link_to t('action.destroy'), domain, :confirm => t('delete_confirmation'), :method => :delete

@@ -4,7 +4,7 @@
         = f.input :first_name
         = f.input :family_name
         = f.input :sex
-        = f.input :birthdate, :start_year => 1900
+        = f.input :birthdate, :as => :datetime, :start_year => 1900
         = f.input :address, :input_html => { :rows => 4, :cols => 30 }
         = f.input :phone
     = f.buttons

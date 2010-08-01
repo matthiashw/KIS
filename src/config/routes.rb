@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.adminstatus "/admin/status", :controller => "admin", :action => "status"
   map.connect "/patients/search", :controller => "patients", :action => "search"
   map.calendar '/appointments/calendar/:year/:month', :controller => 'appointments', :action => 'calendar', :year => Time.zone.now.year, :month => Time.zone.now.month
   map.login "login", :controller => "user_sessions", :action => "new"
@@ -20,6 +21,7 @@ ActionController::Routing::Routes.draw do |map|
     patient.resources :medical_reports
   end
   map.resources :permissions, :collection => { :update_all_permissions => :put }
+
 
   # root url points to this controller
   map.root :controller => "patients", :action => "index"

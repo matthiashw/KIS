@@ -209,15 +209,19 @@ $activeblue:#bbddff;
   margin: 18px 0 0 18px; }
 
 .active-patient {
-    padding:9px 3px;
+    padding:4px 5px;
     display:inline;
     max-width:500px;
     float:left;
-    margin-left:140px;
+    margin:9px 0 0 140px;
     text-align:left;
-    
-    color:$magenta;
-    font-weight:bold;
+    background-color:$verylightgray;
+    border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    font-size:12px;
+    -moz-box-shadow:0 1px 3px rgba(0,0,0,0.3);
+    -webkit-box-shadow:0 1px 3px rgba(0,0,0,0.3);
 
     span {
       color:$darkgray;
@@ -229,6 +233,11 @@ $activeblue:#bbddff;
         text-shadow:none;
         font-size:12px;
         font-weight:normal;
+    }
+
+    &:hover {
+        background-color:$activeblue;
+        cursor:pointer;
     }
 }
 
@@ -389,16 +398,16 @@ a.links-link {
 
     label {
         font-size:12px;
-        color:$mediumgray;
+        color:$darkyellow;
     }
 
     .patient-search {
         margin:0 auto;
         width:200px;
-        border:4px solid $darkgray;
-        border-radius:6px;
-        -moz-border-radius:6px;
-        -webkit-border-radius:6px;
+        border:4px solid $lightgray;
+        border-radius:4px;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
         text-align:left;
 
         .text_field {
@@ -422,9 +431,25 @@ a.links-link {
     float:left;
     width:100%;
 
-    
 }
 
+/**
+ * box
+ */
+
+.box {
+    background-color:$verylightgray;
+    float:left;
+    width:100%;
+    border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    margin-bottom:18px;
+
+    .box-inner {
+        margin:9px;
+    }
+}
 
 
 /*FOOTER

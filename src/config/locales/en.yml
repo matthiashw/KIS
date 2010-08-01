@@ -247,6 +247,7 @@ en:
 
   admin:
     admin_area:             "Administration Area"
+    status_report:          "Status Report"
     user_management:        "User Management"
     users:                  "User"
     domains:                "Domains"
@@ -278,6 +279,7 @@ en:
       language:             "Language"
       import:               "Import catalog"
       import_button:        "Import catalog"
+      active:               "Active"
       errors:
         import_file_not_blank: "Import file can't be blank!"
         import_file_invalid: "Import file invalid!"
@@ -290,3 +292,11 @@ en:
     medical_report:
       report: "Medical report"
       header: "Header"
+
+  messages:
+    application:
+      no_admin:              "There is no Administrator Account present in your system! You can now create one! After that you will be redirected to the login page!"
+    users:
+      destroy_error:         "The User with the ID 1 can not be deleted!"
+      update_success:        "Successfully updated profile."
+      registration_success:  "Registration successful."

@@ -1,6 +1,17 @@
 class UsersController < ApplicationController
   skip_before_filter :login_required, :only => [:new, :create]
 
+  def setup
+    adminuser = User.find_by_id(1)
+
+    if adminuser == nil
+      flash[:message] = t('messages.application.no_admin')
+      return false
+    end
+
+    return true
+  end
+
   # GET /patients
   # GET /patients.xml
   def index
@@ -36,7 +47,7 @@ class UsersController < ApplicationController
     @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
 
     if @user.save
-      flash[:notice] = "Registration successful."
+      flash[:notice] = t('messages.users.registration_success')
       render :action => 'show'
     else
       if !current_user
@@ -57,7 +68,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Successfully updated profile."
+      flash[:notice] = t('messages.users.update_success')
       render :action => 'show'
     else
       render :action => 'edit'
@@ -68,7 +79,7 @@ class UsersController < ApplicationController
   # DELETE /patients/1.xml
   def destroy
     if params[:id] == 1
-      flash[:error] = "The User with the ID 1 can not be deleted!"
+      flash[:error] = t('messages.users.destroy_error')
       redirect_to(users_url) and return false
     end
 

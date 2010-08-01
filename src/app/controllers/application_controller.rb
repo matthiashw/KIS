@@ -89,7 +89,7 @@ class ApplicationController < ActionController::Base
     adminuser = User.find_by_id(1)
 
     if adminuser == nil
-      flash[:message] = "There is no Administrator Account present in your system! You can now create one! After that you will be redirected to the login page!"
+      flash[:message] = t('messages.application.no_admin')
       return false
     end
 
