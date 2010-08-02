@@ -318,6 +318,10 @@ a.links-link {
     .delete {
         float:right;
     }
+
+    &.task-step1 {
+        margin-top:36px;
+    }
 }
 
 
@@ -450,6 +454,111 @@ a.links-link {
         margin:9px;
     }
 }
+
+/*TASK AND TEMPLATES
+-------------------------------------------------------- */
+
+.task-patient {
+    .task-patient-name {
+        display:inline;
+    }
+
+    .task-patient-switch {
+        display:inline;
+        margin-left:18px;
+    }
+}
+
+.taskcreation {
+    margin-top:18px;
+
+    .task-select-domain {
+
+    }
+
+    .task-select-domain-submit {
+        margin-top:18px;
+    }
+}
+
+.task-step {
+    color:$magenta;
+    font-size:16px;
+    margin-bottom:18px;
+
+    &.step1 {
+
+    }
+
+    &.step2,
+    &.step3 {
+        
+    }
+}
+
+
+
+#templates {
+    margin-bottom:18px;
+    float:left;
+    width:100%;
+
+    .template-collapsible {
+        margin:9px 0;
+    }
+
+    .template-toggle {
+        background-color:$darkgray;
+        border-radius:4px;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        padding:4px 6px 5px;
+        float:left;
+        width:100%;
+
+        .select-all-fields {
+            float:left;
+            margin-left:4px;
+            margin-top:2px;
+        }
+
+        .fields-select-all,
+        .fields-select-none {
+            float:left;
+            color:#fff;
+            width:80px;
+            font-size:12px;
+            margin-left:4px;
+        }
+    }
+
+    .template-toggle-link {
+        background:url("/images/arrow-expanded.png") no-repeat scroll 0 50% transparent;
+        padding-left:18px;
+        cursor:pointer;
+        color:#fff;
+        text-decoration: underline;
+        font-size:16px;
+        margin-left:18px;
+        display:block;
+        float:left;
+        width:80%;
+    }
+    
+    .template-collapsible.collapsed {
+        .template-toggle-link {
+            background:url("/images/arrow-collapsed.png") no-repeat scroll 0 50% transparent;
+        }
+    }
+
+    .template-content {
+        margin:0 9px 9px 18px;
+    }
+
+}
+
+
+
 
 
 /*FOOTER

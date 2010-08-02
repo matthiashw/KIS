@@ -5,6 +5,7 @@
     %th Creator comment
     %th Executor comment
     %th State
+    %th{:colspan => '3'}
   - @tasks.each do |task|
     %tr
       %td= h task.deadline
@@ -14,5 +15,7 @@
       %td= link_to 'Show', task
       %td= link_to 'Edit', edit_task_path(task)
       %td= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete
-%br/
-= link_to 'New task', new_task_path
+
+.action-links
+  - if authorize?('create_task')
+    = link_to t('task.new_task'), new_task_path, :class => "acts_as_button"

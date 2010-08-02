@@ -1,3 +1,81 @@
+document.observe('dom:loaded', function () {
+
+    /*
+     * slide toggle
+     * for templates
+     */
+    var elMainContainer = $$('.template-collapsible').first();
+    var arrToggelButton = $$('.template-toggle-link');
+    var arrToggleTarget = $$('.template-content');
+
+    arrToggelButton.each(function (elButton, intIdx) {
+        elButton.observe('click', function () {
+            arrToggleTarget[intIdx].toggle();
+            if (!elMainContainer.hasClassName('collapsed')) {
+                elMainContainer.addClassName('collapsed');
+            } else {
+                elMainContainer.removeClassName('collapsed');
+            }
+        });
+    });
+
+    /*
+     * class for
+     * selected fields
+     */
+
+    var checkboxes = $$('#templates tbody tr .checkbox');
+    var fields = $$('#templates tbody tr');
+    checkboxes.each(function (elCheckbox, i){
+        elCheckbox.observe('click', function(e){
+            if (elCheckbox.checked) {
+                fields[i].addClassName('active');
+            } else {
+                fields[i].removeClassName('active');
+            }
+
+        });
+    });
+
+    /*
+     * select all
+     */
+    var selectAll = $$('.select-all-fields');
+    selectAll.each(function (elCheckbox, i){
+        elCheckbox.observe('click', function(e){
+
+            var templateToggle = elCheckbox.up();
+            var template = templateToggle.up();
+         
+            var cb = templateToggle.next().descendants('tbody');
+           
+            var labelAll = templateToggle.down('.fields-select-all');
+            var labelNone = templateToggle.down('.fields-select-none');
+            
+            cb.each(function (c, i){
+                if (c.match('.checkbox')) {
+                    if (elCheckbox.checked) {
+                        c.checked = 1;
+                        c.up().up().addClassName('active');
+                        labelAll.hide();
+                        labelNone.show();
+                    } else {
+                        c.checked = 0;
+                        c.up().up().removeClassName('active');
+                        labelAll.show();
+                        labelNone.hide();
+                    }
+                }
+                
+                
+            });
+        });
+    });
+
+});
+
+
+
 /*
  * Loading Bar feature ( use = render :partial => 'shared/loading_bar_element'
  * and onSubmit  callback to present loading bar) :onSubmit => "showAjaxLoadingBar()"
