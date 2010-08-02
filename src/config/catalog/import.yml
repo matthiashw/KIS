@@ -5,6 +5,7 @@
 #    entry_classname: Subclass of Entry this importer creates
 #    importer_name: Name of the Catalog Importer
 # Do not modify entries unless yoe are really sure what you are doing !
+# 'dummy' Importer should be present if you want to have user-defined catalogs
 dummy:
         importer_classname: Importer::DummyCatalogImporter
         entry_classname: FieldEntry

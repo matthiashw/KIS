@@ -57,6 +57,10 @@ de:
         field_definition:
           input_type: "Eingabetyp"
           additional_type_info: "Drop-Down Werte"
+        field_entry:
+          code:   "Schlüssel des Katalogeintrags"
+          name:   "Name des Katalogeintrags"
+          description: "Zusätzliche Beschreibungen zum Katalogeintrag"
       hints:
         patient:
           first_name:       "Vorname des Patienten"
@@ -290,6 +294,18 @@ de:
       errors:
         import_file_not_blank: "Import Datei muss angegeben werden!"
         import_file_invalid: "Falsches Importformat!"
+      user_defined:
+        add_field_entry:         "Katalogeintrag hinzufügen"
+        edit_field_entry:        "Ausgewählten Katalogeintrag bearbeiten"
+        delete_field_entry:      "Ausgewählten Katalogeintrag löschen"
+        create_field_entry:
+          ok:                    "Katalogeintrag wurde erfolgreich hinzugefügt!"
+          error:                 "Keine leeren Felder erlaubt!"
+        destroy_field_entry:
+          ok:                   "Katalogeintrag gelöscht!"
+        update_field_entry:
+          ok:                    "Katalogeintrag aktualisiert!"
+          error:                 "Keine leeren Felder erlaubt!"
     file_management:        "Datei Verwaltung"
     export:                 "Export"
 

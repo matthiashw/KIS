@@ -18,11 +18,14 @@
             = h @catalog.catalog_type.name
     .field
         = link_to t('action.edit'), edit_catalog_path(@catalog), :class => 'acts_as_button'
-
-.show-catalog-tree
-    = show_tree @catalog 
-   
- 
+- form_tag  url_for(:controller => "catalogs" , :action => :edit_field_entry , :id => @catalog.id), :id => 'edit_userdefined_form' do
+    .show-catalog-tree
+        = radio_tree @catalog , 'edit_userdefined_form' , 'node_to_edit'
+    .catalog_edit_action
+        - if !(@catalog.root_node.children.empty? && @catalog.root_node.entries.empty?)
+            = submit_tag t('admin.catalog.user_defined.edit_field_entry'), :name => "edit_field_entry"
+            = submit_tag t('admin.catalog.user_defined.delete_field_entry'), :name => "delete_field_entry"
+        = link_to t('admin.catalog.user_defined.add_field_entry'), {:controller => :catalogs, :action => :add_field_entry, :id => @catalog.id} , :class => 'acts_as_button'
 
 .action-links
     

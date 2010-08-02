@@ -57,6 +57,10 @@ en:
       field_definition:
         input_type: "Input Type"
         additional_type_info: "Drop-Down values"
+      field_entry:
+        code:   "Catalog entry code"
+        name:   "Name of the catalog entry"
+        description: "Additional description"
     hints:
       patient:
         first_name:       "First name of Patient"
@@ -296,6 +300,18 @@ en:
       errors:
         import_file_not_blank: "Import file can't be blank!"
         import_file_invalid: "Import file invalid!"
+      user_defined:
+        add_field_entry:         "Add entry to catalog"
+        edit_field_entry:        "Edit checked entry"
+        delete_field_entry:      "Delete checked entry"
+        create_field_entry:
+          ok:                    "Catalog field successfully created!"
+          error:                 "No empty values allowed!"
+        destroy_field_entry:
+          ok:                   "Catalog field deleted!"
+        update_field_entry:
+          ok:                    "Catalog field successfully updated!"
+          error:                 "No empty values allowed!"
     file_management:        "File Management"
     export:                 "Export"
     medical_template:
