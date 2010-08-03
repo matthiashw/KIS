@@ -1,6 +1,37 @@
 de:
   name:                   "Deutsch"
 
+  activerecord:
+    models:
+      catalog_type:     "Katalogtyp"
+      appointment:      "Termin"
+      atc_entry:        "Medizinkatalog-Eintrag"
+      case_file:        "Fall"
+      catalog:          "Katalog"
+      comment:          "Kommentar"
+      diagnosis:        "Diagnose"
+      domain:           "Domäne"
+      domain_membership: "Domänenzugehörigkeit"
+      entry:            "Katalogeintrag"
+      field:            "Feld"
+      field_definition: "Felddefinition"
+      icd_entry:        "Diagnosekatalog-Eintrag"
+      measured_value:   "Gemessener Wert"
+      medical_report:   "Arztbrief"
+      medical_template: "Template"
+      medication:       "Medikation"
+      node:             "Katalogknoten"
+      ops_entry:        "Operations- und Prozedurkatalog-Eintrag"
+      patient:          "Patient"
+      permission:       "Benutzerrecht"
+      report_header:    "Arztbriefkopf"
+      task:             "Aufgabe"
+      treatment:        "Behandlung"
+      ucum_entry:       "Einheitenkatalog-Eintrag"
+      uploaded_file:    "Hochgeladene Datei"
+      user:             "Systembenutzer"
+      user_session:     "Benutzersitzung"
+
   login:                  "Einloggen"
   logout:                 "Ausloggen"
   register:               "Registrieren"
@@ -277,7 +308,11 @@ de:
       name:                 "Name"
       errors:
         application:        "Die Import-Methode kann die gewünschte Anwendung nicht bereitstellen!"
+      flash:
+        created:             "Katalogtyp wurde erfolgreich angelegt."
+        updated:             "Katalogtyp wurde erfolgreich aktualisiert."
     catalog:
+      no_catalog_available:           "Kein Katalog für folgende Applikation verfügbar: "
       empty_catalog:        "Der Katalog ist leer."
       listing:              "Liste der Kataloge"
       new_button:           "Neuen Katalog hinzufügen"
@@ -291,6 +326,10 @@ de:
       language:             "Sprache"
       import:               "Katalog Importieren"
       import_button:        "Katalog Importieren"
+      flash:
+        created:             "Katalog wurde erfolgreich angelegt."
+        updated:             "Katalog wurde erfolgreich aktualisiert."
+        activated:          "Katalog wurde aktiviert."
       errors:
         import_file_not_blank: "Import Datei muss angegeben werden!"
         import_file_invalid: "Falsches Importformat!"

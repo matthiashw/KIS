@@ -30,11 +30,12 @@ class TreatmentsController < ApplicationController
   def new
     @treatment = Treatment.new
     @catalog = CatalogManager.instance.catalog 'treat'
-
     respond_to do |format|
+    
       format.html # new.html.erb
       format.xml  { render :xml => @treatment }
-    end
+   
+     end
   end
 
   # GET /treatments/1/edit

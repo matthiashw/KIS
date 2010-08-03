@@ -75,7 +75,7 @@ class CatalogsController < ApplicationController
      
     respond_to do |format|
       if @catalog.errors.empty?
-        flash[:notice] = 'Catalog was successfully created.'
+        flash[:notice] = t('admin.catalog.flash.created')
         if(!@catalog.catalog_type.active_catalog)
             @catalog.catalog_type.active_catalog_id = @catalog.id
             @catalog.catalog_type.save
@@ -98,7 +98,7 @@ class CatalogsController < ApplicationController
 
     respond_to do |format|
       if @catalog.update_attributes(params[:catalog])
-        flash[:notice] = 'Catalog was successfully updated.'
+        flash[:notice] = t('admin.catalog.flash.updated')
         format.html { redirect_to(@catalog) }
         format.xml  { head :ok }
       else
@@ -129,7 +129,7 @@ class CatalogsController < ApplicationController
     @catalog.catalog_type.active_catalog_id = @catalog.id
     @catalog.catalog_type.save
     respond_to do |format|
-      flash[:notice] = 'Catalog was activated.'
+      flash[:notice] = t('admin.catalog.flash.activated')
       format.html { redirect_to(catalogs_url) }
       format.xml  { head :ok }
     end

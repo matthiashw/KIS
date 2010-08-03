@@ -21,8 +21,11 @@ class CatalogManager
   #Use This for all catalogs except Templates
   def catalog application
     type=CatalogType.find :first , :conditions => { :application => application}
-    type.active_catalog
-    
+    catalog=nil
+    if type
+      catalog=type.active_catalog
+    end
+    catalog
   end
 
   #Use This for Templates
@@ -48,4 +51,5 @@ class CatalogManager
   def applications 
      @applications
   end
+  
 end

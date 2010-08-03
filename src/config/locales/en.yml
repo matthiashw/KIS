@@ -1,6 +1,37 @@
 en:
   name:                   "English"
 
+  activerecord:
+      models:
+        catalog_type:     "catalog type"
+        appointment:      "appointment"
+        atc_entry:        "medication catalog entry"
+        case_file:        "case"
+        catalog:          "catalog"
+        comment:          "comment"
+        diagnosis:        "diagnosis"
+        domain:           "domain"
+        domain_membership: "domain membership"
+        entry:            "catalog entry"
+        field:            "field"
+        field_definition: "field definition"
+        icd_entry:        "diagnosis catalog entry"
+        measured_value:   "measured value"
+        medical_report:   "medical report"
+        medical_template: "template"
+        medication:       "medication"
+        node:             "catalog node"
+        ops_entry:        "operation/treatment catalog entry"
+        patient:          "patient"
+        permission:       "permission"
+        report_header:    "medical report header"
+        task:             "task"
+        treatment:        "treatment"
+        ucum_entry:       "unit catalog entry"
+        uploaded_file:    "uploaded file"
+        user:             "user"
+        user_session:     "user session"
+
   login:                  "Login"
   logout:                 "Logout"
   register:               "Register"
@@ -282,7 +313,11 @@ en:
       name:                 "Name"
       errors:
         application:  "The Importer can't provide catalogs for the application you chose!"
+      flash:
+        created:        "Catalog type was successfully created."
+        updated:        "Catalog type was successfully updated."
     catalog:
+      no_catalog_available:           "No catalog for following application present: "
       empty_catalog:        "The catalog is empty."
       listing:              "Listing catalogs"
       new_button:           "Add new catalog"
@@ -300,6 +335,10 @@ en:
       errors:
         import_file_not_blank: "Import file can't be blank!"
         import_file_invalid: "Import file invalid!"
+      flash:
+        created:            "Catalog was successfully created."
+        updated:            "Catalog was successfully updated."
+        activated:          "Catalog was activated."
       user_defined:
         add_field_entry:         "Add entry to catalog"
         edit_field_entry:        "Edit checked entry"

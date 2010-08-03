@@ -47,4 +47,7 @@ module CatalogsHelper
    end
   end
 
+  def no_catalog_available application
+   render :partial => 'shared/no_catalog_available', :locals => {:application => application}
+  end
 end
