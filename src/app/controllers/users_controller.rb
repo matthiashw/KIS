@@ -68,6 +68,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
     if @user.update_attributes(params[:user])
+
+      if (current_user.id == @user.id)
+        I18n.locale = @user.language
+      end
+
       flash[:notice] = t('messages.users.update_success')
       render :action => 'show'
     else
