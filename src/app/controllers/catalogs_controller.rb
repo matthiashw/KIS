@@ -162,10 +162,16 @@ class CatalogsController < ApplicationController
   def update_field_entry
       @catalog = Catalog.find(params[:id])
       @edit_field_entry=Entry.find(params[:node_to_edit])
+      @edit_field_entry.code = params[:code]
       @edit_field_entry.name= params[:name]
       @edit_field_entry.description= params[:description]
+      if @edit_field_entry.instance_of? FieldEntry
+        @edit_field_entry.field_definition.input_type=params[:input_type]
+        @edit_field_entry.field_definition.additional_type_info=params[:additional_type_info]
+        @edit_field_entry.field_definition.save
+      end
      respond_to do |format|
-      if  @edit_field_entry.save
+      if  @edit_field_entry.save 
         flash[:notice] = t('admin.catalog.user_defined.update_field_entry.ok')
         format.html { redirect_to(@catalog) }
         format.xml  { head :ok }

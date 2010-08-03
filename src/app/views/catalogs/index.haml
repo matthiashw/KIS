@@ -5,7 +5,7 @@
     %th=t('admin.catalog.language')
     %th=t('admin.catalog.type')
     %th=t('admin.catalog.active')
-    %th{:colspan => 4}
+    %th{:colspan => 2}
     - @catalog_types.each do |catalog_type|
       -if !catalog_type.catalogs.empty?
         - catalog_type.catalogs.each do |catalog|
@@ -16,12 +16,12 @@
             %td= h catalog.year
             %td= h catalog.language
             %td= h catalog.catalog_type.name
-            %td= activetext
-            %td= link_to t('action.show'), catalog
-            %td
+            %td 
               -if !is_active
                 = link_to t('action.activate'), {:controller => :catalogs, :action => :activate, :id => catalog.id}
-            %td= link_to t('action.edit'), edit_catalog_path(catalog)
+              -else
+                = activetext
+            %td= link_to t('action.show')+" / "+t('action.edit'), catalog
             %td= link_to t('action.destroy'), catalog, :confirm => t('delete_confirmation'), :method => :delete
 .action-links
   = link_to t('admin.catalog.new_button'), new_catalog_path, :class => 'acts_as_button'
