@@ -1,15 +1,28 @@
-%p
-  %b Deadline:
-  = h @task.deadline
-%p
-  %b Creator comment:
-  = h @task.creator_comment
-%p
-  %b Executor comment:
-  = h @task.executor_comment
-%p
-  %b State:
-  = h @task.state
-= link_to 'Edit', edit_task_path(@task)
-|
-\#{link_to 'Back', tasks_path}
+- title @task.state
+
+.fields
+    .field
+        .field-label
+            =t('task.deadline')
+        .field-content
+            = h @task.deadline
+    .field
+        .field-label
+            =t('task.creator_comment')
+        .field-content
+            = h @task.creator_comment
+    .field
+        .field-label
+            =t('task.executor_comment')
+        .field-content
+            = h @task.executor_comment
+    .field
+        .field-label
+            =t('task.state')
+        .field-content
+            = h @task.state
+
+
+.action-links
+    = link_to t('action.edit'), edit_task_path(@task), :class => 'acts_as_button'
+    = link_to t('action.back'), tasks_path, :class => 'acts_as_button darkgray'

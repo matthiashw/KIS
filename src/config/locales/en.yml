@@ -103,7 +103,7 @@ en:
       user:
         username:               "Username"
         email:                  "E-mail"
-        password:               "Password"
+        password:               "If you already have a password and do not want to change it, leave blank"
         password_confirmation:  "Password confirmation"
         first_name:             "First name"
         family_name:            "Family name"
@@ -376,7 +376,9 @@ en:
       registration_success:  "Registration successful."
 
   task:
+    index:                    "Listing Tasks"
     new_task:                 "New Task"
+    edit_task:                "Edit Task"
     choose_domain:            "Target Patient and Domain"
     choose_domain_select:     "Please select Target Domain"
     nextstep:                 "Ok and Continue"
@@ -394,4 +396,8 @@ en:
     step1:                    "Step 1 of 3:"
     step2:                    "Step 2 of 3:"
     step3:                    "Step 3 of 3:"
+    deadline:                 "Deadline"
+    creator_comment:          "Creator Comment"
+    executor_comment:         "Executor Comment"
+    state:                    "State"
 
