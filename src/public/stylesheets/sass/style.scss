@@ -354,12 +354,19 @@ a.links-link {
         .comment-date {
             color:$lightgray;
             font-size:12px;
-            text-align:right;
+            display:inline;
+            margin:0 18px 0 9px;
+            float:right;
+        }
+
+        .comment-link-edit-wrapper {
+            display:inline;
+            margin:0 18px 0 9px;
         }
      }
 
      .comment_form {
-         margin-top:18px;
+         margin:18px 0 18px;;
          textarea {
             width:90%;
         }
@@ -373,6 +380,17 @@ a.links-link {
         padding-top:9px;
         border-top:1px solid $verylightgray;
      }
+
+    .comment-link-edit {
+        font-size:12px;
+    }
+
+
+    .comment-link-view-wrapper {
+        font-size:12px;
+        margin:-36px 0 9px;
+        text-align:right;
+    }
  }
 
 /**

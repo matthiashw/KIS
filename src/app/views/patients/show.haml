@@ -32,23 +32,28 @@
         .field-content
             = h @patient.phone
 
-#comments
-    %h2=t('comment.comments')
-    %ul.comments-list
-        -@comments.each do |comment|
-            %li.comment
-                .comment-body=comment.comment
-                .comment-date=show_date(comment.created_at)
+- if authorize?('view_comment')
+    #comments
+        %h2=t('comment.comments')
+        .comment-link-view-wrapper
+            = link_to t('action.comments.view_comments_list'), patient_comments_path(:patient_id => @patient.id), :class => 'comment-link-view'
+        %ul.comments-list
+            -@comments.each do |comment|
+                %li.comment
+                    .comment-body=comment.comment
+                    .comment-date=show_date(comment.created_at)
+                    - if authorize?('edit_comment')
+                        .comment-link-edit-wrapper=link_to t('action.edit'), edit_patient_comment_path(:id => comment.id, :patient_id => @patient.id), :class => 'comment-link-edit'
 
-    = will_paginate @comments
+        = will_paginate @comments
 
-    %h2.comment_form_headline=t('comment.new_comment')
-    .comment_form
-        -form_tag :action => "comment", :id => @patient do
-            =error_messages_for :comment
-            =text_area "comment", "comment", :size => '34x3'
-            =submit_tag t('comment.new_comment')
-
+        - if authorize?('create_comment')
+            %h2.comment_form_headline=t('comment.new_comment')
+            .comment_form
+                -form_tag :action => "comment", :id => @patient do
+                    =error_messages_for :comment
+                    =text_area "comment", "comment", :size => '34x3'
+                    =submit_tag t('comment.new_comment')
 
 .action-links
     = link_to t('patient.medicalreport'), patient_medical_reports_path(@patient), :class => 'acts_as_button'

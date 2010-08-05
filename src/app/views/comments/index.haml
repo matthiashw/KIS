@@ -4,11 +4,14 @@
         %th=t('comment.string')
         %th=t('comment.date')
     - @comments.each do |comment|
-        %tr{:onclick=>"location.href='#{url_for :controller => 'comments', :action => 'show', :id => comment.id}';",:style=>"cursor:pointer;"}
-            %td= h comment.comment
+        %tr{:onclick=>"location.href='#{url_for :controller => 'comments', :action => 'show', :id => comment.id, :patient_id => params[:patient_id]}';",:style=>"cursor:pointer;"}
+            %td= h truncate(comment.comment, 100, "...")
             %td= h show_date(comment.created_at)
 
 = will_paginate @comments
 
 .action-links
-    = link_to t('comment.new_comment'), new_patient_comment_path(:patient_id => params[:patient_id]), :class => 'acts_as_button'
+    - if authorize?('create_comment')
+        = link_to t('comment.new_comment'), new_patient_comment_path(:patient_id => params[:patient_id]), :class => 'acts_as_button'
+    - if authorize?('view_patient')
+        = link_to t('action.comments.back_to_patient'), patient_path(:id => params[:patient_id]), :class => 'acts_as_button darkgray'

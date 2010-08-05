@@ -32,6 +32,25 @@ en:
         user:             "user"
         user_session:     "user session"
 
+  messages:
+    application:
+      no_admin:              "There is no Administrator Account present in your system! You can now create one! After that you will be redirected to the login page!"
+    users:
+      destroy_error:         "The User with the ID 1 can not be deleted!"
+      update_success:        "Successfully updated profile."
+      registration_success:  "Registration successful."
+    comments:
+      create:                "Comment was successfully created."
+      update:                "Comment was successfully updated."
+    patients:
+      comment_blank:         "Fill in a comment"
+      comment_added:         "Added your comment"
+      create_success:        "Patient successfully created"
+      update_success:        "Patient successfully updated"
+      delete_success:        "Patient successfully deleted"
+    permissions:
+      updated:                "Permissions updated."
+
   login:                  "Login"
   logout:                 "Logout"
   register:               "Register"
@@ -146,6 +165,10 @@ en:
     edit:                   "Edit"
     save:                   "Save changes"
     activate:               "Activate"
+    comments:
+      back_to_comments_list:  "Back to list of comments"
+      view_comments_list:     "View list of comments"
+      back_to_patient:        "Back to Patient"
   
   navi:
     main:
@@ -180,9 +203,6 @@ en:
     search:           "search for first or family name"
     search_fail:      "No patients found. Try changing your search parameters."
     medicalreport:    "Medical report"
-    create_success:   "Patient successfully created"
-    update_success:   "Patient successfully updated"
-    delete_success:   "Patient successfully deleted"
 
   user:
     listing:                "Listing users"
@@ -366,14 +386,6 @@ en:
     header:                 "Header"
     title:                  "Title"
     actions:                "Actions"
-
-  messages:
-    application:
-      no_admin:              "There is no Administrator Account present in your system! You can now create one! After that you will be redirected to the login page!"
-    users:
-      destroy_error:         "The User with the ID 1 can not be deleted!"
-      update_success:        "Successfully updated profile."
-      registration_success:  "Registration successful."
 
   task:
     index:                    "Listing Tasks"

@@ -13,5 +13,9 @@
             = h show_date(@comment.created_at)
 
 .action-links
-    = link_to t('action.edit'), edit_comment_path(@comment), :class => 'acts_as_button'
-    = link_to t('action.back'), comments_path, :class => 'acts_as_button darkgray'
+    - if authorize?('edit_comment')
+        = link_to t('action.edit'), edit_patient_comment_path(:id => @comment.id, :patient_id => params[:patient_id]), :class => 'acts_as_button'
+    - if authorize?('view_comment')
+        = link_to t('action.comments.back_to_comments_list'), patient_comments_path(:patient_id => params[:patient_id]), :class => 'acts_as_button darkgray'
+    - if authorize?('view_patient')
+        = link_to t('action.comments.back_to_patient'), patient_path(:id => params[:patient_id]), :class => 'acts_as_button darkgray'

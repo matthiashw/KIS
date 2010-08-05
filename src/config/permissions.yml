@@ -51,9 +51,7 @@ Patient:
 Comment:
   create_comment: Create a Comment
   view_comment: View all Comments
-  view_own_comment: View own Comment
   edit_comment: Edit every Comment
-  edit_own_comment: Edit own Comment
   delete_comment: Delete every Comment
 
 Medication:
