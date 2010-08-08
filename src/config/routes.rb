@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.adminstatus "/admin/status", :controller => "admin", :action => "status"
 
   map.connect "/tasks/taskcreation", :controller => "tasks", :action => "taskcreation"
+  map.connect "/treatments/create_step2", :controller => "treatments", :action => "create_step2"
   map.connect "/patients/search", :controller => "patients", :action => "search"
   map.calendar '/appointments/calendar/:year/:month', :controller => 'appointments', :action => 'calendar', :year => Time.zone.now.year, :month => Time.zone.now.month
   map.login "login", :controller => "user_sessions", :action => "new"
@@ -14,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :patients do |patient|
     patient.resources :case_files do |case_file|
+      case_file.connect "treatments/new_step2", :controller => "treatments", :action => "new_step2"
       case_file.resources :treatments
     end
 

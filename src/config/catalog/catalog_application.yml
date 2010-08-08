@@ -15,3 +15,6 @@ ucum_units:
 treat:
    name: Treatment Catalog
    entry_classname: OpsEntry
+atc:
+ name: ATC Catalog
+ entry_classname: ATCEntry

@@ -1,0 +1,5 @@
+- form_tag 'taskcreation', :html => { :id => 'step3' }, :class => 'taskcreation' do
+    %div
+        = show_tree @catalog
+        .task-select-domain-submit
+            = submit_tag t('task.nextstep')

@@ -28,13 +28,39 @@ class TreatmentsController < ApplicationController
   # GET /treatments/new
   # GET /treatments/new.xml
   def new
-    @treatment = Treatment.new
     @catalog = CatalogManager.instance.catalog 'treat'
+
+    if session.has_key?(:active_patient_id)
+      @current_active_patient = Patient.find(session[:active_patient_id])
+    else
+      @current_active_patient = nil
+    end
+
+    if session.has_key?(:origin)
+      session[:origin] = nil
+    end
+
+    @tasks = Task.all
+
     respond_to do |format|
     
       format.html # new.html.erb
       format.xml  { render :xml => @treatment }
    
+     end
+  end
+
+  def new_step2
+    @treatment = Treatment.new
+
+    @catalog = CatalogManager.instance.catalog 'atc'
+    @current_active_patient = Patient.find(session[:active_patient_id])
+
+    respond_to do |format|
+
+      format.html # new.html.erb
+      format.xml  { render :xml => @treatment }
+
      end
   end
 
@@ -62,6 +88,8 @@ class TreatmentsController < ApplicationController
       end
     end
   end
+
+  
 
   # PUT /treatments/1
   # PUT /treatments/1.xml

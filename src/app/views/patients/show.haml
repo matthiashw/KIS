@@ -63,3 +63,5 @@
     - if session.has_key?(:origin)
         - if session[:origin] == 'tasks'
             = link_to t('task.totask'), '/tasks/new', :class => 'acts_as_button darkyellow'
+        - if session[:origin] == 'treatments'
+            = link_to t('treatment.totreatment'), '/treatments/new', :class => 'acts_as_button darkyellow'
