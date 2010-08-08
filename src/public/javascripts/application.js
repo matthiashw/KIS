@@ -1,20 +1,39 @@
 document.observe('dom:loaded', function () {
 
     /*
+     * toggle for fieldsets
+     */
+    var fieldset = $$('fieldset.collapsible');
+    var fieldsetLink = $$('fieldset legend a');
+    var fieldsetContent = $$('fieldset .fieldset-content');
+
+    fieldsetLink.each(function (fLink, intIdx) {
+        fLink.observe('click', function () {
+            fieldsetContent[intIdx].toggle();
+            if (!fieldset[intIdx].hasClassName('collapsed')) {
+                fieldset[intIdx].addClassName('collapsed');
+            } else {
+                fieldset[intIdx].removeClassName('collapsed');
+            }
+        });
+    });
+
+
+    /*
      * slide toggle
      * for templates
      */
-    var elMainContainer = $$('.template-collapsible').first();
+    var elMainContainer = $$('.template-collapsible');
     var arrToggelButton = $$('.template-toggle-link');
     var arrToggleTarget = $$('.template-content');
 
     arrToggelButton.each(function (elButton, intIdx) {
         elButton.observe('click', function () {
             arrToggleTarget[intIdx].toggle();
-            if (!elMainContainer.hasClassName('collapsed')) {
-                elMainContainer.addClassName('collapsed');
+            if (!elMainContainer[intIdx].hasClassName('collapsed')) {
+                elMainContainer[intIdx].addClassName('collapsed');
             } else {
-                elMainContainer.removeClassName('collapsed');
+                elMainContainer[intIdx].removeClassName('collapsed');
             }
         });
     });

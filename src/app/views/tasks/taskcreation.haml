@@ -3,5 +3,8 @@
 = render :partial => 'form'
 
 .action-links
-    = link_to t('action.back'), 'new', :class => 'acts_as_button darkgray'
+    -if current_active_patient
+        = link_to t('action.back'), new_patient_task_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'
+    -else
+        = link_to t('action.back'), new_task_path, :class => 'acts_as_button darkgray'
 

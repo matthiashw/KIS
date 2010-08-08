@@ -14,6 +14,7 @@ class TasksController < ApplicationController
   # GET /tasks/1.xml
   def show
     @task = Task.find(params[:id])
+    @domain = Domain.find_by_id(@task.domain_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -80,7 +81,8 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(params[:task])
     @selectedfields = params[:fields]
-
+    @task.domain_id = params[:domain]
+    @task.state = "active"
     respond_to do |format|
       if @task.save
 

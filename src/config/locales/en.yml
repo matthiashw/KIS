@@ -32,9 +32,13 @@ en:
         user:             "user"
         user_session:     "user session"
 
+  help:
+    close:                "Close"
+
   messages:
     application:
       no_admin:              "There is no Administrator Account present in your system! You can now create one! After that you will be redirected to the login page!"
+      no_permission:        "You have no permission to view this page."
     users:
       destroy_error:         "The User with the ID 1 can not be deleted!"
       update_success:        "Successfully updated profile."
@@ -214,6 +218,10 @@ en:
     new_button:             "Create new user"
     new:                    "New User"
     edit:                   "Editing User"
+    setup:
+      setup:                  "Setup Admin User"
+      choose_from_current_user: "Choose a existing User or"
+      new_admin_user:         "Create a new Administration User"
 
   domain:
     listing:          "All Domains"
@@ -322,6 +330,12 @@ en:
     permissions:            "Permissions"
     catalog_management:     "Catalog Management"
 
+    status:
+      warning:              'There are some issues with your installation. <a href="/admin/status">Click here for more Information</a>'
+      user:
+        ok:                 "The Administrator Account is present in your system."
+        error:              "There is no Administrator Account present in your system! It is important that you fix this error."
+
     catalogs:               "Catalogs"
     catalog_type:
       application:          "Catalog Application"
@@ -412,4 +426,6 @@ en:
     creator_comment:          "Creator Comment"
     executor_comment:         "Executor Comment"
     state:                    "State"
+    task_for:                 "Task for"
+    domain:                   "Domain"
 

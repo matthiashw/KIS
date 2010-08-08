@@ -24,7 +24,7 @@
 
         - if authorize?('view_task')
             %li{:class => "secondary-navigation-leaf"}
-                =link_to t('navi.tabs.tasks'), tasks_path, :class => is_active?('tasks')
+                =link_to t('navi.tabs.tasks'), patient_tasks_path(:patient_id => current_active_patient.id), :class => is_active?('tasks')
 
         - if authorize?('view_diagnosis')
             %li{:class => "secondary-navigation-leaf"}
