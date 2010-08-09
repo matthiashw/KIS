@@ -8,12 +8,16 @@
         %th=t('task.domain')
     - @tasks.each do |task|
         - domain = Domain.find_by_id(task.domain_id)
-        %tr{:onclick=>"location.href='#{patient_task_path(:patient_id => current_active_patient.id ,:id => task.id)}';",:style=>"cursor:pointer;"}
-            %td= h task.deadline
-            %td= h task.creator_comment
-            %td= h task.executor_comment
-            %td= h task.state
-            %td= h domain.name
+        - if current_active_patient
+            %tr{:onclick=>"location.href='#{patient_task_path(:patient_id => current_active_patient.id ,:id => task.id)}';",:style=>"cursor:pointer;"}
+        -else
+            %tr{:onclick=>"location.href='#{task_path(:id => task.id)}';",:style=>"cursor:pointer;"}
+
+                %td= h task.deadline
+                %td= h task.creator_comment
+                %td= h task.executor_comment
+                %td= h task.state
+                %td= h domain.name
 
 .action-links
     - if authorize?('create_task')

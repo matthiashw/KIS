@@ -50,11 +50,11 @@ class ApplicationController < ActionController::Base
   
   def current_active_patient
     return @current_active_patient if defined?(@current_active_patient)
-    
+
+    @current_active_patient = nil
+
     if session.has_key?(:active_patient_id)
-      @current_active_patient = Patient.find(session[:active_patient_id])
-    else
-      @current_active_patient = nil
+      @current_active_patient = Patient.find(session[:active_patient_id]) if !session[:active_patient_id].nil?
     end
   end
 
@@ -75,7 +75,7 @@ class ApplicationController < ActionController::Base
     #  redirect_to new_user_path unless current_user
     #end
 
-    redirect_to new_user_path unless current_user
+    redirect_to new_user_session_path unless current_user
   end
 
   # check if current user has permission to
