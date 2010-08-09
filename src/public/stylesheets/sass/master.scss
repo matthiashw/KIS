@@ -140,7 +140,7 @@ table {
         vertical-align:top;
 
         &.active {
-            background:none repeat scroll 0 0 #E4F0F8;
+            background-color:$activeblue;
         }
 
         &.center {
@@ -149,7 +149,7 @@ table {
     }
 
     th {
-        background:none repeat scroll 0 0 #EEEEEE;
+        background-color:#EEEEEE;
         color:#666666;
         font-weight:normal;
         text-align:left;
@@ -173,6 +173,24 @@ table {
     tr:hover {
         td {
             background-color:$verylightgray;
+        }
+    }
+
+    tr.green {
+        td {
+            background-color:$green;
+        }
+    }
+
+    tr.red {
+        td {
+            background-color:$red;
+        }
+    }
+
+    tr.yellow {
+        td {
+            background-color:$yellow;
         }
     }
 
@@ -634,7 +652,40 @@ fieldset.fieldset {
 }
 
 
+.color-legend {
+    .color {
+        display:block;
+        width:9px;
+        height:9px;
+        border:2px solid $lightgray;
+        float:left;
+        margin-top:2px;
+        
+        &.activeblue {
+            background-color:$activeblue;
+        }
 
+        &.green {
+            background-color:$green;
+        }
+        
+        &.red {
+            background-color:$red;
+        }
+        
+        &.yellow {
+            background-color:$yellow;
+        }
+       
+    }
+
+    .color-description {
+        margin:0 18px 0 9px;
+        font-size:12px;
+        color:$mediumgray;
+        float:left;
+    }
+}
 
 
 

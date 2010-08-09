@@ -55,6 +55,11 @@ en:
     permissions:
       updated:                "Permissions updated."
 
+  color-legend:
+    case_file:
+      patient_case:             "Active case of current Patient"
+      view_case:                  "If shown, current active case for View"
+
   login:                  "Login"
   logout:                 "Logout"
   register:               "Register"
@@ -180,6 +185,7 @@ en:
       search_patient:     "Search Patient"
       tasks:              "Tasks"
       tasks-all:          "All Tasks"
+      task-new:          "New Task"
       appointments:       "Appointments"
       administration:     "Administration"
       users:              "Users"
@@ -298,6 +304,7 @@ en:
     success:             "Case was successfully created."
     no_active_patient:   "No active Patient."
     update_success:      "Case successfully updated"
+    active:              "Old Case active. You can not create new entries while viewing an old case."
 
  
   comment:

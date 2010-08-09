@@ -208,7 +208,8 @@ $activeblue:#bbddff;
   background: transparent url('/images/domain.png') no-repeat top center;
   margin: 18px 0 0 18px; }
 
-.active-patient {
+.active-patient,
+.active-case {
     padding:4px 5px;
     display:inline;
     max-width:500px;
@@ -238,6 +239,22 @@ $activeblue:#bbddff;
     &:hover {
         background-color:$activeblue;
         cursor:pointer;
+    }
+}
+
+.active-case {
+    margin:9px 0 0 18px;
+    background-color:$yellow;
+    color:$darkgray;
+
+    span {
+        color:$darkgray;
+    }
+
+    &:hover {
+        span {
+            color:$darkgray;
+        }
     }
 }
 
@@ -511,6 +528,31 @@ a.links-link {
     &.step2,
     &.step3 {
         
+    }
+}
+
+.field.box.task-state {
+    width:50%;
+
+    .box-inner {
+        float:left;
+        width:100%;
+    }
+    
+    .field-label {
+        width:58%;
+    }
+
+    .field-content {
+        width:30%;
+
+        .task-open {
+            color:$green;
+        }
+
+        .task-closed {
+            color:$red;
+        }
     }
 }
 

@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale, :login_required
   
   helper :all # include all helpers, all the time
-  helper_method :current_active_patient, :current_user, :current_user_session, :authorize?
+  helper_method :current_active_patient, :current_user, :current_user_session, 
+                :authorize?, :get_case_for_view
 
   protect_from_forgery
 
@@ -82,6 +83,25 @@ class ApplicationController < ActionController::Base
   # of the system (if he has the id 1)
   def current_user_is_admin?
     return current_user && current_user.id == 1
+  end
+
+  # get id of active casefile
+  # returns casefile wich is active for view
+  # if none has been activated it returns active casefile of patient or
+  # returns nil if no patient/casefile is active
+  def get_case_for_view
+
+    if session.has_key?(:case_view_id)
+      return session[:case_view_id]
+    else
+      if session.has_key?(:active_patient_id)
+        activepatient = Patient.find(session[:active_patient_id])
+        return activepatient.active_case_file_id
+      end
+    end
+    
+    return nil
+
   end
 
 end

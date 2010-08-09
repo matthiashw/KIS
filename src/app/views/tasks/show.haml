@@ -2,6 +2,15 @@
 /- title t('task.word') + ' ' + @task.id.to_s
 
 .fields
+    .field.box.task-state
+        .box-inner
+            .field-label
+                =t('task.state')
+            .field-content
+                - if @task.state == 1
+                    %span.task-open= h t('task.open')
+                -else
+                    %span.task-closed= h t('task.closed')
     .field
         .field-label
             =t('task.deadline')
@@ -17,15 +26,6 @@
             =t('task.executor_comment')
         .field-content
             = h @task.executor_comment
-    .field
-        .field-label
-            =t('task.state')
-        .field-content
-            - if @task.state == 1
-                = h t('task.open')
-            -else
-                = h t('task.closed')
-
 
 .action-links
     -if current_active_patient

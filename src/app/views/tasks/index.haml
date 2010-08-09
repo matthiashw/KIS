@@ -13,14 +13,14 @@
                 %td= h task.deadline
                 %td= h task.creator_comment
                 %td= h task.executor_comment
-                %td= h task.state
+                %td= h (task.state == 1 ? t('task.open') : t('task.closed'))
                 %td= h domain.name
         -else
             %tr{:onclick=>"location.href='#{task_path(:id => task.id)}';",:style=>"cursor:pointer;"}
                 %td= h task.deadline
                 %td= h task.creator_comment
                 %td= h task.executor_comment
-                %td= h task.state
+                %td= h (task.state == 1 ? t('task.open') : t('task.closed'))
                 %td= h domain.name
 
 .action-links
