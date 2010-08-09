@@ -3,7 +3,11 @@ ActionController::Routing::Routes.draw do |map|
   map.adminstatus "/admin/status", :controller => "admin", :action => "status"
   map.connect "/users/setup", :controller => "users", :action => "setup"
 
+
   map.connect "/patient/:id/tasks/taskcreation", :controller => "tasks", :action => "taskcreation"
+  map.connect "/tasks/taskfill", :controller => "tasks", :action => "taskfill"
+  map.connect "/tasks/createentries", :controller => "tasks", :action => "createentries"
+
   map.connect "/patients/search", :controller => "patients", :action => "search"
   map.calendar '/appointments/calendar/:year/:month', :controller => 'appointments', :action => 'calendar', :year => Time.zone.now.year, :month => Time.zone.now.month
   map.login "login", :controller => "user_sessions", :action => "new"

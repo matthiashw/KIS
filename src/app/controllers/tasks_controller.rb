@@ -37,6 +37,7 @@ class TasksController < ApplicationController
           format.xml  { render :xml => @domain }
         else
           @templates = MedicalTemplate.find_all_by_domain_id(params[:domain][:id])
+          session[:domain_for_task] = params[:domain][:id]
 
           format.html # taskcreation.html.erb
           format.xml  { render :xml => @task }
@@ -80,9 +81,20 @@ class TasksController < ApplicationController
   # POST /tasks.xml
   def create
     @task = Task.new(params[:task])
+    @task.state = 1
+    @task.creator_user_id = current_user.id
     @selectedfields = params[:fields]
-    @task.domain_id = params[:domain]
-    @task.state = "active"
+
+    if session.has_key?(:active_patient_id)
+      @current_active_patient = Patient.find(session[:active_patient_id])
+      @task.case_file_id = @current_active_patient.active_case_file_id
+    end
+
+    if session.has_key?(:domain_for_task)
+      @task.domain_id = session[:domain_for_task]
+      session[:domain_for_task] = nil
+    end
+
     respond_to do |format|
       if @task.save
 
@@ -155,6 +167,38 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(tasks_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  # method for serving the task filling view
+  def taskfill
+    @task = Task.find(params[:id])
+    @fields = Field.find_all_by_task_id(params[:id])
+    @fields.sort! { |a,b| a.medical_template_id <=> b.medical_template_id }
+
+     respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @task }
+     end
+  end
+
+  def createentries
+    @task = Task.find(params[:id])
+    @values = params[:values]
+    @comments = params[:comments]
+
+       RAILS_DEFAULT_LOGGER.debug @values
+
+
+    respond_to do |format|
+      if @task.update_attributes(params[:task])
+        flash[:notice] = 'Task successfully completed.'
+        format.html { redirect_to(@task) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+      end
     end
   end
 end

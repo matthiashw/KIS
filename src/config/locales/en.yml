@@ -431,4 +431,11 @@ en:
     state:                    "State"
     task_for:                 "Task for"
     domain:                   "Domain"
+    open:                     "Open"
+    closed:                   "Closed"
+    word:                     "Task"
+    fill_task:                "Please complete Task Information"
+    fields:                   "Fields"
+    comment:                  "Comment"
+    value:                    "Value"
 
