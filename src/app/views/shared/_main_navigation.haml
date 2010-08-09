@@ -53,4 +53,6 @@
                         =link_to t("navi.main.report_headers"), report_headers_path, :class => is_active?('report_headers')
                     %li{:class => "main-subnavigation-leaf"}
                         =link_to t("navi.main.medical_templates"), medical_templates_path, :class => is_active?('medical_templates')
+                    %li{:class => "main-subnavigation-leaf"}
+                        =link_to t("navi.main.status_report"), {:controller => "admin", :action => "status"}, :class => is_active?('admin', 'status')
     

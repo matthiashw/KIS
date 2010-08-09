@@ -189,6 +189,7 @@ en:
       catalog_types:      "Catalog Types"
       report_headers:     "Report Headers"
       medical_templates:  "Medical Templates"
+      status_report:      "Status Report"
     tabs:
       master_data:    "Master Data"
       anamnesis:      "Anamnesis"
@@ -329,9 +330,11 @@ en:
     domains:                "Domains"
     permissions:            "Permissions"
     catalog_management:     "Catalog Management"
+    status_fix:             "Click here to fix this Problem"
 
     status:
       warning:              'There are some issues with your installation. <a href="/admin/status">Click here for more Information</a>'
+      ok:                   "Everything is ok with your installation."
       user:
         ok:                 "The Administrator Account is present in your system."
         error:              "There is no Administrator Account present in your system! It is important that you fix this error."

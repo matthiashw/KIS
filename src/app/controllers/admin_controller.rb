@@ -2,12 +2,17 @@ class AdminController < ApplicationController
   before_filter :check
 
   def index
+    return false unless authorize(permissions = ["access_administration"])
     if check_for_errors?(@errors)
       flash[:warning] = t('admin.status.warning')
     end
   end
 
   def status
+    return false unless authorize(permissions = ["view_status_report"])
+    if !check_for_errors?(@errors)
+      flash[:message] = t('admin.status.ok')
+    end
     @user = User.new
   end
 
@@ -32,7 +37,7 @@ class AdminController < ApplicationController
     return false if errors.empty?
     
     errors.each do |k, v|
-      v.each { |key, val| return true if key == "error" && val == false }
+      v.each { |key, val| return true if key == "error" && val == true }
     end
 
     return false

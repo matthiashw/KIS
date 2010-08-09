@@ -541,8 +541,10 @@ fieldset.fieldset {
     }
 
     .fieldset-setup-fix {
-        background-color:#fff;
-        color:$verydarkgray;
+        margin:9px 0 0 0;
+        a {
+            color:#fff;
+        }
     }
 
 }

@@ -14,7 +14,7 @@
                     = modelname
         .fieldset-content
             = message
-
-            .fieldset-setup-fix
-                = render :partial => setup
+            - if is_error
+                %p.fieldset-setup-fix
+                    = link_to t('admin.status_fix'), setup
 

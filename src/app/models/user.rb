@@ -15,11 +15,12 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/,
                       :message => 'is not a valid e-mail address', :if => :email?
 
+  validates_uniqueness_of :username, :scope => :id
 
   def self.check_for_admin
     adminuser = User.find_by_id(1)
     
-    return adminuser != nil
+    return adminuser == nil
   end
 
   def self.status
@@ -28,16 +29,16 @@ class User < ActiveRecord::Base
 
   def self.message
     if check_for_admin
-      I18n.t("admin.status.user.ok")
-    else
       I18n.t("admin.status.user.error")
+    else
+      I18n.t("admin.status.user.ok")
     end
   end
 
   def self.setup
-    include_template = "/users/setup"
+    link = "/users/setup"
 
-    include_template
+    link
   end
 
 end

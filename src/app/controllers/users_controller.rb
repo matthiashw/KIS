@@ -2,14 +2,30 @@ class UsersController < ApplicationController
   skip_before_filter :login_required, :only => [:new, :create]
 
   def setup
-    @user = User.new
-    @users = User.all
-    @admin_user
+    if !params.has_key?(:user)
+      @user = User.new
+    else
+      @user = User.new(params[:user])
+      @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
+
+      if @user.save
+        update_admin(@user)
+        flash[:notice] = t('messages.users.registration_success')
+        render :action => 'show'
+      else
+        render :action => 'setup'
+      end
+    end
+    
     
   end
 
-  def update_admin
-    
+  def update_admin(user)
+    sql = ActiveRecord::Base.connection();
+    sql.execute "SET autocommit=0";
+    sql.begin_db_transaction
+    sql.update "UPDATE users SET id=1 WHERE username='#{user.username}'";
+    sql.commit_db_transaction
   end
 
   # GET /patients

@@ -69,12 +69,6 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    #if system_has_admin?
-    #  redirect_to new_user_session_path unless current_user
-    #else
-    #  redirect_to new_user_path unless current_user
-    #end
-
     redirect_to new_user_session_path unless current_user
   end
 
@@ -88,18 +82,6 @@ class ApplicationController < ActionController::Base
   # of the system (if he has the id 1)
   def current_user_is_admin?
     return current_user && current_user.id == 1
-  end
-
-  # check if the superadmin is present in the system at login
-  def system_has_admin?
-    adminuser = User.find_by_id(1)
-
-    if adminuser == nil
-      flash[:message] = t('messages.application.no_admin')
-      return false
-    end
-
-    return true
   end
 
 end
