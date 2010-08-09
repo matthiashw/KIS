@@ -10,9 +10,13 @@
         - domain = Domain.find_by_id(task.domain_id)
         - if current_active_patient
             %tr{:onclick=>"location.href='#{patient_task_path(:patient_id => current_active_patient.id ,:id => task.id)}';",:style=>"cursor:pointer;"}
+                %td= h task.deadline
+                %td= h task.creator_comment
+                %td= h task.executor_comment
+                %td= h task.state
+                %td= h domain.name
         -else
             %tr{:onclick=>"location.href='#{task_path(:id => task.id)}';",:style=>"cursor:pointer;"}
-
                 %td= h task.deadline
                 %td= h task.creator_comment
                 %td= h task.executor_comment
