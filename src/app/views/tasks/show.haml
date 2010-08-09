@@ -1,4 +1,4 @@
-- title @task.state
+- title t('task.word') + ' ' + @task.id.to_s
 
 .fields
     .field
@@ -20,7 +20,10 @@
         .field-label
             =t('task.state')
         .field-content
-            = h @task.state
+            - if @task.state == 1
+                = h t('task.open')
+            -else
+                = h t('task.closed')
 
 
 .action-links

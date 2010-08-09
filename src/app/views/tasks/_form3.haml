@@ -1,0 +1,34 @@
+- semantic_form_for @task, :url => { :action => "createentries" , :id => @task.id } do |f|
+    = f.error_messages
+
+    %h2
+        =t('task.fields')
+    #templates
+        - tempcheck = 0
+        - @fields.each do |e|
+            - if e.medical_template_id != tempcheck
+                = MedicalTemplate.find(e.medical_template_id).name
+                .template-content{:id=>"t#{e.medical_template_id}"}
+                    %table
+                        %thead
+                            %tr
+                                %th=t('task.name')
+                                %th=t('task.value')
+                                %th=t('task.comment')
+
+                        %tbody
+                -tempcheck = e.medical_template_id
+            - else
+                #testdiv
+                    %tr.template-field
+                        - fielddef = FieldDefinition.find(e.field_definition_id)
+                        %td= Entry.find(fielddef.field_entry_id).name
+                        - fields_for e do |fi|
+                            %td= text_field 'values', e.id, :size => '20'
+                            %td= text_field 'comments', e.id, :size => '20'
+
+    %h2
+        =t('task.additional_information')
+    - f.inputs do
+        = f.input :executor_comment
+    = f.buttons

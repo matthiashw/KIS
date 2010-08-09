@@ -412,4 +412,11 @@ en:
     creator_comment:          "Creator Comment"
     executor_comment:         "Executor Comment"
     state:                    "State"
+    open:                     "Open"
+    closed:                   "Closed"
+    word:                     "Task"
+    fill_task:                "Please complete Task Information"#
+    fields:                   "Fields"
+    comment:                  "Comment"
+    value:                    "Value"
 
