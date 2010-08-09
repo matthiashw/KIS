@@ -304,7 +304,7 @@ en:
     success:             "Case was successfully created."
     no_active_patient:   "No active Patient."
     update_success:      "Case successfully updated"
-    active:              "Old Case active. You can not create new entries while viewing an old case."
+    active:              "Closed Case active. You can not create new entries while viewing a closed case."
 
  
   comment:
