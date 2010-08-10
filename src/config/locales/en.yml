@@ -32,9 +32,13 @@ en:
         user:             "user"
         user_session:     "user session"
 
+  help:
+    close:                "Close"
+
   messages:
     application:
       no_admin:              "There is no Administrator Account present in your system! You can now create one! After that you will be redirected to the login page!"
+      no_permission:        "You have no permission to view this page."
     users:
       destroy_error:         "The User with the ID 1 can not be deleted!"
       update_success:        "Successfully updated profile."
@@ -50,6 +54,11 @@ en:
       delete_success:        "Patient successfully deleted"
     permissions:
       updated:                "Permissions updated."
+
+  color-legend:
+    case_file:
+      patient_case:             "Active case of current Patient"
+      view_case:                  "If shown, current active case for View"
 
   login:                  "Login"
   logout:                 "Logout"
@@ -176,6 +185,7 @@ en:
       search_patient:     "Search Patient"
       tasks:              "Tasks"
       tasks-all:          "All Tasks"
+      task-new:          "New Task"
       appointments:       "Appointments"
       administration:     "Administration"
       users:              "Users"
@@ -185,6 +195,7 @@ en:
       catalog_types:      "Catalog Types"
       report_headers:     "Report Headers"
       medical_templates:  "Medical Templates"
+      status_report:      "Status Report"
     tabs:
       master_data:    "Master Data"
       anamnesis:      "Anamnesis"
@@ -214,6 +225,10 @@ en:
     new_button:             "Create new user"
     new:                    "New User"
     edit:                   "Editing User"
+    setup:
+      setup:                  "Setup Admin User"
+      choose_from_current_user: "Choose a existing User or"
+      new_admin_user:         "Create a new Administration User"
 
   domain:
     listing:          "All Domains"
@@ -289,6 +304,7 @@ en:
     success:             "Case was successfully created."
     no_active_patient:   "No active Patient."
     update_success:      "Case successfully updated"
+    active:              "Closed Case active. You can not create new entries while viewing a closed case."
 
  
   comment:
@@ -321,6 +337,14 @@ en:
     domains:                "Domains"
     permissions:            "Permissions"
     catalog_management:     "Catalog Management"
+    status_fix:             "Click here to fix this Problem"
+
+    status:
+      warning:              'There are some issues with your installation. <a href="/admin/status">Click here for more Information</a>'
+      ok:                   "Everything is ok with your installation."
+      user:
+        ok:                 "The Administrator Account is present in your system."
+        error:              "There is no Administrator Account present in your system! It is important that you fix this error."
 
     catalogs:               "Catalogs"
     catalog_type:
@@ -412,10 +436,12 @@ en:
     creator_comment:          "Creator Comment"
     executor_comment:         "Executor Comment"
     state:                    "State"
+    task_for:                 "Task for"
+    domain:                   "Domain"
     open:                     "Open"
     closed:                   "Closed"
     word:                     "Task"
-    fill_task:                "Please complete Task Information"#
+    fill_task:                "Please complete Task Information"
     fields:                   "Fields"
     comment:                  "Comment"
     value:                    "Value"

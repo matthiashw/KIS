@@ -14,6 +14,7 @@ class TasksController < ApplicationController
   # GET /tasks/1.xml
   def show
     @task = Task.find(params[:id])
+    @domain = Domain.find_by_id(@task.domain_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -83,7 +84,6 @@ class TasksController < ApplicationController
     @task.state = 1
     @task.creator_user_id = current_user.id
     @selectedfields = params[:fields]
-    
 
     if session.has_key?(:active_patient_id)
       @current_active_patient = Patient.find(session[:active_patient_id])
@@ -94,7 +94,6 @@ class TasksController < ApplicationController
       @task.domain_id = session[:domain_for_task]
       session[:domain_for_task] = nil
     end
-
 
     respond_to do |format|
       if @task.save

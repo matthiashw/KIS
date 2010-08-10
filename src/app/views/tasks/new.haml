@@ -21,5 +21,8 @@
 = render :partial => 'form2'
 
 .action-links.task-step1
-    = link_to t('action.back'), tasks_path, :class => 'acts_as_button darkgray'
+    -if current_active_patient
+        = link_to t('action.back'), patient_tasks_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'
+    -else
+        = link_to t('action.back'), tasks_path, :class => 'acts_as_button darkgray'
 

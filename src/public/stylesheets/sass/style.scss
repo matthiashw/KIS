@@ -208,7 +208,8 @@ $activeblue:#bbddff;
   background: transparent url('/images/domain.png') no-repeat top center;
   margin: 18px 0 0 18px; }
 
-.active-patient {
+.active-patient,
+.active-case {
     padding:4px 5px;
     display:inline;
     max-width:500px;
@@ -238,6 +239,22 @@ $activeblue:#bbddff;
     &:hover {
         background-color:$activeblue;
         cursor:pointer;
+    }
+}
+
+.active-case {
+    margin:9px 0 0 18px;
+    background-color:$yellow;
+    color:$darkgray;
+
+    span {
+        color:$darkgray;
+    }
+
+    &:hover {
+        span {
+            color:$darkgray;
+        }
     }
 }
 
@@ -514,6 +531,31 @@ a.links-link {
     }
 }
 
+.field.box.task-state {
+    width:50%;
+
+    .box-inner {
+        float:left;
+        width:100%;
+    }
+    
+    .field-label {
+        width:58%;
+    }
+
+    .field-content {
+        width:30%;
+
+        .task-open {
+            color:$green;
+        }
+
+        .task-closed {
+            color:$red;
+        }
+    }
+}
+
 
 
 #templates {
@@ -522,7 +564,9 @@ a.links-link {
     width:100%;
 
     .template-collapsible {
-        margin:9px 0;
+        margin:1px 0;
+        float:left;
+        width:100%;
     }
 
     .template-toggle {
@@ -598,13 +642,17 @@ a.links-link {
 /*DIALOG
 -------------------------------------------------------- */
 
-.dialog {
-    table.table_window {
+.popup {
+    table {
         border:none;
         background-color:transparent;
+        -moz-box-shadow:none;
+        margin:0;
 
         td, th {
             border:none;
+            padding:0;
+            text-shadow:none;
         }
 
         tr:hover {
@@ -612,8 +660,8 @@ a.links-link {
                 background-color:transparent;
             }
 
-            td.dialog_content {
-                background-color:$activeblue;
+            td {
+                background-color:transparent;
             }
         }
 

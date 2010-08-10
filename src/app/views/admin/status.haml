@@ -1,0 +1,20 @@
+-title(t('admin.status_report'))
+
+
+- @errors.each do |k,v|
+    - modelname = k
+    - is_error = v["error"]
+    - message = v["message"]
+    - setup = v["setup"]
+
+    %fieldset.fieldset.collapsible{:class => is_ok_or_error(is_error)}
+        %legend.fieldset-legend
+            %a
+                %span
+                    = modelname
+        .fieldset-content
+            = message
+            - if is_error
+                %p.fieldset-setup-fix
+                    = link_to t('admin.status_fix'), setup
+

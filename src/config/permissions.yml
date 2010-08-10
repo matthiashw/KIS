@@ -5,6 +5,7 @@ Administration:
   access_administration: Grant access to the administration Area
   set_permissions: Set Permissions for Roles
   administer_catalog: Administer the Catalogs
+  view_status_report: View Status Report
 
 User:
   create_user: Create a User

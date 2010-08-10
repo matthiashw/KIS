@@ -1,17 +1,31 @@
 -title t('task.index')
 %table
-  %tr
-    %th=t('task.deadline')
-    %th=t('task.creator_comment')
-    %th=t('task.executor_comment')
-    %th=t('task.state')
-  - @tasks.each do |task|
-    %tr{:onclick=>"location.href='#{url_for :controller => 'tasks', :action => 'show', :id => task.id}';",:style=>"cursor:pointer;"}
-      %td= h task.deadline
-      %td= h task.creator_comment
-      %td= h task.executor_comment
-      %td= h task.state
+    %tr
+        %th=t('task.deadline')
+        %th=t('task.creator_comment')
+        %th=t('task.executor_comment')
+        %th=t('task.state')
+        %th=t('task.domain')
+    - @tasks.each do |task|
+        - domain = Domain.find_by_id(task.domain_id)
+        - if current_active_patient
+            %tr{:onclick=>"location.href='#{patient_task_path(:patient_id => current_active_patient.id ,:id => task.id)}';",:style=>"cursor:pointer;"}
+                %td= h task.deadline
+                %td= h task.creator_comment
+                %td= h task.executor_comment
+                %td= h (task.state == 1 ? t('task.open') : t('task.closed'))
+                %td= h domain.name
+        -else
+            %tr{:onclick=>"location.href='#{task_path(:id => task.id)}';",:style=>"cursor:pointer;"}
+                %td= h task.deadline
+                %td= h task.creator_comment
+                %td= h task.executor_comment
+                %td= h (task.state == 1 ? t('task.open') : t('task.closed'))
+                %td= h domain.name
 
 .action-links
-  - if authorize?('create_task')
-    = link_to t('task.new_task'), new_task_path, :class => "acts_as_button"
+    - if authorize?('create_task')
+        -if current_active_patient
+            = link_to t('task.new_task'), new_patient_task_path(:patient_id => current_active_patient.id), :class => "acts_as_button"
+        -else
+            = link_to t('task.new_task'), new_task_path, :class => "acts_as_button"

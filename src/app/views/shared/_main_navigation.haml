@@ -12,13 +12,24 @@
                         =link_to t('patient.new'), new_patient_path, :class => is_active?('patients', 'new')
     %li{:class => "main-navigation-leaf"}
         - if authorize?('view_patient')
-            =link_to make_image_link(t('navi.main.tasks'), 'navi-img navi-img-aufgabe'), tasks_path, :class => is_active?('tasks')
+            - if current_active_patient
+                =link_to make_image_link(t('navi.main.tasks'), 'navi-img navi-img-aufgabe'), patient_tasks_path(:patient_id => current_active_patient.id), :class => is_active?('tasks')
+            - else
+                =link_to make_image_link(t('navi.main.tasks'), 'navi-img navi-img-aufgabe'), tasks_path, :class => is_active?('tasks')
             - if is_controller_active?('tasks')
                 =image_tag "main_navi_active.png", :alt => 'active menu', :class => "navi-img-active"
             - if is_controller_active?('tasks')
                 %ul.main-subnavigation
                     %li{:class => "main-subnavigation-leaf"}
-                        =link_to t('navi.main.tasks-all'), tasks_path, :class => is_active?('tasks', 'index')
+                        - if current_active_patient
+                            =link_to t('navi.main.tasks-all'), patient_tasks_path(:patient_id => current_active_patient.id), :class => is_active?('tasks', 'index')
+                        - else
+                            =link_to t('navi.main.tasks-all'), tasks_path, :class => is_active?('tasks', 'index')
+                    %li{:class => "main-subnavigation-leaf"}
+                        -if current_active_patient
+                            = link_to t('navi.main.task-new'), new_patient_task_path(:patient_id => current_active_patient.id), :class => is_active?('tasks', 'new')
+                        -else
+                            = link_to t('navi.main.task-new'), new_task_path, :class => is_active?('tasks', 'new')
     %li{:class => "main-navigation-leaf"}
         - if authorize?('view_appointment')
             =link_to make_image_link(t('navi.main.appointments'), 'navi-img navi-img-termin'), appointments_path, :class => is_active?('appointments')
@@ -53,4 +64,6 @@
                         =link_to t("navi.main.report_headers"), report_headers_path, :class => is_active?('report_headers')
                     %li{:class => "main-subnavigation-leaf"}
                         =link_to t("navi.main.medical_templates"), medical_templates_path, :class => is_active?('medical_templates')
+                    %li{:class => "main-subnavigation-leaf"}
+                        =link_to t("navi.main.status_report"), {:controller => "admin", :action => "status"}, :class => is_active?('admin', 'status')
     
