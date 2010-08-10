@@ -84,6 +84,7 @@ class TasksController < ApplicationController
     @task.state = 1
     @task.creator_user_id = current_user.id
     @selectedfields = params[:fields]
+    @comments = params[:comments]
 
     if session.has_key?(:active_patient_id)
       @current_active_patient = Patient.find(session[:active_patient_id])
@@ -97,28 +98,29 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        unless @selectedfields.nil?
+          @selectedfields.each do |f|
+            splittedstr = f.split(';')
+            fieldDefId = splittedstr[0]
+            fieldDef = FieldDefinition.find(fieldDefId)
 
-        @selectedfields.each do |f|
-          splittedstr = f.split(';')
-          fieldDefId = splittedstr[0]
-          fieldDef = FieldDefinition.find(fieldDefId)
+            tempId = splittedstr[1]
 
-          tempId = splittedstr[1]
+            if fieldDef.nil?
+              field = Field.new(:medical_template_id => tempId, :field_definition_id => fieldDefId,
+                                :task_id => @task.id, :comment => @comments[fieldDefId])
+            else
+              field = Field.new(:medical_template_id => tempId, :field_definition_id => fieldDefId,
+                :task_id => @task.id, :ucum_entry_id => fieldDef.example_ucum_id, :comment => @comments[fieldDefId] )
+            end
 
-          if fieldDef.nil?
-            field = Field.new(:medical_template_id => tempId, :field_definition_id => fieldDefId,
-                              :task_id => @task.id)
-          else
-            field = Field.new(:medical_template_id => tempId, :field_definition_id => fieldDefId,
-              :task_id => @task.id, :ucum_entry_id => fieldDef.example_ucum_id )
+            unless field.save
+              @task.destroy
+              format.html { render :action => "new" }
+              format.xml  { render :xml => field.errors, :status => :unprocessable_entity }
+            end
+
           end
-
-          unless field.save
-            @task.destroy
-            format.html { render :action => "new" }
-            format.xml  { render :xml => field.errors, :status => :unprocessable_entity }
-          end
-
         end
 
         flash[:notice] = 'Task was successfully created.'
@@ -174,6 +176,8 @@ class TasksController < ApplicationController
   def taskfill
     @task = Task.find(params[:id])
     @fields = Field.find_all_by_task_id(params[:id])
+
+    #fieldshash stuff is done for processing the fields in the view
     @fieldshash = {}
     @fields.each do |f|
       @fieldshash[f.medical_template_id] ||= {}
@@ -181,37 +185,58 @@ class TasksController < ApplicationController
     end
 
      respond_to do |format|
-      format.html # new.html.erb
+      format.html # taskfill.haml
       format.xml  { render :xml => @task }
      end
   end
 
+  #creating measured_values and filling in task info
   def createentries
     @task = Task.find(params[:id])
     @values = params[:values]
     @comments = params[:comments]
-
+     
 
     respond_to do |format|
-      if @task.update_attributes(params[:task])
-          @values.each do |k,v|
-            measuredvalue = MeasuredValue.new(:value => v,:comment => @comments[k],
-                             :task_id => @task.id, :field_id => k, :medical_template_id => Field.find(k).medical_template_id )
-            if measuredvalue.save
-              flash[:notice] = 'Task successfully completed.'
-              format.html { redirect_to(@task) }
-              format.xml  { head :ok }
+
+
+        if @task.update_attributes(params[:task])
+          unless @values.nil?
+            @values.each do |k,v|
+              measuredvalue = MeasuredValue.new(:value => v,:comment => @comments[k],
+                               :task_id => @task.id, :field_id => k, :medical_template_id => Field.find(k).medical_template_id )
+              measuredvalue.save
             end
           end
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
-      end
-    end
 
-    def results
-      @task = Task.find(params[:id])
-      
+          flash[:notice] = 'Task successfully completed.'
+                format.html { redirect_to(@task) }
+                format.xml  { head :ok }
+
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+        end
+
+
     end
   end
+
+    # for viewing the tasks values and results
+    def results
+      @task = Task.find(params[:id])
+      @values = MeasuredValue.find_all_by_task_id(@task.id)
+
+      #fieldshash stuff is done for processing the fields in the view
+      @valueshash = {}
+      @values.each do |v|
+        @valueshash[v.medical_template_id] ||= {}
+        @valueshash[v.medical_template_id][v.id] ||= v
+      end
+
+     respond_to do |format|
+      format.html # results.haml
+      format.xml  { render :xml => @values }
+     end
+    end
 end

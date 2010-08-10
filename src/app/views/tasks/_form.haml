@@ -21,12 +21,14 @@
                             %tr
                                 %th=t('task.selected')
                                 %th=t('task.name')
+                                %th=t('task.comment')
                         %tbody
                             - t.field_definitions.each do |f|
                                 %tr.template-field
                                     - fields_for f do |fcheck|
                                         %td= check_box_tag "fields[]", f.id.to_s + ";" + t.id.to_s
                                     %td=  Entry.find(f.field_entry_id).name
+                                    %td= text_field 'comments', f.id, :size => '20'
                         
 
     %h2

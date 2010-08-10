@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.connect "/patient/:id/tasks/taskcreation", :controller => "tasks", :action => "taskcreation"
+  map.connect "/tasks/results", :controller => "tasks", :action => "results"
   map.connect "/tasks/taskfill", :controller => "tasks", :action => "taskfill"
   map.connect "/tasks/createentries", :controller => "tasks", :action => "createentries"
 

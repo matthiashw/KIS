@@ -1,0 +1,35 @@
+- title t('task.results')
+=t('task.domain') + ": " + Domain.find(@task.domain_id).name
+=t('task.deadline') + ": " + @task.deadline.to_s
+#templates
+    -unless @valueshash.nil?
+        - @valueshash.each do |k,v|
+            = MedicalTemplate.find(k).name
+            .template-content{:id=>"t#{k}"}
+                %table
+                    %thead
+                        %tr
+                            %th=t('task.name')
+                            %th=t('task.creatorcomment')
+                            %th=t('task.value')
+                            %th=t('task.unit')
+                            %th=t('task.comment')
+                    %tbody
+                        -v.each do |x,y|
+                            %tr.template-field
+                                - field = Field.find(y.field_id)
+                                - fielddef = FieldDefinition.find(field.field_definition_id)
+                                %td= Entry.find(fielddef.field_entry_id).name
+                                %td= field.comment
+                                %td= y.value
+                                -if field.ucum_entry_id.nil?
+                                    %td= '-'
+                                -else
+                                    -ucum = Entry.find(field.ucum_entry_id)
+                                    %td= ucum.description
+                                %td= y.comment
+.action-links
+    -if current_active_patient
+        = link_to t('action.back'), patient_tasks_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'
+    -else
+        = link_to t('action.back'), tasks_path, :class => 'acts_as_button darkgray'

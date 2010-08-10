@@ -3,24 +3,36 @@
 
     %h2
         =t('task.fields')
+
+    =t('task.domain') + ": " + Domain.find(@task.domain_id).name
+    =t('task.deadline') + ": " + @task.deadline.to_s
     #templates
-        - @fieldshash.each do |k,v|
-            = MedicalTemplate.find(k).name
-            .template-content{:id=>"t#{k}"}
-                %table
-                    %thead
-                        %tr
-                            %th=t('task.name')
-                            %th=t('task.value')
-                            %th=t('task.comment')
-                    %tbody
-                        -v.each do |x,y|
-                            %tr.template-field
-                                - fielddef = FieldDefinition.find(y.field_definition_id)
-                                %td= Entry.find(fielddef.field_entry_id).name
-                                - fields_for y do |fi|
-                                    %td= text_field 'values', x, :size => '20'
-                                    %td= text_field 'comments', x, :size => '20'
+        - unless @fieldshash.nil?
+            - @fieldshash.each do |k,v|
+                = MedicalTemplate.find(k).name
+                .template-content{:id=>"t#{k}"}
+                    %table
+                        %thead
+                            %tr
+                                %th=t('task.name')
+                                %th=t('task.creatorcomment')
+                                %th=t('task.value')
+                                %th=t('task.unit')
+                                %th=t('task.comment')
+                        %tbody
+                            -v.each do |x,y|
+                                %tr.template-field
+                                    - fielddef = FieldDefinition.find(y.field_definition_id)
+                                    %td= Entry.find(fielddef.field_entry_id).name
+                                    %td= y.comment
+                                    - fields_for y do |fi|
+                                        %td= text_field 'values', x, :size => '20'
+                                        -if y.ucum_entry_id.nil?
+                                            %td= '-'
+                                        -else
+                                            -ucum = Entry.find(y.ucum_entry_id)
+                                            %td= ucum.description
+                                        %td= text_field 'comments', x, :size => '20'
     %h2
         =t('task.additional_information')
     - f.inputs do

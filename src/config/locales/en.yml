@@ -445,4 +445,6 @@ en:
     fields:                   "Fields"
     comment:                  "Comment"
     value:                    "Value"
-
+    results:                   "Task Results"
+    unit:                     "Unit"
+    creatorcomment:           "Creator Comment"
