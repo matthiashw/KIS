@@ -175,7 +175,11 @@ class TasksController < ApplicationController
   def taskfill
     @task = Task.find(params[:id])
     @fields = Field.find_all_by_task_id(params[:id])
-    @fields.sort! { |a,b| a.medical_template_id <=> b.medical_template_id }
+    @fieldshash = {}
+    @fields.each do |f|
+      @fieldshash[f.medical_template_id] ||= {}
+      @fieldshash[f.medical_template_id][f.id] ||= f
+    end
 
      respond_to do |format|
       format.html # new.html.erb
@@ -188,18 +192,27 @@ class TasksController < ApplicationController
     @values = params[:values]
     @comments = params[:comments]
 
-       RAILS_DEFAULT_LOGGER.debug @values
-
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        flash[:notice] = 'Task successfully completed.'
-        format.html { redirect_to(@task) }
-        format.xml  { head :ok }
+          @values.each do |k,v|
+            measuredvalue = MeasuredValue.new(:value => v,:comment => @comments[k],
+                             :task_id => @task.id, :field_id => k, :medical_template_id => Field.find(k).medical_template_id )
+            if measuredvalue.save
+              flash[:notice] = 'Task successfully completed.'
+              format.html { redirect_to(@task) }
+              format.xml  { head :ok }
+            end
+          end
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
       end
+    end
+
+    def results
+      @task = Task.find(params[:id])
+      
     end
   end
 end
