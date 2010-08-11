@@ -296,7 +296,8 @@ en:
         import_file_not_blank: "Import file can't be blank!"
         import_file_invalid: "Import file invalid!"
     file_management:        "File Management"
-    export:                 "Export"
+    import:                 "Recover"
+    export:                 "Backup"
     medical_template:
       template:             "Medical Templates"
       medical_template:     "Medical Templates"
@@ -311,6 +312,21 @@ en:
     title:                  "Title"
     actions:                "Actions"
 
+  database_backup:
+    import:
+      title:                "Recover Database"
+      label:                "Please choose a backup file from which the database should be recovered:"
+      submit:               "Submit"
+      success:              "Database successfully recovered."
+      failure:              "Database couldn't be recovered."
+      noFile:               "Please choose a backup-file first."
+    export:
+      title:                "Export Database"
+      label:                "Creating a backup of the database could take a while, depeding on the size of your database!"
+      submit:               "Create Backup"
+      success:              "Successfully backed up database"
+      failure:              "There was an error while trying to create a backup of your database."
+
   messages:
     application:
       no_admin:              "There is no Administrator Account present in your system! You can now create one! After that you will be redirected to the login page!"
@@ -318,4 +334,3 @@ en:
       destroy_error:         "The User with the ID 1 can not be deleted!"
       update_success:        "Successfully updated profile."
       registration_success:  "Registration successful."
-      

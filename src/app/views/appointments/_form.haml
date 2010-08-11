@@ -2,8 +2,8 @@
     = f.error_messages
 
     - f.inputs do
-        = f.input :start_date
-        = f.input :end_date
+        = f.input :start_date, :as => :calendar
+        = f.input :end_date, :as => :calendar
         = f.input :name
         = f.input :description, :input_html => { :rows => 4, :cols => 30 }
     = f.buttons

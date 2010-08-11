@@ -4,10 +4,11 @@ ActionController::Routing::Routes.draw do |map|
   map.calendar '/appointments/calendar/:year/:month', :controller => 'appointments', :action => 'calendar', :year => Time.zone.now.year, :month => Time.zone.now.month
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
+  map.connect "database_backup/import", :controller => "database_backup",:action => "import"
+  map.connect "database_backup/export", :controller => "database_backup",:action => "export"
   map.resources :report_headers
-
+  map.resources :database_backup
   map.resources :medical_reports
-
 
   map.resources :user_sessions, :users, :catalog_types, :catalogs, :appointments,
                 :domains, :comments, :patients, :admin, :case_files , :medical_templates
