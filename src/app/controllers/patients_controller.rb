@@ -5,7 +5,9 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
-    return access_denied unless authorize(permissions = ["view_patient"])
+    return false unless authorize(permissions = ["view_patient"])
+
+    session[:origin] = params[:origin] if params.has_key?(:origin)
     
     @patients = Patient.paginate :page => params[:page], :order => 'family_name ASC', :per_page => RESULTSPERPAGE
 
@@ -18,7 +20,7 @@ class PatientsController < ApplicationController
   # GET /patients/1
   # GET /patients/1.xml
   def show
-    return access_denied unless authorize(permissions = ["view_patient"])
+    return false unless authorize(permissions = ["view_patient"])
 
     @patient = Patient.find(params[:id])
     #@comment = @patient.comments.build(params[:comment])
@@ -35,10 +37,10 @@ class PatientsController < ApplicationController
   def comment
     mycomment = params[:comment]
     if mycomment[:comment].blank?
-      flash[:error] = 'Fill in a comment'
+      flash[:error] = t('messages.patients.comment_blank')
     else
       Patient.find(params[:id]).comments.create(params[:comment])
-      flash[:notice] = 'Added your comment'
+      flash[:notice] = t('messages.patients.comment_added')
     end
     redirect_to :action => "show", :id => params[:id]
   end
@@ -47,7 +49,7 @@ class PatientsController < ApplicationController
   # GET /patients/new
   # GET /patients/new.xml
   def new
-    return access_denied unless authorize(permissions = ["create_patient"])
+    return false unless authorize(permissions = ["create_patient"])
 
     @patient = Patient.new
 
@@ -59,14 +61,14 @@ class PatientsController < ApplicationController
 
   # GET /patients/1/edit
   def edit
-    return access_denied unless authorize(permissions = ["edit_patient"])
+    return false unless authorize(permissions = ["edit_patient"])
     @patient = Patient.find(params[:id])
   end
 
   # POST /patients
   # POST /patients.xml
   def create
-    return access_denied unless authorize(permissions = ["create_patient"])
+    return false unless authorize(permissions = ["create_patient"])
 
     @patient = Patient.new(params[:patient])
     @case_file = CaseFile.new(:entry_date => Date.today())
@@ -80,7 +82,7 @@ class PatientsController < ApplicationController
           session[:active_patient_id] = @patient.id
 
           @case_file.update_attributes(:patient_id => @patient.id)
-          flash[:notice] = t("patient.create_success")
+          flash[:notice] = t("messages.patients.create_success")
           format.html { redirect_to(@patient) }
           format.xml  { render :xml => @patient, :status => :created, :location => @patient }
         else
@@ -98,13 +100,13 @@ class PatientsController < ApplicationController
   # PUT /patients/1
   # PUT /patients/1.xml
   def update
-    return access_denied unless authorize(permissions = ["edit_patient"])
+    return false unless authorize(permissions = ["edit_patient"])
 
     @patient = Patient.find(params[:id])
 
     respond_to do |format|
       if @patient.update_attributes(params[:patient])
-        flash[:notice] = t("patient.update_success")
+        flash[:notice] = t("messages.patients.update_success")
         format.html { redirect_to(@patient) }
         format.xml  { head :ok }
       else
@@ -117,12 +119,17 @@ class PatientsController < ApplicationController
   # DELETE /patients/1
   # DELETE /patients/1.xml
   def destroy
-    return access_denied unless authorize(permissions = ["destroy_patient"])
+    return false unless authorize(permissions = ["delete_patient"])
     
     @patient = Patient.find(params[:id])
     
     if @patient.destroy
-      flash[:notice] = t("patient.delete_success")
+      flash[:notice] = t("messages.patients.delete_success")
+
+      if session[:active_patient_id] == @patient.id
+        session[:active_patient_id] = nil
+      end
+
     end
 
     respond_to do |format|
@@ -135,12 +142,15 @@ class PatientsController < ApplicationController
   def search
     session[:query] = params[:query].strip if params[:query]
 
+    
       if session[:query]
         if session[:query] == ""
           @patients = Patient.paginate :page => params[:page], :order => 'family_name ASC', :per_page => RESULTSPERPAGE
         else
-          @patients = Patient.paginate :page => params[:page],:per_page => RESULTSPERPAGE,
-            :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{session[:query]}%","%#{session[:query]}%"], :order => "family_name ASC"
+          patientname = session[:query]
+          patientname.each_line(' ') { |namepart|
+            @patients = Patient.paginate :page => params[:page],:per_page => RESULTSPERPAGE,
+            :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{namepart}%","%#{namepart}%"], :order => "family_name ASC"}
         end
       end
 

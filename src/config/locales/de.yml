@@ -1,6 +1,37 @@
 de:
   name:                   "Deutsch"
 
+  activerecord:
+    models:
+      catalog_type:     "Katalogtyp"
+      appointment:      "Termin"
+      atc_entry:        "Medizinkatalog-Eintrag"
+      case_file:        "Fall"
+      catalog:          "Katalog"
+      comment:          "Kommentar"
+      diagnosis:        "Diagnose"
+      domain:           "Domäne"
+      domain_membership: "Domänenzugehörigkeit"
+      entry:            "Katalogeintrag"
+      field:            "Feld"
+      field_definition: "Felddefinition"
+      icd_entry:        "Diagnosekatalog-Eintrag"
+      measured_value:   "Gemessener Wert"
+      medical_report:   "Arztbrief"
+      medical_template: "Template"
+      medication:       "Medikation"
+      node:             "Katalogknoten"
+      ops_entry:        "Operations- und Prozedurkatalog-Eintrag"
+      patient:          "Patient"
+      permission:       "Benutzerrecht"
+      report_header:    "Arztbriefkopf"
+      task:             "Aufgabe"
+      treatment:        "Behandlung"
+      ucum_entry:       "Einheitenkatalog-Eintrag"
+      uploaded_file:    "Hochgeladene Datei"
+      user:             "Systembenutzer"
+      user_session:     "Benutzersitzung"
+
   login:                  "Einloggen"
   logout:                 "Ausloggen"
   register:               "Registrieren"
@@ -57,6 +88,10 @@ de:
         field_definition:
           input_type: "Eingabetyp"
           additional_type_info: "Drop-Down Werte"
+        field_entry:
+          code:   "Schlüssel des Katalogeintrags"
+          name:   "Name des Katalogeintrags"
+          description: "Zusätzliche Beschreibungen zum Katalogeintrag"
       hints:
         patient:
           first_name:       "Vorname des Patienten"
@@ -273,7 +308,11 @@ de:
       name:                 "Name"
       errors:
         application:        "Die Import-Methode kann die gewünschte Anwendung nicht bereitstellen!"
+      flash:
+        created:             "Katalogtyp wurde erfolgreich angelegt."
+        updated:             "Katalogtyp wurde erfolgreich aktualisiert."
     catalog:
+      no_catalog_available:           "Kein Katalog für folgende Applikation verfügbar: "
       empty_catalog:        "Der Katalog ist leer."
       listing:              "Liste der Kataloge"
       new_button:           "Neuen Katalog hinzufügen"
@@ -287,9 +326,25 @@ de:
       language:             "Sprache"
       import:               "Katalog Importieren"
       import_button:        "Katalog Importieren"
+      flash:
+        created:             "Katalog wurde erfolgreich angelegt."
+        updated:             "Katalog wurde erfolgreich aktualisiert."
+        activated:          "Katalog wurde aktiviert."
       errors:
         import_file_not_blank: "Import Datei muss angegeben werden!"
         import_file_invalid: "Falsches Importformat!"
+      user_defined:
+        add_field_entry:         "Katalogeintrag hinzufügen"
+        edit_field_entry:        "Ausgewählten Katalogeintrag bearbeiten"
+        delete_field_entry:      "Ausgewählten Katalogeintrag löschen"
+        create_field_entry:
+          ok:                    "Katalogeintrag wurde erfolgreich hinzugefügt!"
+          error:                 "Keine leeren Felder erlaubt!"
+        destroy_field_entry:
+          ok:                   "Katalogeintrag gelöscht!"
+        update_field_entry:
+          ok:                    "Katalogeintrag aktualisiert!"
+          error:                 "Keine leeren Felder erlaubt!"
     file_management:        "Datei Verwaltung"
     export:                 "Export"
 
@@ -313,3 +368,12 @@ de:
     month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
     abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez]
 
+  task:
+      new_task:  "Neue Aufgabe erstellen"
+      choose_domain: "Zielpatient und Zieldomäne"
+      choose_domain_select: "Bitte Zieldomäne wählen"
+      ok: "OK"
+      select: "auswählen"
+      other: "anderer Patient"
+      totask: "Zurück zur Aufgaben-Erstellung"
+      no_active_patient: "Kein aktiver Patient vorhanden"

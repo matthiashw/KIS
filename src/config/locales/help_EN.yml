@@ -3,4 +3,9 @@ en:
     patients:
       index:
         title:    "Test-Title"
-        text:     "This is a Placeholder_Label"
+        text:     "This is a Placeholder_Label This is a Placeholder_Label This
+                  is a Placeholder_Label This is a Placeholder_Label<br />
+                  This is a Placeholder_LabelThis is a Placeholder_Label
+                  <br /> This is a Placeholder_LabelThis is a Placeholder_Label
+                  <br /> This is a Placeholder_LabelThis is a Placeholder_Label
+                  <br /> This is a Placeholder_LabelThis is a Placeholder_Label"

@@ -7,6 +7,9 @@ module CaseFilesHelper
     cssclass = "inactive"
     
     if current_active_patient != nil
+      if get_case_for_view == cf_id
+        cssclass = "yellow"
+      end
       if current_active_patient.active_case_file_id == cf_id
         cssclass = "active"
       end

@@ -6,4 +6,5 @@ class Treatment < ActiveRecord::Base
   has_many :medications
   belongs_to :task
   belongs_to :user
+  validates_presence_of :description, :start_date, :ops_entry
 end

@@ -140,7 +140,7 @@ table {
         vertical-align:top;
 
         &.active {
-            background:none repeat scroll 0 0 #E4F0F8;
+            background-color:$activeblue;
         }
 
         &.center {
@@ -149,7 +149,7 @@ table {
     }
 
     th {
-        background:none repeat scroll 0 0 #EEEEEE;
+        background-color:#EEEEEE;
         color:#666666;
         font-weight:normal;
         text-align:left;
@@ -173,6 +173,24 @@ table {
     tr:hover {
         td {
             background-color:$verylightgray;
+        }
+    }
+
+    tr.green {
+        td {
+            background-color:$green;
+        }
+    }
+
+    tr.red {
+        td {
+            background-color:$red;
+        }
+    }
+
+    tr.yellow {
+        td {
+            background-color:$yellow;
         }
     }
 
@@ -316,7 +334,27 @@ abbr {
 /*ERRORS WARNINGS OK
 ------------------------------------------------------*/
 
+fieldset {
+    &.messages {
+        &.ok {
+            border:1px solid #689434;
+            color:#fff;
+            background:#8cc746;
+        }
 
+        &.error {
+            color:#fff;
+            background:#e63;
+            border-color:#F23D30;
+        }
+
+        &.warning {
+            color: #840;
+            background: #fe6;
+            border:1px solid #ed5;
+        }
+    }
+}
 
 div {
   &.messages {
@@ -468,6 +506,68 @@ a.acts_as_button{
     }
 }
 
+/*
+ * Fieldsets
+ */
+
+fieldset.fieldset {
+    border: 1px solid $lightgray;
+    padding: 30px 13px 13px 14px;
+    margin: 0 0 10px;
+
+    legend span,
+    legend a {
+        position: absolute;
+        margin-top: 9px;
+        margin-left: 13px;
+        background:url("/images/menu-expanded.png") no-repeat scroll 5px 75% transparent;
+        display:block;
+        padding-left:18px;
+
+        span {
+            position: relative;
+            background:none;
+            padding-left:0;
+            margin-top: 0;
+            margin-left: 0;
+        }
+    }
+
+    &.collapsible {
+        position:relative;
+        
+        legend a {
+            color:$blue;
+            font-weight:bold;
+            text-transform:uppercase;
+            cursor:pointer;
+        }
+    }
+
+    &.messages {
+       legend a {
+            color:#fff;
+       }
+    }
+
+    &.collapsed {
+       
+        legend a {
+            background-image:url("/images/menu-collapsed.png");
+            background-position:5px 50%;
+        }
+    }
+
+    .fieldset-setup-fix {
+        margin:9px 0 0 0;
+        a {
+            color:#fff;
+        }
+    }
+
+}
+
+
 
 /*VIEWS
 -------------------------------------------------------- */
@@ -552,7 +652,40 @@ a.acts_as_button{
 }
 
 
+.color-legend {
+    .color {
+        display:block;
+        width:9px;
+        height:9px;
+        border:2px solid $lightgray;
+        float:left;
+        margin-top:2px;
+        
+        &.activeblue {
+            background-color:$activeblue;
+        }
 
+        &.green {
+            background-color:$green;
+        }
+        
+        &.red {
+            background-color:$red;
+        }
+        
+        &.yellow {
+            background-color:$yellow;
+        }
+       
+    }
+
+    .color-description {
+        margin:0 18px 0 9px;
+        font-size:12px;
+        color:$mediumgray;
+        float:left;
+    }
+}
 
 
 

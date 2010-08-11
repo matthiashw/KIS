@@ -1,0 +1,28 @@
+-title t('task.new_task')
+
+%h2
+    %span.task-step.step1
+        = t('task.step1')
+    = t('task.choose_domain')
+
+.task-patient
+    - if @current_active_patient.nil?
+        .task-patient-name
+            = t('task.no_active_patient')
+        .task-patient-switch
+            = link_to t('task.select'), {:controller => 'patients', :origin=> 'tasks'}, :class => 'acts_as_button mediumgray'
+    - else
+        .task-patient-name
+            = t('task.selected_patient') + ": "
+            = @current_active_patient.family_name + ', ' + @current_active_patient.first_name
+        .task-patient-switch
+            = link_to t('task.other'), {:controller => 'patients', :origin=> 'tasks'}, :class => 'acts_as_button mediumgray'
+
+= render :partial => 'form2'
+
+.action-links.task-step1
+    -if current_active_patient
+        = link_to t('action.back'), patient_tasks_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'
+    -else
+        = link_to t('action.back'), tasks_path, :class => 'acts_as_button darkgray'
+

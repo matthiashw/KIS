@@ -208,7 +208,8 @@ $activeblue:#bbddff;
   background: transparent url('/images/domain.png') no-repeat top center;
   margin: 18px 0 0 18px; }
 
-.active-patient {
+.active-patient,
+.active-case {
     padding:4px 5px;
     display:inline;
     max-width:500px;
@@ -238,6 +239,22 @@ $activeblue:#bbddff;
     &:hover {
         background-color:$activeblue;
         cursor:pointer;
+    }
+}
+
+.active-case {
+    margin:9px 0 0 18px;
+    background-color:$yellow;
+    color:$darkgray;
+
+    span {
+        color:$darkgray;
+    }
+
+    &:hover {
+        span {
+            color:$darkgray;
+        }
     }
 }
 
@@ -318,6 +335,10 @@ a.links-link {
     .delete {
         float:right;
     }
+
+    &.task-step1 {
+        margin-top:36px;
+    }
 }
 
 
@@ -350,12 +371,19 @@ a.links-link {
         .comment-date {
             color:$lightgray;
             font-size:12px;
-            text-align:right;
+            display:inline;
+            margin:0 18px 0 9px;
+            float:right;
+        }
+
+        .comment-link-edit-wrapper {
+            display:inline;
+            margin:0 18px 0 9px;
         }
      }
 
      .comment_form {
-         margin-top:18px;
+         margin:18px 0 18px;;
          textarea {
             width:90%;
         }
@@ -369,6 +397,17 @@ a.links-link {
         padding-top:9px;
         border-top:1px solid $verylightgray;
      }
+
+    .comment-link-edit {
+        font-size:12px;
+    }
+
+
+    .comment-link-view-wrapper {
+        font-size:12px;
+        margin:-36px 0 9px;
+        text-align:right;
+    }
  }
 
 /**
@@ -451,6 +490,138 @@ a.links-link {
     }
 }
 
+/*TASK AND TEMPLATES
+-------------------------------------------------------- */
+
+.task-patient {
+    .task-patient-name {
+        display:inline;
+    }
+
+    .task-patient-switch {
+        display:inline;
+        margin-left:18px;
+    }
+}
+
+.taskcreation {
+    margin-top:18px;
+
+    .task-select-domain {
+
+    }
+
+    .task-select-domain-submit {
+        margin-top:18px;
+    }
+}
+
+.task-step {
+    color:$magenta;
+    font-size:16px;
+    margin-bottom:18px;
+
+    &.step1 {
+
+    }
+
+    &.step2,
+    &.step3 {
+        
+    }
+}
+
+.field.box.task-state {
+    width:50%;
+
+    .box-inner {
+        float:left;
+        width:100%;
+    }
+    
+    .field-label {
+        width:58%;
+    }
+
+    .field-content {
+        width:30%;
+
+        .task-open {
+            color:$green;
+        }
+
+        .task-closed {
+            color:$red;
+        }
+    }
+}
+
+
+
+#templates {
+    margin-bottom:18px;
+    float:left;
+    width:100%;
+
+    .template-collapsible {
+        margin:1px 0;
+        float:left;
+        width:100%;
+    }
+
+    .template-toggle {
+        background-color:$darkgray;
+        border-radius:4px;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        padding:4px 6px 5px;
+        float:left;
+        width:100%;
+
+        .select-all-fields {
+            float:left;
+            margin-left:4px;
+            margin-top:2px;
+        }
+
+        .fields-select-all,
+        .fields-select-none {
+            float:left;
+            color:#fff;
+            width:80px;
+            font-size:12px;
+            margin-left:4px;
+        }
+    }
+
+    .template-toggle-link {
+        background:url("/images/arrow-expanded.png") no-repeat scroll 0 50% transparent;
+        padding-left:18px;
+        cursor:pointer;
+        color:#fff;
+        text-decoration: underline;
+        font-size:16px;
+        margin-left:18px;
+        display:block;
+        float:left;
+        width:80%;
+    }
+    
+    .template-collapsible.collapsed {
+        .template-toggle-link {
+            background:url("/images/arrow-collapsed.png") no-repeat scroll 0 50% transparent;
+        }
+    }
+
+    .template-content {
+        margin:0 9px 9px 18px;
+    }
+
+}
+
+
+
+
 
 /*FOOTER
 -------------------------------------------------------- */
@@ -471,13 +642,17 @@ a.links-link {
 /*DIALOG
 -------------------------------------------------------- */
 
-.dialog {
-    table.table_window {
+.popup {
+    table {
         border:none;
         background-color:transparent;
+        -moz-box-shadow:none;
+        margin:0;
 
         td, th {
             border:none;
+            padding:0;
+            text-shadow:none;
         }
 
         tr:hover {
@@ -485,8 +660,8 @@ a.links-link {
                 background-color:transparent;
             }
 
-            td.dialog_content {
-                background-color:$activeblue;
+            td {
+                background-color:transparent;
             }
         }
 
@@ -875,6 +1050,12 @@ td.permission {
 .show-catalog-tree {
     float:left;
     width:100%;
+}
+
+.catalog_edit_action {
+    float:left;
+    width:100%;
+    margin-top:18px;
 }
 
 ul.x-tree-root-ct {

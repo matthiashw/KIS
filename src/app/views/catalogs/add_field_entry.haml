@@ -1,0 +1,28 @@
+- title t('admin.catalog.user_defined.add_field_entry')
+
+- form_tag url_for(:controller => 'catalogs' , :action=> 'create_field_entry', :id => @catalog.id), :class => 'formtastic add_field_entry' do
+ 
+    %fieldset.inputs
+        %ol
+            %li.string.required
+                %label
+                    = t('formtastic.labels.field_entry.name')
+                    %span.required
+                = text_field_tag :name
+                %p.inline-hints
+            %li.text.required
+                %label
+                    = t('formtastic.labels.field_entry.description')
+                    %span.required
+                = text_field_tag :description
+                %p.inline-hints
+
+    %fieldset.buttons
+        %ol
+            %li
+                = submit_tag t('admin.catalog.user_defined.add_field_entry')
+
+
+
+.action-links
+    = link_to t('action.back'), @catalog, :class => 'acts_as_button darkgray'

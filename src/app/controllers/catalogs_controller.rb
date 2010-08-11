@@ -75,7 +75,7 @@ class CatalogsController < ApplicationController
      
     respond_to do |format|
       if @catalog.errors.empty?
-        flash[:notice] = 'Catalog was successfully created.'
+        flash[:notice] = t('admin.catalog.flash.created')
         if(!@catalog.catalog_type.active_catalog)
             @catalog.catalog_type.active_catalog_id = @catalog.id
             @catalog.catalog_type.save
@@ -98,7 +98,7 @@ class CatalogsController < ApplicationController
 
     respond_to do |format|
       if @catalog.update_attributes(params[:catalog])
-        flash[:notice] = 'Catalog was successfully updated.'
+        flash[:notice] = t('admin.catalog.flash.updated')
         format.html { redirect_to(@catalog) }
         format.xml  { head :ok }
       else
@@ -129,11 +129,81 @@ class CatalogsController < ApplicationController
     @catalog.catalog_type.active_catalog_id = @catalog.id
     @catalog.catalog_type.save
     respond_to do |format|
-      flash[:notice] = 'Catalog was activated.'
+      flash[:notice] = t('admin.catalog.flash.activated')
       format.html { redirect_to(catalogs_url) }
       format.xml  { head :ok }
     end
-end
+  end
+
+  def add_field_entry
+     @catalog = Catalog.find(params[:id])
+
+  end
+
+  def edit_field_entry
+    @catalog = Catalog.find(params[:id])
+    if params[:node_to_edit]!=""
+    @edit_field_entry=Entry.find(params[:node_to_edit])
+     respond_to do |format|
+       if params.has_key?("delete_field_entry")
+          @edit_field_entry.destroy
+          flash[:notice] = t('admin.catalog.user_defined.destroy_field_entry.ok')
+           format.html { redirect_to(@catalog) }
+        else
+           format.html { render :action => "edit_field_entry" }
+        end
+      end
+    else
+      redirect_to(@catalog)
+    end
+
+  end
+
+  def update_field_entry
+      @catalog = Catalog.find(params[:id])
+      @edit_field_entry=Entry.find(params[:node_to_edit])
+      @edit_field_entry.code = params[:code]
+      @edit_field_entry.name= params[:name]
+      @edit_field_entry.description= params[:description]
+      if @edit_field_entry.instance_of? FieldEntry
+        @edit_field_entry.field_definition.input_type=params[:input_type]
+        @edit_field_entry.field_definition.additional_type_info=params[:additional_type_info]
+        @edit_field_entry.field_definition.save
+      end
+     respond_to do |format|
+      if  @edit_field_entry.save 
+        flash[:notice] = t('admin.catalog.user_defined.update_field_entry.ok')
+        format.html { redirect_to(@catalog) }
+        format.xml  { head :ok }
+
+      else
+        flash[:error] = t('admin.catalog.user_defined.update_field_entry.error')
+         format.html { render :action => "add_field_entry" }
+         format.xml  { head :error  }
+      end
+     end
+  end
+
+  def create_field_entry
+    @catalog = Catalog.find(params[:id])
+    code= Time.new.strftime("%Y-%m-%d/%H:%M")
+    name= params[:name]
+    description= params[:description]
+    fieldentry=FieldEntry.new(:code => code, :name => name, :description => description, :node_id => @catalog.root_node.id)
+    respond_to do |format|
+    if fieldentry.save
+      FieldDefinition.create(:input_type => 0, :field_entry_id => fieldentry.id)
+      flash[:notice] = t('admin.catalog.user_defined.create_field_entry.ok')
+      format.html { redirect_to(@catalog) }
+      format.xml  { head :ok }
+      
+    else
+      flash[:error] = t('admin.catalog.user_defined.create_field_entry.error')
+       format.html { render :action => "add_field_entry" }
+       format.xml  { head :error  }
+    end
+    end
+  end
 
 end
 

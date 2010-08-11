@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale, :login_required
   
   helper :all # include all helpers, all the time
-  helper_method :current_active_patient, :current_user, :current_user_session, :authorize?
+  helper_method :current_active_patient, :current_user, :current_user_session, 
+                :authorize?, :get_case_for_view
 
   protect_from_forgery
 
@@ -20,6 +21,10 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     #logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { :locale => I18n.locale }
+  end
+
+  def models_to_check_for_errors
+    ["User"]
   end
 
   protected
@@ -38,7 +43,7 @@ class ApplicationController < ActionController::Base
   # render access denied if user has no permission
   # to view the page
   def access_denied
-    flash[:error] = 'You have no permission to view this page.'
+    flash[:error] = t('messages.application.no_permission')
     render :partial => 'shared/error403', :status => 403, :layout => true and return false
   end
 
@@ -46,11 +51,11 @@ class ApplicationController < ActionController::Base
   
   def current_active_patient
     return @current_active_patient if defined?(@current_active_patient)
-    
+
+    @current_active_patient = nil
+
     if session.has_key?(:active_patient_id)
-      @current_active_patient = Patient.find(session[:active_patient_id])
-    else
-      @current_active_patient = nil
+      @current_active_patient = Patient.find(session[:active_patient_id]) if !session[:active_patient_id].nil?
     end
   end
 
@@ -65,11 +70,7 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    if system_has_admin?
-      redirect_to new_user_session_path unless current_user
-    else
-      redirect_to new_user_path unless current_user
-    end
+    redirect_to new_user_session_path unless current_user
   end
 
   # check if current user has permission to
@@ -84,16 +85,23 @@ class ApplicationController < ActionController::Base
     return current_user && current_user.id == 1
   end
 
-  # check if the superadmin is present in the system at login
-  def system_has_admin?
-    adminuser = User.find_by_id(1)
+  # get id of active casefile
+  # returns casefile wich is active for view
+  # if none has been activated it returns active casefile of patient or
+  # returns nil if no patient/casefile is active
+  def get_case_for_view
 
-    if adminuser == nil
-      flash[:message] = t('messages.application.no_admin')
-      return false
+    if session.has_key?(:case_view_id)
+      return session[:case_view_id]
+    else
+      if session.has_key?(:active_patient_id)
+        activepatient = Patient.find(session[:active_patient_id])
+        return activepatient.active_case_file_id
+      end
     end
+    
+    return nil
 
-    return true
   end
 
 end

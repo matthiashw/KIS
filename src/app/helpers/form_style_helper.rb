@@ -113,7 +113,7 @@ module FormStyleHelper
 	# Class: "check_box"
 	def check_box_tag(name, value = "1", checked = false, options = {})
 		options = check_options(options)
-		options[:class] << 'check_box'
+		options[:class] << 'checkbox'
 		super(name, value, checked, options)
 	end
 

@@ -36,6 +36,7 @@ class PermissionsController < ApplicationController
         action = perm.match(';[a-z_]*')[0].delete ";"
         d = Domain.find(:first, :conditions => "name = '#{domainname}'")
         d.permissions << Permission.new(:action => action, :granted => true) unless d == nil
+        flash[:notice] = t('messages.permissions.updated')
       end
       
     end

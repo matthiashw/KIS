@@ -5,6 +5,7 @@ Administration:
   access_administration: Grant access to the administration Area
   set_permissions: Set Permissions for Roles
   administer_catalog: Administer the Catalogs
+  view_status_report: View Status Report
 
 User:
   create_user: Create a User
@@ -51,9 +52,7 @@ Patient:
 Comment:
   create_comment: Create a Comment
   view_comment: View all Comments
-  view_own_comment: View own Comment
   edit_comment: Edit every Comment
-  edit_own_comment: Edit own Comment
   delete_comment: Delete every Comment
 
 Medication:

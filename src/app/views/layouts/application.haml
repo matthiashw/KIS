@@ -4,8 +4,9 @@
     %head
         %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'utf-8'}
         %title= h(yield(:title) || "Untitled") + " - Hopen"
-        = stylesheet_link_tag 'reset', '../ext/resources/css/ext-all.css', 'master', 'formtastic', 'formtastic_changes', 'themes/default', 'style', 'swapselect', :cache => 'base'
-        = javascript_include_tag 'prototype', 'window', '../ext/adapter/ext/ext-base.js' ,'../ext/ext-all.js','application', 'swapselect', 'calendar_date_select/calendar_date_select', :cache => true
+        = stylesheet_link_tag 'reset', '../ext/resources/css/ext-all.css', 'master', 'formtastic', 'formtastic_changes', 'facebox', 'style', 'swapselect', :cache => 'base'
+        = stylesheet_link_tag('print', :media => :print)
+        = javascript_include_tag 'prototype', 'scriptaculous', 'facebox', '../ext/adapter/ext/ext-base.js' ,'../ext/ext-all.js','application', 'swapselect', 'calendar_date_select/calendar_date_select',:cache => true
     %body{ :id => make_body_id, :class => make_body_classes}
         #wrapper
             =render :partial => 'shared/calendar_date_select'

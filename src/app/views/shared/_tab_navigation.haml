@@ -1,4 +1,4 @@
-%ul{:class => "secondary-navigation" + " " + is_active_multiple_controller?('patients', 'case_files', 'treatments', 'medical_reports')}
+%ul{:class => "secondary-navigation" + " " + is_active_multiple_controller?('patients', 'case_files', 'treatments', 'medical_reports', 'tasks')}
     -if current_active_patient != nil
         - if authorize?('view_patient')
             %li{:class => "secondary-navigation-leaf"}
@@ -24,8 +24,7 @@
 
         - if authorize?('view_task')
             %li{:class => "secondary-navigation-leaf"}
-                %a{:href => ""}
-                    =t('navi.tabs.tasks')
+                =link_to t('navi.tabs.tasks'), patient_tasks_path(:patient_id => current_active_patient.id), :class => is_active?('tasks')
 
         - if authorize?('view_diagnosis')
             %li{:class => "secondary-navigation-leaf"}
