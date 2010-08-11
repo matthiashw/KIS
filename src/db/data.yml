@@ -1,0 +1,251 @@
+
+--- 
+appointments: 
+  columns: 
+  - id
+  - start_date
+  - end_date
+  - name
+  - description
+  - task_id
+  - user_id
+  - created_at
+  - updated_at
+  - color
+  records: 
+  - - "1"
+    - 2010-08-01 07:00:00
+    - 2010-08-02 03:00:00
+    - Dies ist ein Test-Appointment
+    - "Nunja, was soll ich gro\xC3\x9F sagen?\r\n\
+      \r\n\
+      Ein Test-Appointment halt ;)"
+    - 
+    - 
+    - 2010-06-21 15:09:59
+    - 2010-08-02 10:22:33
+    - "#008E00"
+  - - "2"
+    - 2010-06-16 00:00:00
+    - 2010-06-16 00:00:00
+    - "Eint\xC3\xA4giges Appointment"
+    - Dieses Appointment wird nur einmal aufgerufen
+    - 
+    - 
+    - 2010-06-21 15:17:19
+    - 2010-06-21 15:17:19
+    - "#008E00"
+  - - "3"
+    - 2010-06-02 00:00:00
+    - 2010-06-03 00:00:00
+    - "zweit\xC3\xA4giges Event"
+    - "Dies ist ein zweit\xC3\xA4giges Event ;)"
+    - 
+    - 
+    - 2010-06-21 18:07:04
+    - 2010-06-21 18:07:04
+    - "#008E00"
+  - - "4"
+    - 2010-06-29 00:00:00
+    - 2010-06-29 00:00:00
+    - tea
+    - ""
+    - 
+    - 
+    - 2010-06-27 14:01:05
+    - 2010-06-27 14:01:05
+    - "#008E00"
+  - - "5"
+    - 2010-06-29 00:00:00
+    - 2010-06-29 00:00:00
+    - tea
+    - ""
+    - 
+    - 
+    - 2010-06-27 14:01:06
+    - 2010-06-27 14:01:06
+    - "#008E00"
+  - - "6"
+    - 2010-08-04 13:10:00
+    - 2010-08-19 13:10:00
+    - Test
+    - Tanz den Hula
+    - 
+    - 
+    - 2010-08-04 11:12:36
+    - 2010-08-04 11:12:36
+    - "#008E00"
+
+--- 
+case_files: 
+  columns: 
+  - id
+  - entry_date
+  - leave_date
+  - patient_id
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - "2010-06-21"
+    - "2010-07-16"
+    - "1"
+    - 2010-06-21 15:11:46
+    - 2010-08-04 09:43:36
+
+--- 
+catalog_types: 
+  columns: 
+  - id
+  - name
+  - active_catalog_id
+  - created_at
+  - updated_at
+  - import_method
+  - application
+  records: 
+  - - "1"
+    - ICD-Test 1
+    - 
+    - 2010-08-02 10:25:21
+    - 2010-08-02 10:25:21
+    - ops_am
+    - ""
+
+--- 
+comments: 
+  columns: 
+  - id
+  - comment
+  - patient_id
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - |
+      Huhu
+
+    - "1"
+    - 2010-06-21 15:15:32
+    - 2010-06-21 15:15:32
+  - - "2"
+    - hjl
+    - "1"
+    - 2010-06-21 15:15:53
+    - 2010-06-21 15:15:53
+
+--- 
+medical_reports: 
+  columns: 
+  - id
+  - description
+  - file
+  - patient_id
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - jzjg
+    - |
+      <table>
+      	<tbody>
+      		<tr>
+      			<td>
+      				Name</td>
+      			<td>
+      				TuNichGut</td>
+      		</tr>
+      		<tr>
+      			<td>
+      				Vorname</td>
+      			<td>
+      				Frank</td>
+      		</tr>
+      	</tbody>
+      </table>
+
+    - 
+    - 2010-06-28 10:37:33
+    - 2010-06-28 10:38:48
+
+--- 
+patients: 
+  columns: 
+  - id
+  - first_name
+  - family_name
+  - birthdate
+  - address
+  - sex
+  - phone
+  - active_case_file_id
+  - extern_medication_treatment_id
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - Frank
+    - TuNichGut
+    - "1988-05-16"
+    - Fakestreet 123
+    - Male
+    - 0190 123456
+    - "1"
+    - 
+    - 2010-06-21 15:11:46
+    - 2010-06-21 15:11:46
+  - - "2"
+    - Frank
+    - TuNichGut
+    - "1988-05-16"
+    - Fakestreet 123
+    - Male
+    - 0190 123456
+    - "1"
+    - 
+    - 2010-06-21 15:11:46
+    - 2010-06-21 15:11:46
+
+--- 
+users: 
+  columns: 
+  - id
+  - username
+  - crypted_password
+  - first_name
+  - family_name
+  - language
+  - address
+  - email
+  - phone
+  - created_at
+  - updated_at
+  - password_salt
+  - persistence_token
+  records: 
+  - - "1"
+    - raschloe
+    - 8baab3ca93ee623c24971847d92533958b4d6d456e71aa334c051319257def72c56b8c32bd5627536c2a2ed6260dd11f86e680053b5ffdc19a36a16df32aeca4
+    - Rainer
+    - "Schl\xC3\xB6nvoigt"
+    - en
+    - Mainaustrasse 73
+    - rainer.schloenvoigt@gmx.de
+    - 0151 12464459
+    - 2010-06-21 15:07:25
+    - 2010-06-21 15:07:25
+    - dpB0GyiMP8b6eApldXms
+    - 0a693c3ba3cf513a16050bff53b4e14b04ef3f1a1d988448c78a8b1088bdbbef153d6032fdbd9c693c5a9130bed0ddbcb0046551a724daf5f45af8054eeef3dd
+  - - "2"
+    - Test
+    - 6d2253bb4c19e883a260ca557f64987cae3d04e9938a51f1f9e7daa271f61b1ad2679366ac7e682bf396e101c85ca078058e93d1968529cc3e922cadda51b00a
+    - henry
+    - schillbach
+    - en
+    - Test12345678
+    - henry@coliquio.de
+    - 0190 123456
+    - 2010-08-09 15:55:26
+    - 2010-08-09 15:55:26
+    - wMWEB0fTXywJQR6xjADd
+    - f04620e6f67d05e6cc6302604791a0495708ec0acb110d38a8ff4e59c16a43445043fad695d76ec0907f025c64cb307a14681580db052ae5aca467cd27d7988e

@@ -1,0 +1,10 @@
+de:
+  calendar_date_select:
+    ok:     "Ok"
+    now:    "Jetzt"
+    today:  "Heute"
+    clear:  "Löschen"
+
+    first_day_of_week:  1
+    abbr_day_names:     "Mo Di Mi Do Fr Sa So"
+    month_names:        "Januar Februar März April Mai Juni Juli August September Oktober November Dezember"
