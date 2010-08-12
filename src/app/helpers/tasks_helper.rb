@@ -6,4 +6,23 @@ module TasksHelper
 
     return false
   end
+
+  def is_creator?(uid)
+    if current_user.id == uid
+      return true
+    end
+
+    return false
+  end
+
+  def is_in_domain?(did)
+    current_user.domains.each do |d|
+      if d.id == did
+        return true
+      end
+    end
+
+    return false
+  end
+
 end

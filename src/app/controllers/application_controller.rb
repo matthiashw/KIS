@@ -40,6 +40,56 @@ class ApplicationController < ActionController::Base
     return current_user_is_admin? || current_user_permission?(*permissions)
   end
 
+  # returns true or false, based on given user permissions
+  # modified for task with creator id and multiple permissions with logical or
+  def task_creator_authorize?(creator_uid, *permissions)
+    return true if current_user_is_admin?
+    permissions.each do |p|
+      if current_user.id == creator_uid && current_user_permission?(p)
+        return true
+      end
+    end
+    return false
+  end
+
+  # returns true or false, based on given user permissions
+  # modified for task with domain id and multiple permissions with logical or
+  def task_domain_authorize?(domain_id, *permissions)
+    return true if current_user_is_admin?
+    permissions.each do |p|
+      current_user.domains.each do |d|
+        if d.id == domain_id && current_user_permission?(p)
+          return true
+        end
+      end
+    end
+    return false
+  end
+  
+  # returns true or false, based on given user permissions
+  # modified for task with multiple permissions with logical or
+  def task_authorize?(*permissions)
+    permissions.each do |p|
+      if current_user_permission?(p)
+        return true
+      end
+    end
+    return false
+  end
+
+  # returns true or false, based on given user permissions
+  # modified for task with creator id and multiple permissions with logical or
+  def task_creator_authorize?(creator_uid, *permissions)
+    return true if current_user_is_admin?
+    permissions.each do |p|
+      if current_user.id == creator_uid && current_user_permission?(p)
+        return true
+      end
+    end
+    return false
+  end
+
+  
   # render access denied if user has no permission
   # to view the page
   def access_denied

@@ -29,15 +29,23 @@
 
 .action-links
     -if current_active_patient
-        = link_to t('action.back'), patient_tasks_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'
+        = link_to t('action.back'), patient_tasks_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'        
         - if task_is_open?(@task.state)
-            = link_to t('action.edit'), edit_patient_task_path(:patient_id => current_active_patient.id, :id => @task.id), :class => 'acts_as_button'
+            - if authorize?('edit_task') || (authorize?('edit_own_task') && is_creator?(@task.creator_user_id))
+                = link_to t('action.edit'), edit_patient_task_path(:patient_id => current_active_patient.id, :id => @task.id), :class => 'acts_as_button'
+            - if authorize?('fill_every_task') || (authorize?('fill_own_domain_task') && is_in_domain?(@task.domain_id))
+                = link_to t('task.fill'), taskfill_path(:id => @task.id), :class => 'acts_as_button'
         - else
-            = link_to t('task.showresults'), taskresults_path(:id => @task.id), :class => 'acts_as_button'
+            - if authorize?('show_result_task') || (authorize?('show_result_own_task') && is_creator?(@task.creator_user_id))
+                = link_to t('task.showresults'), taskresults_path(:id => @task.id), :class => 'acts_as_button'
     -else
         = link_to t('action.back'), tasks_path, :class => 'acts_as_button darkgray'
         - if task_is_open?(@task.state)
-            = link_to t('action.edit'), edit_task_path(@task), :class => 'acts_as_button'
+            - if authorize?('edit_task') || (authorize?('edit_own_task') && is_creator?(@task.creator_user_id))
+                = link_to t('action.edit'), edit_task_path(@task), :class => 'acts_as_button'
+            - if authorize?('fill_every_task') || (authorize?('fill_own_domain_task') && is_in_domain?(@task.domain_id))
+                = link_to t('task.fill'), taskfill_path(:id => @task.id), :class => 'acts_as_button'
         - else
-            = link_to t('task.showresults'), taskresults_path(:id => @task.id), :class => 'acts_as_button'
+            - if authorize?('show_result_task') || (authorize?('show_result_own_task') && is_creator?(@task.creator_user_id))
+                = link_to t('task.showresults'), taskresults_path(:id => @task.id), :class => 'acts_as_button'
 

@@ -457,3 +457,5 @@ en:
     showresults:              "Show result"
     results:                  "Result"
     fill:                     "Fill Task"
+    select_state:             "View Task State"
+    search_fail:              "No Task found"

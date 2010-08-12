@@ -656,6 +656,9 @@ fieldset.fieldset {
     
 }
 
+/**
+ * legends
+ */
 
 .color-legend {
     .color {
@@ -693,5 +696,25 @@ fieldset.fieldset {
 }
 
 
+/**
+ * filter
+ */
 
+.filters {
+    text-align:right;
+    margin:9px 0;
+
+    .filter {
+        margin:0 9px;
+
+        .filter-label {
+            font-size:12px;
+            color:$mediumgray;
+            margin:9px 0;
+        }
+
+        .filter-filter {
+        }
+    }
+}
 
