@@ -26,13 +26,13 @@
                                     %td= Entry.find(fielddef.field_entry_id).name
                                     %td= y.comment
                                     - fields_for y do |fi|
-                                        %td= text_field 'values', x, :size => '20'
+                                        %td= text_field 'values', x, :size => '20', :maxlength => '20'
                                         -if y.ucum_entry_id.nil?
                                             %td= '-'
                                         -else
                                             -ucum = Entry.find(y.ucum_entry_id)
                                             %td= ucum.description
-                                        %td= text_field 'comments', x, :size => '20'
+                                        %td= text_field 'comments', x, :size => '20', :maxlength => '30'
     %h2
         =t('task.additional_information')
     - f.inputs do

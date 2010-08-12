@@ -156,9 +156,13 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @fields = Field.find_all_by_task_id(params[:id])
+    @measuredvalues = MeasuredValues.find_all_by_task_id(params[:id])
 
 
     if @task.destroy
+      @measuredvalues.each do |m|
+        m.destroy
+      end
       @fields.each do  |f|
         f.destroy
       end
