@@ -1,28 +1,57 @@
 -title t('task.index')
 %table
     %tr
+        %th=t('task.state')
+        %th=t('task.domain')
         %th=t('task.deadline')
         %th=t('task.creator_comment')
         %th=t('task.executor_comment')
-        %th=t('task.state')
-        %th=t('task.domain')
+        %th=t('task.results')
+        %th=t('task.fill')
     - @tasks.each do |task|
         - domain = Domain.find_by_id(task.domain_id)
         - if current_active_patient
             %tr{:onclick=>"location.href='#{patient_task_path(:patient_id => current_active_patient.id ,:id => task.id)}';",:style=>"cursor:pointer;"}
-                %td= h task.deadline
-                %td= h task.creator_comment
-                %td= h task.executor_comment
-                %td= h (task.state == 1 ? t('task.open') : t('task.closed'))
+                %td
+                    - if task_is_open?(task.state)
+                        %span.task-open
+                            = h t('task.open')
+                    - else
+                        %span.task-closed
+                            = h t('task.closed')
+
+
                 %td= h domain.name
+                %td= h show_date(task.deadline)
+                %td= h truncate(task.creator_comment, :omission => "...", :length => 50)
+                %td= h truncate(task.executor_comment, :omission => "...", :length => 50)
+                %td
+                    - if !task_is_open?(task.state)
+                        = link_to t('task.showresults'), taskresults_path(:id => task.id)
+                %td
+                    - if task_is_open?(task.state)
+                        = link_to t('task.fill'), taskfill_path(:id => task.id)
+                
         -else
             %tr{:onclick=>"location.href='#{task_path(:id => task.id)}';",:style=>"cursor:pointer;"}
-                %td= h task.deadline
-                %td= h task.creator_comment
-                %td= h task.executor_comment
-                %td= h (task.state == 1 ? t('task.open') : t('task.closed'))
+                %td
+                    - if task_is_open?(task.state)
+                        %span.task-open
+                            = h t('task.open')
+                    - else
+                        %span.task-closed
+                            = h t('task.closed')
                 %td= h domain.name
-
+                %td= h show_date(task.deadline)
+                %td= h truncate(task.creator_comment, :omission => "...", :length => 50)
+                %td= h truncate(task.executor_comment, :omission => "...", :length => 50)
+                %td
+                    - if !task_is_open?(task.state)
+                        = link_to t('task.showresults'), taskresults_path(:id => task.id)
+                %td
+                    - if task_is_open?(task.state)
+                        = link_to t('task.fill'), taskfill_path(:id => task.id)
+                
 .action-links
     - if authorize?('create_task')
         -if current_active_patient

@@ -11,7 +11,7 @@
                     %li{:class => "main-subnavigation-leaf"}
                         =link_to t('patient.new'), new_patient_path, :class => is_active?('patients', 'new')
     %li{:class => "main-navigation-leaf"}
-        - if authorize?('view_patient')
+        - if authorize?('view_task') || authorize?('view_domain_task')
             - if current_active_patient
                 =link_to make_image_link(t('navi.main.tasks'), 'navi-img navi-img-aufgabe'), patient_tasks_path(:patient_id => current_active_patient.id), :class => is_active?('tasks')
             - else

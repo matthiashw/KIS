@@ -1,6 +1,6 @@
 en:
   name:                   "English"
-
+  
   activerecord:
       models:
         catalog_type:     "catalog type"
@@ -59,6 +59,8 @@ en:
     case_file:
       patient_case:             "Active case of current Patient"
       view_case:                  "If shown, current active case for View"
+    user:
+      view_admin:           "Admin User with ID 1"
 
   login:                  "Login"
   logout:                 "Logout"
@@ -70,6 +72,8 @@ en:
   delete_confirmation:    "Are you sure?"
   no_access:              "No Access"
   forbidden:              "Forbidden! You have no access to this page"
+  yes_true:               "Yes"
+  no_false:               "No"
 
   formtastic:
     labels:
@@ -222,6 +226,8 @@ en:
     family_name:            "Family name"
     role:                   "Role"
     email:                  "E-mail"
+    address:                "Address"
+    phone:                  "Phone"
     new_button:             "Create new user"
     new:                    "New User"
     edit:                   "Editing User"
@@ -448,3 +454,6 @@ en:
     results:                   "Task Results"
     unit:                     "Unit"
     creatorcomment:           "Creator Comment"
+    showresults:              "Show result"
+    results:                  "Result"
+    fill:                     "Fill Task"

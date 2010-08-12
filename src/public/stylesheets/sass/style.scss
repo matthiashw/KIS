@@ -545,15 +545,15 @@ a.links-link {
 
     .field-content {
         width:30%;
-
-        .task-open {
-            color:$green;
-        }
-
-        .task-closed {
-            color:$red;
-        }
     }
+}
+
+.task-open {
+    color:$green;
+}
+
+.task-closed {
+    color:$red;
 }
 
 
@@ -574,7 +574,7 @@ a.links-link {
         border-radius:4px;
         -moz-border-radius:4px;
         -webkit-border-radius:4px;
-        padding:4px 6px 5px;
+        padding:4px 0 5px;
         float:left;
         width:100%;
 
@@ -605,6 +605,11 @@ a.links-link {
         display:block;
         float:left;
         width:80%;
+    }
+    .template-toggle-inner {
+        color:#fff;
+        font-size:16px;
+        padding-left:18px;
     }
     
     .template-collapsible.collapsed {
