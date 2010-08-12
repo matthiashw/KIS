@@ -4,9 +4,9 @@ ActionController::Routing::Routes.draw do |map|
   map.connect "/users/setup", :controller => "users", :action => "setup"
 
 
-  map.connect "/patient/:id/tasks/taskcreation", :controller => "tasks", :action => "taskcreation"
-  map.connect "/tasks/results", :controller => "tasks", :action => "results"
-  map.connect "/tasks/taskfill", :controller => "tasks", :action => "taskfill"
+  map.connect "/patient/:id/tasks/taskcreation/:task_id", :controller => "tasks", :action => "taskcreation"
+  map.taskresults "/tasks/results/:id", :controller => "tasks", :action => "results"
+  map.taskfill "/tasks/taskfill/:id", :controller => "tasks", :action => "taskfill"
   map.connect "/tasks/createentries", :controller => "tasks", :action => "createentries"
 
   map.connect "/patients/search", :controller => "patients", :action => "search"

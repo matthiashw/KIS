@@ -1,15 +1,28 @@
+.fields
+    .box
+        .box-inner
+            .field
+                .field-label
+                    = t('task.domain')
+                .field-content
+                    = h Domain.find(@task.domain_id).name
+            .field
+                .field-label
+                    = t('task.deadline')
+                .field-content
+                    = h show_date(@task.deadline)
+
+%h2.floatingheadline=t('task.fields')
+
 - semantic_form_for @task, :url => { :action => "createentries" , :id => @task.id } do |f|
     = f.error_messages
 
-    %h2
-        =t('task.fields')
-
-    =t('task.domain') + ": " + Domain.find(@task.domain_id).name
-    =t('task.deadline') + ": " + @task.deadline.to_s
     #templates
         - unless @fieldshash.nil?
             - @fieldshash.each do |k,v|
-                = MedicalTemplate.find(k).name
+                .template-toggle
+                    .template-toggle-inner
+                        = MedicalTemplate.find(k).name
                 .template-content{:id=>"t#{k}"}
                     %table
                         %thead

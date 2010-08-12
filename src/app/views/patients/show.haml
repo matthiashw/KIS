@@ -41,7 +41,7 @@
             -@comments.each do |comment|
                 %li.comment
                     .comment-body=comment.comment
-                    .comment-date=show_date(comment.created_at)
+                    .comment-date=show_datetime(comment.created_at)
                     - if authorize?('edit_comment')
                         .comment-link-edit-wrapper=link_to t('action.edit'), edit_patient_comment_path(:id => comment.id, :patient_id => @patient.id), :class => 'comment-link-edit'
 

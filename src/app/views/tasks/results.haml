@@ -1,10 +1,23 @@
 - title t('task.results')
-=t('task.domain') + ": " + Domain.find(@task.domain_id).name
-=t('task.deadline') + ": " + @task.deadline.to_s
+.fields
+    .box
+        .box-inner
+            .field
+                .field-label
+                    = t('task.domain')
+                .field-content
+                    = h Domain.find(@task.domain_id).name
+            .field
+                .field-label
+                    = t('task.deadline')
+                .field-content
+                    = h show_date(@task.deadline)
 #templates
     -unless @valueshash.nil?
         - @valueshash.each do |k,v|
-            = MedicalTemplate.find(k).name
+            .template-toggle
+                %span.template-toggle-span
+                    = MedicalTemplate.find(k).name
             .template-content{:id=>"t#{k}"}
                 %table
                     %thead

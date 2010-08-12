@@ -10,11 +10,12 @@
 
             .template-collapsible.collapsed
                 .template-toggle
-                    %input{:type => 'checkbox', :class => 'select-all-fields'}
-                    %span.fields-select-all=t('task.select_all');
-                    %span.fields-select-none{:style => 'display:none;'}=t('task.select_none');
-                    %a.template-toggle-link
-                        = t.name
+                    .template-toggle-inner
+                        %input{:type => 'checkbox', :class => 'select-all-fields'}
+                        %span.fields-select-all=t('task.select_all');
+                        %span.fields-select-none{:style => 'display:none;'}=t('task.select_none');
+                        %a.template-toggle-link
+                            = t.name
                 .template-content{:id=>"t#{t.id}", :style => "display:none;"}
                     %table
                         %thead
@@ -38,5 +39,4 @@
     - f.inputs do
         = f.input :deadline
         = f.input :creator_comment
-        = hidden_field_tag 'domain', params[:domain][:id]
     = f.buttons

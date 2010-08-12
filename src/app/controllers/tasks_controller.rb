@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   # GET /tasks.xml
   def index
     @tasks = Task.all
+    @tasks = Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -81,7 +82,7 @@ class TasksController < ApplicationController
   # POST /tasks.xml
   def create
     @task = Task.new(params[:task])
-    @task.state = 1
+    @task.state = Task.state_open
     @task.creator_user_id = current_user.id
     @selectedfields = params[:fields]
     @comments = params[:comments]
@@ -188,10 +189,10 @@ class TasksController < ApplicationController
       @fieldshash[f.medical_template_id][f.id] ||= f
     end
 
-     respond_to do |format|
+    respond_to do |format|
       format.html # taskfill.haml
       format.xml  { render :xml => @task }
-     end
+    end
   end
 
   #creating measured_values and filling in task info
@@ -212,6 +213,8 @@ class TasksController < ApplicationController
               measuredvalue.save
             end
           end
+          
+          @task.update_attribute(:state, Task.state_closed)
 
           flash[:notice] = 'Task successfully completed.'
                 format.html { redirect_to(@task) }
