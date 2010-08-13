@@ -1,0 +1,71 @@
+@CHARSET "ISO-8859-1";
+
+/*-------------------------------------------+
+|                                            |
+|             INSTALL STYLESHEET             |
+|                                            |
++-------------------------------------------*/
+
+/*
+
+COLOUR REFERENCES
+-------------------------------------------------------- */
+$magenta:#bf1399;
+$darkyellow:#caae28;
+
+$blue:#7690cf;
+
+$verydarkgray:#333333;
+$darkgray:#666666;
+$mediumgray:#999999;
+$lightgray:#cccccc;
+$verylightgray:#eeeeee;
+
+$red:#ee6633;
+$green:#8cc746;
+$yellow:#ffee66;
+$activeblue:#bbddff;
+/* -------------------------------------------------------- */
+
+#install {
+    .install-steps {
+        border-bottom:1px solid $lightgray;
+        padding:3px 0;
+        margin:9px 0 18px;
+
+        span {
+            color:$mediumgray;
+        }
+
+        a {
+            color:$darkgray;
+            font-weight:bold;
+            text-decoration:none;
+
+            &.active-step {
+                color:$blue;
+            }
+        }
+
+        span, a {
+            margin-right:9px;
+        }
+    }
+
+    .language-select {
+        text-align:center;
+
+        .select {
+            margin:9px 0;
+
+            select {
+                width:100px;
+            }
+        }
+
+        .submit {
+
+        }
+    }
+
+}

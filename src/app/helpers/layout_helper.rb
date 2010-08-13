@@ -83,12 +83,12 @@ module LayoutHelper
 
   # formats datetime
   def show_datetime(datetime)
-    datetime.strftime("%d. %B, %Y - %H:%M")
+    datetime.strftime("%d. %B %Y - %H:%M")
   end
 
   # formats date
   def show_date(date)
-    date.strftime("%d. %B, %Y")
+    date.strftime("%d. %B %Y")
   end
 
 end

@@ -32,6 +32,20 @@ en:
         user:             "user"
         user_session:     "user session"
 
+  install:
+    install:              "Hopen Installation"
+    save_continue:        "Save and Continue"
+    admin_user:           "Create Administration User"
+    select_language:      "Choose installation language"
+    finish:               "Finish installation"
+    install_finish:       'Installation is finished. <a href="/login">Click here to login</a>.'
+    install_warning:      "Installation could not be finished. Please start from the beginning."
+    admin_finish:         "Administration User successfully created."
+    steps:
+      language:           "Language"
+      user:               "Admin User"
+      finish:             "Finish"
+
   help:
     close:                "Close"
 
@@ -457,6 +471,9 @@ en:
     showresults:              "Show result"
     results:                  "Result"
     fill:                     "Fill Task"
+    select_state:             "View Task State"
+    search_fail:              "No Task found"
     save:                     "Save Task"
     save_and_close:           "Save and Close Task"
     in_progress:              "In Progress"
+

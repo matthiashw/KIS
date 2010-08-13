@@ -1,4 +1,4 @@
-- title t('task.results')
+- title @domain.result_name
 .fields
     .box
         .box-inner
@@ -16,7 +16,7 @@
     -unless @valueshash.nil?
         - @valueshash.each do |k,v|
             .template-toggle
-                %span.template-toggle-span
+                %span.template-toggle-inner
                     = MedicalTemplate.find(k).name
             .template-content{:id=>"t#{k}"}
                 %table

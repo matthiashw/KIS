@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   skip_before_filter :login_required, :only => [:new, :create]
 
   def setup
+    @domains = Domain.all :conditions => { :is_role => 1 }
+    
     if !params.has_key?(:user)
       @user = User.new
     else
@@ -70,6 +72,7 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+    @domains = Domain.all :conditions => { :is_role => 1 }
   end
   
   def update

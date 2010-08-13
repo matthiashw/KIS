@@ -266,10 +266,15 @@ abbr {
         width:240px;
     }
 
-    &.page-users {
+    &.page-users,
+    &.page-install{
         #container {
             width:800px;
             max-width:800px;
+        }
+
+        h1 {
+            width:100%;
         }
     }
 }
@@ -402,6 +407,12 @@ div {
     ul {
         margin-left:18px;
     }
+}
+
+form .messages,
+form .errorExplanation {
+    float:left;
+    width:100%;
 }
 
 /*FORMS and BUTTONS
@@ -656,6 +667,9 @@ fieldset.fieldset {
     
 }
 
+/**
+ * legends
+ */
 
 .color-legend {
     .color {
@@ -693,5 +707,25 @@ fieldset.fieldset {
 }
 
 
+/**
+ * filter
+ */
 
+.filters {
+    text-align:right;
+    margin:9px 0;
+
+    .filter {
+        margin:0 9px;
+
+        .filter-label {
+            font-size:12px;
+            color:$mediumgray;
+            margin:9px 0;
+        }
+
+        .filter-filter {
+        }
+    }
+}
 
