@@ -16,20 +16,21 @@
                     - if task_is_open?(task.state)
                         %span.task-open
                             = h t('task.open')
+                    - elsif task_is_inprogress?(task.state)
+                        %span.task-open
+                            = h t('task.in_progress')
                     - else
                         %span.task-closed
                             = h t('task.closed')
-
-
                 %td= h domain.name
                 %td= h show_date(task.deadline)
                 %td= h truncate(task.creator_comment, :omission => "...", :length => 50)
                 %td= h truncate(task.executor_comment, :omission => "...", :length => 50)
                 %td
-                    - if !task_is_open?(task.state)
+                    - if !task_is_open?(task.state) && !task_is_inprogress?(task.state)
                         = link_to t('task.showresults'), taskresults_path(:id => task.id)
                 %td
-                    - if task_is_open?(task.state)
+                    - if task_is_open?(task.state) || task_is_inprogress?(task.state)
                         = link_to t('task.fill'), taskfill_path(:id => task.id)
                 
         -else
@@ -38,6 +39,9 @@
                     - if task_is_open?(task.state)
                         %span.task-open
                             = h t('task.open')
+                    - elsif task_is_inprogress?(task.state)
+                        %span.task-open
+                            = h t('task.in_progress')
                     - else
                         %span.task-closed
                             = h t('task.closed')
@@ -46,10 +50,10 @@
                 %td= h truncate(task.creator_comment, :omission => "...", :length => 50)
                 %td= h truncate(task.executor_comment, :omission => "...", :length => 50)
                 %td
-                    - if !task_is_open?(task.state)
+                    - if !task_is_open?(task.state) && !task_is_inprogress?(task.state)
                         = link_to t('task.showresults'), taskresults_path(:id => task.id)
                 %td
-                    - if task_is_open?(task.state)
+                    - if task_is_open?(task.state) || task_is_inprogress?(task.state)
                         = link_to t('task.fill'), taskfill_path(:id => task.id)
                 
 .action-links

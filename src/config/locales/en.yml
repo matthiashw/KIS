@@ -457,3 +457,6 @@ en:
     showresults:              "Show result"
     results:                  "Result"
     fill:                     "Fill Task"
+    save:                     "Save Task"
+    save_and_close:           "Save and Close Task"
+    in_progress:              "In Progress"

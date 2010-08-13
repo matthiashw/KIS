@@ -9,6 +9,9 @@
             .field-content
                 - if task_is_open?(@task.state)
                     %span.task-open= h t('task.open')
+                - elsif task_is_inprogress?(@task.state)
+                    %span.task-open
+                        = h t('task.in_progress')
                 -else
                     %span.task-closed= h t('task.closed')
     .field
@@ -30,13 +33,13 @@
 .action-links
     -if current_active_patient
         = link_to t('action.back'), patient_tasks_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'
-        - if task_is_open?(@task.state)
+        - if task_is_open?(@task.state) || task_is_inprogress?(@task.state)
             = link_to t('action.edit'), edit_patient_task_path(:patient_id => current_active_patient.id, :id => @task.id), :class => 'acts_as_button'
         - else
             = link_to t('task.showresults'), taskresults_path(:id => @task.id), :class => 'acts_as_button'
     -else
         = link_to t('action.back'), tasks_path, :class => 'acts_as_button darkgray'
-        - if task_is_open?(@task.state)
+        - if task_is_open?(@task.state) || task_is_inprogress?(@task.state)
             = link_to t('action.edit'), edit_task_path(@task), :class => 'acts_as_button'
         - else
             = link_to t('task.showresults'), taskresults_path(:id => @task.id), :class => 'acts_as_button'

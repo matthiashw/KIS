@@ -39,15 +39,26 @@
                                     %td= Entry.find(fielddef.field_entry_id).name
                                     %td= y.comment
                                     - fields_for y do |fi|
-                                        %td= text_field 'values', x, :size => '20', :maxlength => '20'
-                                        -if y.ucum_entry_id.nil?
-                                            %td= '-'
+                                        -if @task.state == Task.state_inprogress
+                                            - measuredvalue = MeasuredValue.find_by_field_id(x)
+                                            %td= text_field 'values',x, :value => measuredvalue.value, :size => '20', :maxlength => '20'
+                                            -if y.ucum_entry_id.nil?
+                                                %td= '-'
+                                            -else
+                                                -ucum = Entry.find(y.ucum_entry_id)
+                                                %td= ucum.description
+                                            %td= text_field 'comments',x, :value => measuredvalue.comment, :size => '20', :maxlength => '30'
                                         -else
-                                            -ucum = Entry.find(y.ucum_entry_id)
-                                            %td= ucum.description
-                                        %td= text_field 'comments', x, :size => '20', :maxlength => '30'
+                                            %td= text_field 'values',x, :size => '20', :maxlength => '20'
+                                            -if y.ucum_entry_id.nil?
+                                                %td= '-'
+                                            -else
+                                                -ucum = Entry.find(y.ucum_entry_id)
+                                                %td= ucum.description
+                                            %td= text_field 'comments',x, :size => '20', :maxlength => '30'
     %h2
         =t('task.additional_information')
     - f.inputs do
         = f.input :executor_comment
-    = f.buttons
+    = submit_tag t('task.save'), :name=>'save'
+    = submit_tag t('task.save_and_close'), :name=> 'saveandclose'
