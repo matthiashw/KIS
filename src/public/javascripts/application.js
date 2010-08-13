@@ -141,6 +141,13 @@ function checkNodeFromTree(id) {
      
 }
 
+function checkNodeFromSearch(grid, records, action, groupId) {
+    
+}
+function uncheckNodeFromSearch(grid, records, action, groupId) {
+
+}
+
 Ext.onReady(function(){
    if (Ext.get('catalog_tree')) {
     root = new Ext.tree.AsyncTreeNode({
@@ -170,10 +177,10 @@ Ext.onReady(function(){
         text: 'Invisible Root',
         id:'0'
       });
-
-
     tree=new Ext.tree.TreePanel({
-        renderTo: 'catalog_tree_select',
+        autoScroll:true,
+        
+        title: 'Catalog XYZ',
          root: root,
           rootVisible:false,
            border: false,
@@ -199,6 +206,105 @@ Ext.onReady(function(){
                  }
            }
          }
+    });
+
+    /**
+     * Search
+     */
+
+   
+        var json_store=new Ext.data.Store({
+		reader:new Ext.data.JsonReader({
+			 id:'id'
+			,totalProperty:'totalCount'
+			,root:'rows'
+			,fields:[
+			 {name:'id', type:'int'}
+				,{name:'name', type:'string'}
+						,{name:'description', type:'string'}
+						,{name:'code', type:'string'}
+					]})
+                                        ,proxy:new Ext.data.HttpProxy({url:"/catalogs/search/"+catalog_id})
+                                        ,remoteSort:true
+                                        //,autoLoad:true
+                                        });
+
+
+
+    var searchpanel=new Ext.extend(Ext.grid.GridPanel, {
+        
+        initComponent:function() {
+
+             
+
+            var rowAction = new Ext.ux.grid.RowActions( {
+                header:"Select/Deselect",
+                keepSelection:true,
+                hideMode: 'display',
+                actions:[
+                    { iconCls:'icon-check',
+                      callback:checkNodeFromSearch,
+                      text: 'Check',
+                      tooltip: 'Check this item' },
+                    { iconCls:'icon-uncheck',
+                      callback:uncheckNodeFromSearch,
+                      text: 'Uncheck',
+                      tooltip: 'Uncheck this item' }
+                ]
+            });
+
+          
+
+           var config = {
+            title: 'Search Catalog XYZ',
+            store: json_store,
+            stripeRows:true,
+            tbar:[],
+            colModel: new Ext.grid.ColumnModel({
+                columns:[
+
+                    new Ext.grid.Column({header:"Code", dataIndex: "code", autoWidth:true}),
+                    new Ext.grid.Column({header:"Name", dataIndex: "name", autoWidth:true}),
+                    new Ext.grid.Column({header:"Description", dataIndex: "description", autoWidth:true}),
+                    rowAction
+                 ]
+            }),
+           // autoHeight:true,
+            plugins:[rowAction,new Ext.ux.grid.Search({
+				disableIndexes:['description','code','name']
+				,autoFocus:true
+                                ,position:"top"
+                                ,searchText: "Testtext"
+                                ,width: "200"
+                                
+
+			})]
+            }
+        Ext.apply(this,config);
+        Ext.apply(this.initialConfig, config);
+        this.bbar = new Ext.PagingToolbar({
+			 store:this.store
+			,displayInfo:true
+			,pageSize:20
+		});
+
+        searchpanel.superclass.initComponent.apply(this,arguments);
+        }
+
+    });
+
+
+    /*
+     * Panel Layout
+     */
+     new Ext.TabPanel({
+          renderTo: 'catalog_tree_select',
+          tabPosition: 'bottom',
+         // border:false,
+          activeTab: 0,
+           height:540,
+           items: [tree,new searchpanel]
+
     });
    tree.on('append',checkSelection);
    root.expand();
