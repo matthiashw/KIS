@@ -15,7 +15,6 @@
                 = f.input :address, :input_html => { :rows => 4, :cols => 30 }
                 = f.input :phone
                 = f.input :language, :as => :select, :collection => I18n.available_locales.to_a.map{ |locale| [t('name', :locale => locale), locale] }, :include_blank => false
-                = f.input :domains, :as => :check_boxes, :collection => Domain.all
             = f.buttons
                 
 - else

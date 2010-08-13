@@ -409,6 +409,12 @@ div {
     }
 }
 
+form .messages,
+form .errorExplanation {
+    float:left;
+    width:100%;
+}
+
 /*FORMS and BUTTONS
 -------------------------------------------------------- */
 
