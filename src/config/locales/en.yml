@@ -1,6 +1,6 @@
 en:
   name:                   "English"
-
+  
   activerecord:
       models:
         catalog_type:     "catalog type"
@@ -32,6 +32,20 @@ en:
         user:             "user"
         user_session:     "user session"
 
+  install:
+    install:              "Hopen Installation"
+    save_continue:        "Save and Continue"
+    admin_user:           "Create Administration User"
+    select_language:      "Choose installation language"
+    finish:               "Finish installation"
+    install_finish:       'Installation is finished. <a href="/login">Click here to login</a>.'
+    install_warning:      "Installation could not be finished. Please start from the beginning."
+    admin_finish:         "Administration User successfully created."
+    steps:
+      language:           "Language"
+      user:               "Admin User"
+      finish:             "Finish"
+
   help:
     close:                "Close"
 
@@ -55,6 +69,13 @@ en:
     permissions:
       updated:                "Permissions updated."
 
+  color-legend:
+    case_file:
+      patient_case:             "Active case of current Patient"
+      view_case:                  "If shown, current active case for View"
+    user:
+      view_admin:           "Admin User with ID 1"
+
   login:                  "Login"
   logout:                 "Logout"
   register:               "Register"
@@ -65,6 +86,8 @@ en:
   delete_confirmation:    "Are you sure?"
   no_access:              "No Access"
   forbidden:              "Forbidden! You have no access to this page"
+  yes_true:               "Yes"
+  no_false:               "No"
 
   formtastic:
     labels:
@@ -180,6 +203,7 @@ en:
       search_patient:     "Search Patient"
       tasks:              "Tasks"
       tasks-all:          "All Tasks"
+      task-new:          "New Task"
       appointments:       "Appointments"
       administration:     "Administration"
       users:              "Users"
@@ -216,6 +240,8 @@ en:
     family_name:            "Family name"
     role:                   "Role"
     email:                  "E-mail"
+    address:                "Address"
+    phone:                  "Phone"
     new_button:             "Create new user"
     new:                    "New User"
     edit:                   "Editing User"
@@ -298,6 +324,7 @@ en:
     success:             "Case was successfully created."
     no_active_patient:   "No active Patient."
     update_success:      "Case successfully updated"
+    active:              "Closed Case active. You can not create new entries while viewing a closed case."
 
  
   comment:
@@ -431,4 +458,18 @@ en:
     state:                    "State"
     task_for:                 "Task for"
     domain:                   "Domain"
-
+    open:                     "Open"
+    closed:                   "Closed"
+    word:                     "Task"
+    fill_task:                "Please complete Task Information"
+    fields:                   "Fields"
+    comment:                  "Comment"
+    value:                    "Value"
+    results:                   "Task Results"
+    unit:                     "Unit"
+    creatorcomment:           "Creator Comment"
+    showresults:              "Show result"
+    results:                  "Result"
+    fill:                     "Fill Task"
+    select_state:             "View Task State"
+    search_fail:              "No Task found"

@@ -2,10 +2,11 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :set_locale, :login_required
+  before_filter :set_locale, :login_required, :check_install
   
   helper :all # include all helpers, all the time
-  helper_method :current_active_patient, :current_user, :current_user_session, :authorize?
+  helper_method :current_active_patient, :current_user, :current_user_session, 
+                :authorize?, :get_case_for_view
 
   protect_from_forgery
 
@@ -15,6 +16,13 @@ class ApplicationController < ActionController::Base
   def set_locale
   # if params[:locale] is nil then I18n.default_locale will be used
     I18n.locale = params[:locale]
+  end
+
+  def get_locale
+    if params[:locale].nil?
+      I18n.default_locale
+    end
+    params[:locale]
   end
 
   def default_url_options(options={})
@@ -39,6 +47,56 @@ class ApplicationController < ActionController::Base
     return current_user_is_admin? || current_user_permission?(*permissions)
   end
 
+  # returns true or false, based on given user permissions
+  # modified for task with creator id and multiple permissions with logical or
+  def task_creator_authorize?(creator_uid, *permissions)
+    return true if current_user_is_admin?
+    permissions.each do |p|
+      if current_user.id == creator_uid && current_user_permission?(p)
+        return true
+      end
+    end
+    return false
+  end
+
+  # returns true or false, based on given user permissions
+  # modified for task with domain id and multiple permissions with logical or
+  def task_domain_authorize?(domain_id, *permissions)
+    return true if current_user_is_admin?
+    permissions.each do |p|
+      current_user.domains.each do |d|
+        if d.id == domain_id && current_user_permission?(p)
+          return true
+        end
+      end
+    end
+    return false
+  end
+  
+  # returns true or false, based on given user permissions
+  # modified for task with multiple permissions with logical or
+  def task_authorize?(*permissions)
+    permissions.each do |p|
+      if current_user_permission?(p)
+        return true
+      end
+    end
+    return false
+  end
+
+  # returns true or false, based on given user permissions
+  # modified for task with creator id and multiple permissions with logical or
+  def task_creator_authorize?(creator_uid, *permissions)
+    return true if current_user_is_admin?
+    permissions.each do |p|
+      if current_user.id == creator_uid && current_user_permission?(p)
+        return true
+      end
+    end
+    return false
+  end
+
+  
   # render access denied if user has no permission
   # to view the page
   def access_denied
@@ -68,6 +126,10 @@ class ApplicationController < ActionController::Base
     @current_user = current_user_session && current_user_session.record
   end
 
+  def check_install
+    redirect_to install_path unless already_installed?
+  end
+
   def login_required
     redirect_to new_user_session_path unless current_user
   end
@@ -82,6 +144,43 @@ class ApplicationController < ActionController::Base
   # of the system (if he has the id 1)
   def current_user_is_admin?
     return current_user && current_user.id == 1
+  end
+
+  # get id of active casefile
+  # returns casefile wich is active for view
+  # if none has been activated it returns active casefile of patient or
+  # returns nil if no patient/casefile is active
+  def get_case_for_view
+
+    if session.has_key?(:case_view_id)
+      return session[:case_view_id]
+    else
+      if session.has_key?(:active_patient_id)
+        activepatient = Patient.find(session[:active_patient_id])
+        return activepatient.active_case_file_id
+      end
+    end
+    
+    return nil
+
+  end
+
+  def already_installed?
+    sql = ActiveRecord::Base.connection();
+    sql.execute "SET autocommit=0";
+    sql.begin_db_transaction
+    value =	sql.execute("SELECT value FROM variables WHERE name='install'").fetch_row;
+    sql.commit_db_transaction
+
+    if !value.nil?
+      value.each do |v|
+        if v == "1"
+          return true
+        end
+      end
+    end
+
+    return false
   end
 
 end

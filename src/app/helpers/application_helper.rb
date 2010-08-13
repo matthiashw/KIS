@@ -18,4 +18,11 @@ include FormStyleHelper
     link_to(name, url, :rel => "facebox", :class => cssclass)
   end
 
+  def get_locale
+    if params[:locale].nil?
+      I18n.default_locale
+    end
+    params[:locale]
+  end
+
 end

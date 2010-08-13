@@ -8,11 +8,16 @@
 .links
     -if current_active_patient
         .active-patient{:onclick=>"location.href='#{url_for :controller => 'patients', :action => 'show', :id => current_active_patient.id}';"}
-            -if current_active_patient
-                %span
-                    =t('patient.active') + ":"
-                =current_active_patient.first_name
-                =current_active_patient.family_name
+            %span
+                =t('patient.active') + ":"
+            =current_active_patient.first_name
+            =current_active_patient.family_name
+
+        - if !get_case_for_view.nil?
+            - if get_case_for_view != current_active_patient.active_case_file_id
+                .active-case{:onclick=>"location.href='#{url_for :controller => 'case_files', :action => 'index'}';"}
+                    %span
+                        =t('case_file.active')
 
     - if current_user
         = link_to t('edit_profile'), edit_user_path(current_user.id), :class => "links-link"

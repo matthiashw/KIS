@@ -1,0 +1,22 @@
+%h2.floatingheadline= t('install.admin_user')
+
+- if !admin_finished?
+    - if @user != nil
+        - semantic_form_for @user, :url => { :controller => "install" , :action => "index"} do |f|
+            = f.error_messages
+
+            - f.inputs do
+                = f.input :username
+                = f.input :email
+                = f.input :password
+                = f.input :password_confirmation
+                = f.input :first_name
+                = f.input :family_name
+                = f.input :address, :input_html => { :rows => 4, :cols => 30 }
+                = f.input :phone
+                = f.input :language, :as => :select, :collection => I18n.available_locales.to_a.map{ |locale| [t('name', :locale => locale), locale] }, :include_blank => false
+            = f.buttons
+                
+- else
+    .messages.notice.floatingheadline
+        %p=t('install.admin_finish')

@@ -1,9 +1,17 @@
 ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
+
+  map.install "/install", :controller => "install", :action => "index"
+
   map.adminstatus "/admin/status", :controller => "admin", :action => "status"
   map.connect "/users/setup", :controller => "users", :action => "setup"
 
-  map.connect "/patient/:id/tasks/taskcreation", :controller => "tasks", :action => "taskcreation"
+
+  map.connect "/patient/:id/tasks/taskcreation/:task_id", :controller => "tasks", :action => "taskcreation"
+  map.taskresults "/tasks/results/:id", :controller => "tasks", :action => "results"
+  map.taskfill "/tasks/taskfill/:id", :controller => "tasks", :action => "taskfill"
+  map.connect "/tasks/createentries", :controller => "tasks", :action => "createentries"
+
   map.connect "/patients/search", :controller => "patients", :action => "search"
   map.calendar '/appointments/calendar/:year/:month', :controller => 'appointments', :action => 'calendar', :year => Time.zone.now.year, :month => Time.zone.now.month
   map.login "login", :controller => "user_sessions", :action => "new"

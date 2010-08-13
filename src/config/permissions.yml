@@ -18,9 +18,7 @@ User:
 Appointment:
   create_appointment: Create an Appointment
   view_appointment: View all Appointments
-  view_own_appointment: View own Appointment
   edit_appointment: Edit every Appointment
-  edit_own_appointment: Edit own Appointment
   delete_appointment: Delete every Appointment
 
 Domain:
@@ -31,11 +29,18 @@ Domain:
 
 Task:
   create_task: Create a Task
-  view_task: View all Tasks
-  view_own_task: View own Task
+  view_task: View Tasks
+  view_own_task: View own Tasks
+  view_all_tasks: View all Tasks of every domain
+  view_domain_task: View only own domain Tasks
   edit_task: Edit every Task
   edit_own_task: Edit own Task
   delete_task: Delete every Task
+  delete_own_task: Delete own Task
+  fill_every_task: Fill out every Task, independet of own domain
+  fill_own_domain_task: Fill out only Tasks of own domain
+  show_result_task: Show Results of every Task
+  show_result_own_task: Show Results of own Task
 
 Treatment:
   create_treatment: Create a Treatment
