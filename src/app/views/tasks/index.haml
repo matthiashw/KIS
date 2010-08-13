@@ -2,7 +2,7 @@
 
 .filters.task-filter
     .filter.select-task-state
-        - select_task_states = {"All" => "0", "Open" => Task.state_open.to_s, "Closed" => Task.state_closed.to_s}
+        - select_task_states = {"All" => "0", "Open" => Task.state_open.to_s, "In Progress" => Task.state_inprogress.to_s, "Closed" => Task.state_closed.to_s}
         %span.filter-label.select-task-state-label
             = t('task.select_state')
         %span.filter-filter.select-task-state-filter
@@ -31,7 +31,7 @@
                             %span.task-open
                                 = h t('task.open')
                         - elsif task_is_inprogress?(task.state)
-                            %span.task-open
+                            %span.task-inprogress
                                 = h t('task.in_progress')
                         - else
                             %span.task-closed
@@ -56,7 +56,7 @@
                             %span.task-open
                                 = h t('task.open')
                         - elsif task_is_inprogress?(task.state)
-                            %span.task-open
+                            %span.task-inprogress
                                 = h t('task.in_progress')
                         - else
                             %span.task-closed
