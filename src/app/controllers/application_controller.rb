@@ -172,11 +172,11 @@ class ApplicationController < ActionController::Base
     value =	sql.execute("SELECT value FROM variables WHERE name='install'").fetch_row;
     sql.commit_db_transaction
 
-    logger.debug "installed: #{value}\n"
-
-    value.each do |v|
-      if v == "1"
-        return true
+    if !value.nil?
+      value.each do |v|
+        if v == "1"
+          return true
+        end
       end
     end
 
