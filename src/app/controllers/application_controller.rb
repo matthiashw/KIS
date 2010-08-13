@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :set_locale, :login_required
+  before_filter :set_locale, :login_required, :check_install
   
   helper :all # include all helpers, all the time
   helper_method :current_active_patient, :current_user, :current_user_session, 
@@ -16,6 +16,13 @@ class ApplicationController < ActionController::Base
   def set_locale
   # if params[:locale] is nil then I18n.default_locale will be used
     I18n.locale = params[:locale]
+  end
+
+  def get_locale
+    if params[:locale].nil?
+      I18n.default_locale
+    end
+    params[:locale]
   end
 
   def default_url_options(options={})
@@ -119,6 +126,10 @@ class ApplicationController < ActionController::Base
     @current_user = current_user_session && current_user_session.record
   end
 
+  def check_install
+    redirect_to install_path unless already_installed?
+  end
+
   def login_required
     redirect_to new_user_session_path unless current_user
   end
@@ -152,6 +163,24 @@ class ApplicationController < ActionController::Base
     
     return nil
 
+  end
+
+  def already_installed?
+    sql = ActiveRecord::Base.connection();
+    sql.execute "SET autocommit=0";
+    sql.begin_db_transaction
+    value =	sql.execute("SELECT value FROM variables WHERE name='install'").fetch_row;
+    sql.commit_db_transaction
+
+    logger.debug "installed: #{value}\n"
+
+    value.each do |v|
+      if v == "1"
+        return true
+      end
+    end
+
+    return false
   end
 
 end

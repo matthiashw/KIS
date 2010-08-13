@@ -1,0 +1,15 @@
+- title t("install.install")
+
+#install
+    = render :partial => 'steps'
+
+
+    - if current_step == "0"
+        %h3="nothing to do"
+
+    - if current_step == "1"
+        = render :partial => 'language'
+    - if current_step == "2"
+        = render :partial => 'user'
+    - if current_step == "3"
+        = render :partial => 'finish'

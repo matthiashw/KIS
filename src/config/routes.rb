@@ -1,5 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
+
+  map.install "/install", :controller => "install", :action => "index"
+
   map.adminstatus "/admin/status", :controller => "admin", :action => "status"
   map.connect "/users/setup", :controller => "users", :action => "setup"
 

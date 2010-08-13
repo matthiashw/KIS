@@ -4,7 +4,7 @@
     %head
         %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'utf-8'}
         %title= h(yield(:title) || "Untitled")
-        = stylesheet_link_tag 'reset','formtastic', 'formtastic_changes', 'master', 'style', :cache => 'base'
+        = stylesheet_link_tag 'reset','formtastic', 'formtastic_changes', 'master', 'style', 'install', :cache => 'base'
     %body#frontpage{:class => make_body_id}
         #wrapper
             #container
