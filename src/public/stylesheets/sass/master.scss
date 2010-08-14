@@ -664,10 +664,21 @@ fieldset.fieldset {
         color:$lightgray;
     }
 
-    
+   
 }
 
 /**
+ * Icons for catalog search
+ */
+
+ .icon-check {
+	background-image:url(images/check.png) ! important;
+    }
+
+ .icon-uncheck {
+	background-image:url(images/uncheck.png) ! important;
+    }
+/** 
  * legends
  */
 

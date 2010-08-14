@@ -26,7 +26,7 @@ class Importer::AtcCatalogImporter
              node.save!
              hangnode.push([node,row[0]])
           else
-             entry=AtcEntry.new(:code => row[0],:name => row[1], :node => hangnode.last[0])
+             entry=AtcEntry.new(:code => row[0],:name => row[1], :node => hangnode.last[0], :catalog =>catalog)
              entry.save!
           end
           end

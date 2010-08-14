@@ -189,10 +189,12 @@ class CatalogsController < ApplicationController
     code= Time.new.strftime("%Y-%m-%d/%H:%M")
     name= params[:name]
     description= params[:description]
-    fieldentry=FieldEntry.new(:code => code, :name => name, :description => description, :node_id => @catalog.root_node.id)
+    input_type=params[:input_type]
+    additional_type_info=params[:additional_type_info]
+    fieldentry=FieldEntry.new(:code => code, :name => name, :description => description, :node_id => @catalog.root_node.id, :catalog =>@catalog)
     respond_to do |format|
     if fieldentry.save
-      FieldDefinition.create(:input_type => 0, :field_entry_id => fieldentry.id)
+      FieldDefinition.create(:input_type => input_type, :field_entry_id => fieldentry.id, :additional_type_info => additional_type_info )
       flash[:notice] = t('admin.catalog.user_defined.create_field_entry.ok')
       format.html { redirect_to(@catalog) }
       format.xml  { head :ok }
@@ -204,6 +206,26 @@ class CatalogsController < ApplicationController
     end
     end
   end
+
+  def search
+    ActiveRecord::Base.include_root_in_json = false
+    @catalog = Catalog.find(params[:id])
+    limit=20
+    if params.has_key?(:limit)
+      limit=Integer(params[:limit])
+    end
+    start=0
+    if params.has_key?(:start)
+     start=Integer(params[:start])
+    end
+    if (params.has_key?(:query) && params[:query]!=nil && params[:query]!="")
+      entries = @catalog.search_for_entries(params[:query])
+      render :json => { :success => true , :totalCount => entries.size ,:rows => entries[start,limit] }
+    else
+      render :json => { :success => true , :totalCount => 0, :rows => {} }
+    end
+   end
+
 
 end
 
