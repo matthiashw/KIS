@@ -12,10 +12,15 @@ class Task < ActiveRecord::Base
 
   #task states
   OPEN = 1
-  CLOSED = 2
+  INPROGRESS = 2
+  CLOSED = 3
 
   def self.state_open
     OPEN
+  end
+
+  def self.state_inprogress
+    INPROGRESS
   end
 
   def self.state_closed

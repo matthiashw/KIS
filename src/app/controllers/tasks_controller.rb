@@ -189,9 +189,13 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     return authorize unless task_creator_authorize?(@task.creator_user_id, "delete_own_task") || task_authorize?('delete_task')
     @fields = Field.find_all_by_task_id(params[:id])
+    @measuredvalues = MeasuredValues.find_all_by_task_id(params[:id])
 
 
     if @task.destroy
+      @measuredvalues.each do |m|
+        m.destroy
+      end
       @fields.each do  |f|
         f.destroy
       end
@@ -209,18 +213,31 @@ class TasksController < ApplicationController
   def taskfill
     @task = Task.find(params[:id])
     return authorize unless task_domain_authorize?(@task.domain_id, "fill_own_domain_task") || task_authorize?('fill_every_task')
-    @fields = Field.find_all_by_task_id(params[:id])
-
-    #fieldshash stuff is done for processing the fields in the view
-    @fieldshash = {}
-    @fields.each do |f|
-      @fieldshash[f.medical_template_id] ||= {}
-      @fieldshash[f.medical_template_id][f.id] ||= f
-    end
 
     respond_to do |format|
-      format.html # taskfill.haml
-      format.xml  { render :xml => @task }
+      if @task.state == Task.state_closed
+
+       flash[:error] = 'Task is closed'
+       format.html { redirect_to :action => "results" }
+       format.xml  { render :xml => @task }
+
+      else
+
+        @fields = Field.find_all_by_task_id(params[:id])
+
+
+        #fieldshash stuff is done for processing the fields in the view
+        @fieldshash = {}
+        @fields.each do |f|
+          @fieldshash[f.medical_template_id] ||= {}
+          @fieldshash[f.medical_template_id][f.id] ||= f
+        end
+
+       end
+
+          format.html # taskfill.haml
+          format.xml  { render :xml => @task }
+
     end
   end
 
@@ -237,13 +254,27 @@ class TasksController < ApplicationController
         if @task.update_attributes(params[:task])
           unless @values.nil?
             @values.each do |k,v|
-              measuredvalue = MeasuredValue.new(:value => v,:comment => @comments[k],
-                               :task_id => @task.id, :field_id => k, :medical_template_id => Field.find(k).medical_template_id )
-              measuredvalue.save
+              #if the task has allready been filled use existing measured values and update
+              if @task.state == Task.state_inprogress
+                measuredvalue = MeasuredValue.find_by_field_id(k)
+                measuredvalue.update_attributes(:value => v,:comment => @comments[k],
+                                 :task_id => @task.id, :field_id => k, :medical_template_id => Field.find(k).medical_template_id )
+              else
+                measuredvalue = MeasuredValue.new(:value => v,:comment => @comments[k],
+                                 :task_id => @task.id, :field_id => k, :medical_template_id => Field.find(k).medical_template_id )
+                measuredvalue.save
+              end
+
             end
           end
-          
-          @task.update_attribute(:state, Task.state_closed)
+
+          if params.has_key?('save')
+            @task.update_attribute(:state, Task.state_inprogress)
+          end
+
+          if params.has_key?('saveandclose')
+            @task.update_attribute(:state, Task.state_closed)
+          end
 
           flash[:notice] = 'Task successfully completed.'
                 format.html { redirect_to(@task) }

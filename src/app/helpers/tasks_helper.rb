@@ -15,7 +15,15 @@ module TasksHelper
     return false
   end
 
-  def is_in_domain?(did)
+  def task_is_inprogress?(state)
+    if state == Task.state_inprogress
+      return true
+    end
+
+    return false
+  end
+  
+ def is_in_domain?(did)
     current_user.domains.each do |d|
       if d.id == did
         return true
@@ -24,5 +32,4 @@ module TasksHelper
 
     return false
   end
-
 end

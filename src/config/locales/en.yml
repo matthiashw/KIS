@@ -473,3 +473,7 @@ en:
     fill:                     "Fill Task"
     select_state:             "View Task State"
     search_fail:              "No Task found"
+    save:                     "Save Task"
+    save_and_close:           "Save and Close Task"
+    in_progress:              "In Progress"
+

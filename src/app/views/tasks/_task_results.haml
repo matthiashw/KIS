@@ -19,6 +19,9 @@
                         - if task_is_open?(task.state)
                             %span.task-open
                                 = h t('task.open')
+                        - elsif task_is_inprogress?(task.state)
+                            %span.task-inprogress
+                                = h t('task.in_progress')
                         - else
                             %span.task-closed
                                 = h t('task.closed')
@@ -41,6 +44,9 @@
                         - if task_is_open?(task.state)
                             %span.task-open
                                 = h t('task.open')
+                        - elsif task_is_inprogress?(task.state)
+                            %span.task-inprogress
+                                = h t('task.in_progress')
                         - else
                             %span.task-closed
                                 = h t('task.closed')

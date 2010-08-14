@@ -63,9 +63,9 @@ document.observe('dom:loaded', function () {
     selectAll.each(function (elCheckbox, i){
         elCheckbox.observe('click', function(e){
 
-            var templateToggle = elCheckbox.up();
+            var templateToggle = elCheckbox.up().up();
             var template = templateToggle.up();
-         
+            
             var cb = templateToggle.next().descendants('tbody');
            
             var labelAll = templateToggle.down('.fields-select-all');

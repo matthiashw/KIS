@@ -29,7 +29,7 @@
                                     - fields_for f do |fcheck|
                                         %td= check_box_tag "fields[]", f.id.to_s + ";" + t.id.to_s
                                     %td=  Entry.find(f.field_entry_id).name
-                                    %td= text_field 'comments', f.id, :size => '20'
+                                    %td= text_field 'comments', f.id, :size => '20' , :maxlength => '30'
                         
 
     %h2

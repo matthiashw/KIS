@@ -2,7 +2,7 @@
 
 .filters.task-filter
     .filter.select-task-state
-        - select_task_states = {"All" => "0", "Open" => Task.state_open.to_s, "Closed" => Task.state_closed.to_s}
+        - select_task_states = {"All" => "0", "Open" => Task.state_open.to_s, "In Progress" => Task.state_inprogress.to_s, "Closed" => Task.state_closed.to_s}
         %span.filter-label.select-task-state-label
             = t('task.select_state')
         %span.filter-filter.select-task-state-filter
@@ -30,6 +30,9 @@
                         - if task_is_open?(task.state)
                             %span.task-open
                                 = h t('task.open')
+                        - elsif task_is_inprogress?(task.state)
+                            %span.task-inprogress
+                                = h t('task.in_progress')
                         - else
                             %span.task-closed
                                 = h t('task.closed')
@@ -40,10 +43,10 @@
                     %td= h truncate(task.creator_comment, :omission => "...", :length => 50)
                     %td= h truncate(task.executor_comment, :omission => "...", :length => 50)
                     %td
-                        - if !task_is_open?(task.state) && (authorize?('show_result_task') || (authorize?('show_result_own_task') && is_creator?(task.creator_user_id)))
+                        - if !task_is_open?(task.state) && !task_is_inprogress?(task.state) && (authorize?('show_result_task') || (authorize?('show_result_own_task') && is_creator?(task.creator_user_id)))
                             = link_to t('task.showresults'), taskresults_path(:id => task.id)
                     %td
-                        - if task_is_open?(task.state) && (authorize?('fill_every_task') || (authorize?('fill_own_domain_task') && is_in_domain?(task.domain_id)))
+                        - if task_is_open?(task.state) || task_is_inprogress?(task.state) && (authorize?('fill_every_task') || (authorize?('fill_own_domain_task') && is_in_domain?(task.domain_id)))
                             = link_to t('task.fill'), taskfill_path(:id => task.id)
 
             -else
@@ -52,6 +55,9 @@
                         - if task_is_open?(task.state)
                             %span.task-open
                                 = h t('task.open')
+                        - elsif task_is_inprogress?(task.state)
+                            %span.task-inprogress
+                                = h t('task.in_progress')
                         - else
                             %span.task-closed
                                 = h t('task.closed')
@@ -60,10 +66,10 @@
                     %td= h truncate(task.creator_comment, :omission => "...", :length => 50)
                     %td= h truncate(task.executor_comment, :omission => "...", :length => 50)
                     %td
-                        - if !task_is_open?(task.state) && (authorize?('show_result_task') || (authorize?('show_result_own_task') && is_creator?(task.creator_user_id)))
+                        - if !task_is_open?(task.state) && !task_is_inprogress?(task.state) && (authorize?('show_result_task') || (authorize?('show_result_own_task') && is_creator?(task.creator_user_id)))
                             = link_to t('task.showresults'), taskresults_path(:id => task.id)
                     %td
-                        - if task_is_open?(task.state) && (authorize?('fill_every_task') || (authorize?('fill_own_domain_task') && is_in_domain?(task.domain_id)))
+                        - if task_is_open?(task.state) || task_is_inprogress?(task.state) && (authorize?('fill_every_task') || (authorize?('fill_own_domain_task') && is_in_domain?(task.domain_id)))
                             = link_to t('task.fill'), taskfill_path(:id => task.id)
 
 .action-links
