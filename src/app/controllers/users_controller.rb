@@ -2,14 +2,14 @@ class UsersController < ApplicationController
   skip_before_filter :login_required, :only => [:new, :create]
 
   def setup
-    adminuser = User.find_by_id(1)
+    @user = User.new
+    @users = User.all
+    @admin_user
+    
+  end
 
-    if adminuser == nil
-      flash[:message] = t('messages.application.no_admin')
-      return false
-    end
-
-    return true
+  def update_admin
+    
   end
 
   # GET /patients

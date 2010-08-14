@@ -51,16 +51,44 @@ class TreatmentsController < ApplicationController
   end
 
   def new_step2
-    @treatment = Treatment.new
-
     @catalog = CatalogManager.instance.catalog 'atc'
     @current_active_patient = Patient.find(session[:active_patient_id])
 
     respond_to do |format|
+      if session.has_key?(:active_patient_id)
+          if params[:task][:id] == "" and not params[:skip]
+            flash[:error] = 'Please select a valid task'
+            format.html { redirect_to :action => "new" }
+            format.xml  { render :xml => @treatment }
+          else
+            format.html # taskcreation.html.erb
+            format.xml  { render :xml => @treatment }
+          end
+        else
+           flash[:error] = 'No active Patient'
+           format.html { redirect_to :action => "new" }
+           format.xml  { render :xml => @treatment }
+      end
+    end
+  end
 
+  def new_step3
+    @current_active_patient = Patient.find(session[:active_patient_id])
+    @catalog = CatalogManager.instance.catalog 'ops'
+
+    respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @treatment }
+     end
+  end
 
+  def new_step4
+    @current_active_patient = Patient.find(session[:active_patient_id])
+    @treatment = Treatment.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @treatment }
      end
   end
 

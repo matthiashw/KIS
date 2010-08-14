@@ -17,4 +17,7 @@ treat:
    entry_classname: OpsEntry
 atc:
  name: ATC Catalog
- entry_classname: ATCEntry
+ entry_classname: AtcEntry
+ops:
+ name: OPS Catalog
+ entry_classname: OpsEntry

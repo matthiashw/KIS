@@ -1,0 +1,210 @@
+@CHARSET "ISO-8859-1";
+
+/*-------------------------------------------+
+|                                            |
+|              PRINT STYLESHEET              |
+|                                            |
++-------------------------------------------*/
+
+body {
+    height: 100%;
+    font-size:12pt;
+    line-height:18pt;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fff;
+    width:100%;
+    color:#000;
+}
+
+p {
+    font-size:12pt;
+    line-height:18pt;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-size:18pt;
+    line-height:18pt;
+    margin-bottom:18px;
+    color:#000;
+    float:none;
+    width:100%;
+}
+
+h2, h3, h4, h5, h6 {
+    font-size:14pt;
+    line-height:18pt;
+    margin-bottom:18px;
+    color:#000;
+    float:none;
+    width:100%;
+}
+
+/*HIDE STUFF
+-------------------------------------------------------- */
+
+#sidebar, #footer,
+.user-info, .domain-info, .links-link,
+.main-navigation, .secondary-navigation,
+.comment_form_headline, .comment_form,
+.comment-link-view-wrapper,
+.comment-link-edit-wrapper,
+.action-links, .link-help,
+#search_form {
+    display:none;
+}
+
+
+/*TABLES
+-------------------------------------------------------- */
+
+table {
+    -moz-box-shadow:none;
+    background-color:#FFFFFF;
+    border-collapse:collapse;
+    border-color:#000;
+    border-style:solid;
+    border-width:1px;
+    font-size:12pt;
+    line-height:18pt;
+    margin:0 0 18px;
+    width:90%;
+    clear:both;
+
+
+    td, th {
+        border-color:#000;
+        border-style:solid;
+        border-width:1px;
+        padding:5px;
+        vertical-align:top;
+
+        &.active {
+            background-color:transparent;
+        }
+
+        &.center {
+            text-align:center;
+        }
+    }
+
+    th {
+        background-color:transparent;
+        color:#000;
+        font-weight:bold;
+        text-align:left;
+        text-shadow:none;
+    }
+
+    thead {
+        th {
+            border-top-color:#000;
+        }
+    }
+
+    tr.odd td {
+        background-color:#fff;
+
+        &.active {
+            background-color:transparent;
+        }
+    }
+
+    tr:hover {
+        td {
+            background-color:transparent;
+        }
+    }
+
+    tr.active {
+        td {
+            background-color:transparent;
+        }
+
+        &:hover {
+            background-color:transparent;
+        }
+
+    }
+}
+
+
+/*LAYOUT
+-------------------------------------------------------- */
+
+#wrapper {
+
+}
+
+#container {
+    margin:0;
+    padding:0;
+    display: block;
+    width:100%;
+}
+
+#center {
+    float:none;
+    width: 100%;
+    margin:0;
+}
+
+#squeeze {
+    position: relative;
+    margin:0;
+}
+
+.inner {
+    margin:0;
+}
+
+.inner-bg {
+    float:none;
+    background-color:#fff;
+    width:100%;
+    padding-bottom:0;
+    min-height:0;
+}
+
+/*HEADER
+-------------------------------------------------------- */
+
+.active-patient {
+    padding:0;
+    display:block;
+    max-width:100%;
+    float:none;
+    margin:15px 0;
+    text-align:left;
+    background-color:#fff;
+    border-radius:none;
+    -moz-border-radius:none;
+    -webkit-border-radius:none;
+    font-size:12pt;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+
+    span {
+      color:#000;
+      font-weight:bold;
+    }
+
+    a {
+        margin-left:0;
+        text-shadow:none;
+        color:#000;
+        font-weight:bold;
+    }
+
+    &:hover {
+        background-color:transparent;
+    }
+}
+
+
+/*FIELDS
+-------------------------------------------------------- */
+
+.field-label {
+    font-weight:bold;
+}

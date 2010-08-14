@@ -1,8 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.adminstatus "/admin/status", :controller => "admin", :action => "status"
+  map.connect "/users/setup", :controller => "users", :action => "setup"
 
-  map.connect "/tasks/taskcreation", :controller => "tasks", :action => "taskcreation"
+  map.connect "/patient/:id/tasks/taskcreation", :controller => "tasks", :action => "taskcreation"
   map.connect "/treatments/create_step2", :controller => "treatments", :action => "create_step2"
   map.connect "/patients/search", :controller => "patients", :action => "search"
   map.calendar '/appointments/calendar/:year/:month', :controller => 'appointments', :action => 'calendar', :year => Time.zone.now.year, :month => Time.zone.now.month
@@ -10,17 +11,20 @@ ActionController::Routing::Routes.draw do |map|
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
 
   map.resources :user_sessions, :users, :catalog_types, :catalogs, :appointments,
-                :domains, :comments, :patients, :admin, :case_files , :medical_templates,
+                :domains, :patients, :admin, :case_files , :medical_templates,
                 :diagnoses, :tasks, :medical_reports, :report_headers
 
   map.resources :patients do |patient|
     patient.resources :case_files do |case_file|
       case_file.connect "treatments/new_step2", :controller => "treatments", :action => "new_step2"
+      case_file.connect "treatments/new_step3", :controller => "treatments", :action => "new_step3"
+      case_file.connect "treatments/new_step4", :controller => "treatments", :action => "new_step4"
       case_file.resources :treatments
     end
 
     patient.resources :comments
     patient.resources :medical_reports
+    patient.resources :tasks
   end
   map.resources :permissions, :collection => { :update_all_permissions => :put }
 

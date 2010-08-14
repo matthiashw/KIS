@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
     { :locale => I18n.locale }
   end
 
+  def models_to_check_for_errors
+    ["User"]
+  end
+
   protected
 
   # returns true or access denied, based on given user permissions
@@ -38,7 +42,7 @@ class ApplicationController < ActionController::Base
   # render access denied if user has no permission
   # to view the page
   def access_denied
-    flash[:error] = 'You have no permission to view this page.'
+    flash[:error] = t('messages.application.no_permission')
     render :partial => 'shared/error403', :status => 403, :layout => true and return false
   end
 
@@ -65,11 +69,13 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    if system_has_admin?
-      redirect_to new_user_session_path unless current_user
-    else
-      redirect_to new_user_path unless current_user
-    end
+    #if system_has_admin?
+    #  redirect_to new_user_session_path unless current_user
+    #else
+    #  redirect_to new_user_path unless current_user
+    #end
+
+    redirect_to new_user_path unless current_user
   end
 
   # check if current user has permission to

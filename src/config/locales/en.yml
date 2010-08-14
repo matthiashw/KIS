@@ -32,9 +32,13 @@ en:
         user:             "user"
         user_session:     "user session"
 
+  help:
+    close:                "Close"
+
   messages:
     application:
       no_admin:              "There is no Administrator Account present in your system! You can now create one! After that you will be redirected to the login page!"
+      no_permission:        "You have no permission to view this page."
     users:
       destroy_error:         "The User with the ID 1 can not be deleted!"
       update_success:        "Successfully updated profile."
@@ -214,6 +218,10 @@ en:
     new_button:             "Create new user"
     new:                    "New User"
     edit:                   "Editing User"
+    setup:
+      setup:                  "Setup Admin User"
+      choose_from_current_user: "Choose a existing User or"
+      new_admin_user:         "Create a new Administration User"
 
   domain:
     listing:          "All Domains"
@@ -247,8 +255,12 @@ en:
     choose_task:        "Choose Task"
     choose_task_select: "Please select task"
     choose_medication:  "Please choose one or more medications"
+    choose_treatment:   "Please choose a treatment"
+    final:              "Specify treatment details"
     nextstep:                 "Ok and Continue"
-    nextstep_alt:             "Continue without selecting task"
+    nextstep_notasks:          "Continue without selecting task"
+    nextstep_nomeds:          "Continue without selecting medication"
+    nextstep_notreatment:     "Continue without selecting treatment"
     select:                   "choose"
     selected_patient:         "Selected Patient"
     other:                    "Select another Patient"
@@ -260,9 +272,10 @@ en:
     selected:                 "Selected"
     name:                     "Field name"
     additional_information:   "Additional Information"
-    step1:                    "Step 1 of 3:"
-    step2:                    "Step 2 of 3:"
-    step3:                    "Step 3 of 3:"
+    step1:                    "Step 1 of 4:"
+    step2:                    "Step 2 of 4:"
+    step3:                    "Step 3 of 4:"
+    step4:                    "Step 4 of 4:"
     deadline:                 "Deadline"
     creator_comment:          "Creator Comment"
     executor_comment:         "Executor Comment"
@@ -344,6 +357,12 @@ en:
     domains:                "Domains"
     permissions:            "Permissions"
     catalog_management:     "Catalog Management"
+
+    status:
+      warning:              'There are some issues with your installation. <a href="/admin/status">Click here for more Information</a>'
+      user:
+        ok:                 "The Administrator Account is present in your system."
+        error:              "There is no Administrator Account present in your system! It is important that you fix this error."
 
     catalogs:               "Catalogs"
     catalog_type:
@@ -435,4 +454,6 @@ en:
     creator_comment:          "Creator Comment"
     executor_comment:         "Executor Comment"
     state:                    "State"
+    task_for:                 "Task for"
+    domain:                   "Domain"
 

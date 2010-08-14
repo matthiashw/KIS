@@ -1,5 +1,7 @@
-- form_tag 'taskcreation', :html => { :id => 'step3' }, :class => 'taskcreation' do
+- form_tag 'new_step3', :html => { :id => 'step3' }, :id => 'step3', :class => 'taskcreation' do
     %div
-        = show_tree @catalog
+        = checkbox_tree @catalog, 'step3' , 'medications'
         .task-select-domain-submit
             = submit_tag t('task.nextstep')
+        .task-select-domain-submit
+            = submit_tag t('treatment.nextstep_nomeds'), :name => "skip"

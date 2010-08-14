@@ -522,7 +522,9 @@ a.links-link {
     width:100%;
 
     .template-collapsible {
-        margin:9px 0;
+        margin:1px 0;
+        float:left;
+        width:100%;
     }
 
     .template-toggle {
@@ -598,13 +600,17 @@ a.links-link {
 /*DIALOG
 -------------------------------------------------------- */
 
-.dialog {
-    table.table_window {
+.popup {
+    table {
         border:none;
         background-color:transparent;
+        -moz-box-shadow:none;
+        margin:0;
 
         td, th {
             border:none;
+            padding:0;
+            text-shadow:none;
         }
 
         tr:hover {
@@ -612,8 +618,8 @@ a.links-link {
                 background-color:transparent;
             }
 
-            td.dialog_content {
-                background-color:$activeblue;
+            td {
+                background-color:transparent;
             }
         }
 

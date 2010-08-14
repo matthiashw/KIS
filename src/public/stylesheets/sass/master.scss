@@ -316,7 +316,27 @@ abbr {
 /*ERRORS WARNINGS OK
 ------------------------------------------------------*/
 
+fieldset {
+    &.messages {
+        &.ok {
+            border:1px solid #689434;
+            color:#fff;
+            background:#8cc746;
+        }
 
+        &.error {
+            color:#fff;
+            background:#e63;
+            border-color:#F23D30;
+        }
+
+        &.warning {
+            color: #840;
+            background: #fe6;
+            border:1px solid #ed5;
+        }
+    }
+}
 
 div {
   &.messages {
@@ -467,6 +487,66 @@ a.acts_as_button{
         }
     }
 }
+
+/*
+ * Fieldsets
+ */
+
+fieldset.fieldset {
+    border: 1px solid $lightgray;
+    padding: 30px 13px 13px 14px;
+    margin: 0 0 10px;
+
+    legend span,
+    legend a {
+        position: absolute;
+        margin-top: 9px;
+        margin-left: 13px;
+        background:url("/images/menu-expanded.png") no-repeat scroll 5px 75% transparent;
+        display:block;
+        padding-left:18px;
+
+        span {
+            position: relative;
+            background:none;
+            padding-left:0;
+            margin-top: 0;
+            margin-left: 0;
+        }
+    }
+
+    &.collapsible {
+        position:relative;
+        
+        legend a {
+            color:$blue;
+            font-weight:bold;
+            text-transform:uppercase;
+            cursor:pointer;
+        }
+    }
+
+    &.messages {
+       legend a {
+            color:#fff;
+       }
+    }
+
+    &.collapsed {
+       
+        legend a {
+            background-image:url("/images/menu-collapsed.png");
+            background-position:5px 50%;
+        }
+    }
+
+    .fieldset-setup-fix {
+        background-color:#fff;
+        color:$verydarkgray;
+    }
+
+}
+
 
 
 /*VIEWS

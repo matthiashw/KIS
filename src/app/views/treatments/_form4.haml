@@ -1,0 +1,7 @@
+- form_tag 'new_step4', :html => { :id => 'step4' }, :id => 'step4', :class => 'taskcreation' do
+    %div
+        = radio_tree @catalog, 'step4' , 'treatment'
+        .task-select-domain-submit
+            = submit_tag t('task.nextstep')
+        .task-select-domain-submit
+            = submit_tag t('treatment.nextstep_notreatment'), :name => "skip"

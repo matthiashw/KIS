@@ -1,12 +1,11 @@
 -title t('treatment.new')
 
 %h2
-    %span.task-step.step2
-        = t('treatment.step2')
-    = t('treatment.choose_medication')
+    %span.task-step.step3
+        = t('treatment.step4')
+    = t('treatment.final')
 
-= render :partial => 'form3'
-
+= render :partial => 'form5'
 
 .action-links.task-step2
     = link_to t('action.back'),  patient_case_file_treatments_path(:patient_id => @current_active_patient.id, :case_file_id => @current_active_patient.active_case_file_id), :class => 'acts_as_button darkgray'

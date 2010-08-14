@@ -36,4 +36,5 @@
     - f.inputs do
         = f.input :deadline
         = f.input :creator_comment
+        = hidden_field_tag 'domain', params[:domain][:id]
     = f.buttons

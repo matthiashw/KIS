@@ -1,9 +1,5 @@
-:javascript
-    function show_help(){
-        win = new Window({className: "dialog", title: "Help", width:300, height:300, zIndex:100, resizable:true, title:#{t(current_controller_help_title).to_json}});
+#help{:style => "display:none;"}
+    %h2= t(current_controller_help_title)
+    = t(current_controller_help)
 
-        win.getContent().update(#{t(current_controller_help).to_json});
-        win.showCenter();
-    }
-
-%a{:class => "link-help", :href => "javascript:show_help()"}
+=facebox_link("", "#help", "link-help")
