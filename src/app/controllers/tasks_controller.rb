@@ -2,9 +2,7 @@ class TasksController < ApplicationController
   before_filter :filter_tasks, :only => :index
 
   def filter_tasks
-    
-    @tasks = get_tasks
-    
+    @tasks = get_tasks  
   end
 
   # GET /tasks
@@ -338,7 +336,11 @@ class TasksController < ApplicationController
   end
 
   def own_tasks
-    if selected_state.nil?
+    if get_case_for_view.nil? && selected_state.nil?
+      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :creator_user_id => current_user.id }
+    elsif get_case_for_view.nil? && !selected_state.nil?
+      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :creator_user_id => current_user.id, :state => selected_state }
+    elsif selected_state.nil?
       Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view, :creator_user_id => current_user.id }
     else
       Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view, :creator_user_id => current_user.id, :state => selected_state }
@@ -346,14 +348,21 @@ class TasksController < ApplicationController
   end
 
   def get_tasks
-    if authorize?('view_all_tasks')
-      all_tasks
-    elsif authorize?('view_domain_task')
-      domain_tasks
-    elsif authorize?('view_own_task')
-      own_tasks
+    if get_case_for_view.nil?
+      if authorize?('view_own_task')
+        own_tasks
+      end
     else
-      nil
+      if authorize?('view_all_tasks')
+        all_tasks
+      elsif authorize?('view_domain_task')
+        domain_tasks
+      elsif authorize?('view_own_task')
+        own_tasks
+      else
+        nil
+      end
     end
+    
   end
 end

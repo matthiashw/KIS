@@ -17,6 +17,7 @@
         %tr
             %th=t('task.state')
             %th=t('task.domain')
+            %th=t('task.creator')
             %th=t('task.deadline')
             %th=t('task.creator_comment')
             %th=t('task.executor_comment')
@@ -24,6 +25,7 @@
             %th=t('task.fill')
         - @tasks.each do |task|
             - domain = Domain.find_by_id(task.domain_id)
+            - creator = User.find_by_id(task.creator_user_id)
             - if current_active_patient
                 %tr{:onclick=>"location.href='#{patient_task_path(:patient_id => current_active_patient.id ,:id => task.id)}';",:style=>"cursor:pointer;"}
                     %td
@@ -39,9 +41,10 @@
 
 
                     %td= h domain.name
+                    %td= h creator.username
                     %td= h show_date(task.deadline)
-                    %td= h truncate(task.creator_comment, :omission => "...", :length => 50)
-                    %td= h truncate(task.executor_comment, :omission => "...", :length => 50)
+                    %td= h truncate(task.creator_comment, :omission => "...", :length => 40)
+                    %td= h truncate(task.executor_comment, :omission => "...", :length => 40)
                     %td
                         - if !task_is_open?(task.state) && !task_is_inprogress?(task.state) && (authorize?('show_result_task') || (authorize?('show_result_own_task') && is_creator?(task.creator_user_id)))
                             = link_to t('task.showresults'), taskresults_path(:id => task.id)
@@ -62,9 +65,10 @@
                             %span.task-closed
                                 = h t('task.closed')
                     %td= h domain.name
+                    %td= h creator.username
                     %td= h show_date(task.deadline)
-                    %td= h truncate(task.creator_comment, :omission => "...", :length => 50)
-                    %td= h truncate(task.executor_comment, :omission => "...", :length => 50)
+                    %td= h truncate(task.creator_comment, :omission => "...", :length => 40)
+                    %td= h truncate(task.executor_comment, :omission => "...", :length => 40)
                     %td
                         - if !task_is_open?(task.state) && !task_is_inprogress?(task.state) && (authorize?('show_result_task') || (authorize?('show_result_own_task') && is_creator?(task.creator_user_id)))
                             = link_to t('task.showresults'), taskresults_path(:id => task.id)

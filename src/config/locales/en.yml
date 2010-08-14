@@ -201,6 +201,7 @@ en:
     main:
       patients:           "Patients"
       search_patient:     "Search Patient"
+      admission_patient:  "Admission"
       tasks:              "Tasks"
       tasks-all:          "All Tasks"
       task-new:          "New Task"
@@ -225,6 +226,7 @@ en:
 
   patient:
     listing:          "Listing patients"
+    admission:        "Admission of patient"
     new_button:       "Create new patient"
     new:              "New Patient"
     edit:             "Editing Patient"
@@ -232,6 +234,8 @@ en:
     search:           "search for first or family name"
     search_fail:      "No patients found. Try changing your search parameters."
     medicalreport:    "Medical report"
+    case_file_link:   "Create new case"
+    new_case:         "New case"
 
   user:
     listing:                "Listing users"
@@ -458,6 +462,7 @@ en:
     state:                    "State"
     task_for:                 "Task for"
     domain:                   "Domain"
+    creator:                  "physician in charge"
     open:                     "Open"
     closed:                   "Closed"
     word:                     "Task"
