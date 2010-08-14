@@ -1,12 +1,37 @@
 class TasksController < ApplicationController
+  before_filter :filter_tasks, :only => :index
+
+  def filter_tasks
+    
+    @tasks = get_tasks
+    
+  end
+
   # GET /tasks
   # GET /tasks.xml
   def index
-    @tasks = Task.all
+    return authorize unless task_authorize?('view_task', 'view_domain_task', 'view_domain_task')
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # search.haml
       format.xml  { render :xml => @tasks }
+    end
+  end
+
+  def search
+    session[:selected_task_state] = params[:task_state].strip if params[:task_state]
+
+    if session[:selected_task_state]
+      @tasks = get_tasks
+    end
+
+    if request.xhr?
+         render :partial => "task_results", :layout => false, :locals => {:taskresults => @tasks}
+    else
+        respond_to do |format|
+        format.html # search.haml
+        format.xml  { render :xml => @tasks }
+        end
     end
   end
 
@@ -14,6 +39,8 @@ class TasksController < ApplicationController
   # GET /tasks/1.xml
   def show
     @task = Task.find(params[:id])
+    return authorize unless task_creator_authorize?(@task.creator_user_id, "view_own_task") || task_authorize?('view_task')
+
     @domain = Domain.find_by_id(@task.domain_id)
 
     respond_to do |format|
@@ -25,6 +52,7 @@ class TasksController < ApplicationController
   # GET /tasks/taskcreation
   # GET /tasks/taskcreation.xml
   def taskcreation
+    return false unless authorize(permissions = ["create_task"])
     @task = Task.new
 
     respond_to do |format|
@@ -37,6 +65,7 @@ class TasksController < ApplicationController
           format.xml  { render :xml => @domain }
         else
           @templates = MedicalTemplate.find_all_by_domain_id(params[:domain][:id])
+          session[:domain_for_task] = params[:domain][:id]
 
           format.html # taskcreation.html.erb
           format.xml  { render :xml => @task }
@@ -53,11 +82,13 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @task = Task.find(params[:id])
+    return authorize unless task_creator_authorize?(@task.creator_user_id, "edit_own_task") || task_authorize?('edit_task')
   end
 
   # GET /tasks/new
   # GET /tasks/new.xml
   def new
+    return false unless authorize(permissions = ["create_task"])
     if session.has_key?(:active_patient_id)
       @current_active_patient = Patient.find(session[:active_patient_id])
     else
@@ -79,34 +110,48 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.xml
   def create
+    return false unless authorize(permissions = ["create_task"])
     @task = Task.new(params[:task])
+    @task.state = Task.state_open
+    @task.creator_user_id = current_user.id
     @selectedfields = params[:fields]
-    @task.domain_id = params[:domain]
-    @task.state = "active"
+    @comments = params[:comments]
+
+    if session.has_key?(:active_patient_id)
+      @current_active_patient = Patient.find(session[:active_patient_id])
+      @task.case_file_id = @current_active_patient.active_case_file_id
+    end
+
+    if session.has_key?(:domain_for_task)
+      @task.domain_id = session[:domain_for_task]
+      session[:domain_for_task] = nil
+    end
+
     respond_to do |format|
       if @task.save
+        unless @selectedfields.nil?
+          @selectedfields.each do |f|
+            splittedstr = f.split(';')
+            fieldDefId = splittedstr[0]
+            fieldDef = FieldDefinition.find(fieldDefId)
 
-        @selectedfields.each do |f|
-          splittedstr = f.split(';')
-          fieldDefId = splittedstr[0]
-          fieldDef = FieldDefinition.find(fieldDefId)
+            tempId = splittedstr[1]
 
-          tempId = splittedstr[1]
+            if fieldDef.nil?
+              field = Field.new(:medical_template_id => tempId, :field_definition_id => fieldDefId,
+                                :task_id => @task.id, :comment => @comments[fieldDefId])
+            else
+              field = Field.new(:medical_template_id => tempId, :field_definition_id => fieldDefId,
+                :task_id => @task.id, :ucum_entry_id => fieldDef.example_ucum_id, :comment => @comments[fieldDefId] )
+            end
 
-          if fieldDef.nil?
-            field = Field.new(:medical_template_id => tempId, :field_definition_id => fieldDefId,
-                              :task_id => @task.id)
-          else
-            field = Field.new(:medical_template_id => tempId, :field_definition_id => fieldDefId,
-              :task_id => @task.id, :ucum_entry_id => fieldDef.example_ucum_id )
+            unless field.save
+              @task.destroy
+              format.html { render :action => "new" }
+              format.xml  { render :xml => field.errors, :status => :unprocessable_entity }
+            end
+
           end
-
-          unless field.save
-            @task.destroy
-            format.html { render :action => "new" }
-            format.xml  { render :xml => field.errors, :status => :unprocessable_entity }
-          end
-
         end
 
         flash[:notice] = 'Task was successfully created.'
@@ -124,6 +169,7 @@ class TasksController < ApplicationController
   # PUT /tasks/1.xml
   def update
     @task = Task.find(params[:id])
+    return authorize unless task_creator_authorize?(@task.creator_user_id, "edit_own_task") || task_authorize?('edit_task')
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
@@ -141,10 +187,15 @@ class TasksController < ApplicationController
   # DELETE /tasks/1.xml
   def destroy
     @task = Task.find(params[:id])
+    return authorize unless task_creator_authorize?(@task.creator_user_id, "delete_own_task") || task_authorize?('delete_task')
     @fields = Field.find_all_by_task_id(params[:id])
+    @measuredvalues = MeasuredValues.find_all_by_task_id(params[:id])
 
 
     if @task.destroy
+      @measuredvalues.each do |m|
+        m.destroy
+      end
       @fields.each do  |f|
         f.destroy
       end
@@ -155,6 +206,154 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(tasks_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  # method for serving the task filling view
+  def taskfill
+    @task = Task.find(params[:id])
+    return authorize unless task_domain_authorize?(@task.domain_id, "fill_own_domain_task") || task_authorize?('fill_every_task')
+
+    respond_to do |format|
+      if @task.state == Task.state_closed
+
+       flash[:error] = 'Task is closed'
+       format.html { redirect_to :action => "results" }
+       format.xml  { render :xml => @task }
+
+      else
+
+        @fields = Field.find_all_by_task_id(params[:id])
+
+
+        #fieldshash stuff is done for processing the fields in the view
+        @fieldshash = {}
+        @fields.each do |f|
+          @fieldshash[f.medical_template_id] ||= {}
+          @fieldshash[f.medical_template_id][f.id] ||= f
+        end
+
+       end
+
+          format.html # taskfill.haml
+          format.xml  { render :xml => @task }
+
+    end
+  end
+
+  #creating measured_values and filling in task info
+  def createentries
+    @task = Task.find(params[:id])
+    @values = params[:values]
+    @comments = params[:comments]
+     
+
+    respond_to do |format|
+
+
+        if @task.update_attributes(params[:task])
+          unless @values.nil?
+            @values.each do |k,v|
+              #if the task has allready been filled use existing measured values and update
+              if @task.state == Task.state_inprogress
+                measuredvalue = MeasuredValue.find_by_field_id(k)
+                measuredvalue.update_attributes(:value => v,:comment => @comments[k],
+                                 :task_id => @task.id, :field_id => k, :medical_template_id => Field.find(k).medical_template_id )
+              else
+                measuredvalue = MeasuredValue.new(:value => v,:comment => @comments[k],
+                                 :task_id => @task.id, :field_id => k, :medical_template_id => Field.find(k).medical_template_id )
+                measuredvalue.save
+              end
+
+            end
+          end
+
+          if params.has_key?('save')
+            @task.update_attribute(:state, Task.state_inprogress)
+          end
+
+          if params.has_key?('saveandclose')
+            @task.update_attribute(:state, Task.state_closed)
+          end
+
+          flash[:notice] = 'Task successfully completed.'
+                format.html { redirect_to(@task) }
+                format.xml  { head :ok }
+
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+        end
+
+
+    end
+  end
+
+    # for viewing the tasks values and results
+    def results
+      @task = Task.find(params[:id])
+      return authorize unless task_creator_authorize?(@task.creator_user_id, "show_result_own_task") || task_authorize?('show_result_task')
+      @values = MeasuredValue.find_all_by_task_id(@task.id)
+      @domain = Domain.find_by_id(@task.domain_id)
+
+      #fieldshash stuff is done for processing the fields in the view
+      @valueshash = {}
+      @values.each do |v|
+        @valueshash[v.medical_template_id] ||= {}
+        @valueshash[v.medical_template_id][v.id] ||= v
+      end
+
+     respond_to do |format|
+      format.html # results.haml
+      format.xml  { render :xml => @values }
+     end
+    end
+
+    def selected_state
+    selected_state = nil
+
+    if session[:selected_task_state]
+      if session[:selected_task_state] != "0"
+        selected_state = session[:selected_task_state].to_i
+      end
+    end
+
+    selected_state
+  end
+
+  def all_tasks
+    if selected_state.nil?
+      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view }
+    else
+      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view, :state => selected_state }
+    end
+  end
+
+  def domain_tasks
+    if selected_state.nil?
+      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view, :domain_id => current_user.domains }
+    else
+      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view, :domain_id => current_user.domains, :state => selected_state }
+    end
+  end
+
+  def own_tasks
+    if selected_state.nil?
+      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view, :creator_user_id => current_user.id }
+    else
+      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view, :creator_user_id => current_user.id, :state => selected_state }
+    end
+  end
+
+  def get_tasks
+    if authorize?('view_all_tasks')
+      all_tasks
+    elsif authorize?('view_domain_task')
+      domain_tasks
+    elsif authorize?('view_own_task')
+      own_tasks
+    else
+      nil
     end
   end
 end

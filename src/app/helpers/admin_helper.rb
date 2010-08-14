@@ -1,10 +1,10 @@
 module AdminHelper
-  def is_ok_or_error(status)
+  def is_ok_or_error(error)
 
-    if status
-      activeclass = "messages ok"
-    else
+    if error
       activeclass = "messages error"
+    else
+      activeclass = "messages ok"
     end
 
     activeclass

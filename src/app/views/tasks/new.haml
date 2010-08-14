@@ -18,7 +18,7 @@
         .task-patient-switch
             = link_to t('task.other'), {:controller => 'patients', :origin=> 'tasks'}, :class => 'acts_as_button mediumgray'
 
-= render :partial => 'form2'
+= render :partial => 'form_tasknew'
 
 .action-links.task-step1
     -if current_active_patient

@@ -1,4 +1,4 @@
-- title truncate(@comment.comment, 40, "...")
+- title truncate(@comment.comment, :omission => "...", :length => 40)
 
 .fields
     .field
@@ -10,7 +10,7 @@
         .field-label
             =t('comment.date')
         .field-content
-            = h show_date(@comment.created_at)
+            = h show_datetime(@comment.created_at)
 
 .action-links
     - if authorize?('edit_comment')

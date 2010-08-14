@@ -119,12 +119,17 @@ class PatientsController < ApplicationController
   # DELETE /patients/1
   # DELETE /patients/1.xml
   def destroy
-    return false unless authorize(permissions = ["destroy_patient"])
+    return false unless authorize(permissions = ["delete_patient"])
     
     @patient = Patient.find(params[:id])
     
     if @patient.destroy
       flash[:notice] = t("messages.patients.delete_success")
+
+      if session[:active_patient_id] == @patient.id
+        session[:active_patient_id] = nil
+      end
+
     end
 
     respond_to do |format|

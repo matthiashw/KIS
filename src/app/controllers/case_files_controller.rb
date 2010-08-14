@@ -1,40 +1,5 @@
 class CaseFilesController < ApplicationController
 
-
-  #activates a case for view
-  def setcaseforview
-   return false unless authorize(permissions = ["setactive_casefile"])
-
-    casefile = CaseFile.find(params[:id])
-    session[:caseviewid] = casefile.id unless casefile.nil?
-
-    flash[:notice] = t("case_file.activated")
-
-    respond_to do |format|
-        format.html { redirect_to(case_files_url)  }
-        format.xml  { head :ok }
-      end
-  end
-  
-  #get id of active casefile
-  #returns casefile wich is active for view 
-  #if none has been activated it returns active casefile of patient or
-  #returns nil if no patient/casefile is active
-  def getcaseforview
-
-    if session.has_key?(:caseviewid)
-      return session[:caseviewid]
-    else
-      if session.has_key?(:active_patient_id)
-        activepatient = Patient.find(session[:active_patient_id])
-        return activepatient.active_case_file_id
-      end
-    end
-
-    return nil
-    
-  end
-
   # GET /case_files
   # GET /case_files.xml
   def index
@@ -151,6 +116,21 @@ class CaseFilesController < ApplicationController
       format.html { redirect_to(case_files_url) }
       format.xml  { head :ok }
     end
+  end
+
+  #activates a case for view
+  def setcaseforview
+   return false unless authorize(permissions = ["setactive_casefile"])
+
+    casefile = CaseFile.find(params[:id])
+    session[:case_view_id] = casefile.id unless casefile.nil?
+
+    flash[:notice] = t("case_file.activated")
+
+    respond_to do |format|
+        format.html { redirect_to(case_files_url)  }
+        format.xml  { head :ok }
+      end
   end
   
 end

@@ -1,18 +1,7 @@
--title t('task.index')
-
-.filters.task-filter
-    .filter.select-task-state
-        - select_task_states = {"All" => "0", "Open" => Task.state_open.to_s, "In Progress" => Task.state_inprogress.to_s, "Closed" => Task.state_closed.to_s}
-        %span.filter-label.select-task-state-label
-            = t('task.select_state')
-        %span.filter-filter.select-task-state-filter
-            = select_tag 'task_state', options_for_select(select_task_states, session[:selected_task_state])
-            = observe_field 'task_state',  :frequency => 0.5,           |
-                :update => "tasks",                                     |
-                :url => {:controller => "tasks", :action => "search"},  |
-                :with => "task_state"
-
-#tasks
+- if taskresults.length == 0
+    .messages.warning
+        %p=t('task.search_fail')
+- else
     %table
         %tr
             %th=t('task.state')
@@ -22,7 +11,7 @@
             %th=t('task.executor_comment')
             %th=t('task.results')
             %th=t('task.fill')
-        - @tasks.each do |task|
+        - taskresults.each do |task|
             - domain = Domain.find_by_id(task.domain_id)
             - if current_active_patient
                 %tr{:onclick=>"location.href='#{patient_task_path(:patient_id => current_active_patient.id ,:id => task.id)}';",:style=>"cursor:pointer;"}
@@ -43,10 +32,10 @@
                     %td= h truncate(task.creator_comment, :omission => "...", :length => 50)
                     %td= h truncate(task.executor_comment, :omission => "...", :length => 50)
                     %td
-                        - if !task_is_open?(task.state) && !task_is_inprogress?(task.state) && (authorize?('show_result_task') || (authorize?('show_result_own_task') && is_creator?(task.creator_user_id)))
+                        - if !task_is_open?(task.state) && (authorize?('show_result_task') || (authorize?('show_result_own_task') && is_creator?(task.creator_user_id)))
                             = link_to t('task.showresults'), taskresults_path(:id => task.id)
                     %td
-                        - if task_is_open?(task.state) || task_is_inprogress?(task.state) && (authorize?('fill_every_task') || (authorize?('fill_own_domain_task') && is_in_domain?(task.domain_id)))
+                        - if task_is_open?(task.state) && (authorize?('fill_every_task') || (authorize?('fill_own_domain_task') && is_in_domain?(task.domain_id)))
                             = link_to t('task.fill'), taskfill_path(:id => task.id)
 
             -else
@@ -66,15 +55,8 @@
                     %td= h truncate(task.creator_comment, :omission => "...", :length => 50)
                     %td= h truncate(task.executor_comment, :omission => "...", :length => 50)
                     %td
-                        - if !task_is_open?(task.state) && !task_is_inprogress?(task.state) && (authorize?('show_result_task') || (authorize?('show_result_own_task') && is_creator?(task.creator_user_id)))
+                        - if !task_is_open?(task.state) && (authorize?('show_result_task') || (authorize?('show_result_own_task') && is_creator?(task.creator_user_id)))
                             = link_to t('task.showresults'), taskresults_path(:id => task.id)
                     %td
-                        - if task_is_open?(task.state) || task_is_inprogress?(task.state) && (authorize?('fill_every_task') || (authorize?('fill_own_domain_task') && is_in_domain?(task.domain_id)))
+                        - if task_is_open?(task.state) && (authorize?('fill_every_task') || (authorize?('fill_own_domain_task') && is_in_domain?(task.domain_id)))
                             = link_to t('task.fill'), taskfill_path(:id => task.id)
-
-.action-links
-    - if authorize?('create_task')
-        -if current_active_patient
-            = link_to t('task.new_task'), new_patient_task_path(:patient_id => current_active_patient.id), :class => "acts_as_button"
-        -else
-            = link_to t('task.new_task'), new_task_path, :class => "acts_as_button"

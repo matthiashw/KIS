@@ -1,0 +1,8 @@
+%h2= t("install.finish")
+
+- if install_finished?
+    .messages.message
+        %p=t('install.install_finish')
+- else
+    .messages.warning
+        %p=t('install.install_warning')

@@ -10,23 +10,26 @@
 
             .template-collapsible.collapsed
                 .template-toggle
-                    %input{:type => 'checkbox', :class => 'select-all-fields'}
-                    %span.fields-select-all=t('task.select_all');
-                    %span.fields-select-none{:style => 'display:none;'}=t('task.select_none');
-                    %a.template-toggle-link
-                        = t.name
+                    .template-toggle-inner
+                        %input{:type => 'checkbox', :class => 'select-all-fields'}
+                        %span.fields-select-all=t('task.select_all');
+                        %span.fields-select-none{:style => 'display:none;'}=t('task.select_none');
+                        %a.template-toggle-link
+                            = t.name
                 .template-content{:id=>"t#{t.id}", :style => "display:none;"}
                     %table
                         %thead
                             %tr
                                 %th=t('task.selected')
                                 %th=t('task.name')
+                                %th=t('task.comment')
                         %tbody
                             - t.field_definitions.each do |f|
                                 %tr.template-field
                                     - fields_for f do |fcheck|
                                         %td= check_box_tag "fields[]", f.id.to_s + ";" + t.id.to_s
                                     %td=  Entry.find(f.field_entry_id).name
+                                    %td= text_field 'comments', f.id, :size => '20' , :maxlength => '30'
                         
 
     %h2
@@ -36,5 +39,4 @@
     - f.inputs do
         = f.input :deadline
         = f.input :creator_comment
-        = hidden_field_tag 'domain', params[:domain][:id]
     = f.buttons

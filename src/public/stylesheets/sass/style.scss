@@ -208,7 +208,8 @@ $activeblue:#bbddff;
   background: transparent url('/images/domain.png') no-repeat top center;
   margin: 18px 0 0 18px; }
 
-.active-patient {
+.active-patient,
+.active-case {
     padding:4px 5px;
     display:inline;
     max-width:500px;
@@ -238,6 +239,22 @@ $activeblue:#bbddff;
     &:hover {
         background-color:$activeblue;
         cursor:pointer;
+    }
+}
+
+.active-case {
+    margin:9px 0 0 18px;
+    background-color:$yellow;
+    color:$darkgray;
+
+    span {
+        color:$darkgray;
+    }
+
+    &:hover {
+        span {
+            color:$darkgray;
+        }
     }
 }
 
@@ -514,6 +531,35 @@ a.links-link {
     }
 }
 
+.field.box.task-state {
+    width:50%;
+
+    .box-inner {
+        float:left;
+        width:100%;
+    }
+    
+    .field-label {
+        width:58%;
+    }
+
+    .field-content {
+        width:30%;
+    }
+}
+
+.task-open {
+    color:$green;
+}
+
+.task-inprogress {
+    color:$darkyellow;
+}
+
+.task-closed {
+    color:$red;
+}
+
 
 
 #templates {
@@ -532,7 +578,7 @@ a.links-link {
         border-radius:4px;
         -moz-border-radius:4px;
         -webkit-border-radius:4px;
-        padding:4px 6px 5px;
+        padding:4px 0 5px;
         float:left;
         width:100%;
 
@@ -563,6 +609,11 @@ a.links-link {
         display:block;
         float:left;
         width:80%;
+    }
+    .template-toggle-inner {
+        color:#fff;
+        font-size:16px;
+        padding-left:18px;
     }
     
     .template-collapsible.collapsed {

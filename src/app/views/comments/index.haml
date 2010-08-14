@@ -5,8 +5,8 @@
         %th=t('comment.date')
     - @comments.each do |comment|
         %tr{:onclick=>"location.href='#{url_for :controller => 'comments', :action => 'show', :id => comment.id, :patient_id => params[:patient_id]}';",:style=>"cursor:pointer;"}
-            %td= h truncate(comment.comment, 100, "...")
-            %td= h show_date(comment.created_at)
+            %td= h truncate(comment.comment, :omission => "...", :length => 100)
+            %td= h show_datetime(comment.created_at)
 
 = will_paginate @comments
 

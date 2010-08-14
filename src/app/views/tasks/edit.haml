@@ -1,4 +1,17 @@
 -title t('task.edit_task')
 
+- semantic_form_for @task do |f|
+    = f.error_messages
 
+    - f.inputs do
+        = f.input :deadline
+        = f.input :creator_comment
+    = f.buttons
+
+.action-links
+    = link_to t('action.destroy'), @task, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
+    -if current_active_patient
+        = link_to t('action.back'), patient_tasks_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'
+    -else
+        = link_to t('action.back'), tasks_path, :class => 'acts_as_button darkgray'
 
