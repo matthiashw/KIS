@@ -45,6 +45,7 @@ Thumbs.db
 src/public/stylesheets/master.css
 src/public/stylesheets/reset.css
 src/public/stylesheets/style.css
+src/public/stylesheets/print.css
 .sass-cache
 src/tmp/*
 schema.rb
