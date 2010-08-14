@@ -27,7 +27,7 @@ class Importer::IcdByLettersAmericanCatalogImporter
 
 
         # Create Entry
-        entry = IcdEntry.new(:code => code,:name => row.join(" "))
+        entry = IcdEntry.new(:code => code,:name => row.join(" "), :catalog =>catalog)
          entry.node=root_node
 
 
