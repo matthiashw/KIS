@@ -1,0 +1,13 @@
+= calendar_date_select_includes nil
+:javascript
+    _translations = {
+        'OK'     :  "#{t('calendar_date_select.ok')}",
+        'Now'    :  "#{t('calendar_date_select.now')}",
+        'Today'  :  "#{t('calendar_date_select.today')}",
+        'Clear'  :  "#{t('calendar_date_select.clear')}"
+    }
+
+    Date.first_day_of_week = #{t('calendar_date_select.first_day_of_week')}
+
+    Date.weekdays   = $w("#{t('calendar_date_select.abbr_day_names')}");
+    Date.months     = $w("#{t('calendar_date_select.month_names')}");

@@ -42,5 +42,5 @@ class AdminController < ApplicationController
 
     return false
   end
-
 end
+

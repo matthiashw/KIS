@@ -1,0 +1,12 @@
+- title t('database_backup.import.title')
+
+= form_tag ({:action => 'importFile'}, :onSubmit => "showAjaxLoadingBar()",:multipart => true)
+%p
+    %label{:for => "upload_file"}=t('database_backup.import.label')
+    %br
+    = file_field :post, :attached, :accept => 'text/html'
+= render :partial => 'shared/loading_bar_element'
+= submit_tag t('database_backup.import.submit')
+= form_tag
+
+=link_to t('action.back'), {:controller => "admin", :action => "index"}

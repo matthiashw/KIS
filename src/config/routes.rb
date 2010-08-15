@@ -7,6 +7,8 @@ ActionController::Routing::Routes.draw do |map|
   map.install "/install", :controller => "install", :action => "index"
   map.adminstatus "/admin/status", :controller => "admin", :action => "status"
   map.connect "/users/setup", :controller => "users", :action => "setup"
+  map.connect "database_backup/import", :controller => "database_backup",:action => "import"
+  map.connect "database_backup/export", :controller => "database_backup",:action => "export"
 
   ########
   # Task #
@@ -41,7 +43,7 @@ ActionController::Routing::Routes.draw do |map|
   #############
   # resources #
   #############
-  map.resources :user_sessions, :users, :catalog_types, :catalogs, :appointments,
+  map.resources :database_backup, :user_sessions, :users, :catalog_types, :catalogs, :appointments,
                 :domains, :patients, :admin, :medical_templates,
                 :diagnoses, :tasks, :medical_reports, :report_headers
 

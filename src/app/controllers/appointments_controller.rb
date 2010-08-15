@@ -91,7 +91,9 @@ class AppointmentsController < ApplicationController
 
     @appointments = Appointment.all
 
+    #first day of week where Sunday is 0, Monday is 1...
     @first_day_of_week = 1;
     @event_strips = Appointment.event_strips_for_month(@shown_month, @first_day_of_week)
+    logger.debug("Anzahl an Appointments: #{@event_strips.count}")
   end
 end

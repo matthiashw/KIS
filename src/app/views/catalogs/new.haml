@@ -1,6 +1,6 @@
 - title t('admin.catalog.import')
 
-- form_for :catalog, @catalog,:url => {:action=> 'create'}, :html => {:onSubmit => "showAjaxLoadingBar()", :multipart => true }, do |f|
+- form_for :catalog, @catalog,:url => {:action=> 'create'}, :html => {:onSubmit => "showAjaxLoadingBar()", :multipart => true } do |f|
   = f.error_messages
   %p
     = f.label :year,t('formtastic.labels.catalog.year')
