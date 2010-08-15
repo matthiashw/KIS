@@ -55,6 +55,13 @@ en:
     permissions:
       updated:                "Permissions updated."
 
+  color-legend:
+    case_file:
+      patient_case:             "Active case of current Patient"
+      view_case:                  "If shown, current active case for View"
+    user:
+      view_admin:           "Admin User with ID 1"
+
   login:                  "Login"
   logout:                 "Logout"
   register:               "Register"
@@ -85,6 +92,7 @@ en:
     main:
       patients:           "Patients"
       search_patient:     "Search Patient"
+      admission_patient:  "Admission"
       tasks:              "Tasks"
       tasks-all:          "All Tasks"
       task-new:          "New Task"

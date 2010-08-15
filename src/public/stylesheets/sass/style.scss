@@ -983,6 +983,64 @@ a.links-link {
     }
 }
 
+.calendar_date_select {
+    .cds_header {
+        padding:2px 0;
+
+        a.next,
+        a.prev {
+            margin-top:2px;
+        }
+    }
+
+    table {
+        -moz-box-shadow:none;
+        background-color:transparent;
+        border:none;
+        font-size:12px;
+        line-height:14px;
+        margin:0;
+        width:100%;
+        float:none;
+
+        td, th {
+            border:none;
+            padding:0;
+            vertical-align:middle;
+        }
+
+        th {
+            background-color:transparent;
+            color:$darkgray;
+            font-weight:normal;
+            text-align:left;
+            text-shadow:none;
+        }
+
+        thead th {
+            border-bottom:none;
+            border-top:none;
+            text-align:center;
+        }
+
+        thead {
+            th {
+                border-color:transparent;
+            }
+        }
+
+        td.today {
+            border:none;
+            background-color:$activeblue;
+        }
+
+        td.weekend {
+            border-left:none;
+            border-right:none;
+        }
+    }
+}
+
 
 
 
