@@ -112,14 +112,19 @@ function showAjaxLoadingBar() {
 var tree;
 
 
-function submitTreeForm(){
-    var msg="";
+function getIdList() {
+     var msg="";
     Ext.each(nodeselection, function(node){
         if(msg.length > 0){
             msg += ',';
         }
         msg += node.substr(1);
     });
+    return msg;
+}
+
+function submitTreeForm(){
+    var msg=getIdList();
     Ext.get(node_result_id).set({value:msg});
 }
 
@@ -134,18 +139,35 @@ function checkSelection(tree,parent,node) {
 
 function uncheckNodeFromTree(id) {
     nodeselection.remove(id);
+    json_id_store.reload({params:{entry_ids:getIdList()}});
 }
 
 function checkNodeFromTree(id) {
     nodeselection.push(id);
-     
+    json_id_store.reload({params:{entry_ids:getIdList()}});
 }
 
 function checkNodeFromSearch(grid, records, action, groupId) {
-    
+    var node=tree.getNodeById("_"+records.id);
+   
+    if (node) {
+        
+         node.ui.toggleCheck(true);
+    } else {
+         
+   nodeselection.push("_"+records.id);
+   json_id_store.reload({params:{entry_ids:getIdList()}});
+    }
 }
 function uncheckNodeFromSearch(grid, records, action, groupId) {
-
+    var node=tree.getNodeById("_"+records.id);
+   
+    if (node) {
+         node.ui.toggleCheck(false);
+    } else {
+    nodeselection.remove("_"+records.id);
+    json_id_store.reload({params:{entry_ids:getIdList()}});
+    }
 }
 
 Ext.onReady(function(){
@@ -194,15 +216,15 @@ Ext.onReady(function(){
                  if(!checked) {
                       uncheckNodeFromTree(checkedNode.id);
                   } else {
-                      checkNodeFromTree(checkedNode.id);
                       if(single_selection) {
                              Ext.each(tree.getChecked(), function(node) {
                              if(node.id != checkedNode.id) {
-                                uncheckNodeFromTree(node.id)
+                               nodeselection.remove(node.id);
                                 node.ui.toggleCheck(false);
                              }
                         });
-                        }
+                      }
+                      checkNodeFromTree(checkedNode.id);
                  }
            }
          }
@@ -212,22 +234,39 @@ Ext.onReady(function(){
      * Search
      */
 
-   
-        var json_store=new Ext.data.Store({
-		reader:new Ext.data.JsonReader({
-			 id:'id'
-			,totalProperty:'totalCount'
-			,root:'rows'
-			,fields:[
-			 {name:'id', type:'int'}
-				,{name:'name', type:'string'}
-						,{name:'description', type:'string'}
-						,{name:'code', type:'string'}
-					]})
-                                        ,proxy:new Ext.data.HttpProxy({url:"/catalogs/search/"+catalog_id})
-                                        ,remoteSort:true
-                                        //,autoLoad:true
-                                        });
+     json_id_store=new Ext.data.Store({
+        reader:new Ext.data.JsonReader({
+             id:'id'
+            ,totalProperty:'totalCount'
+            ,root:'rows'
+            ,fields:[
+             {name:'id', type:'int'}
+            ,{name:'name', type:'string'}
+            ,{name:'description', type:'string'}
+            ,{name:'code', type:'string'}
+            ]})
+            ,proxy:new Ext.data.HttpProxy({url:"/catalogs/getnodes/"+catalog_id})
+            ,remoteSort:true
+             });
+
+
+
+
+    var json_search_store=new Ext.data.Store({
+        reader:new Ext.data.JsonReader({
+             id:'id'
+            ,totalProperty:'totalCount'
+            ,root:'rows'
+            ,fields:[
+             {name:'id', type:'int'}
+                    ,{name:'name', type:'string'}
+                    ,{name:'description', type:'string'}
+                    ,{name:'code', type:'string'}
+                            ]})
+            ,proxy:new Ext.data.HttpProxy({url:"/catalogs/search/"+catalog_id})
+            ,remoteSort:true
+            //,autoLoad:true
+            });
 
 
 
@@ -240,16 +279,18 @@ Ext.onReady(function(){
             var rowAction = new Ext.ux.grid.RowActions( {
                 header:"Select/Deselect",
                 keepSelection:true,
+                autoWidth:false,
+                width:100,
                 hideMode: 'display',
                 actions:[
-                    { iconCls:'icon-check',
+                    {iconCls:'icon-check',
                       callback:checkNodeFromSearch,
                       text: 'Check',
-                      tooltip: 'Check this item' },
-                    { iconCls:'icon-uncheck',
+                      tooltip: 'Check this item'},
+                    {iconCls:'icon-uncheck',
                       callback:uncheckNodeFromSearch,
                       text: 'Uncheck',
-                      tooltip: 'Uncheck this item' }
+                      tooltip: 'Uncheck this item'}
                 ]
             });
 
@@ -257,15 +298,16 @@ Ext.onReady(function(){
 
            var config = {
             title: 'Search Catalog XYZ',
-            store: json_store,
+            store: json_search_store,
             stripeRows:true,
             tbar:[],
+            autoExpandColumn: 'auto_expander',
             colModel: new Ext.grid.ColumnModel({
                 columns:[
 
-                    new Ext.grid.Column({header:"Code", dataIndex: "code", autoWidth:true}),
-                    new Ext.grid.Column({header:"Name", dataIndex: "name", autoWidth:true}),
-                    new Ext.grid.Column({header:"Description", dataIndex: "description", autoWidth:true}),
+                    new Ext.grid.Column({header:"Code", dataIndex: "code", width: 200}),
+                    new Ext.grid.Column({header:"Name", dataIndex: "name", width: 200}),
+                    new Ext.grid.Column({header:"Description", dataIndex: "description" , id: 'auto_expander'}),
                     rowAction
                  ]
             }),
@@ -289,6 +331,7 @@ Ext.onReady(function(){
 		});
 
         searchpanel.superclass.initComponent.apply(this,arguments);
+        
         }
 
     });
@@ -297,15 +340,41 @@ Ext.onReady(function(){
     /*
      * Panel Layout
      */
-     new Ext.TabPanel({
-          renderTo: 'catalog_tree_select',
-          tabPosition: 'bottom',
+    var tabpanel= new Ext.TabPanel({
+          border: false,
+          tabPosition: 'top',
          // border:false,
           activeTab: 0,
-           height:540,
+           //flex:3,
+           height:500,
            items: [tree,new searchpanel]
 
     });
+
+    var selectionpanel=new Ext.grid.GridPanel({
+       title: 'Selected',
+       border: false,
+       height:200,
+       store: json_id_store,
+       viewConfig: {autoFill:true, forceFit: true},
+       colModel: new Ext.grid.ColumnModel({
+            columns:[
+
+                new Ext.grid.Column({header:"Code", dataIndex: "code", autoWidth:true}),
+                new Ext.grid.Column({header:"Name", dataIndex: "name", autoWidth:true}),
+                new Ext.grid.Column({header:"Description", dataIndex: "description", autoWidth:true})
+
+             ]
+        })
+    });
+
+   new Ext.Panel({
+         renderTo: 'catalog_tree_select',
+         layout:'vBox',
+          height:700,
+          items:[selectionpanel,tabpanel]
+    });
+    json_id_store.load({params:{entry_ids:getIdList()}});
    tree.on('append',checkSelection);
    root.expand();
     // Open a node path
