@@ -37,7 +37,7 @@ class DatabaseBackupController < ApplicationController
 
   
   def importFile
-    upload = params[:upload]
+    upload = params[:post]
     if !upload
       respond_to do |format|
         flash[:notice] = t('database_backup.import.noFile')
@@ -49,7 +49,7 @@ class DatabaseBackupController < ApplicationController
       path = "#{RAILS_ROOT}/db/data.yml"
 
       # write the file
-      File.open(path, "wb") { |f| f.write(upload['datafile'].read)}
+      File.open(path, "wb") { |f| f.write(upload['attached'].read)}
 
       begin
         # load db from file

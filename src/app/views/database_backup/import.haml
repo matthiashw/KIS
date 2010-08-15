@@ -4,7 +4,7 @@
 %p
     %label{:for => "upload_file"}=t('database_backup.import.label')
     %br
-    = file_field 'upload', 'datafile', :accept => 'text/csv'
+    = file_field :post, :attached, :accept => 'text/html'
 = render :partial => 'shared/loading_bar_element'
 = submit_tag t('database_backup.import.submit')
 = form_tag

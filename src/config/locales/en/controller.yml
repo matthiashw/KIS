@@ -1,0 +1,214 @@
+en:
+
+  admin:
+    admin_area:             "Administration Area"
+    status_report:          "Status Report"
+    user_management:        "User Management"
+    users:                  "User"
+    domains:                "Domains"
+    permissions:            "Permissions"
+    catalog_management:     "Catalog Management"
+    status_fix:             "Click here to fix this Problem"
+
+    status:
+      warning:              'There are some issues with your installation. <a href="/admin/status">Click here for more Information</a>'
+      ok:                   "Everything is ok with your installation."
+      user:
+        ok:                 "The Administrator Account is present in your system."
+        error:              "There is no Administrator Account present in your system! It is important that you fix this error."
+
+    catalogs:               "Catalogs"
+    catalog_type:
+      application:          "Catalog Application"
+      listing:              "Listing catalog types"
+      new_button:           "Add new catalog type"
+      new:                  "New catalog type"
+      edit:                 "Editing catalog type"
+      import_method:        "Import method"
+      name:                 "Name"
+      errors:
+        application:  "The Importer can't provide catalogs for the application you chose!"
+      flash:
+        created:        "Catalog type was successfully created."
+        updated:        "Catalog type was successfully updated."
+    catalog:
+      no_catalog_available:           "No catalog for following application present: "
+      empty_catalog:        "The catalog is empty."
+      listing:              "Listing catalogs"
+      new_button:           "Add new catalog"
+      new:                  "New catalog"
+      edit:                 "Editing catalog"
+      types:                "Catalog types"
+      type:                 "Catalog type"
+      type_id:              "ID"
+      name:                 "Name"
+      year:                 "Year"
+      language:             "Language"
+      import:               "Import catalog"
+      import_button:        "Import catalog"
+      active:               "Active"
+      errors:
+        import_file_not_blank: "Import file can't be blank!"
+        import_file_invalid: "Import file invalid!"
+      flash:
+        created:            "Catalog was successfully created."
+        updated:            "Catalog was successfully updated."
+        activated:          "Catalog was activated."
+      user_defined:
+        add_field_entry:         "Add entry to catalog"
+        edit_field_entry:        "Edit checked entry"
+        delete_field_entry:      "Delete checked entry"
+        create_field_entry:
+          ok:                    "Catalog field successfully created!"
+          error:                 "No empty values allowed!"
+        destroy_field_entry:
+          ok:                   "Catalog field deleted!"
+        update_field_entry:
+          ok:                    "Catalog field successfully updated!"
+          error:                 "No empty values allowed!"
+    file_management:        "File Management"
+    import:                 "Recover"
+    export:                 "Backup"
+    medical_template:
+      template:             "Medical Templates"
+      medical_template:     "Medical Templates"
+    medical_reports:
+      report:                 "Medical report"
+      header:                 "Header"
+
+  appointment:
+    listing:          "Listing appointments"
+    new_button:       "Add new appointment"
+    new:              "New appointment"
+    edit:             "Editing appointment"
+    starting_date:    "Start Date"
+    ending_date:      "End Date"
+    name:             "Name"
+    description:      "Description"
+    calendar:         "Calendar"
+
+  case_file:
+    new_confirm:         "Please notice that any open Cases will be closed"
+    activate_for_view:   "Activate for View"
+    listing:             "Listing Patient Cases"
+    edit:                "Editing Case"
+    new:                 "New Case"
+    entry_date:          "Entry Date"
+    leave_date:          "Leave Date"
+    activated:           "Case activated."
+    activated_error:     "Case could not be activated."
+    success:             "Case was successfully created."
+    no_active_patient:   "No active Patient."
+    update_success:      "Case successfully updated"
+    active:              "Closed Case active. You can not create new entries while viewing a closed case."
+    color-legend:
+      patient_case:             "Active case of current Patient"
+      view_case:                "If shown, current active case for View"
+
+  comment:
+    comments:                 "Comments"
+    string:                   "Comment"
+    listing:                  "Listing Comments"
+    edit:                     "Editing comment"
+    date:                     "Date"
+    submit:                   "Submit comment"
+    new_comment:              "Add new comment"
+    new:                      "New Comment"
+
+  database_backup:
+    import:
+      title:                "Recover Database"
+      label:                "Please choose a backup file from which the database should be recovered:"
+      submit:               "Submit"
+      success:              "Database successfully recovered."
+      failure:              "Database couldn't be recovered."
+      noFile:               "Please choose a backup-file first."
+    export:
+      title:                "Export Database"
+      label:                "Creating a backup of the database could take a while, depeding on the size of your database!"
+      submit:               "Create Backup"
+      success:              "Successfully backed up database"
+      failure:              "There was an error while trying to create a backup of your database."
+
+  domain:
+    listing:          "All Domains"
+    edit:             "Edit domain"
+    name:             "Domain name"
+    result_name:      "Result name"
+    is_role:          "Is Role"
+    is_userdomain:    "Is Domain"
+    new_domain:       "New domain"
+    new_button:       "Add new Domain"
+
+  medical_report:
+      cases:                "Cases"
+      case:                 "Case"
+      case_id:              "Case id"
+      master_data:          "Master Data"
+      entry_date:           "Entry Date"
+      leave_date:           "Leave Date"
+      anamnesis:            "Anamnesis"
+      findings:             "Findings"
+      treatments:           "Treatment"
+      diagnoses:            "Diagnoses"
+
+  medical_reports:
+    listing:                "Medical Reports"
+    report:                 "Medical report"
+    header:                 "Header"
+    title:                  "Title"
+    actions:                "Actions"
+
+  patient:
+    listing:          "Listing patients"
+    new_button:       "Create new patient"
+    new:              "New Patient"
+    edit:             "Editing Patient"
+    active:           "Active Patient"
+    search:           "search for first or family name"
+    search_fail:      "No patients found. Try changing your search parameters."
+    medicalreport:    "Medical report"
+
+  treatment:
+    listing:            "Listing treatment"
+    edit:               "Editing treatment"
+    action:             "Action"
+    new_button:         "Add new treatment"
+    new:                "New treatment"
+    description:        "Description"
+    starting_date:      "Starting Date"
+
+  task:
+    index:                    "Listing Tasks"
+    new_task:                 "New Task"
+    edit_task:                "Edit Task"
+    choose_domain:            "Target Patient and Domain"
+    choose_domain_select:     "Please select Target Domain"
+    nextstep:                 "Ok and Continue"
+    select:                   "choose"
+    selected_patient:         "Selected Patient"
+    other:                    "Select another Patient"
+    totask:                   "Back to Task-Creation"
+    no_active_patient:        "No active Patient present"
+    select_template:          "Select Template or Fields"
+    select_all:               "Select All"
+    select_none:              "Select None"
+    selected:                 "Selected"
+    name:                     "Field name"
+    additional_information:   "Additional Information"
+    step1:                    "Step 1 of 3:"
+    step2:                    "Step 2 of 3:"
+    step3:                    "Step 3 of 3:"
+    deadline:                 "Deadline"
+    creator_comment:          "Creator Comment"
+    executor_comment:         "Executor Comment"
+    state:                    "State"
+    task_for:                 "Task for"
+    domain:                   "Domain"
+    open:                     "Open"
+    closed:                   "Closed"
+    word:                     "Task"
+    fill_task:                "Please complete Task Information"
+    fields:                   "Fields"
+    comment:                  "Comment"
+    value:                    "Value"
