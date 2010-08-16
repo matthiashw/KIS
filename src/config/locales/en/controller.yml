@@ -66,6 +66,16 @@ en:
         update_field_entry:
           ok:                    "Catalog field successfully updated!"
           error:                 "No empty values allowed!"
+      javascript:
+        search:       "Search"
+        column:
+          code:       "Code"
+          name:       "Name"
+          description: "Description"
+        action:
+          select: "Select"
+          deselect: "Deselect"
+        entries:    "Selected catalog entries"
     file_management:        "File Management"
     import:                 "Recover"
     export:                 "Backup"

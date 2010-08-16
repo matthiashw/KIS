@@ -226,6 +226,18 @@ class CatalogsController < ApplicationController
     end
    end
 
+  def getnodes
+
+    if params.has_key?(:entry_ids)
+      entry_ids=params[:entry_ids].split(",")
+      entries=Entry.find :all, :conditions => { :id=>entry_ids }
+      render :json => { :success => true , :totalCount => entries.size ,:rows => entries }
+    else
+      render :json => { :success => true , :totalCount => 0, :rows => {} }
+    end
+
+  end
+
 
 end
 

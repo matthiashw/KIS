@@ -1,6 +1,7 @@
 en:
   name:                   "English"
-
+  yes_true:               "Yes"
+  no_false:               "No"
   activerecord:
       models:
         catalog_type:     "catalog type"
