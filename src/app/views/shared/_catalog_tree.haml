@@ -5,6 +5,14 @@
     -param_name='selected_node_result'
   
   :javascript
+    var catalog_name="#{catalog.catalog_select_name}";
+    var localize_search="#{t("admin.catalog.javascript.search")}";
+    var localize_column_code="#{t("admin.catalog.javascript.column.code")}"
+    var localize_column_name="#{t("admin.catalog.javascript.column.name")}"
+    var localize_column_description="#{t("admin.catalog.javascript.column.description")}"
+    var localize_action_select="#{t("admin.catalog.javascript.action.select")}"
+    var localize_action_deselect="#{t("admin.catalog.javascript.action.deselect")}"
+    var localize_entries="#{t("admin.catalog.javascript.entries")}"
     var form_id='#{form_html_id}';
     var node_result_id='#{param_name}';
     var nodeselection = [#{selected_nodes}];

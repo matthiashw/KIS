@@ -137,14 +137,20 @@ function checkSelection(tree,parent,node) {
 }
 
 
+function loadstore() 
+{
+    json_id_store.reload({params:{entry_ids:getIdList()}});
+   
+}
+
 function uncheckNodeFromTree(id) {
     nodeselection.remove(id);
-    json_id_store.reload({params:{entry_ids:getIdList()}});
+    loadstore();
 }
 
 function checkNodeFromTree(id) {
     nodeselection.push(id);
-    json_id_store.reload({params:{entry_ids:getIdList()}});
+    loadstore();
 }
 
 function checkNodeFromSearch(grid, records, action, groupId) {
@@ -163,7 +169,7 @@ function checkNodeFromSearch(grid, records, action, groupId) {
              node.ui.toggleCheck(true);
         } else {
            nodeselection.push("_"+records.id);
-           json_id_store.reload({params:{entry_ids:getIdList()}});
+           loadstore();
         }
     }
 }
@@ -174,7 +180,7 @@ function uncheckNodeFromSearch(grid, records, action, groupId) {
          node.ui.toggleCheck(false);
     } else {
         nodeselection.remove("_"+records.id);
-        json_id_store.reload({params:{entry_ids:getIdList()}});
+        loadstore(); 
     }
 }
 
@@ -210,7 +216,7 @@ Ext.onReady(function(){
     tree=new Ext.tree.TreePanel({
         autoScroll:true,
         
-        title: 'Catalog XYZ',
+        title: catalog_name,
          root: root,
           rootVisible:false,
            border: false,
@@ -285,7 +291,7 @@ Ext.onReady(function(){
              
 
             var rowAction = new Ext.ux.grid.RowActions( {
-                header:"Select/Deselect",
+               // header:"Select/Deselect",
                 keepSelection:true,
                 autoWidth:false,
                 width:200,
@@ -293,26 +299,26 @@ Ext.onReady(function(){
                 actions:[
                     {iconCls:'icon-check',
                       callback:checkNodeFromSearch,
-                      text: 'Check',
-                      tooltip: 'Check this item'},
+                      text: localize_action_select,
+                      tooltip: localize_action_select},
                     {iconCls:'icon-uncheck',
                       callback:uncheckNodeFromSearch,
-                      text: 'Uncheck',
-                      tooltip: 'Uncheck this item'}
+                      text: localize_action_deselect,
+                      tooltip: localize_action_deselect}
                 ]
             });
 
            var config = {
-            title: 'Search Catalog XYZ',
+            title: localize_search,
             store: json_search_store,
             tbar:[],
             autoExpandColumn: 'auto_expander',
             colModel: new Ext.grid.ColumnModel({
                 columns:[
 
-                    new Ext.grid.Column({header:"Code", dataIndex: "code", width: 200,autoWidth:false}),
-                    new Ext.grid.Column({header:"Name", dataIndex: "name", width: 200,autoWidth:false}),
-                    new Ext.grid.Column({header:"Description", dataIndex: "description" , id: 'auto_expander' , width:200 , autoWidth:false}),
+                    new Ext.grid.Column({header:localize_column_code, dataIndex: "code", width: 200,autoWidth:false}),
+                    new Ext.grid.Column({header:localize_column_name, dataIndex: "name", width: 200,autoWidth:false}),
+                    new Ext.grid.Column({header:localize_column_description, dataIndex: "description" , id: 'auto_expander' , width:200 , autoWidth:false}),
                     rowAction
                  ]
             }),
@@ -321,7 +327,7 @@ Ext.onReady(function(){
 				disableIndexes:['description','code','name']
 				,autoFocus:false
                                 ,position:"top"
-                                ,searchText: "Testtext"
+                                ,searchText: localize_search
                                 ,width: 200
                                 ,align:'left'
 			})]
@@ -350,7 +356,7 @@ Ext.onReady(function(){
          // border:false,
           activeTab: 0,
            //flex:3,
-           height:500,
+           height:550,
            items: [tree,new searchpanel]
 
     });
@@ -361,7 +367,7 @@ Ext.onReady(function(){
 
 
              var rowAction_uncheck = new Ext.ux.grid.RowActions( {
-                        header:"Deselect",
+                        //header:"Deselect",
                         keepSelection:true,
                         autoWidth:false,
                         width:200,
@@ -369,13 +375,13 @@ Ext.onReady(function(){
                         actions:[
                             {iconCls:'icon-uncheck',
                               callback:uncheckNodeFromSearch,
-                              text: 'Uncheck',
-                              tooltip: 'Uncheck this item'}
+                              text: localize_action_deselect,
+                              tooltip: localize_action_deselect}
                         ]
                     });
 
             var config={
-               title: 'Selected',
+               title: localize_entries,
                border: false,
                autoScroll: true,
                height:200,
@@ -384,9 +390,9 @@ Ext.onReady(function(){
                colModel: new Ext.grid.ColumnModel({
                     columns:[
 
-                        new Ext.grid.Column({header:"Code", dataIndex: "code", width: 200,autoWidth:false}),
-                        new Ext.grid.Column({header:"Name", dataIndex: "name", width: 200,autoWidth:false}),
-                        new Ext.grid.Column({header:"Description", dataIndex: "description", width: 200,autoWidth:false, id: 'auto_expander' }),
+                        new Ext.grid.Column({header:localize_column_code, dataIndex: "code", width: 200,autoWidth:false}),
+                        new Ext.grid.Column({header:localize_column_name, dataIndex: "name", width: 200,autoWidth:false}),
+                        new Ext.grid.Column({header:localize_column_description, dataIndex: "description" , id: 'auto_expander' , width:200 , autoWidth:false}),
                         rowAction_uncheck
                      ]
                 }),
@@ -404,7 +410,7 @@ Ext.onReady(function(){
             align : 'stretch',
             pack  : 'start',
           },
-          height:700,
+          height:750,
           items:[new selectionpanel,tabpanel]
     });
     json_id_store.load({params:{entry_ids:getIdList()}});
