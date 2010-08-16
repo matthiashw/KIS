@@ -9,6 +9,8 @@
                     %li{:class => "main-subnavigation-leaf"}
                         =link_to t('navi.main.search_patient'), patients_path, :class => is_active?('patients', 'index')
                     %li{:class => "main-subnavigation-leaf"}
+                        =link_to t('navi.main.admission_patient'), admission_path, :class => is_active?('patients', 'admission')
+                    %li{:class => "main-subnavigation-leaf"}
                         =link_to t('patient.new'), new_patient_path, :class => is_active?('patients', 'new')
     %li{:class => "main-navigation-leaf"}
         - if authorize?('view_task') || authorize?('view_domain_task')

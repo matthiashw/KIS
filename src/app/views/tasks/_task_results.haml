@@ -6,6 +6,7 @@
         %tr
             %th=t('task.state')
             %th=t('task.domain')
+            %th=t('task.creator')
             %th=t('task.deadline')
             %th=t('task.creator_comment')
             %th=t('task.executor_comment')
@@ -13,6 +14,7 @@
             %th=t('task.fill')
         - taskresults.each do |task|
             - domain = Domain.find_by_id(task.domain_id)
+            - creator = User.find_by_id(task.creator_user_id)
             - if current_active_patient
                 %tr{:onclick=>"location.href='#{patient_task_path(:patient_id => current_active_patient.id ,:id => task.id)}';",:style=>"cursor:pointer;"}
                     %td
@@ -28,6 +30,7 @@
 
 
                     %td= h domain.name
+                    %td= h creator.username
                     %td= h show_date(task.deadline)
                     %td= h truncate(task.creator_comment, :omission => "...", :length => 50)
                     %td= h truncate(task.executor_comment, :omission => "...", :length => 50)
@@ -51,6 +54,7 @@
                             %span.task-closed
                                 = h t('task.closed')
                     %td= h domain.name
+                    %td= h creator.username
                     %td= h show_date(task.deadline)
                     %td= h truncate(task.creator_comment, :omission => "...", :length => 50)
                     %td= h truncate(task.executor_comment, :omission => "...", :length => 50)
