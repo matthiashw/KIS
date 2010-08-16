@@ -1,0 +1,20 @@
+- if showmytasks == 1
+    - action = "mytaskssearch"
+- else
+    - action = "search"
+
+.filter.select-task-domain
+    - select_task_domains = { t('task.filter.all') => "0"}
+    - domains = Domain.all :conditions => { :is_userdomain => 1 }
+    - domains.each do |d|
+        - h = { d.name => d.id}
+        - select_task_domains.merge!(h)
+
+    %span.filter-label.select-task-domain-label
+        = t('task.filter.select_domain')
+    %span.filter-filter.select-task-domain-filter
+        = select_tag 'task_domain', options_for_select(select_task_domains, session[:selected_task_domain])
+        = observe_field 'task_domain',  :frequency => 0.5,           |
+            :update => "tasks",                                     |
+            :url => {:controller => "tasks", :action => action},  |
+            :with => "task_domain"
