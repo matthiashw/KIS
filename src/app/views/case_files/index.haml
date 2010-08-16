@@ -6,16 +6,16 @@
     - if @case_files
         - @case_files.each do |case_file|
             %tr{:onclick=>"location.href='#{url_for :controller => 'case_files', :action => 'show', :id => case_file.id}';",:style=>"cursor:pointer;", :class => css_for_active_case_file(case_file.id)}
-                %td= h case_file.entry_date
-                %td= h case_file.leave_date
+                %td= h show_date(case_file.entry_date)
+                %td= h show_date(case_file.leave_date)
 
 .color-legend
     %span.color.activeblue
     %span.color-description
-        = t('case_file.color-legend.patient_case')
+        = t('color-legend.case_file.patient_case')
     %span.color.yellow
     %span.color-description
-        = t('case_file.color-legend.view_case')
+        = t('color-legend.case_file.view_case')
 
 .action-links
     = link_to t('case_file.new'), new_patient_case_file_path(:patient_id => current_active_patient.id), :class => 'acts_as_button', :confirm => t('case_file.new_confirm')
