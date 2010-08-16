@@ -49,6 +49,22 @@ module LayoutHelper
       activeclass = "active" if params[:controller] == controller_name
     end
 
+    if controller_name == "patienttasks"
+      if action_name != ""
+        activeclass = "active" if params[:action] == action_name && params[:controller] == "tasks" && params[:patient_id]
+      else
+        activeclass = "active" if params[:controller] == "tasks" && params[:patient_id]
+      end
+    end
+
+    if controller_name == "usertasks"
+      if action_name != ""
+        activeclass = "active" if params[:action] == action_name && params[:controller] == "tasks" && params[:user_id]
+      else
+        activeclass = "active" if params[:controller] == "tasks" && params[:user_id]
+      end
+    end
+
     if activeclass == ""
       activeclass = "inactive"
     end
@@ -63,6 +79,14 @@ module LayoutHelper
 
     args.each do |a|
       activeclass = "active" if params[:controller] == a
+
+      if is_patienttask(a) != ""
+        activeclass = is_patienttask(a)
+      end
+      if is_usertask(a) != ""
+        activeclass = is_usertask(a)
+      end
+
     end
     
     if activeclass == ""
@@ -77,7 +101,52 @@ module LayoutHelper
   def is_controller_active?(*args)
     args.each do |a|
       return true if params[:controller] == a
+
+      return true if is_usertask_active?(a)
+      return true if is_patienttask_active?(a)
     end
+    return false
+  end
+
+  def is_patienttask(task)
+    cssclass = ""
+    if task == "patienttasks"
+      if params[:controller] == "tasks" && params[:patient_id]
+        cssclass = "active"
+      end
+    end
+
+    cssclass
+  end
+
+  def is_usertask(task)
+    cssclass = ""
+    if task == "usertasks"
+      if params[:controller] == "tasks" && params[:user_id]
+        cssclass = "active"
+      end
+    end
+
+    cssclass
+  end
+
+  def is_patienttask_active?(task)
+    if task == "patienttasks"
+      if params[:controller] == "tasks" && params[:patient_id]
+        return true
+      end
+    end
+
+    return false
+  end
+
+  def is_usertask_active?(task)
+    if task == "usertasks"
+      if params[:controller] == "tasks" && params[:user_id]
+        return true
+      end
+    end
+
     return false
   end
 
