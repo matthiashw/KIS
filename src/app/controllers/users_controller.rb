@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   skip_before_filter :login_required, :only => [:new, :create]
 
   def setup
+    @domains = Domain.all :conditions => { :is_role => 1 }
+    
     if !params.has_key?(:user)
       @user = User.new
     else
@@ -54,8 +56,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-
-    render :layout => 'login' unless current_user
   end
   
   def create
@@ -66,21 +66,16 @@ class UsersController < ApplicationController
       flash[:notice] = t('messages.users.registration_success')
       render :action => 'show'
     else
-      if !current_user
-        render :layout => 'login', :action => 'new' unless current_user
-      else
-        render :action => 'new'
-      end
+      render :action => 'new'
     end
   end
   
   def edit
     @user = User.find(params[:id])
-    render :layout => 'login' unless current_user
+    @domains = Domain.all :conditions => { :is_role => 1 }
   end
   
   def update
-    render :layout => 'login' unless current_user
     @user = User.find(params[:id])
     @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
     if @user.update_attributes(params[:user])

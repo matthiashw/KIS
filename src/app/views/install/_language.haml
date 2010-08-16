@@ -1,0 +1,9 @@
+%h2= t("install.select_language")
+
+- form_tag '/install' do
+    .language-select
+        .select
+            = select_tag "language", options_for_select(I18n.available_locales.to_a.map{ |locale| [t('name', :locale => locale), locale] })
+        .submit
+            = submit_tag t('install.save_continue'), :name => "lang"
+

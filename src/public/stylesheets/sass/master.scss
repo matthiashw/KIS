@@ -84,6 +84,11 @@ h2, h3, h4, h5, h6 {
   padding-top:12px;*/
   margin-bottom: 18px; }
 
+.floatingheadline {
+    float:left;
+    width:100%;
+}
+
 /*LISTS
 -------------------------------------------------------- */
 
@@ -261,10 +266,15 @@ abbr {
         width:240px;
     }
 
-    &.page-users {
+    &.page-users,
+    &.page-install{
         #container {
             width:800px;
             max-width:800px;
+        }
+
+        h1 {
+            width:100%;
         }
     }
 }
@@ -330,6 +340,10 @@ abbr {
 
 .right .inner, .callout.right {
   margin: 0 0 18px 18px; }
+
+.text-center {
+    text-align:center;
+}
 
 /*ERRORS WARNINGS OK
 ------------------------------------------------------*/
@@ -397,6 +411,12 @@ div {
     ul {
         margin-left:18px;
     }
+}
+
+form .messages,
+form .errorExplanation {
+    float:left;
+    width:100%;
 }
 
 /*FORMS and BUTTONS
@@ -648,9 +668,23 @@ fieldset.fieldset {
         color:$lightgray;
     }
 
-    
+   
 }
 
+/**
+ * Icons for catalog search
+ */
+
+ .icon-check {
+	background-image:url(images/check.png) ! important;
+    }
+
+ .icon-uncheck {
+	background-image:url(images/uncheck.png) ! important;
+    }
+/** 
+ * legends
+ */
 
 .color-legend {
     .color {
@@ -688,5 +722,25 @@ fieldset.fieldset {
 }
 
 
+/**
+ * filter
+ */
 
+.filters {
+    text-align:right;
+    margin:9px 0;
+
+    .filter {
+        margin:0 9px;
+
+        .filter-label {
+            font-size:12px;
+            color:$mediumgray;
+            margin:9px 0;
+        }
+
+        .filter-filter {
+        }
+    }
+}
 

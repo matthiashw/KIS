@@ -17,6 +17,19 @@ class PatientsController < ApplicationController
     end
   end
 
+  def admission
+    return false unless authorize(permissions = ["view_patient"])
+
+    session[:origin] = params[:origin] if params.has_key?(:origin)
+
+    @patients = Patient.paginate :page => params[:page], :order => 'family_name ASC', :per_page => RESULTSPERPAGE
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @patients }
+    end
+  end
+
   # GET /patients/1
   # GET /patients/1.xml
   def show

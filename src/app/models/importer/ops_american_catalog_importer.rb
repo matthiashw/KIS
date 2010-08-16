@@ -30,7 +30,7 @@ class Importer::OpsAmericanCatalogImporter
          name = value1[2..value1.length]+", "+value2[2..value2.length]+", "+value3[2..value3.length]+", "+value4[2..value4.length]+", "+value5[2..value5.length]
          description = type1[2..type1.length]+", "+type2[2..type2.length]
         # Create Entry
-         entry = OpsEntry.new(:code => code,:name => name, :description => description )
+         entry = OpsEntry.new(:code => code,:name => name, :description => description, :catalog =>catalog )
          entry.node=root_node
          
          partial_code=""

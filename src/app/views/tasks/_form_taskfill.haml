@@ -1,0 +1,64 @@
+.fields
+    .box
+        .box-inner
+            .field
+                .field-label
+                    = t('task.domain')
+                .field-content
+                    = h Domain.find(@task.domain_id).name
+            .field
+                .field-label
+                    = t('task.deadline')
+                .field-content
+                    = h show_date(@task.deadline)
+
+%h2.floatingheadline=t('task.fields')
+
+- semantic_form_for @task, :url => { :action => "createentries" , :id => @task.id } do |f|
+    = f.error_messages
+
+    #templates
+        - unless @fieldshash.nil?
+            - @fieldshash.each do |k,v|
+                .template-toggle
+                    .template-toggle-inner
+                        = MedicalTemplate.find(k).name
+                .template-content{:id=>"t#{k}"}
+                    %table
+                        %thead
+                            %tr
+                                %th=t('task.name')
+                                %th=t('task.creatorcomment')
+                                %th=t('task.value')
+                                %th=t('task.unit')
+                                %th=t('task.comment')
+                        %tbody
+                            -v.each do |x,y|
+                                %tr.template-field
+                                    - fielddef = FieldDefinition.find(y.field_definition_id)
+                                    %td= Entry.find(fielddef.field_entry_id).name
+                                    %td= y.comment
+                                    - fields_for y do |fi|
+                                        -if @task.state == Task.state_inprogress
+                                            - measuredvalue = MeasuredValue.find_by_field_id(x)
+                                            %td= text_field 'values',x, :value => measuredvalue.value, :size => '20', :maxlength => '20'
+                                            -if y.ucum_entry_id.nil?
+                                                %td= '-'
+                                            -else
+                                                -ucum = Entry.find(y.ucum_entry_id)
+                                                %td= ucum.description
+                                            %td= text_field 'comments',x, :value => measuredvalue.comment, :size => '20', :maxlength => '30'
+                                        -else
+                                            %td= text_field 'values',x, :size => '20', :maxlength => '20'
+                                            -if y.ucum_entry_id.nil?
+                                                %td= '-'
+                                            -else
+                                                -ucum = Entry.find(y.ucum_entry_id)
+                                                %td= ucum.description
+                                            %td= text_field 'comments',x, :size => '20', :maxlength => '30'
+    %h2
+        =t('task.additional_information')
+    - f.inputs do
+        = f.input :executor_comment
+    = submit_tag t('task.save'), :name=>'save'
+    = submit_tag t('task.save_and_close'), :name=> 'saveandclose'

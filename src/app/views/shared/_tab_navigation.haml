@@ -11,7 +11,7 @@
 
         - if authorize?('view_casefile')
             %li{:class => "secondary-navigation-leaf"}
-                =link_to t("navi.tabs.case_Overview"), case_files_path, :class => is_active?('case_files')
+                =link_to t("navi.tabs.case_Overview"), patient_case_files_path(:patient_id => current_active_patient.id), :class => is_active?('case_files')
 
         - if authorize?('access_finding')
             %li{:class => "secondary-navigation-leaf"}

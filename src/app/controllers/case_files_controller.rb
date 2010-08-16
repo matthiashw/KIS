@@ -70,7 +70,7 @@ class CaseFilesController < ApplicationController
             
 
             flash[:notice] = t("case_file.success")
-            format.html { redirect_to(@case_file) }
+            format.html { redirect_to patient_case_file_path(:patient_id => params[:patient_id], :id => @case_file.id) }
             format.xml  { render :xml => @case_file, :status => :created, :location => @case_file }
           else
             format.html { render :action => "new" }
@@ -113,7 +113,7 @@ class CaseFilesController < ApplicationController
     @case_file.destroy
 
     respond_to do |format|
-      format.html { redirect_to(case_files_url) }
+      format.html { redirect_to(patient_case_files_url) }
       format.xml  { head :ok }
     end
   end
@@ -128,7 +128,7 @@ class CaseFilesController < ApplicationController
     flash[:notice] = t("case_file.activated")
 
     respond_to do |format|
-        format.html { redirect_to(case_files_url)  }
+        format.html { redirect_to(patient_case_files_url)  }
         format.xml  { head :ok }
       end
   end

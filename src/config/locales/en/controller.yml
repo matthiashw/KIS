@@ -101,9 +101,6 @@ en:
     no_active_patient:   "No active Patient."
     update_success:      "Case successfully updated"
     active:              "Closed Case active. You can not create new entries while viewing a closed case."
-    color-legend:
-      patient_case:             "Active case of current Patient"
-      view_case:                "If shown, current active case for View"
 
   comment:
     comments:                 "Comments"
@@ -161,6 +158,7 @@ en:
 
   patient:
     listing:          "Listing patients"
+    admission:        "Admission of patient"
     new_button:       "Create new patient"
     new:              "New Patient"
     edit:             "Editing Patient"
@@ -168,6 +166,8 @@ en:
     search:           "search for first or family name"
     search_fail:      "No patients found. Try changing your search parameters."
     medicalreport:    "Medical report"
+    case_file_link:   "Create new case"
+    new_case:         "New case"
 
   treatment:
     listing:            "Listing treatment"
@@ -212,3 +212,14 @@ en:
     fields:                   "Fields"
     comment:                  "Comment"
     value:                    "Value"
+    results:                   "Task Results"
+    unit:                     "Unit"
+    creatorcomment:           "Creator Comment"
+    showresults:              "Show result"
+    results:                  "Result"
+    fill:                     "Fill Task"
+    select_state:             "View Task State"
+    search_fail:              "No Task found"
+    save:                     "Save Task"
+    save_and_close:           "Save and Close Task"
+    in_progress:              "In Progress"
