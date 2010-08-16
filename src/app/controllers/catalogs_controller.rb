@@ -75,7 +75,7 @@ class CatalogsController < ApplicationController
      
     respond_to do |format|
       if @catalog.errors.empty?
-        flash[:notice] = t('admin.catalog.flash.created')
+        flash.now[:notice] = t('admin.catalog.flash.created')
         if(!@catalog.catalog_type.active_catalog)
             @catalog.catalog_type.active_catalog_id = @catalog.id
             @catalog.catalog_type.save
@@ -98,7 +98,7 @@ class CatalogsController < ApplicationController
 
     respond_to do |format|
       if @catalog.update_attributes(params[:catalog])
-        flash[:notice] = t('admin.catalog.flash.updated')
+        flash.now[:notice] = t('admin.catalog.flash.updated')
         format.html { redirect_to(@catalog) }
         format.xml  { head :ok }
       else
@@ -129,7 +129,7 @@ class CatalogsController < ApplicationController
     @catalog.catalog_type.active_catalog_id = @catalog.id
     @catalog.catalog_type.save
     respond_to do |format|
-      flash[:notice] = t('admin.catalog.flash.activated')
+      flash.now[:notice] = t('admin.catalog.flash.activated')
       format.html { redirect_to(catalogs_url) }
       format.xml  { head :ok }
     end
@@ -147,7 +147,7 @@ class CatalogsController < ApplicationController
      respond_to do |format|
        if params.has_key?("delete_field_entry")
           @edit_field_entry.destroy
-          flash[:notice] = t('admin.catalog.user_defined.destroy_field_entry.ok')
+          flash.now[:notice] = t('admin.catalog.user_defined.destroy_field_entry.ok')
            format.html { redirect_to(@catalog) }
         else
            format.html { render :action => "edit_field_entry" }
@@ -172,12 +172,12 @@ class CatalogsController < ApplicationController
       end
      respond_to do |format|
       if  @edit_field_entry.save 
-        flash[:notice] = t('admin.catalog.user_defined.update_field_entry.ok')
+        flash.now[:notice] = t('admin.catalog.user_defined.update_field_entry.ok')
         format.html { redirect_to(@catalog) }
         format.xml  { head :ok }
 
       else
-        flash[:error] = t('admin.catalog.user_defined.update_field_entry.error')
+        flash.now[:error] = t('admin.catalog.user_defined.update_field_entry.error')
          format.html { render :action => "add_field_entry" }
          format.xml  { head :error  }
       end
@@ -195,12 +195,12 @@ class CatalogsController < ApplicationController
     respond_to do |format|
     if fieldentry.save
       FieldDefinition.create(:input_type => input_type, :field_entry_id => fieldentry.id, :additional_type_info => additional_type_info )
-      flash[:notice] = t('admin.catalog.user_defined.create_field_entry.ok')
+      flash.now[:notice] = t('admin.catalog.user_defined.create_field_entry.ok')
       format.html { redirect_to(@catalog) }
       format.xml  { head :ok }
       
     else
-      flash[:error] = t('admin.catalog.user_defined.create_field_entry.error')
+      flash.now[:error] = t('admin.catalog.user_defined.create_field_entry.error')
        format.html { render :action => "add_field_entry" }
        format.xml  { head :error  }
     end

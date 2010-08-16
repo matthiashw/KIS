@@ -58,7 +58,7 @@ class TasksController < ApplicationController
       if session.has_key?(:active_patient_id)
 
         if params[:domain][:id] == ""
-          flash[:error] = 'Please select a valid Domain'
+          flash.now[:error] = 'Please select a valid Domain'
           format.html { redirect_to :action => "new" }
           format.xml  { render :xml => @domain }
         else
@@ -69,7 +69,7 @@ class TasksController < ApplicationController
           format.xml  { render :xml => @task }
         end
       else
-         flash[:error] = 'No active Patient'
+         flash.now[:error] = 'No active Patient'
          format.html { redirect_to :action => "new" }
          format.xml  { render :xml => @task }
       end
@@ -152,11 +152,11 @@ class TasksController < ApplicationController
           end
         end
 
-        flash[:notice] = 'Task was successfully created.'
+        flash.now[:notice] = 'Task was successfully created.'
         format.html { redirect_to(@task) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
-        flash[:error] = 'Task could not be created.'
+        flash.now[:error] = 'Task could not be created.'
         format.html { render :action => "new" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
       end
@@ -171,7 +171,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        flash[:notice] = 'Task was successfully updated.'
+        flash.now[:notice] = 'Task was successfully updated.'
         format.html { redirect_to(@task) }
         format.xml  { head :ok }
       else
@@ -200,7 +200,7 @@ class TasksController < ApplicationController
 
 
     end
-    flash[:notice] = 'Task was successfully destroyed.'
+    flash.now[:notice] = 'Task was successfully destroyed.'
     respond_to do |format|
       format.html { redirect_to(tasks_url) }
       format.xml  { head :ok }
@@ -215,7 +215,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.state == Task.state_closed
 
-       flash[:error] = 'Task is closed'
+       flash.now[:error] = 'Task is closed'
        format.html { redirect_to :action => "results" }
        format.xml  { render :xml => @task }
 
@@ -274,7 +274,7 @@ class TasksController < ApplicationController
             @task.update_attribute(:state, Task.state_closed)
           end
 
-          flash[:notice] = 'Task successfully completed.'
+          flash.now[:notice] = 'Task successfully completed.'
                 format.html { redirect_to(@task) }
                 format.xml  { head :ok }
 

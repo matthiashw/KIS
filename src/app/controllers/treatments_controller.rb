@@ -53,7 +53,7 @@ class TreatmentsController < ApplicationController
 
     respond_to do |format|
       if @treatment.save
-        flash[:notice] = 'Treatment was successfully created.'
+        flash.now[:notice] = 'Treatment was successfully created.'
         format.html { redirect_to patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => @treatment.case_file_id, :id => @treatment) }
         format.xml  { render :xml => @treatment, :status => :created, :location => @treatment }
       else
@@ -71,7 +71,7 @@ class TreatmentsController < ApplicationController
 
     respond_to do |format|
       if @treatment.update_attributes(params[:treatment])
-        flash[:notice] = 'Treatment was successfully updated.'
+        flash.now[:notice] = 'Treatment was successfully updated.'
         format.html { redirect_to patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => @treatment.case_file_id, :id => @treatment) }
         format.xml  { head :ok }
       else

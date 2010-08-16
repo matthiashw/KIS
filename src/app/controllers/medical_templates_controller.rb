@@ -15,7 +15,7 @@ class MedicalTemplatesController < ApplicationController
     end
      respond_to do |format|
       if @field_definition.update_attributes(params[:field_definition])
-        flash[:notice] = 'FieldDefinition was successfully updated.'
+        flash.now[:notice] = 'FieldDefinition was successfully updated.'
         format.html { redirect_to(@medical_template) }
       else
         format.html { render :action => "edit_field_definition" }
@@ -49,7 +49,7 @@ class MedicalTemplatesController < ApplicationController
             end
        }
        @medical_template.save
-       flash[:notice] = 'Fields successfully added.'
+       flash.now[:notice] = 'Fields successfully added.'
     end
     respond_to do |format|
        
@@ -92,7 +92,7 @@ def create
 
     respond_to do |format|
       if @medical_template.save
-        flash[:notice] = 'Template was successfully created.'
+        flash.now[:notice] = 'Template was successfully created.'
         format.html { redirect_to(@medical_template) }
         format.xml  { render :xml => @medical_template, :status => :created, :location => @medical_template }
       else
@@ -108,7 +108,7 @@ def create
 
     respond_to do |format|
       if @medical_template.update_attributes(params[:medical_template])
-        flash[:notice] = 'Template was successfully updated.'
+        flash.now[:notice] = 'Template was successfully updated.'
         format.html { redirect_to(@medical_template) }
         format.xml  { head :ok }
       else

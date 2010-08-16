@@ -50,7 +50,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        flash[:notice] = t('messages.comments.create')
+        flash.now[:notice] = t('messages.comments.create')
         format.html { redirect_to patient_comment_path(:patient_id => params[:patient_id], :id => @comment) }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
@@ -68,7 +68,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        flash[:notice] = t('messages.comments.update')
+        flash.now[:notice] = t('messages.comments.update')
         format.html { redirect_to patient_comment_path(:patient_id => params[:patient_id], :id => @comment) }
         format.xml  { head :ok }
       else

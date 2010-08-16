@@ -44,7 +44,7 @@ class DiagnosesController < ApplicationController
 
     respond_to do |format|
       if @diagnosis.save
-        flash[:notice] = 'Diagnosis was successfully created.'
+        flash.now[:notice] = 'Diagnosis was successfully created.'
         format.html { redirect_to(@diagnosis) }
         format.xml  { render :xml => @diagnosis, :status => :created, :location => @diagnosis }
       else
@@ -61,7 +61,7 @@ class DiagnosesController < ApplicationController
 
     respond_to do |format|
       if @diagnosis.update_attributes(params[:diagnosis])
-        flash[:notice] = 'Diagnosis was successfully updated.'
+        flash.now[:notice] = 'Diagnosis was successfully updated.'
         format.html { redirect_to(@diagnosis) }
         format.xml  { head :ok }
       else

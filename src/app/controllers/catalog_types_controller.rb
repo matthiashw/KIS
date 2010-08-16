@@ -45,7 +45,7 @@ class CatalogTypesController < ApplicationController
 
     respond_to do |format|
       if @catalog_type.save
-        flash[:notice] = t('admin.catalog_type.flash.created')
+        flash.now[:notice] = t('admin.catalog_type.flash.created')
         format.html { redirect_to(@catalog_type) }
         format.xml  { render :xml => @catalog_type, :status => :created, :location => @catalog_type }
       else
@@ -62,7 +62,7 @@ class CatalogTypesController < ApplicationController
 
     respond_to do |format|
       if @catalog_type.update_attributes(params[:catalog_type])
-        flash[:notice] = t('admin.catalog_type.flash.updated')
+        flash.now[:notice] = t('admin.catalog_type.flash.updated')
         format.html { redirect_to(@catalog_type) }
         format.xml  { head :ok }
       else

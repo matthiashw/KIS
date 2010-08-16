@@ -101,7 +101,7 @@ class MedicalReportsController < ApplicationController
 
     respond_to do |format|
       if @medical_report.save
-        flash[:notice] = 'MedicalReport was successfully created.'
+        flash.now[:notice] = 'MedicalReport was successfully created.'
         format.html { redirect_to(@medical_report) }
         format.xml  { render :xml => @medical_report, :status => :created, :location => @medical_report }
       else
@@ -118,7 +118,7 @@ class MedicalReportsController < ApplicationController
 
     respond_to do |format|
       if @medical_report.update_attributes(params[:medical_report])
-        flash[:notice] = 'MedicalReport was successfully updated.'
+        flash.now[:notice] = 'MedicalReport was successfully updated.'
         format.html { redirect_to(@medical_report) }
         format.xml  { head :ok }
       else

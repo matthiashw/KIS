@@ -4,14 +4,14 @@ class AdminController < ApplicationController
   def index
     return false unless authorize(permissions = ["access_administration"])
     if check_for_errors?(@errors)
-      flash[:warning] = t('admin.status.warning')
+      flash.now[:warning] = t('admin.status.warning')
     end
   end
 
   def status
     return false unless authorize(permissions = ["view_status_report"])
     if !check_for_errors?(@errors)
-      flash[:message] = t('admin.status.ok')
+      flash.now[:message] = t('admin.status.ok')
     end
     @user = User.new
   end

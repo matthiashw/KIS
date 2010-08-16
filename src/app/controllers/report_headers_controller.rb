@@ -58,7 +58,7 @@ class ReportHeadersController < ApplicationController
 
     respond_to do |format|
       if @report_header.save
-        flash[:notice] = 'ReportHeader was successfully created.'
+        flash.now[:notice] = 'ReportHeader was successfully created.'
         format.html { redirect_to(@report_header) }
         format.xml  { render :xml => @report_header, :status => :created, :location => @report_header }
       else
@@ -75,7 +75,7 @@ class ReportHeadersController < ApplicationController
 
     respond_to do |format|
       if @report_header.update_attributes(params[:report_header])
-        flash[:notice] = 'ReportHeader was successfully updated.'
+        flash.now[:notice] = 'ReportHeader was successfully updated.'
         format.html { redirect_to(@report_header) }
         format.xml  { head :ok }
       else
