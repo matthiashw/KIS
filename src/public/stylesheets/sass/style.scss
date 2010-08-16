@@ -1153,3 +1153,63 @@ ul.x-tree-root-ct {
         padding:0;
     }
 }
+
+#catalog_tree_select {
+    width:90%;
+
+    table {
+        -moz-box-shadow:none;
+        background-color:transparent;
+        border:none;
+        font-size:12px;
+        line-height:14px;
+        margin:0;
+        width:100%;
+        float:none;
+
+        td, th {
+            border:none;
+            padding:0;
+            vertical-align:middle;
+        }
+
+        th {
+            background-color:transparent;
+            color:$darkgray;
+            font-weight:normal;
+            text-align:left;
+            text-shadow:none;
+        }
+
+        thead th {
+            border-bottom:none;
+            border-top:none;
+            text-align:center;
+        }
+
+        thead {
+            th {
+                border-color:transparent;
+            }
+        }
+
+        tr:hover {
+            td {
+                background-color:transparent;
+            }
+        }
+    }
+
+    ul {
+        list-style:none;
+        margin:0;
+    }
+}
+
+ul.x-menu-list {
+    list-style:none;
+    margin:0;
+}
+
+
+
