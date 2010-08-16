@@ -1,0 +1,20 @@
+- if showmytasks == 1
+    - action = "mytaskssearch"
+- else
+    - action = "search"
+
+.filter.select-task-case
+    %span.filter-label.select-task-case-label
+        = t('task.filter.select_case')
+    %span.filter-filter.select-task-case-filter
+        - if session[:selected_task_case] && session[:selected_task_case] == 1
+            - checked = true
+        - elsif session[:selected_task_case] && session[:selected_task_case] == "null"
+            - checked = false
+        - else
+            - checked = true
+        = check_box_tag 'task_case', "1", checked
+        = observe_field 'task_case',  :frequency => 0.5,           |
+            :update => "tasks",                                     |
+            :url => {:controller => "tasks", :action => action},  |
+            :with => "task_case"

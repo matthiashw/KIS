@@ -17,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   map.taskresults "/tasks/results/:id", :controller => "tasks", :action => "results"
   map.taskfill "/tasks/taskfill/:id", :controller => "tasks", :action => "taskfill"
   map.connect "/tasks/createentries", :controller => "tasks", :action => "createentries"
+  map.mytasks "users/:user_id/mytasks", :controller => "tasks", :action => "mytasks"
 
   ###########
   # Patient #
@@ -55,6 +56,10 @@ ActionController::Routing::Routes.draw do |map|
     patient.resources :comments
     patient.resources :medical_reports
     patient.resources :tasks
+  end
+
+  map.resources :users do |user|
+    user.resources :tasks
   end
 
   map.resources :permissions, :collection => { :update_all_permissions => :put }

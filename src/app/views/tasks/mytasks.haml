@@ -1,8 +1,9 @@
--title t('task.patient_task_index') + " " + current_active_patient.first_name + " " + current_active_patient.family_name
+-title t('task.mytasks')
 
-- showmytasks = 0
+- showmytasks = 1
 
 .filters.task-filter
+    = render :partial => 'tasks/filter/task_filter_case', :locals => { :showmytasks => showmytasks }
     = render :partial => 'tasks/filter/task_filter_domain', :locals => { :showmytasks => showmytasks }
     = render :partial => 'tasks/filter/task_filter_state', :locals => { :showmytasks => showmytasks }
 

@@ -56,10 +56,9 @@
                     =submit_tag t('comment.new_comment')
 
 .action-links
-    = link_to t('patient.medicalreport'), patient_medical_reports_path(@patient), :class => 'acts_as_button'
-    |
-    = link_to t('action.edit'), edit_patient_path(@patient), :class => 'acts_as_button'
     = link_to t('action.back'), patients_path, :class => 'acts_as_button darkgray'
+    = link_to t('patient.medicalreport'), patient_medical_reports_path(@patient), :class => 'acts_as_button darkyellow'
+    = link_to t('action.edit'), edit_patient_path(@patient), :class => 'acts_as_button'
     - if session.has_key?(:origin)
         - if session[:origin] == 'tasks'
             = link_to t('task.totask'), '/tasks/new', :class => 'acts_as_button darkyellow'
