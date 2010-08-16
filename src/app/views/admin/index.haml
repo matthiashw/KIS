@@ -21,5 +21,5 @@
 
 %dl.admin-list.file-management
     %dt=t('admin.file_management')
-    %dd=link_to image_tag("export.png", :alt => "Export") + t('admin.export'), {:controller => "database_backup", :action => "export"}
+    %dd=link_to image_tag("backup.png", :alt => "Export") + t('admin.export'), {:controller => "database_backup", :action => "export"}
     %dd.last=link_to image_tag("export.png", :alt => "Import") + t('admin.import'), {:controller => "database_backup", :action => "import"}
