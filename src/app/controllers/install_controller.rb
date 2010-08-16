@@ -102,10 +102,10 @@ class InstallController < ApplicationController
     admin = User.find_by_id(1)
 
     if admin.nil?
-      false
+      return false
     end
 
-    true
+    return true
   end
 
 end
