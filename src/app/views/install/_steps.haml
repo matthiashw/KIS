@@ -14,7 +14,7 @@
     - if step == 2
         %a{ :href => "/install?locale=#{get_locale}&step=2", :class => "active-step"}
             = t('install.steps.user')
-    - elsif step >= 2
+    - elsif step >= 2 || session[:lang_finished] == 1
         %a{ :href => "/install?locale=#{get_locale}&step=2"}
             = t('install.steps.user')
     - else
@@ -23,7 +23,7 @@
     - if step == 3
         %a{ :href => "/install?locale=#{get_locale}&step=3", :class => "active-step"}
             = t('install.steps.finish')
-    - elsif step >= 3
+    - elsif step >= 3 || session[:admin_finished] == 1
         %a{ :href => "/install?locale=#{get_locale}&step=3"}
             = t('install.steps.finish')
     - else

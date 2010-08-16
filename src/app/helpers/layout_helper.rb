@@ -152,12 +152,16 @@ module LayoutHelper
 
   # formats datetime
   def show_datetime(datetime)
-    datetime.strftime("%d. %B %Y - %H:%M")
+    if !date.nil?
+      datetime.strftime("%d. %B %Y - %H:%M")
+    end
   end
 
   # formats date
   def show_date(date)
-    date.strftime("%d. %B %Y")
+    if !date.nil?
+      date.strftime("%d. %B %Y")
+    end
   end
 
 end
