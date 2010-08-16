@@ -152,7 +152,7 @@ module LayoutHelper
 
   # formats datetime
   def show_datetime(datetime)
-    if !date.nil?
+    if !datetime.nil?
       datetime.strftime("%d. %B %Y - %H:%M")
     end
   end

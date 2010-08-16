@@ -442,8 +442,6 @@ class TasksController < ApplicationController
 
     end
 
-    logger.debug "hash: #{hash}\n"
-
     hash
   end
 

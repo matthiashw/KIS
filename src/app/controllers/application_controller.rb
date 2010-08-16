@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   
   helper :all # include all helpers, all the time
   helper_method :current_active_patient, :current_user, :current_user_session, 
-                :authorize?, :get_case_for_view
+                :authorize?, :get_case_for_view, :get_locale_hash
 
   protect_from_forgery
 
@@ -28,6 +28,16 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     #logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { :locale => I18n.locale }
+  end
+
+  def get_locale_hash
+    locations = I18n.available_locales.to_a.map{ |locale| [t('name', :locale => locale), locale] }
+    loc_hash = {}
+    locations.each do |l|
+      loc_hash.merge!({l[0] => l[1].to_s})
+    end
+
+    loc_hash
   end
 
   def models_to_check_for_errors

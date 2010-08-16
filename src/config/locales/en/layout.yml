@@ -123,6 +123,8 @@ en:
     family_name:            "Family name"
     role:                   "Role"
     email:                  "E-mail"
+    address:                "Address"
+    phone:                  "Phone"
     new_button:             "Create new user"
     new:                    "New User"
     edit:                   "Editing User"
