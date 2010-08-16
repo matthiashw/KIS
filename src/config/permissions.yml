@@ -6,6 +6,7 @@ Administration:
   set_permissions: Set Permissions for Roles
   administer_catalog: Administer the Catalogs
   view_status_report: View Status Report
+  backup_recover: Backup and Recover Database
 
 User:
   create_user: Create a User
@@ -54,6 +55,12 @@ Patient:
   edit_patient: Edit every Patients
   delete_patient: Delete every Patients
 
+Medical Report:
+  view_medical_report: View Medical Report
+
+Medical Templates:
+  view_medical_templates: View Medical Templates
+
 Comment:
   create_comment: Create a Comment
   view_comment: View all Comments
@@ -73,11 +80,11 @@ Diagnosis:
   delete_diagnosis: Delete every Diagnosis
 
 CaseFile:
-  setactive_casefile: activate CaseFile
   create_casefile: Create a CaseFile
   view_casefile: View all CaseFiles
   edit_casefile: Edit every CaseFile
   delete_casefile: Delete every CaseFile
+  setactive_casefile: Activate old CaseFile for View
 
 Anamnese:
   access_anamese: Access to Anamnese Data

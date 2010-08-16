@@ -55,6 +55,9 @@ en:
       delete_success:        "Patient successfully deleted"
     permissions:
       updated:                "Permissions updated."
+    user_session:
+      logged_in:              "Successfully logged in."
+      logged_out:             "Successfully logged out."
 
   color-legend:
     case_file:

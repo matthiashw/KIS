@@ -86,6 +86,7 @@ class ApplicationController < ActionController::Base
   # returns true or false, based on given user permissions
   # modified for task with multiple permissions with logical or
   def task_authorize?(*permissions)
+    return true if current_user_is_admin?
     permissions.each do |p|
       if current_user_permission?(p)
         return true

@@ -23,5 +23,8 @@
             = h (@domain.is_userdomain ? t('yes_true') : t('no_false'))
 
 .action-links
-    = link_to t('action.edit'), edit_domain_path(@domain), :class => 'acts_as_button'
-    = link_to t('action.back'), domains_path, :class => 'acts_as_button darkgray'
+    - if authorize?('view_domain')
+        = link_to t('action.back'), domains_path, :class => 'acts_as_button darkgray'
+    - if authorize?('edit_domain')
+        = link_to t('action.edit'), edit_domain_path(@domain), :class => 'acts_as_button'
+    

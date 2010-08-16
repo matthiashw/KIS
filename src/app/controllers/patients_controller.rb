@@ -37,7 +37,7 @@ class PatientsController < ApplicationController
 
     @patient = Patient.find(params[:id])
     #@comment = @patient.comments.build(params[:comment])
-    @comments = Comment.paginate :page => params[:page], :order => 'created_at DESC', :conditions => ['patient_id = ?', params[:id]]
+    @comments = Comment.paginate :page => params[:page], :order => 'created_at DESC', :conditions => { :patient_id => params[:id] }
     #@posts = Post.paginate :page => params[:page], :order => 'created_at DESC'
     session[:active_patient_id] = @patient.id
 
@@ -48,6 +48,7 @@ class PatientsController < ApplicationController
   end
 
   def comment
+    return false unless authorize(permissions = ["create_comment"])
     mycomment = params[:comment]
     if mycomment[:comment].blank?
       flash[:error] = t('messages.patients.comment_blank')
@@ -155,39 +156,38 @@ class PatientsController < ApplicationController
   def search
     session[:query] = params[:query].strip if params[:query]
 
-    
-      if session[:query]
-        if session[:query] == ""
-          @patients = Patient.paginate :page => params[:page], :order => 'family_name ASC', :per_page => RESULTSPERPAGE
-        else
-          patientname = session[:query]
+    if session[:query]
+      if session[:query] == ""
+        @patients = Patient.paginate :page => params[:page], :order => 'family_name ASC', :per_page => RESULTSPERPAGE
+      else
+        patientname = session[:query]
 #          patientname.each_line(' ') { |namepart|
 #            @patients = Patient.paginate :page => params[:page],:per_page => RESULTSPERPAGE,
 #            :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{namepart}%","%#{namepart}%"], :order => "family_name ASC"}
-          patient_namepart_arrays=Array.new
-          i=0
-          patientname.split(' ').each do |patternpart|
-              if patternpart !=""
-                patients_of_partname=Patient.all :select => 'id',:conditions => ["first_name LIKE ? or family_name LIKE ?" , "%#{patternpart}%","%#{patternpart}%"], :order => "family_name ASC"
+        patient_namepart_arrays = Array.new
+        i = 0
+        patientname.split(' ').each do |patternpart|
+          if patternpart != ""
+            patients_of_partname=Patient.all :select => 'id',:conditions => ["first_name LIKE ? or family_name LIKE ?" , "%#{patternpart}%","%#{patternpart}%"], :order => "family_name ASC"
 
-                patient_namepart_arrays[i]=Array.new
-                patients_of_partname.each do |patient|
-                  patient_namepart_arrays[i].push patient.id
-                end
-                i=i+1
-              end
-          end
-            if patient_namepart_arrays.empty?
-              @patients=[]
-            else
-              patient_ids=patient_namepart_arrays[0]
-              patient_namepart_arrays.each { |patientarray|
-                  patient_ids = patientarray & patient_ids
-              }
-              @patients=Patient.paginate :page => params[:page],:per_page => RESULTSPERPAGE, :conditions => { :id=>patient_ids }
+            patient_namepart_arrays[i]=Array.new
+            patients_of_partname.each do |patient|
+              patient_namepart_arrays[i].push patient.id
             end
+            i = i+1
+          end
         end
+          if patient_namepart_arrays.empty?
+            @patients = []
+          else
+            patient_ids = patient_namepart_arrays[0]
+            patient_namepart_arrays.each do |patientarray|
+              patient_ids = patientarray & patient_ids
+            end
+            @patients=Patient.paginate :page => params[:page],:per_page => RESULTSPERPAGE, :conditions => { :id => patient_ids }
+          end
       end
+    end
 
     if request.xhr?
          render :partial => "patients/patient_search_results", :layout => false, :locals => {:searchresults => @patients}

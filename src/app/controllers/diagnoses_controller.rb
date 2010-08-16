@@ -2,6 +2,7 @@ class DiagnosesController < ApplicationController
   # GET /diagnoses
   # GET /diagnoses.xml
   def index
+    return false unless authorize(permissions = ["view_diagnosis"])
     @diagnoses = Diagnosis.all
 
     respond_to do |format|

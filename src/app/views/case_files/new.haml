@@ -8,4 +8,5 @@
     = f.buttons
 
 .action-links
-    = link_to t('action.back'), patient_case_files_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'
+    - if authorize?('view_casefile')
+        = link_to t('action.back'), patient_case_files_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'

@@ -13,6 +13,9 @@
             = h show_date(@case_file.leave_date)
 
 .action-links
-    = link_to t('action.back'), patient_case_files_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'
-    = link_to t('case_file.activate_for_view'), setcaseforview_path(:patient_id => current_active_patient.id, :id => @case_file.id), :class => 'acts_as_button darkyellow'
-    = link_to t('action.edit'), edit_patient_case_file_path(:patient_id => current_active_patient.id, :id => @case_file.id), :class => 'acts_as_button'
+    - if authorize?('view_casefile')
+        = link_to t('action.back'), patient_case_files_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'
+    - if authorize?('setactive_casefile')
+        = link_to t('case_file.activate_for_view'), setcaseforview_path(:patient_id => current_active_patient.id, :id => @case_file.id), :class => 'acts_as_button darkyellow'
+    - if authorize?('edit_casefile')
+        = link_to t('action.edit'), edit_patient_case_file_path(:patient_id => current_active_patient.id, :id => @case_file.id), :class => 'acts_as_button'

@@ -3,5 +3,7 @@
 = render :partial => 'form'
 
 .action-links
-    = link_to t('action.destroy'), @appointment, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
-    = link_to t('action.back'), appointments_path, :class => 'acts_as_button darkgray'
+    - if authorize?('delete_appointment')
+        = link_to t('action.destroy'), @appointment, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
+    - if authorize?('view_appointment')
+        = link_to t('action.back'), appointments_path, :class => 'acts_as_button darkgray'
