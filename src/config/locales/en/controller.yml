@@ -207,7 +207,6 @@ en:
     ops_name:                 "OPS-Name"
     diagnosis:                "Diagnosis"
 
-
   diagnosis:
     listing:            "Listing diagnoses"
     edit:               "Editing diagnosis"
