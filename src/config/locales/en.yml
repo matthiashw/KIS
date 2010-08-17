@@ -284,6 +284,7 @@ en:
     choose_medication:  "Please choose one or more medications"
     choose_treatment:   "Please choose a treatment"
     final:              "Specify treatment details"
+    next_med:           "Add another medication"
     nextstep:                 "Ok and Continue"
     nextstep_notasks:          "Continue without selecting task"
     nextstep_nomeds:          "Continue without selecting medication"
