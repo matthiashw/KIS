@@ -66,6 +66,16 @@ en:
         update_field_entry:
           ok:                    "Catalog field successfully updated!"
           error:                 "No empty values allowed!"
+      javascript:
+        search:       "Search"
+        column:
+          code:       "Code"
+          name:       "Name"
+          description: "Description"
+        action:
+          select: "Select"
+          deselect: "Deselect"
+        entries:    "Selected catalog entries"
     file_management:        "File Management"
     import:                 "Recover"
     export:                 "Backup"
@@ -197,6 +207,14 @@ en:
     diagnosis:                "Diagnosis"
 
 
+  diagnosis:
+    listing:            "Listing diagnoses"
+    edit:               "Editing diagnosis"
+    new:                "New diagnosis"
+    new_button:         "Add new diagnosis"
+    description:        "Description"
+    case_file:          "Case File"
+
   task:
     patient_task_index:       "All Tasks of Patient"
     mytasks:                  "All my Tasks"
@@ -260,7 +278,7 @@ en:
     new:                    "New User"
     edit:                   "Editing User"
     address:                "Address"
-    phone:                  "Phone Number"
+    phone:                  "Phone"
     setup:
       setup:                  "Setup Admin User"
       choose_from_current_user: "Choose a existing User or"

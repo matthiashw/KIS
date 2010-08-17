@@ -16,4 +16,5 @@
 
 
 .action-links
-    = link_to t('action.back'),  patient_case_file_treatments_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id]), :class => 'acts_as_button darkgray'
+    - if authorize?('view_treatment')
+        = link_to t('action.back'),  patient_case_file_treatments_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id]), :class => 'acts_as_button darkgray'

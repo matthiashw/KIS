@@ -7,4 +7,6 @@
 = submit_tag t('database_backup.export.submit')
 = form_tag
 
-=link_to t('action.back'), {:controller => "admin", :action => "index"}
+.action-links
+    - if authorize?('access_administration')
+        = link_to t('action.back'), {:controller => "admin", :action => "index"}, :class => 'acts_as_button darkgray'

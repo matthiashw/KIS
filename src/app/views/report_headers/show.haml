@@ -11,5 +11,7 @@
 
 
 .action-links
-    = link_to t('action.edit'), edit_report_header_path(@report_header), :class => 'acts_as_button'
-    = link_to t('action.back'), report_headers_path , :class => 'acts_as_button darkgray'
+    - if authorize?('view_reportheader')
+        = link_to t('action.back'), report_headers_path , :class => 'acts_as_button darkgray'
+    - if authorize?('edit_reportheader')
+        = link_to t('action.edit'), edit_report_header_path(@report_header), :class => 'acts_as_button'

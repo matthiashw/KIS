@@ -3,6 +3,7 @@ class CatalogTypesController < ApplicationController
   # GET /catalog_types
   # GET /catalog_types.xml
   def index
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalog_types = CatalogType.all
 
     respond_to do |format|
@@ -14,6 +15,7 @@ class CatalogTypesController < ApplicationController
   # GET /catalog_types/1
   # GET /catalog_types/1.xml
   def show
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalog_type = CatalogType.find(params[:id])
 
     respond_to do |format|
@@ -25,6 +27,7 @@ class CatalogTypesController < ApplicationController
   # GET /catalog_types/new
   # GET /catalog_types/new.xml
   def new
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalog_type = CatalogType.new
 
     respond_to do |format|
@@ -35,12 +38,14 @@ class CatalogTypesController < ApplicationController
 
   # GET /catalog_types/1/edit
   def edit
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalog_type = CatalogType.find(params[:id])
   end
 
   # POST /catalog_types
   # POST /catalog_types.xml
   def create
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalog_type = CatalogType.new(params[:catalog_type])
 
     respond_to do |format|
@@ -58,6 +63,7 @@ class CatalogTypesController < ApplicationController
   # PUT /catalog_types/1
   # PUT /catalog_types/1.xml
   def update
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalog_type = CatalogType.find(params[:id])
 
     respond_to do |format|
@@ -75,6 +81,7 @@ class CatalogTypesController < ApplicationController
   # DELETE /catalog_types/1
   # DELETE /catalog_types/1.xml
   def destroy
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalog_type = CatalogType.find(params[:id])
     @catalog_type.destroy
 

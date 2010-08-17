@@ -29,16 +29,15 @@ class PermissionsController < ApplicationController
     Permission.delete_all()
     
     if params[:perms]
-
       # now set the permissions
       params[:perms].each do |perm|
-        domainname = perm.match('^[A-Za-z]*;')[0].chomp(';')
-        action = perm.match(';[a-z_]*')[0].delete ";"
+        da = perm.split(/;/)
+        domainname = da[0]
+        action = da[1]
         d = Domain.find(:first, :conditions => "name = '#{domainname}'")
         d.permissions << Permission.new(:action => action, :granted => true) unless d == nil
         flash.now[:notice] = t('messages.permissions.updated')
       end
-      
     end
     
     redirect_to permissions_path

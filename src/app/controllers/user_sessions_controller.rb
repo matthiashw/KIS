@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       I18n.locale = current_user.language
-      flash.now[:notice] = "Successfully logged in."
+      flash.now[:notice] = t('messages.user_session.logged_in')
       redirect_to root_url
     else
       render :action => 'new'
@@ -20,7 +20,7 @@ class UserSessionsController < ApplicationController
   def destroy
     @user_session = UserSession.find
     @user_session.destroy
-    flash.now[:notice] = "Successfully logged out."
+    flash.now[:notice] = t('messages.user_session.logged_in')
     redirect_to root_url
   end
 end

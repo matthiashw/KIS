@@ -23,6 +23,10 @@
             = h @appointment.description
 
 .action-links
-    = link_to t('action.edit'), edit_appointment_path(@appointment), :class => 'acts_as_button'
-    = link_to t('action.back'), appointments_path, :class => 'acts_as_button darkgray'
-    = link_to t('appointment.calendar'), calendar_path
+    - if authorize?('view_appointment')
+        = link_to t('action.back'), appointments_path, :class => 'acts_as_button darkgray'
+    - if authorize?('view_appointment')
+        = link_to t('appointment.calendar'), calendar_path
+    - if authorize?('edit_appointment')
+        = link_to t('action.edit'), edit_appointment_path(@appointment), :class => 'acts_as_button'
+    

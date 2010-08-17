@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/,
                       :message => 'is not a valid e-mail address', :if => :email?
 
-  #validates_uniqueness_of :username, :scope => :id
+  validates_uniqueness_of :username, :scope => :id
 
   def self.check_for_admin
     adminuser = User.find_by_id(1)

@@ -2,6 +2,7 @@ class ReportHeadersController < ApplicationController
   # GET /report_headers
   # GET /report_headers.xml
   def index
+    return false unless authorize(permissions = ["view_reportheader"])
     @report_headers = ReportHeader.all
 
     @config = YAML::load(File.open("#{RAILS_ROOT}/config/report.yml"))
@@ -14,6 +15,7 @@ class ReportHeadersController < ApplicationController
   end
 
   def standard
+    return false unless authorize(permissions = ["set_default_reportheader"])
     @config = YAML::load(File.open("#{RAILS_ROOT}/config/report.yml"))
     @config["header"] = params[:id]
     File.open("#{RAILS_ROOT}/config/report.yml", 'w') { |f| YAML.dump(@config, f) }
@@ -27,6 +29,7 @@ class ReportHeadersController < ApplicationController
   # GET /report_headers/1
   # GET /report_headers/1.xml
   def show
+    return false unless authorize(permissions = ["view_reportheader"])
     @report_header = ReportHeader.find(params[:id])
 
     respond_to do |format|
@@ -38,6 +41,7 @@ class ReportHeadersController < ApplicationController
   # GET /report_headers/new
   # GET /report_headers/new.xml
   def new
+    return false unless authorize(permissions = ["create_reportheader"])
     @report_header = ReportHeader.new
 
     respond_to do |format|
@@ -48,12 +52,14 @@ class ReportHeadersController < ApplicationController
 
   # GET /report_headers/1/edit
   def edit
+    return false unless authorize(permissions = ["edit_reportheader"])
     @report_header = ReportHeader.find(params[:id])
   end
 
   # POST /report_headers
   # POST /report_headers.xml
   def create
+    return false unless authorize(permissions = ["create_reportheader"])
     @report_header = ReportHeader.new(params[:report_header])
 
     respond_to do |format|
@@ -71,6 +77,7 @@ class ReportHeadersController < ApplicationController
   # PUT /report_headers/1
   # PUT /report_headers/1.xml
   def update
+    return false unless authorize(permissions = ["edit_reportheader"])
     @report_header = ReportHeader.find(params[:id])
 
     respond_to do |format|
@@ -88,6 +95,7 @@ class ReportHeadersController < ApplicationController
   # DELETE /report_headers/1
   # DELETE /report_headers/1.xml
   def destroy
+    return false unless authorize(permissions = ["delete_reportheader"])
     @report_header = ReportHeader.find(params[:id])
     @report_header.destroy
 

@@ -2,6 +2,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.xml
   def index
+    return false unless authorize(permissions = ["view_appointment"])
     @appointments = Appointment.all
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments/1
   # GET /appointments/1.xml
   def show
+    return false unless authorize(permissions = ["view_appointment"])
     @appointment = Appointment.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +26,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments/new
   # GET /appointments/new.xml
   def new
+    return false unless authorize(permissions = ["create_appointment"])
     @appointment = Appointment.new
     
     respond_to do |format|
@@ -34,12 +37,14 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/1/edit
   def edit
+    return false unless authorize(permissions = ["edit_appointment"])
     @appointment = Appointment.find(params[:id])
   end
 
   # POST /appointments
   # POST /appointments.xml
   def create
+    return false unless authorize(permissions = ["create_appointment"])
     @appointment = Appointment.new(params[:appointment])
 
     respond_to do |format|
@@ -57,6 +62,7 @@ class AppointmentsController < ApplicationController
   # PUT /appointments/1
   # PUT /appointments/1.xml
   def update
+    return false unless authorize(permissions = ["edit_appointment"])
     @appointment = Appointment.find(params[:id])
 
     respond_to do |format|
@@ -74,6 +80,7 @@ class AppointmentsController < ApplicationController
   # DELETE /appointments/1
   # DELETE /appointments/1.xml
   def destroy
+    return false unless authorize(permissions = ["delete_appointment"])
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
 
@@ -84,6 +91,7 @@ class AppointmentsController < ApplicationController
   end
 
   def calendar
+    return false unless authorize(permissions = ["view_appointment"])
     @month = params[:month].to_i
     @year = params[:year].to_i
 

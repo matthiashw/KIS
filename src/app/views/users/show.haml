@@ -38,5 +38,7 @@
                 = d.name
 
 .action-links
-    = link_to t('action.edit'), edit_user_path(@user), :class => 'acts_as_button'
-    = link_to t('action.back'), users_path, :class => 'acts_as_button darkgray'
+    - if authorize?('view_user')
+        = link_to t('action.back'), users_path, :class => 'acts_as_button darkgray'
+    - if authorize?('edit_user') || (authorize?('edit_own_user') && @user.id == current_user.id)
+        = link_to t('action.edit'), edit_user_path(@user), :class => 'acts_as_button'

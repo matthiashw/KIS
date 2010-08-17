@@ -22,4 +22,5 @@
 
 
 .action-links
-  = link_to 'New report_header', new_report_header_path , :class => 'acts_as_button'
+  - if authorize?('create_reportheader')
+    = link_to 'New report_header', new_report_header_path , :class => 'acts_as_button'
