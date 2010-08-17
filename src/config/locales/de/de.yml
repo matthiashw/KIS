@@ -360,6 +360,8 @@ de:
 
     order: [ :day, :month, :year ]
 
+    first_day_of_week: 1
+
     day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
     abbr_day_names: [So, Mon, Di, Mi, Do, Fr, Sa]
 

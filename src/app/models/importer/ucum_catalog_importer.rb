@@ -25,7 +25,7 @@ class Importer::UcumCatalogImporter
          description = row['Synonym']
         
         # Create Entry
-         entry = UcumEntry.new(:code => code,:name => name, :description => description )
+         entry = UcumEntry.new(:code => code,:name => name, :description => description, :catalog =>catalog )
 
 
          if !class_name_hash.has_key?(class_name)

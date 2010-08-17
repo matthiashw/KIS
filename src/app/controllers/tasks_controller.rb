@@ -1,16 +1,21 @@
 class TasksController < ApplicationController
   before_filter :filter_tasks, :only => :index
-
+  before_filter :filter_session, :only => [:search, :mytaskssearch]
+  
   def filter_tasks
-    
-    @tasks = get_tasks
-    
+    @tasks = get_tasks  
+  end
+
+  def filter_session
+    session[:selected_task_state] = params[:task_state].strip if params[:task_state]
+    session[:selected_task_domain] = params[:task_domain].strip if params[:task_domain]
+    session[:selected_task_case] = params[:task_case].strip if params[:task_case]
   end
 
   # GET /tasks
   # GET /tasks.xml
   def index
-    return authorize unless task_authorize?('view_task', 'view_domain_task', 'view_domain_task')
+    return authorize unless task_authorize?('view_task', 'view_domain_task', 'view_own_task')
 
     respond_to do |format|
       format.html # search.haml
@@ -18,12 +23,34 @@ class TasksController < ApplicationController
     end
   end
 
-  def search
-    session[:selected_task_state] = params[:task_state].strip if params[:task_state]
+  def mytasks
+    return authorize unless task_authorize?('view_task', 'view_domain_task', 'view_own_task')
 
-    if session[:selected_task_state]
-      @tasks = get_tasks
+    @tasks = my_tasks
+
+    respond_to do |format|
+      format.html # search.haml
+      format.xml  { render :xml => @tasks }
     end
+  end
+
+  def mytaskssearch
+
+    @tasks = my_tasks
+
+    if request.xhr?
+         render :partial => "task_results", :layout => false, :locals => {:taskresults => @tasks}
+    else
+        respond_to do |format|
+        format.html # search.haml
+        format.xml  { render :xml => @tasks }
+        end
+    end
+  end
+
+  def search
+
+    @tasks = get_tasks
 
     if request.xhr?
          render :partial => "task_results", :layout => false, :locals => {:taskresults => @tasks}
@@ -289,27 +316,27 @@ class TasksController < ApplicationController
     end
   end
 
-    # for viewing the tasks values and results
-    def results
-      @task = Task.find(params[:id])
-      return authorize unless task_creator_authorize?(@task.creator_user_id, "show_result_own_task") || task_authorize?('show_result_task')
-      @values = MeasuredValue.find_all_by_task_id(@task.id)
-      @domain = Domain.find_by_id(@task.domain_id)
+  # for viewing the tasks values and results
+  def results
+    @task = Task.find(params[:id])
+    return authorize unless task_creator_authorize?(@task.creator_user_id, "show_result_own_task") || task_authorize?('show_result_task')
+    @values = MeasuredValue.find_all_by_task_id(@task.id)
+    @domain = Domain.find_by_id(@task.domain_id)
 
-      #fieldshash stuff is done for processing the fields in the view
-      @valueshash = {}
-      @values.each do |v|
-        @valueshash[v.medical_template_id] ||= {}
-        @valueshash[v.medical_template_id][v.id] ||= v
-      end
-
-     respond_to do |format|
-      format.html # results.haml
-      format.xml  { render :xml => @values }
-     end
+    #fieldshash stuff is done for processing the fields in the view
+    @valueshash = {}
+    @values.each do |v|
+      @valueshash[v.medical_template_id] ||= {}
+      @valueshash[v.medical_template_id][v.id] ||= v
     end
 
-    def selected_state
+   respond_to do |format|
+    format.html # results.haml
+    format.xml  { render :xml => @values }
+   end
+  end
+
+  def selected_state
     selected_state = nil
 
     if session[:selected_task_state]
@@ -321,39 +348,135 @@ class TasksController < ApplicationController
     selected_state
   end
 
-  def all_tasks
-    if selected_state.nil?
-      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view }
-    else
-      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view, :state => selected_state }
+  def selected_domain
+    selected_domain = nil
+
+    if session[:selected_task_domain]
+      if session[:selected_task_domain] != "0"
+        selected_domain = session[:selected_task_domain].to_i
+      end
     end
+
+    selected_domain
+  end
+
+  def selected_case
+    selected_case = 1
+
+    if session[:selected_task_case]
+      if session[:selected_task_case] == "null"
+        selected_case = session[:selected_task_case]
+      end
+    end
+
+    selected_case
+  end
+
+  def task_conditions(*type)
+    domain_hash = {}
+    state_hash = {}
+    case_hash = {}
+    own_hash = {}
+    own_domain_hash = {}
+    
+    hash = {}
+
+    active_cases_array = []
+    active_cases_hash = {}
+    active_case_files = Patient.all
+
+    if !selected_state.nil?
+      state_hash = { :state => selected_state }
+    end
+
+    if !selected_domain.nil?
+      domain_hash = { :domain_id => selected_domain }
+    end
+
+    if !get_case_for_view.nil?
+      case_hash = { :case_file_id => get_case_for_view }
+    end
+
+    if !active_case_files.nil?
+      active_case_files.each do |a|
+        active_cases_array.push(a.active_case_file_id)
+      end
+    else
+
+    end
+
+    if selected_case == 1
+      if !active_cases_array.empty?
+        active_cases_hash = { :case_file_id => active_cases_array }
+      end
+    elsif selected_case == "null"
+        active_cases_hash = {}
+    end
+
+    own_hash = { :creator_user_id => current_user.id }
+    own_domain_hash = { :domain_id => current_user.domains }
+
+    if !(params[:action] == "mytasks" || params[:action] == "mytaskssearch")
+      hash.merge!(case_hash)
+    end
+    
+    hash.merge!(domain_hash)
+    hash.merge!(state_hash)
+
+    type.each do |t|
+      if t == "all"
+
+      end
+
+      if t == "domain"
+        hash.merge!(own_domain_hash)
+      end
+
+      if t == "own"
+        hash.merge!(own_hash)
+      end
+
+      if t == "my"
+        hash.merge!(active_cases_hash)
+      end
+
+    end
+
+    hash
+  end
+
+  def all_tasks
+    Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => task_conditions("")
   end
 
   def domain_tasks
-    if selected_state.nil?
-      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view, :domain_id => current_user.domains }
-    else
-      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view, :domain_id => current_user.domains, :state => selected_state }
-    end
+    Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => task_conditions("domain")
   end
 
   def own_tasks
-    if selected_state.nil?
-      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view, :creator_user_id => current_user.id }
-    else
-      Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => { :case_file_id => get_case_for_view, :creator_user_id => current_user.id, :state => selected_state }
-    end
+    Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => task_conditions("own")
+  end
+
+  def my_tasks 
+    Task.paginate :page => params[:page], :order => 'state ASC, deadline ASC', :conditions => task_conditions("own","my")
   end
 
   def get_tasks
-    if authorize?('view_all_tasks')
-      all_tasks
-    elsif authorize?('view_domain_task')
-      domain_tasks
-    elsif authorize?('view_own_task')
-      own_tasks
+    if get_case_for_view.nil?
+      if authorize?('view_own_task')
+        own_tasks
+      end
     else
-      nil
+      if authorize?('view_all_tasks')
+        all_tasks
+      elsif authorize?('view_domain_task')
+        domain_tasks
+      elsif authorize?('view_own_task')
+        own_tasks
+      else
+        nil
+      end
     end
+    
   end
 end

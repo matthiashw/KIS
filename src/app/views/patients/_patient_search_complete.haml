@@ -18,6 +18,8 @@
             %th=t('formtastic.labels.patient.address')
             %th=t('formtastic.labels.patient.sex')
             %th=t('formtastic.labels.patient.phone')
+            - if case_file_link?
+                %th=t('patient.case_file_link')
         - @patients.each do |patient|
             %tr{:onclick=>"location.href='#{url_for :controller => 'patients', :action => 'show', :id => patient.id}';",:style=>"cursor:pointer;", :class => css_for_active_patient(patient.id)}
                 %td= h patient.first_name
@@ -26,4 +28,6 @@
                 %td= h patient.address
                 %td= h patient.sex
                 %td= h patient.phone
+                - if case_file_link?
+                    %td= link_to t('patient.new_case'), new_patient_case_file_path( :patient_id => patient.id )
     = will_paginate @patients

@@ -16,6 +16,18 @@
                     %span.required
                 = text_field_tag :description
                 %p.inline-hints
+            %li.select.required
+                %label
+                    = t('formtastic.labels.field_definition.input_type')
+                = select_tag :input_type, options_for_select(InputTypeManager.input_type_descriptions)
+                %p.inline-hints
+                    = t('formtastic.hints.field_definition.input_type')
+            %li.string.required
+                %label
+                    = t('formtastic.labels.field_definition.additional_type_info')
+                = text_field_tag :additional_type_info
+                %p.inline-hints
+                    = t('formtastic.hints.field_definition.additional_type_info')
 
     %fieldset.buttons
         %ol

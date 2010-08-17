@@ -1,0 +1,10 @@
+- title t('database_backup.export.title')
+
+= form_tag ({:action => 'exportFile'}, :onSubmit => "showAjaxLoadingBar()",:multipart => true)
+%p
+    %label{:for => "upload_file"}=t('database_backup.export.label')
+= render :partial => 'shared/loading_bar_element'
+= submit_tag t('database_backup.export.submit')
+= form_tag
+
+=link_to t('action.back'), {:controller => "admin", :action => "index"}

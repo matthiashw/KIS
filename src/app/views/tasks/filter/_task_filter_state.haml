@@ -1,0 +1,15 @@
+- if showmytasks == 1
+    - action = "mytaskssearch"
+- else
+    - action = "search"
+
+.filter.select-task-state
+    - select_task_states = { t('task.filter.all') => "0", t('task.open') => Task.state_open.to_s, t('task.in_progress') => Task.state_inprogress.to_s, t('task.closed') => Task.state_closed.to_s}
+    %span.filter-label.select-task-state-label
+        = t('task.filter.select_state')
+    %span.filter-filter.select-task-state-filter
+        = select_tag 'task_state', options_for_select(select_task_states, session[:selected_task_state])
+        = observe_field 'task_state',  :frequency => 0.5,           |
+            :update => "tasks",                                     |
+            :url => {:controller => "tasks", :action => action},  |
+            :with => "task_state"

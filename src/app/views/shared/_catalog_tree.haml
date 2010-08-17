@@ -5,16 +5,24 @@
     -param_name='selected_node_result'
   
   :javascript
+    var catalog_name="#{catalog.catalog_select_name}";
+    var localize_search="#{t("admin.catalog.javascript.search")}";
+    var localize_column_code="#{t("admin.catalog.javascript.column.code")}"
+    var localize_column_name="#{t("admin.catalog.javascript.column.name")}"
+    var localize_column_description="#{t("admin.catalog.javascript.column.description")}"
+    var localize_action_select="#{t("admin.catalog.javascript.action.select")}"
+    var localize_action_deselect="#{t("admin.catalog.javascript.action.deselect")}"
+    var localize_entries="#{t("admin.catalog.javascript.entries")}"
     var form_id='#{form_html_id}';
     var node_result_id='#{param_name}';
     var nodeselection = [#{selected_nodes}];
     var selected_node_path= -1;
-    var single_selection=false;
+    var radio_select=false;
   <input type='hidden' id='#{param_name}' name='#{param_name}' value='-1'>
   #catalog_tree_select
   - if checkbox=='single'
     :javascript
       selected_node_path = "#{selected_node_path}";
-      var single_selection = true;
+      radio_select = true;
 - else
   #catalog_tree

@@ -5,14 +5,14 @@
         .field-label
             =t('case_file.entry_date')
         .field-content
-            = h @case_file.entry_date
+            = h show_date(@case_file.entry_date)
     .field
         .field-label
             =t('case_file.leave_date')
         .field-content
-            = h @case_file.leave_date
+            = h show_date(@case_file.leave_date)
 
 .action-links
-    = link_to t('action.edit'), edit_case_file_path(@case_file), :class => 'acts_as_button'
-    = link_to t('case_file.activate_for_view'), {:controller => 'case_files', :action => 'setcaseforview', :id => @case_file.id}, :class => 'acts_as_button darkyellow'
-    = link_to t('action.back'), case_files_path, :class => 'acts_as_button darkgray'
+    = link_to t('action.back'), patient_case_files_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'
+    = link_to t('case_file.activate_for_view'), setcaseforview_path(:patient_id => current_active_patient.id, :id => @case_file.id), :class => 'acts_as_button darkyellow'
+    = link_to t('action.edit'), edit_patient_case_file_path(:patient_id => current_active_patient.id, :id => @case_file.id), :class => 'acts_as_button'

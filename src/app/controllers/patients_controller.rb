@@ -17,6 +17,19 @@ class PatientsController < ApplicationController
     end
   end
 
+  def admission
+    return false unless authorize(permissions = ["view_patient"])
+
+    session[:origin] = params[:origin] if params.has_key?(:origin)
+
+    @patients = Patient.paginate :page => params[:page], :order => 'family_name ASC', :per_page => RESULTSPERPAGE
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @patients }
+    end
+  end
+
   # GET /patients/1
   # GET /patients/1.xml
   def show
@@ -148,14 +161,36 @@ class PatientsController < ApplicationController
           @patients = Patient.paginate :page => params[:page], :order => 'family_name ASC', :per_page => RESULTSPERPAGE
         else
           patientname = session[:query]
-          patientname.each_line(' ') { |namepart|
-            @patients = Patient.paginate :page => params[:page],:per_page => RESULTSPERPAGE,
-            :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{namepart}%","%#{namepart}%"], :order => "family_name ASC"}
+#          patientname.each_line(' ') { |namepart|
+#            @patients = Patient.paginate :page => params[:page],:per_page => RESULTSPERPAGE,
+#            :conditions => ["first_name LIKE ? or family_name LIKE ?", "%#{namepart}%","%#{namepart}%"], :order => "family_name ASC"}
+          patient_namepart_arrays=Array.new
+          i=0
+          patientname.split(' ').each do |patternpart|
+              if patternpart !=""
+                patients_of_partname=Patient.all :select => 'id',:conditions => ["first_name LIKE ? or family_name LIKE ?" , "%#{patternpart}%","%#{patternpart}%"], :order => "family_name ASC"
+
+                patient_namepart_arrays[i]=Array.new
+                patients_of_partname.each do |patient|
+                  patient_namepart_arrays[i].push patient.id
+                end
+                i=i+1
+              end
+          end
+            if patient_namepart_arrays.empty?
+              @patients=[]
+            else
+              patient_ids=patient_namepart_arrays[0]
+              patient_namepart_arrays.each { |patientarray|
+                  patient_ids = patientarray & patient_ids
+              }
+              @patients=Patient.paginate :page => params[:page],:per_page => RESULTSPERPAGE, :conditions => { :id=>patient_ids }
+            end
         end
       end
 
     if request.xhr?
-         render :partial => "shared/patient_search_results", :layout => false, :locals => {:searchresults => @patients}
+         render :partial => "patients/patient_search_results", :layout => false, :locals => {:searchresults => @patients}
     else
         respond_to do |format|
         format.html # search.haml

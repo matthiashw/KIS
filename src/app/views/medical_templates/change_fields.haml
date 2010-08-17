@@ -3,6 +3,7 @@
 - form_tag  url_for( :controller => "medical_templates" , :action => "update_fields" , :id => @medical_template.id ),   :id => 'add_from_catalog'   do
     
     = checkbox_tree @catalog_source, 'add_from_catalog' , 'new_field_ids'
+    %br
     = submit_tag t('template.fields.edit_button'), :class => 'acts_as_button'
 .action-links
     = link_to t('action.back'), @medical_template, :class => 'acts_as_button darkgray'
