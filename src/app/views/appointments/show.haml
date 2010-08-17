@@ -21,6 +21,12 @@
             =t('appointment.description')
         .field-content
             = h @appointment.description
+    - if @appointment.task
+        .field
+            .field-label
+                =t('appointment.task')
+            .field-content
+                = link_to @appointment.task.to_label, patient_task_path(:patient_id => current_active_patient.id ,:id => @appointment.task.id)
 
 .action-links
     - if authorize?('view_appointment')

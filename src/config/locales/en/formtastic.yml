@@ -6,6 +6,7 @@ en:
         end_date:               "End Date"
         name:                   "Name"
         description:            "Description"
+        task:                   "Task"
       catalog:
         year:                   "Year"
         language:               "Language"
