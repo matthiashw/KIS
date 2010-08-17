@@ -1,6 +1,6 @@
 - title t('database_backup.export.title')
 
-= form_tag ({:action => 'exportFile'}, :onSubmit => "showAjaxLoadingBar()",:multipart => true)
+= form_tag ({:action => 'exportFile', :onSubmit => "showAjaxLoadingBar()", :multipart => true})
 %p
     %label{:for => "upload_file"}=t('database_backup.export.label')
 = render :partial => 'shared/loading_bar_element'

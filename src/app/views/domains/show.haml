@@ -15,12 +15,12 @@
         .field-label
             =t('domain.is_role')
         .field-content
-            = h (@domain.is_role ? t('yes_true') : t('no_false'))
+            = h (@domain.is_role ? t('domain.yes_true') : t('domain.no_false'))
     .field
         .field-label
             =t('domain.is_userdomain')
         .field-content
-            = h (@domain.is_userdomain ? t('yes_true') : t('no_false'))
+            = h (@domain.is_userdomain ? t('domain.yes_true') : t('domain.no_false'))
 
 .action-links
     = link_to t('action.edit'), edit_domain_path(@domain), :class => 'acts_as_button'

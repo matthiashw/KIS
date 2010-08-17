@@ -1,6 +1,6 @@
 - title t('database_backup.import.title')
 
-= form_tag ({:action => 'importFile'}, :onSubmit => "showAjaxLoadingBar()",:multipart => true)
+= form_tag ({:action => 'importFile', :onSubmit => "showAjaxLoadingBar()",:multipart => true})
 %p
     %label{:for => "upload_file"}=t('database_backup.import.label')
     %br

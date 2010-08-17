@@ -92,6 +92,12 @@ case_files:
     - "1"
     - 2010-06-21 15:11:46
     - 2010-08-04 09:43:36
+  - - "2"
+    - "2010-08-16"
+    - 
+    - "3"
+    - 2010-08-16 15:46:59
+    - 2010-08-16 15:46:59
 
 --- 
 catalog_types: 
@@ -109,6 +115,27 @@ catalog_types:
     - 
     - 2010-08-02 10:25:21
     - 2010-08-02 10:25:21
+    - ops_am
+    - ""
+  - - "2"
+    - american-icd
+    - 
+    - 2010-08-11 13:46:26
+    - 2010-08-11 13:46:26
+    - icd_by_letters_am
+    - ""
+  - - "3"
+    - Ops
+    - 
+    - 2010-08-16 15:56:10
+    - 2010-08-16 15:56:10
+    - ops_am
+    - treat
+  - - "4"
+    - ops-wo
+    - 
+    - 2010-08-16 16:09:05
+    - 2010-08-16 16:09:05
     - ops_am
     - ""
 
@@ -133,6 +160,49 @@ comments:
     - "1"
     - 2010-06-21 15:15:53
     - 2010-06-21 15:15:53
+
+--- 
+domain_memberships: 
+  columns: 
+  - id
+  - roleable_id
+  - roleable_type
+  - domain_id
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - "2"
+    - User
+    - "1"
+    - 2010-08-16 15:24:31
+    - 2010-08-16 15:24:31
+
+--- 
+domains: 
+  columns: 
+  - id
+  - name
+  - result_name
+  - is_role
+  - is_userdomain
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - Test 123
+    - Result of test 123 role
+    - true
+    - false
+    - 2010-08-16 15:13:31
+    - 2010-08-16 15:13:31
+  - - "2"
+    - test
+    - xyz
+    - true
+    - false
+    - 2010-08-16 15:29:32
+    - 2010-08-16 15:29:32
 
 --- 
 medical_reports: 
@@ -205,6 +275,36 @@ patients:
     - 
     - 2010-06-21 15:11:46
     - 2010-06-21 15:11:46
+  - - "3"
+    - AstaLaVista
+    - Tom
+    - "2010-08-16"
+    - Fakestreet 123
+    - Male
+    - 0151 12464459
+    - "2"
+    - 
+    - 2010-08-16 15:46:59
+    - 2010-08-16 15:46:59
+
+--- 
+permissions: 
+  columns: 
+  - id
+  - action
+  - created_at
+  - updated_at
+  - permissible_id
+  - permissible_type
+  - granted
+  records: 
+  - - "1"
+    - edit_comment
+    - 2010-08-16 15:29:47
+    - 2010-08-16 15:29:47
+    - "2"
+    - Domain
+    - true
 
 --- 
 users: 
@@ -225,27 +325,42 @@ users:
   records: 
   - - "1"
     - raschloe
-    - 8baab3ca93ee623c24971847d92533958b4d6d456e71aa334c051319257def72c56b8c32bd5627536c2a2ed6260dd11f86e680053b5ffdc19a36a16df32aeca4
+    - caa3e5b362204d7ed2a359fc5087f3a9c9bdbc404d48fa19f6b9aa6dbc97763b379e2671dd06a29689f58aabb86faecf87b831247692def6be452dae9f083ee0
     - Rainer
     - "Schl\xC3\xB6nvoigt"
     - en
-    - Mainaustrasse 73
+    - Fakestreet 123
+    - rainer@schloenvoigt.de
+    - 0151 12464459
+    - 2010-08-16 10:55:16
+    - 2010-08-16 10:55:16
+    - u2NsOq8r-AIOK1TxWBwx
+    - 7bf0af88c4d4cb92474523dd0ccc86e972349557ab4fae4d1383e0523a744a33d2257770175ae702b5763b65967adde1d6e8b3734533eb42bf58ee6247e66e96
+  - - "2"
+    - Henry123
+    - cc4e5606245259a3c76c77958c49a610622e1ebab8dfda683e4344e743527b815e3ce9e6a0972dd7dea5cb82dd377a1ac9c2d99da8d9bf6d28d6e8d7bbc6bc9c
+    - Rainer
+    - "Schl\xC3\xB6nvoigt"
+    - en
+    - Fakestreet123
     - rainer.schloenvoigt@gmx.de
     - 0151 12464459
-    - 2010-06-21 15:07:25
-    - 2010-06-21 15:07:25
-    - dpB0GyiMP8b6eApldXms
-    - 0a693c3ba3cf513a16050bff53b4e14b04ef3f1a1d988448c78a8b1088bdbbef153d6032fdbd9c693c5a9130bed0ddbcb0046551a724daf5f45af8054eeef3dd
-  - - "2"
-    - Test
-    - 6d2253bb4c19e883a260ca557f64987cae3d04e9938a51f1f9e7daa271f61b1ad2679366ac7e682bf396e101c85ca078058e93d1968529cc3e922cadda51b00a
-    - henry
-    - schillbach
-    - en
-    - Test12345678
-    - henry@coliquio.de
-    - 0190 123456
-    - 2010-08-09 15:55:26
-    - 2010-08-09 15:55:26
-    - wMWEB0fTXywJQR6xjADd
-    - f04620e6f67d05e6cc6302604791a0495708ec0acb110d38a8ff4e59c16a43445043fad695d76ec0907f025c64cb307a14681580db052ae5aca467cd27d7988e
+    - 2010-08-16 15:07:24
+    - 2010-08-16 15:07:24
+    - 3_hJBoKQsSD86xB9rp7I
+    - 5d697ff615bddad7a66f56777fe5c73226b51475dea6f9426bee40d05bdf17ceb1030cab06019ed25cace9ff4c01337dc675d8e0fe9e65f85085c91498ce6d0c
+
+--- 
+variables: 
+  columns: 
+  - id
+  - name
+  - value
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - install
+    - "1"
+    - 
+    - 
