@@ -4,6 +4,7 @@ class TreatmentsController < ApplicationController
   # GET /treatments
   # GET /treatments.xml
   def index
+    return false unless authorize(permissions = ["view_treatment"])
     @treatments = Treatment.find_all_by_case_file_id(params[:case_file_id])
     
     respond_to do |format|
@@ -15,6 +16,7 @@ class TreatmentsController < ApplicationController
   # GET /treatments/1
   # GET /treatments/1.xml
   def show
+    return false unless authorize(permissions = ["view_treatment"])
     @treatment = Treatment.find(params[:id])
     #@case_file = CaseFile.find(@treatment.case_file_id);
     #@patient = Patient.find(@case_file.patient_id);
@@ -28,6 +30,7 @@ class TreatmentsController < ApplicationController
   # GET /treatments/new
   # GET /treatments/new.xml
   def new
+    return false unless authorize(permissions = ["create_treatment"])
     @treatment = Treatment.new
     @catalog = CatalogManager.instance.catalog 'treat'
     respond_to do |format|
@@ -40,6 +43,7 @@ class TreatmentsController < ApplicationController
 
   # GET /treatments/1/edit
   def edit
+    return false unless authorize(permissions = ["edit_treatment"])
     @catalog = CatalogManager.instance.catalog 'treat'
     @treatment = Treatment.find(params[:id])
   end
@@ -47,6 +51,7 @@ class TreatmentsController < ApplicationController
   # POST /treatments
   # POST /treatments.xml
   def create
+    return false unless authorize(permissions = ["create_treatment"])
     @treatment = Treatment.new(params[:treatment])
     @treatment.case_file_id = params[:case_file_id]
     @treatment.ops_entry_id = params[:opscode]
@@ -66,6 +71,7 @@ class TreatmentsController < ApplicationController
   # PUT /treatments/1
   # PUT /treatments/1.xml
   def update
+    return false unless authorize(permissions = ["edit_treatment"])
     @treatment = Treatment.find(params[:id])
     @treatment.ops_entry_id = params[:opscode]
 
@@ -84,6 +90,7 @@ class TreatmentsController < ApplicationController
   # DELETE /treatments/1
   # DELETE /treatments/1.xml
   def destroy
+    return false unless authorize(permissions = ["delete_treatment"])
     @treatment = Treatment.find(params[:id])
     @treatment.destroy
 

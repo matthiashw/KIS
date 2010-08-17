@@ -3,7 +3,7 @@ class CaseFilesController < ApplicationController
   # GET /case_files
   # GET /case_files.xml
   def index
-   return false unless authorize(permissions = ["view_casefile"])
+    return false unless authorize(permissions = ["view_casefile"])
 
     @case_files = CaseFile.find_all_by_patient_id(session[:active_patient_id],:order => 'entry_date DESC')
 
@@ -16,7 +16,7 @@ class CaseFilesController < ApplicationController
   # GET /case_files/1
   # GET /case_files/1.xml
   def show
-  return false unless authorize(permissions = ["view_casefile"])
+    return false unless authorize(permissions = ["view_casefile"])
 
     @case_file = CaseFile.find(params[:id])
 
@@ -29,7 +29,7 @@ class CaseFilesController < ApplicationController
   # GET /case_files/new
   # GET /case_files/new.xml
   def new
-  return false unless authorize(permissions = ["create_casefile"])
+    return false unless authorize(permissions = ["create_casefile"])
 
     @case_file = CaseFile.new
 
@@ -49,7 +49,7 @@ class CaseFilesController < ApplicationController
   # POST /case_files
   # POST /case_files.xml
   def create
-   return false unless authorize(permissions = ["create_casefile"])
+    return false unless authorize(permissions = ["create_casefile"])
 
     @case_file = CaseFile.new(params[:case_file])
 
@@ -88,7 +88,7 @@ class CaseFilesController < ApplicationController
   # PUT /case_files/1
   # PUT /case_files/1.xml
   def update
-  return false unless authorize(permissions = ["update_casefile"])
+    return false unless authorize(permissions = ["update_casefile"])
 
     @case_file = CaseFile.find(params[:id])
 
@@ -107,7 +107,7 @@ class CaseFilesController < ApplicationController
   # DELETE /case_files/1
   # DELETE /case_files/1.xml
   def destroy
-   return false unless authorize(permissions = ["destroy_casefile"])
+    return false unless authorize(permissions = ["destroy_casefile"])
 
     @case_file = CaseFile.find(params[:id])
     @case_file.destroy
@@ -120,7 +120,7 @@ class CaseFilesController < ApplicationController
 
   #activates a case for view
   def setcaseforview
-   return false unless authorize(permissions = ["setactive_casefile"])
+    return false unless authorize(permissions = ["setactive_casefile"])
 
     casefile = CaseFile.find(params[:id])
     session[:case_view_id] = casefile.id unless casefile.nil?

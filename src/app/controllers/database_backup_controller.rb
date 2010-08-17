@@ -1,9 +1,11 @@
 class DatabaseBackupController < ApplicationController
   def export
+    return false unless authorize(permissions = ["backup_recover"])
   end
 
 
   def import
+    return false unless authorize(permissions = ["backup_recover"])
   end
 
 

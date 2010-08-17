@@ -202,6 +202,14 @@ en:
     description:        "Description"
     starting_date:      "Starting Date"
 
+  diagnosis:
+    listing:            "Listing diagnoses"
+    edit:               "Editing diagnosis"
+    new:                "New diagnosis"
+    new_button:         "Add new diagnosis"
+    description:        "Description"
+    case_file:          "Case File"
+
   task:
     patient_task_index:       "All Tasks of Patient"
     mytasks:                  "All my Tasks"

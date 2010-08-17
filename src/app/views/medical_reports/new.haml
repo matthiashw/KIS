@@ -20,4 +20,5 @@
     = f.submit 'Create'
 
 .action-links
-  = link_to t('action.back'), medical_reports_path , :class => 'acts_as_button darkgray'
+  - if authorize?('view_medical_report')
+    = link_to t('action.back'), medical_reports_path , :class => 'acts_as_button darkgray'

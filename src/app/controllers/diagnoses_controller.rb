@@ -14,6 +14,7 @@ class DiagnosesController < ApplicationController
   # GET /diagnoses/1
   # GET /diagnoses/1.xml
   def show
+    return false unless authorize(permissions = ["view_diagnosis"])
     @diagnosis = Diagnosis.find(params[:id])
 
     respond_to do |format|
@@ -25,6 +26,7 @@ class DiagnosesController < ApplicationController
   # GET /diagnoses/new
   # GET /diagnoses/new.xml
   def new
+    return false unless authorize(permissions = ["create_diagnosis"])
     @diagnosis = Diagnosis.new
 
     respond_to do |format|
@@ -35,12 +37,14 @@ class DiagnosesController < ApplicationController
 
   # GET /diagnoses/1/edit
   def edit
+    return false unless authorize(permissions = ["edit_diagnosis"])
     @diagnosis = Diagnosis.find(params[:id])
   end
 
   # POST /diagnoses
   # POST /diagnoses.xml
   def create
+    return false unless authorize(permissions = ["create_diagnosis"])
     @diagnosis = Diagnosis.new(params[:diagnosis])
 
     respond_to do |format|
@@ -58,6 +62,7 @@ class DiagnosesController < ApplicationController
   # PUT /diagnoses/1
   # PUT /diagnoses/1.xml
   def update
+    return false unless authorize(permissions = ["edit_diagnosis"])
     @diagnosis = Diagnosis.find(params[:id])
 
     respond_to do |format|
@@ -75,6 +80,7 @@ class DiagnosesController < ApplicationController
   # DELETE /diagnoses/1
   # DELETE /diagnoses/1.xml
   def destroy
+    return false unless authorize(permissions = ["delete_diagnosis"])
     @diagnosis = Diagnosis.find(params[:id])
     @diagnosis.destroy
 

@@ -2,6 +2,7 @@ class DomainsController < ApplicationController
   # GET /domains
   # GET /domains.xml
   def index
+    return false unless authorize(permissions = ["view_domain"])
     @domains = Domain.all
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class DomainsController < ApplicationController
   # GET /domains/1
   # GET /domains/1.xml
   def show
+    return false unless authorize(permissions = ["view_domain"])
     @domain = Domain.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +26,7 @@ class DomainsController < ApplicationController
   # GET /domains/new
   # GET /domains/new.xml
   def new
+    return false unless authorize(permissions = ["create_domain"])
     @domain = Domain.new
 
     respond_to do |format|
@@ -34,12 +37,14 @@ class DomainsController < ApplicationController
 
   # GET /domains/1/edit
   def edit
+    return false unless authorize(permissions = ["edit_domain"])
     @domain = Domain.find(params[:id])
   end
 
   # POST /domains
   # POST /domains.xml
   def create
+    return false unless authorize(permissions = ["create_domain"])
     @domain = Domain.new(params[:domain])
 
     respond_to do |format|
@@ -57,6 +62,7 @@ class DomainsController < ApplicationController
   # PUT /domains/1
   # PUT /domains/1.xml
   def update
+    return false unless authorize(permissions = ["edit_domain"])
     @domain = Domain.find(params[:id])
 
     respond_to do |format|
@@ -74,6 +80,7 @@ class DomainsController < ApplicationController
   # DELETE /domains/1
   # DELETE /domains/1.xml
   def destroy
+    return false unless authorize(permissions = ["delete_domain"])
     @domain = Domain.find(params[:id])
     @domain.destroy
 

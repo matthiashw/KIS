@@ -56,10 +56,23 @@ Patient:
   delete_patient: Delete every Patients
 
 Medical Report:
-  view_medical_report: View Medical Report
+  create_medical_report: Create Medical Report
+  view_medical_report: View all Medical Reports
+  edit_medical_report: Edit any Medical Report
+  delete_medical_report: Delete any Medical Report
+
+Report Header:
+  create_reportheader: Create Report Header
+  view_reportheader: View all Report Headers
+  edit_reportheader: Edit all Report Headers
+  delete_reportheader: Delete any Report Header
+  set_default_reportheader: Set default Report Header
 
 Medical Templates:
+  create_medical_templates: Create Medical Templates
   view_medical_templates: View Medical Templates
+  edit_medical_templates: Edit any Medical Template
+  delete_medical_templates: Delete Medical Templates
 
 Comment:
   create_comment: Create a Comment

@@ -1,0 +1,13 @@
+- title t('diagnosis.listing')
+%table
+    %tr
+        %th=t('diagnosis.description')
+        %th=t('diagnosis.case_file')
+    - @diagnoses.each do |diagnosis|
+        %tr{:onclick=>"location.href='#{url_for :controller => 'diagnosis', :action => 'show', :id => diagnosis.id}';",:style=>"cursor:pointer;"}
+            %td= h diagnosis.description
+            %td= h diagnosis.case_file_id
+
+.action-links
+    - if authorize?('create_diagnosis')
+        = link_to t('diagnosis.new_button'), new_diagnosis_path, :class => 'acts_as_button'

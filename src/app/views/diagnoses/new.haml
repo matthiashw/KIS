@@ -1,0 +1,7 @@
+- title t('diagnosis.new')
+
+= render :partial => 'form'
+
+.action-links
+    - if authorize?('view_diagnosis')
+        = link_to t('action.back'), diagnoses_path, :class => 'acts_as_button darkgray'

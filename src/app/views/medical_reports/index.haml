@@ -15,4 +15,5 @@
 
 
 .action-links
-  = link_to 'New medical_report', new_medical_report_path, :class => 'acts_as_button'
+  - if authorize?('create_medical_report')
+    = link_to 'New medical_report', new_medical_report_path, :class => 'acts_as_button'
