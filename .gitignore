@@ -32,6 +32,7 @@ src/nbproject/*
 *.sql
 *.sqlite
 database.yml
+src/db/data.yml
 
 # OS generated files #
 ######################
