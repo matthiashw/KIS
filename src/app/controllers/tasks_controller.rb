@@ -189,7 +189,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     return authorize unless task_creator_authorize?(@task.creator_user_id, "delete_own_task") || task_authorize?('delete_task')
     @fields = Field.find_all_by_task_id(params[:id])
-    @measuredvalues = MeasuredValues.find_all_by_task_id(params[:id])
+    @measuredvalues = MeasuredValue.find_all_by_task_id(params[:id])
 
 
     if @task.destroy
