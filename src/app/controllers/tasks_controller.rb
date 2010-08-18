@@ -287,9 +287,10 @@ class TasksController < ApplicationController
             flash[:error] = 'Fileupload failed'
           end
 
+        end
+
           format.html { redirect_to :action => 'taskfill', :id => @task.id  }
           format.xml  { render :xml => @task}
-        end
       else
 
         if @task.update_attributes(params[:task])
