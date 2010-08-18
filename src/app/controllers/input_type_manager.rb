@@ -27,16 +27,19 @@ class InputTypeManager
       desc
   end
 
+  #returns partial name string by number
+  #if partial has to be filled with information value has to be true
   def self.input_type_partial (number, value)
+    partial = "tasks/input_type/"
     case number
       when 1
-           partial="input_type_multi"
+           partial+="input_type_multi"
       when 2
-           partial="input_type_checkbox"
+           partial+="input_type_checkbox"
       when 3
-           partial="input_type_dropdown"
+           partial+="input_type_dropdown"
       else
-           partial="input_type_default"
+           partial+="input_type_default"
     end
 
     if value
@@ -45,5 +48,17 @@ class InputTypeManager
 
     partial
     
+  end
+
+  #return the selected string, needs field def id and selected id in the dropdown
+  #dropdown elements begin with 0 ...
+  def self.dropdown_value_return (fielddef,dropid)
+    fd = FieldDefinition.find(fielddef)
+
+    unless fd.nil?
+      return fd.additional_type_info.split(';')[dropid.to_i]
+    end
+
+    return ""
   end
 end
