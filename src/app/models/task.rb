@@ -4,6 +4,7 @@ class Task < ActiveRecord::Base
 
   has_many :fields
   has_many :measured_values
+  has_many :appointments
   belongs_to :case_file
   has_many :uploaded_files
   has_one :treatment
@@ -26,4 +27,5 @@ class Task < ActiveRecord::Base
   def self.state_closed
     CLOSED
   end
+
 end

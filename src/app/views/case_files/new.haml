@@ -1,11 +1,11 @@
 - title t('case_file.new')
 
-- semantic_form_for @case_file do |f|
+- semantic_form_for(@case_file, :url => patient_case_files_path(params[:patient_id])) do |f|
     = f.error_messages
 
     - f.inputs do
-        = f.input :entry_date
+        = f.input :entry_date, :as => :calendar
     = f.buttons
 
 .action-links
-    = link_to (:back), case_files_path, :class => 'acts_as_button darkgray'
+    = link_to t('action.back'), patient_case_files_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'

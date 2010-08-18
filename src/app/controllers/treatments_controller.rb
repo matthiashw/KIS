@@ -97,39 +97,38 @@ class TreatmentsController < ApplicationController
 
   def new_step3
     get_partial_treatment_from_session
-    
+
     @current_stage = "step_3"
     @current_active_patient = Patient.find(session[:active_patient_id])
-    @catalog = CatalogManager.instance.catalog 'ops'
 
     respond_to do |format|
       if session.has_key?(:active_patient_id)
         if params[:current_stage] == 'step_2'
-          if (params[:continue] || params[:next_med])
-            if params[:medications] == "" || params[:description] == ""
-              flash[:error] = 'Please select a valid medication and description'
+          if (params[:continue])
+            if params[:medications] == ""
+              flash[:error] = 'Please select a valid medication'
               format.html { redirect_to :action => "new_step2" }
               format.xml  { render :xml => @treatment }
             else
-              @medication = Medication.new(:atc_entry_id => params[:medications], :description => params[:description])
-              @treatment.medications = [@medication].concat(@treatment.medications)
+              @medIds = params[:medications].split(",").collect{ |s| s.to_i }
 
-              if params[:continue]
-                format.html # taskcreation.html.erb
-                format.xml  { render :xml => @treatment }
-              elsif params[:next_med]
-                format.html { redirect_to :action => "new_step2" }
-                format.xml  { render :xml => @treatment }
-              end
+              @medIds.each {|x|
+                @medication = Medication.new(:atc_entry_id => x)
+
+                @treatment.medications = @treatment.medications.concat([@medication])
+              }
+
+              format.html # taskcreation.html.erb
+              format.xml  { render :xml => @treatment }
             end
           elsif params[:skip]
-            format.html # taskcreation.html.erb
+            format.html { redirect_to :action => "new_step4" }
             format.xml  { render :xml => @treatment }
           end
         else
           format.html # taskcreation.html.erb
           format.xml  { render :xml => @treatment }
-        end 
+        end
       else
         flash[:error] = 'No active Patient'
            format.html { redirect_to :action => "new" }
@@ -143,14 +142,45 @@ class TreatmentsController < ApplicationController
   def new_step4
     get_partial_treatment_from_session
     
+    @current_stage = "step_4"
     @current_active_patient = Patient.find(session[:active_patient_id])
+    @catalog = CatalogManager.instance.catalog 'ops'
 
     respond_to do |format|
       if session.has_key?(:active_patient_id)
         if params[:current_stage] == 'step_3'
+          i = 0
+          while i < params[:description].length
+            @treatment.medications[i].description = params[:description][i]
+            i += 1
+          end
+
+        end
+        
+        format.html # taskcreation.html.erb
+        format.xml  { render :xml => @treatment }
+      else
+       flash[:error] = 'No active Patient'
+       format.html { redirect_to :action => "new" }
+       format.xml  { render :xml => @treatment }
+      end
+    end
+
+    save_partial_treatment_in_session
+  end
+
+  def new_step5
+    get_partial_treatment_from_session
+    
+    @current_active_patient = Patient.find(session[:active_patient_id])
+    @diagnoses = Diagnosis.find_all_by_case_file_id get_case_for_view
+
+    respond_to do |format|
+      if session.has_key?(:active_patient_id)
+        if params[:current_stage] == 'step_4'
           if params[:treatment] == "" and not params[:skip]
             flash[:error] = 'Please select a valid task'
-            format.html { redirect_to :action => "new_step3" }
+            format.html { redirect_to :action => "new_step4" }
             format.xml  { render :xml => @treatment }
           elsif params[:skip]
             format.html # taskcreation.html.erb
@@ -176,7 +206,8 @@ class TreatmentsController < ApplicationController
 
   # GET /treatments/1/edit
   def edit
-    @catalog = CatalogManager.instance.catalog 'treat'
+    @diagnoses = Diagnosis.find_all_by_case_file_id get_case_for_view
+    @catalog = CatalogManager.instance.catalog 'ops'
     @treatment = Treatment.find(params[:id])
   end
 
@@ -186,6 +217,7 @@ class TreatmentsController < ApplicationController
     get_partial_treatment_from_session
     
     @current_active_patient = Patient.find(session[:active_patient_id])
+    @diagnoses = Diagnosis.find_all_by_case_file_id get_case_for_view
     @treatment.update_attributes(params[:treatment])
 
     respond_to do |format|
@@ -194,7 +226,7 @@ class TreatmentsController < ApplicationController
         format.html { redirect_to patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => @treatment.case_file_id, :id => @treatment) }
         format.xml  { render :xml => @treatment, :status => :created, :location => @treatment }
       else
-        format.html { render :action => "new_step4" }
+        format.html { render :action => "new_step5" }
         format.xml  { render :xml => @treatment.errors, :status => :unprocessable_entity }
       end
     end

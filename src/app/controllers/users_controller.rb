@@ -71,7 +71,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(params[:id])    
     @domains = Domain.all :conditions => { :is_role => 1 }
   end
   

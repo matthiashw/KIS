@@ -2,18 +2,27 @@
 
 %table
     %tr
-        %th=t('treatment.description')
         %th=t('treatment.starting_date')
-        %th=t('treatment_ops')
-        %th=t('treatment_diagnosis')
+        %th=t('treatment.description')
+        %th=t('treatment.ops')
+        %th=t('treatment.diagnosis')
     - @treatments.each do |treatment|
         %tr{:onclick=>"location.href='#{url_for patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => treatment)}';",:style=>"cursor:pointer;"}
-            %td= h treatment.description
             %td= h treatment.start_date
-            /%td= h treatment.ops_entry.name
+            %td= h treatment.description
+            
             %td
-                -treatment.diagnoses.each do |diagnosis|
-                    =h diagnosis.description
+                -if treatment.ops_entry
+                    = h treatment.ops_entry.name
+                -else
+                    &minus;
+            %td
+                -if treatment.diagnoses.length > 0
+                    -treatment.diagnoses.each do |diagnosis|
+                        = link_to diagnosis.description, diagnoses_path(:id => diagnosis.id)
+                        %br
+                -else
+                    &minus;
 
 .action-links
     = link_to t('treatment.new_button'), new_patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id]), :class => 'acts_as_button'

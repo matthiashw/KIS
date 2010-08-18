@@ -15,4 +15,4 @@ class CreateTasks < ActiveRecord::Migration
   def self.down
     drop_table :tasks
   end
-end
+  end

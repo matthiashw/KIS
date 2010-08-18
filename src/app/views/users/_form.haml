@@ -10,7 +10,13 @@
         = f.input :family_name
         = f.input :address, :input_html => { :rows => 4, :cols => 30 }
         = f.input :phone
-        = f.input :language, :as => :select, :collection => I18n.available_locales.to_a.map{ |locale| [t('name', :locale => locale), locale] }, :include_blank => false
+        %li.select.required
+            %label
+                = t('formtastic.labels.user.language')
+            = f.select :language, options_for_select(get_locale_hash, @user.language)
+            %p.inline-hints
+                = t('formtastic.hints.user.language')
+
         = f.input :domains, :as => :check_boxes, :collection => @domains
     = f.buttons
 

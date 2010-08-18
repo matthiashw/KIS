@@ -1,0 +1,10 @@
+en:
+  calendar_date_select:
+    ok:     "Ok"
+    now:    "Now"
+    today:  "Today"
+    clear:  "Clear"
+
+    first_day_of_week:  0
+    abbr_day_names:     "S M T W T F S"
+    month_names:        "January February March April May June July August September October November December"

@@ -18,7 +18,7 @@
         .task-patient-switch
             = link_to t('treatment.other'), {:controller => 'patients', :origin=> 'treatments'}, :class => 'acts_as_button mediumgray'
 
-= render :partial => 'form2'
+= render :partial => 'form_taskselect'
 
 .action-links.task-step1
     = link_to t('action.back'),  patient_case_file_treatments_path(:patient_id => @current_active_patient.id, :case_file_id => @current_active_patient.active_case_file_id), :class => 'acts_as_button darkgray'

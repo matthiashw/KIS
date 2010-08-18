@@ -37,6 +37,6 @@
             = t('task.step3')
         =t('task.additional_information')
     - f.inputs do
-        = f.input :deadline
+        = f.input :deadline, :as => :calendar
         = f.input :creator_comment
     = f.buttons

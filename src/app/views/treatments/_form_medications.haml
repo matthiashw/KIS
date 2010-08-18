@@ -2,16 +2,9 @@
     =hidden_field_tag "current_stage", "#{@current_stage}"
     %div
         %p
-            =label_tag :description
-            %br
-            =text_field_tag :description
-
-        %p
-            = radio_tree @catalog, 'step3' , 'medications'
+            = checkbox_tree @catalog, 'step3' , 'medications'
 
         .task-select-domain-submit
             = submit_tag t('treatment.nextstep'), :name => "continue"
-        .task-select-domain-submit
-            = submit_tag t('treatment.next_med'), :name => "next_med"
         .task-select-domain-submit
             = submit_tag t('treatment.nextstep_nomeds'), :name => "skip"

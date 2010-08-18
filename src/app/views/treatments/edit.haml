@@ -5,15 +5,15 @@
 
     - f.inputs do
         = f.input :description, :input_html => { :rows => 4, :cols => 30 }
-        = f.input :start_date, :start_year => 1900
-        = f.input :diagnoses, :label_method => :description
-        - if @catalog
-            = radio_tree @catalog, 'treadform' , 'opscode', @treatment.ops_entry
+        = f.input :start_date, :as => :calendar
+        = f.input :diagnoses, :as => :select, :collection => @diagnoses, :label_method => :description
+        - if @catalog && @treatment.ops_entry
+            = radio_tree @catalog, 'treadform' , 'opscode', @treatment.ops_entry.id
+        - elsif @catalog
+            = radio_tree @catalog, 'treadform' , 'opscode'
         - else
             = no_catalog_available 'treat'
     = f.buttons
-
-
 
 .action-links
     = link_to t('action.destroy'), patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment),  :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'

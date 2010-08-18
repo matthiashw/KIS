@@ -2,6 +2,7 @@
   =hidden_field_tag "current_stage", "#{@current_stage}"
   = f.error_messages
   - f.inputs do
+    = f.input :diagnoses, :as => :select, :collection => @diagnoses, :label_method => :description
     = f.input :description
     = f.input :start_date
   = f.buttons

@@ -24,7 +24,9 @@ Rails::Initializer.run do |config|
   config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
   config.gem 'formtastic', :source => 'http://gemcutter.org'
   config.gem 'spreadsheet'
-
+  config.gem 'calendar_date_select'
+  config.gem 'formtastic_calendar_date_select', :source => 'http://gemcutter.org'
+  
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -42,6 +44,7 @@ Rails::Initializer.run do |config|
 
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
+  config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*','*.{rb,yml}').to_s]
   config.i18n.default_locale = :en
 
 end

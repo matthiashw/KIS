@@ -2,11 +2,11 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :set_locale, :login_required, :check_install
+  before_filter :set_locale, :login_required, :check_install, :force_utf8_params
   
   helper :all # include all helpers, all the time
   helper_method :current_active_patient, :current_user, :current_user_session, 
-                :authorize?, :get_case_for_view
+                :authorize?, :get_case_for_view, :get_locale_hash
 
   protect_from_forgery
 
@@ -28,6 +28,16 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     #logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { :locale => I18n.locale }
+  end
+
+  def get_locale_hash
+    locations = I18n.available_locales.to_a.map{ |locale| [t('name', :locale => locale), locale] }
+    loc_hash = {}
+    locations.each do |l|
+      loc_hash.merge!({l[0] => l[1].to_s})
+    end
+
+    loc_hash
   end
 
   def models_to_check_for_errors
@@ -181,6 +191,23 @@ class ApplicationController < ActionController::Base
     end
 
     return false
+  end
+
+  def force_utf8_params
+    traverse = lambda do |object, block|
+      if object.kind_of?(Hash)
+        object.each_value { |o| traverse.call(o, block) }
+      elsif object.kind_of?(Array)
+        object.each { |o| traverse.call(o, block) }
+      else
+        block.call(object)
+      end
+      object
+    end
+    force_encoding = lambda do |o|
+      o.force_encoding(Encoding::UTF_8) if o.respond_to?(:force_encoding)
+    end
+    traverse.call(params, force_encoding)
   end
 
 end
