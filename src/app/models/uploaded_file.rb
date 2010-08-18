@@ -5,7 +5,13 @@ class UploadedFile < ActiveRecord::Base
     begin
       name =  upload['datafile'].original_filename
               upload['datafile']
-      directory = "public/taskfiles/" + taskid.to_s
+
+      directory = "public/taskfiles/"
+      unless File.exists?(directory)
+        Dir.mkdir(directory)
+      end
+      
+      directory += taskid.to_s
       unless File.exists?(directory)
         Dir.mkdir(directory)
       end
