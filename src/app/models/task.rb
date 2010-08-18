@@ -28,4 +28,8 @@ class Task < ActiveRecord::Base
     CLOSED
   end
 
+  def to_label
+     "#{domain.name} | #{creator_comment} | #{deadline}"
+  end
+
 end

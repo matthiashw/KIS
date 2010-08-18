@@ -96,6 +96,7 @@ en:
     name:             "Name"
     description:      "Description"
     calendar:         "Calendar"
+    task:             "Task"
 
   case_file:
     new_confirm:         "Please notice that any open Cases will be closed"
@@ -238,7 +239,6 @@ en:
     executor_comment:         "Executor Comment"
     state:                    "State"
 
-
   diagnosis:
     listing:            "Listing diagnoses"
     edit:               "Editing diagnosis"
@@ -297,7 +297,7 @@ en:
       search_fail:              "No Task found"
       select_state:             "View Task State"
       select_domain:            "Select Domain"
-      select_case:              "Show only Task of active cases"
+      select_case:              "Show only Tasks of active cases"
 
   user:
     listing:                "Listing users"
