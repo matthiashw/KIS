@@ -87,6 +87,7 @@ en:
     edit:                   "Edit"
     save:                   "Save changes"
     activate:               "Activate"
+    standard:               "Standard"
     comments:
       back_to_comments_list:  "Back to list of comments"
       view_comments_list:     "View list of comments"
