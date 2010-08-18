@@ -110,6 +110,6 @@ class AppointmentsController < ApplicationController
   end
 
   def get_tasks
-    Task.find(:all, :order => 'state ASC, deadline ASC', :conditions => "")
+    Task.find(:all, :order => 'state ASC, deadline ASC', :conditions => { :creator_user_id => current_user.id })
   end
 end
