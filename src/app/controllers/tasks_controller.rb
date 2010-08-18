@@ -216,7 +216,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     return authorize unless task_creator_authorize?(@task.creator_user_id, "delete_own_task") || task_authorize?('delete_task')
     @fields = Field.find_all_by_task_id(params[:id])
-    @measuredvalues = MeasuredValues.find_all_by_task_id(params[:id])
+    @measuredvalues = MeasuredValue.find_all_by_task_id(params[:id])
 
 
     if @task.destroy
@@ -236,10 +236,13 @@ class TasksController < ApplicationController
     end
   end
 
+
   # method for serving the task filling view
   def taskfill
     @task = Task.find(params[:id])
     return authorize unless task_domain_authorize?(@task.domain_id, "fill_own_domain_task") || task_authorize?('fill_every_task')
+
+    @taskfiles = UploadedFile.find_all_by_task_id(@task.id)
 
     respond_to do |format|
       if @task.state == Task.state_closed
@@ -274,23 +277,46 @@ class TasksController < ApplicationController
     @values = params[:values]
     @comments = params[:comments]
      
-
     respond_to do |format|
 
+      if params.has_key?('upload')
+        if params.has_key?('file')
+          if UploadedFile.savefile(params[:file],@task.id)
+            flash[:notice] = 'Fileupload complete'
+          else
+            flash[:error] = 'Fileupload failed'
+          end
+
+          format.html { redirect_to :action => 'taskfill', :id => @task.id  }
+          format.xml  { render :xml => @task}
+        end
+      else
 
         if @task.update_attributes(params[:task])
           unless @values.nil?
             @values.each do |k,v|
-              #if the task has allready been filled use existing measured values and update
-              if @task.state == Task.state_inprogress
-                measuredvalue = MeasuredValue.find_by_field_id(k)
-                measuredvalue.update_attributes(:value => v,:comment => @comments[k],
-                                 :task_id => @task.id, :field_id => k, :medical_template_id => Field.find(k).medical_template_id )
-              else
-                measuredvalue = MeasuredValue.new(:value => v,:comment => @comments[k],
-                                 :task_id => @task.id, :field_id => k, :medical_template_id => Field.find(k).medical_template_id )
-                measuredvalue.save
-              end
+              f = Field.find(k)
+
+              unless f.nil?
+
+                  #get value of dropdown for storage(if it is a dropdown field)
+                  if FieldDefinition.find(f.field_definition_id).input_type == 3
+                    v = InputTypeManager.dropdown_value_return(f.field_definition_id,v)
+                  end
+
+                #if the task has allready been filled use existing measured values and update
+                if @task.state == Task.state_inprogress
+
+                  measuredvalue = MeasuredValue.find_by_field_id(k)
+
+                  measuredvalue.update_attributes(:value => v,:comment => @comments[k],
+                                   :task_id => @task.id, :field_id => k, :medical_template_id => f.medical_template_id )
+                else
+                  measuredvalue = MeasuredValue.new(:value => v,:comment => @comments[k],
+                                   :task_id => @task.id, :field_id => k, :medical_template_id => f.medical_template_id )
+                  measuredvalue.save
+                end
+               end
 
             end
           end
@@ -311,8 +337,7 @@ class TasksController < ApplicationController
           format.html { render :action => "edit" }
           format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
         end
-
-
+      end
     end
   end
 

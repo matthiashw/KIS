@@ -292,6 +292,10 @@ en:
     in_progress:              "In Progress"
     creator:                  "physician in charge"
     patient:                  "Patient"
+    y:                        "Yes"
+    n:                        "No"
+    file_upload:              "Upload File for Task"
+    upload:                   "Upload"
     filter:
       all:                      "All"
       search_fail:              "No Task found"
