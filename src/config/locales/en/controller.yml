@@ -84,7 +84,11 @@ en:
       medical_template:     "Medical Templates"
     medical_reports:
       report:                 "Medical report"
-      header:                 "Header"
+      header:                 "Report headers"
+      title:                  "Title"
+      standard:               "Standard"
+      actions:                "Actions"
+      new:                    "New report header"
 
   appointment:
     listing:          "Listing appointments"
@@ -178,9 +182,16 @@ en:
   medical_reports:
     listing:                "Medical Reports"
     report:                 "Medical report"
+    new:                    "New medical report"
+    edit:                   "Edit medical report"
+    cases:                  "Cases"
+    properties:             "Properties"
+    title:                  "Title"
     header:                 "Header"
     title:                  "Title"
     actions:                "Actions"
+    created:                "Created at"
+    no_header:              "Standard header for medical reports missing. Please contact your administrator."
 
   patient:
     listing:                  "Listing patients"

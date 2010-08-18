@@ -1,23 +1,23 @@
--title 'New medical_report'
+-title t('medical_reports.new')
 
 - semantic_form_for(@medical_report) do |f|
   = f.error_messages
 
   %p
-    = f.label :title
+    = f.label t('medical_reports.title')
     %br
     = f.text_field :description
 
   %p
-    %label Cases
-    =swapselectmanual :medical_report, @case_files, :entry_date, :id, params = {:size => 6}
+    %label=t('medical_reports.cases')
+    =swapselectmanual :medical_report, @case_files, :entry_date, :id, @case_files_sel, params = {:size => 6}
 
   %p
-    %label Properties
-    =swapselectmanual :medical_report, @properties, :name, :id, params = {:size => 6}
+    %label=t('medical_reports.properties')
+    =swapselectmanual :medical_report, @properties, :name, :id, @properties_sel, params = {:size => 6}
 
   %p
-    = f.submit 'Create'
+    = f.submit t('action.create')
 
 .action-links
   - if authorize?('view_medical_report')

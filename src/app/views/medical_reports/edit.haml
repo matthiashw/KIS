@@ -1,6 +1,6 @@
 = javascript_include_tag :ckeditor
 
--title 'Editing medical_report'
+-title t('medical_reports.edit')
 
 - semantic_form_for(@medical_report) do |f|
   = f.error_messages
@@ -20,5 +20,7 @@
     = f.submit 'Update'
 
 .action-links
+  - if authorize?('delete_medical_report')
+    = link_to t('action.destroy'), @medical_report, :confirm => 'Are you sure?', :method => :delete, :class => 'acts_as_button darkgray'
   - if authorize?('view_medical_report')
     = link_to t('action.back'), medical_reports_path, :class => 'acts_as_button darkgray'

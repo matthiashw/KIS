@@ -20,9 +20,6 @@
 
 = render :partial => 'form_taskselect'
 
-.action-links.task-step1
-    = link_to t('action.back'),  patient_case_file_treatments_path(:patient_id => @current_active_patient.id, :case_file_id => @current_active_patient.active_case_file_id), :class => 'acts_as_button darkgray'
-
-.action-links
+.act.action-links.task-step1
     - if authorize?('view_treatment')
         = link_to t('action.back'),  patient_case_file_treatments_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id]), :class => 'acts_as_button darkgray'
