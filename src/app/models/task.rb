@@ -1,4 +1,6 @@
 class Task < ActiveRecord::Base
+   include ActionView::Helpers::TextHelper
+
   cattr_reader :per_page
   @@per_page = 25
 
@@ -26,6 +28,10 @@ class Task < ActiveRecord::Base
 
   def self.state_closed
     CLOSED
+  end
+
+  def to_label
+     "#{domain.name} | #{truncate(creator_comment, :omission => "...", :length => 15)} | #{deadline}"
   end
 
 end

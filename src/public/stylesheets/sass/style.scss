@@ -1145,7 +1145,13 @@ ul.x-tree-root-ct {
             color:$verydarkgray;
             font-size:14px;
         }
+
+        a {
+            text-decoration:none;
+        }
     }
+
+
 
     ul.x-tree-node-ct {
         list-style:none;

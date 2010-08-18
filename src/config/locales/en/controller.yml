@@ -100,6 +100,7 @@ en:
     name:             "Name"
     description:      "Description"
     calendar:         "Calendar"
+    task:             "Task"
 
   case_file:
     new_confirm:         "Please notice that any open Cases will be closed"
@@ -207,16 +208,47 @@ en:
     new_case:                 "New case"
 
   treatment:
-    listing:                  "Listing treatment"
-    edit:                     "Editing treatment"
-    action:                   "Action"
-    new_button:               "Add new treatment"
-    new:                      "New treatment"
-    description:              "Description"
-    starting_date:            "Starting Date"
-    ops_name:                 "OPS-Name"
+    listing:            "Listing treatment"
+    edit:               "Editing treatment"
+    action:             "Action"
+    new_button:         "Add new treatment"
+    new:                "New Treatment"
+    description:        "Description"
+    medication:         "Medication"
+    starting_date:      "Starting Date"
+    choose_task:        "Choose Task"
+    choose_task_select: "Please select task"
+    choose_medication:  "Please choose one or more medications"
+    choose_treatment:   "Please choose a treatment"
+    final:              "Specify treatment details"
+    next_med:           "Add another medication"
+    medication_description:   "Specify a description to the medications"
+    ops:                      "Procedure Classification OPS"
     diagnosis:                "Diagnosis"
-
+    nextstep:                 "Ok and Continue"
+    nextstep_notasks:          "Continue without selecting task"
+    nextstep_nomeds:          "Continue without selecting medication"
+    nextstep_notreatment:     "Continue without selecting treatment"
+    select:                   "choose"
+    selected_patient:         "Selected Patient"
+    other:                    "Select another Patient"
+    totreatment:                   "Back to Treatment-Creation"
+    no_active_patient:        "No active Patient present"
+    select_template:          "Select Template or Fields"
+    select_all:               "Select All"
+    select_none:              "Select None"
+    selected:                 "Selected"
+    name:                     "Field name"
+    additional_information:   "Additional Information"
+    step1:                    "Step 1 of 5:"
+    step2:                    "Step 2 of 5:"
+    step3:                    "Step 3 of 5:"
+    step4:                    "Step 4 of 5:"
+    step5:                    "Step 5 of 5:"
+    deadline:                 "Deadline"
+    creator_comment:          "Creator Comment"
+    executor_comment:         "Executor Comment"
+    state:                    "State"
 
   diagnosis:
     listing:            "Listing diagnoses"
@@ -276,7 +308,7 @@ en:
       search_fail:              "No Task found"
       select_state:             "View Task State"
       select_domain:            "Select Domain"
-      select_case:              "Show only Task of active cases"
+      select_case:              "Show only Tasks of active cases"
 
   user:
     listing:                "Listing users"
@@ -294,3 +326,36 @@ en:
       setup:                  "Setup Admin User"
       choose_from_current_user: "Choose a existing User or"
       new_admin_user:         "Create a new Administration User"
+
+  template:
+    heading:            "Template: "
+    listing:            "Listing templates"
+    edit:               "Edit template"
+    new:                "New template"
+    name:               "Name"
+    domain:             "Domain"
+    new_button:         "Add new Template"
+    count_fields:       "Number of fields"
+    field_definitions:
+      edit_button:      "Edit fields"
+      title:            "Edit fields"
+      catalog:          "From Catalog"
+      field_name:       "Field"
+      input_type:       "Input type"
+      unit:             "Ucum Unit"
+      code:             "Catalog code"
+    fields:
+      edit_button:      "Add fields from catalog"
+      title:            "Add fields from catalog"
+      catalog_source:   "Catalog source"
+
+  field_definition:
+    input_type:
+      default: "Text field"
+      checkbox: "Checkbox"
+      multiline: "Multi-Line input"
+      dropdown: "Drop-Down list"
+      
+  permissions:
+    listing:            "Listing permissions"
+    update:             "Update permissions"

@@ -122,33 +122,4 @@ en:
       tasks:          "Tasks"
       diagnoses:      "Diagnoses"
 
-  template:
-    heading:            "Template: "
-    listing:            "Listing templates"
-    edit:               "Edit template"
-    new:                "New template"
-    name:               "Name"
-    domain:             "Domain"
-    new_button:         "Add new Template"
-    count_fields:       "Number of fields"
-    field_definitions:
-      edit_button:      "Edit fields"
-      title:            "Edit fields"
-      catalog:          "From Catalog"
-      field_name:       "Field"
-      input_type:       "Input type"
-      unit:             "Ucum Unit"
-      code:             "Catalog code"
-    fields:
-      edit_button:      "Add fields from catalog"
-      title:            "Add fields from catalog"
-      catalog_source:   "Catalog source"
-
-  field_definition:
-    input_type:
-      default: "Text field"
-      checkbox: "Checkbox"
-      multiline: "Multi-Line input"
-      dropdown: "Drop-Down list"
-  permission_listing:   "Listing permissions"
-  permissions_update:   "Update permissions"
+  

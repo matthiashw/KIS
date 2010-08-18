@@ -8,7 +8,7 @@
         %th=t('treatment.diagnosis')
     - @treatments.each do |treatment|
         %tr{:onclick=>"location.href='#{url_for patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => treatment)}';",:style=>"cursor:pointer;"}
-            %td= h treatment.start_date
+            %td= h show_date(treatment.start_date)
             %td= h treatment.description
             
             %td

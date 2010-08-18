@@ -1,11 +1,270 @@
 en:
   help:
+
+    admin:
+      index:
+        title:              ""
+        text:               ""
+      status:
+        title:              ""
+        text:               ""
+          
+    appointments:
+      calendar:
+        title:              ""
+        text:               ""
+      edit:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      new:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
+
+    case_files:
+      edit:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      new:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
+
+    catalog_types:
+      edit:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      new:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
+
+    catalogs:
+      add_field_entry:
+        title:              ""
+        text:               ""
+      edit:
+        title:              ""
+        text:               ""
+      edit_field_entry:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      new:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
+
+    comments:
+      edit:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      new:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
+
+    database_backup:
+      export:
+        title:              ""
+        text:               ""
+      import:
+        title:              ""
+        text:               ""
+
+    diagnoses:
+      edit:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      new:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
+
+    domains:
+      edit:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      new:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
+
+    install:
+      index:
+        title:              ""
+        text:               ""
+
+    medical_reports:
+      edit:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      new:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
+
+    medical_templates:
+      change_fields:
+        title:              ""
+        text:               ""
+      edit:
+        title:              ""
+        text:               ""
+      edit_field_definition:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      new:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
+
     patients:
+      admission:
+        title:              ""
+        text:               ""
+      edit:
+        title:              ""
+        text:               ""
       index:
         title:    "Test-Title"
         text:     "This is a Placeholder_Label This is a Placeholder_Label This
-                  is a Placeholder_Label This is a Placeholder_Label<br />
+                  is a Placeholder_Label This is a Placeholder_Label<br/>
                   This is a Placeholder_LabelThis is a Placeholder_Label
-                  <br /> This is a Placeholder_LabelThis is a Placeholder_Label
-                  <br /> This is a Placeholder_LabelThis is a Placeholder_Label
-                  <br /> This is a Placeholder_LabelThis is a Placeholder_Label"
+                  <br/> This is a Placeholder_LabelThis is a Placeholder_Label
+                  <br/> This is a Placeholder_LabelThis is a Placeholder_Label
+                  <br/> This is a Placeholder_LabelThis is a Placeholder_Label"
+      new:
+        title:              ""
+        text:               ""
+      search:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
+
+    permissions:
+      index:
+        title:              ""
+        text:               ""
+
+    report_headers:
+      edit:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      new:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
+        
+    tasks:
+      edit:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      mytasks:
+        title:              ""
+        text:               ""
+      new:
+        title:              ""
+        text:               ""
+      results:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
+      taskcreation:
+        title:              ""
+        text:               ""
+      taskfill:
+        title:              ""
+        text:               ""
+
+    treatments:
+      edit:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      new:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
+
+    user_sessions:
+      new:
+        title:              ""
+        text:               ""
+
+    users:
+      edit:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      new:
+        title:              ""
+        text:               ""
+      setup:
+        title:              ""
+        text:               ""
+      show:
+        title:              ""
+        text:               ""
