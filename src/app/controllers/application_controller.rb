@@ -86,6 +86,7 @@ class ApplicationController < ActionController::Base
   # returns true or false, based on given user permissions
   # modified for task with multiple permissions with logical or
   def task_authorize?(*permissions)
+    return true if current_user_is_admin?
     permissions.each do |p|
       if current_user_permission?(p)
         return true
@@ -110,7 +111,7 @@ class ApplicationController < ActionController::Base
   # render access denied if user has no permission
   # to view the page
   def access_denied
-    flash[:error] = t('messages.application.no_permission')
+    flash.now[:error] = t('messages.application.no_permission')
     render :partial => 'shared/error403', :status => 403, :layout => true and return false
   end
 

@@ -1,6 +1,6 @@
 - title t('database_backup.import.title')
 
-= form_tag ({:action => 'importFile'}, :onSubmit => "showAjaxLoadingBar()",:multipart => true)
+= form_tag ({:action => 'importFile', :onSubmit => "showAjaxLoadingBar()",:multipart => true})
 %p
     %label{:for => "upload_file"}=t('database_backup.import.label')
     %br
@@ -9,4 +9,6 @@
 = submit_tag t('database_backup.import.submit')
 = form_tag
 
-=link_to t('action.back'), {:controller => "admin", :action => "index"}
+.action-links
+    - if authorize?('access_administration')
+        = link_to t('action.back'), {:controller => "admin", :action => "index"}, :class => 'acts_as_button darkgray'

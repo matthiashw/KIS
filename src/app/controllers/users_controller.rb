@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
       if @user.save
         update_admin(@user)
-        flash[:notice] = t('messages.users.registration_success')
+        flash.now[:notice] = t('messages.users.registration_success')
         render :action => 'show'
       else
         render :action => 'setup'
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   # GET /patients/1.xml
   def show
     @user = User.find(params[:id])
-
+    return access_denied unless (authorize?(permissions = ["view_user"]) || (authorize?(permissions = ["view_own_user"]) && @user.id == current_user.id))
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -59,11 +59,12 @@ class UsersController < ApplicationController
   end
   
   def create
+    return false unless authorize(permissions = ["create_user"])
     @user = User.new(params[:user])
     @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
 
     if @user.save
-      flash[:notice] = t('messages.users.registration_success')
+      flash.now[:notice] = t('messages.users.registration_success')
       render :action => 'show'
     else
       render :action => 'new'
@@ -71,12 +72,14 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])    
+    @user = User.find(params[:id])
+    return access_denied unless (authorize?(permissions = ["edit_user"]) || (authorize?(permissions = ["edit_own_user"]) && @user.id == current_user.id))
     @domains = Domain.all :conditions => { :is_role => 1 }
   end
   
   def update
     @user = User.find(params[:id])
+    return access_denied unless (authorize?(permissions = ["edit_user"]) || (authorize?(permissions = ["edit_own_user"]) && @user.id == current_user.id))
     @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
     if @user.update_attributes(params[:user])
 
@@ -84,7 +87,7 @@ class UsersController < ApplicationController
         I18n.locale = @user.language
       end
 
-      flash[:notice] = t('messages.users.update_success')
+      flash.now[:notice] = t('messages.users.update_success')
       render :action => 'show'
     else
       render :action => 'edit'
@@ -94,8 +97,9 @@ class UsersController < ApplicationController
   # DELETE /patients/1
   # DELETE /patients/1.xml
   def destroy
+    return false unless authorize(permissions = ["delete_user"])
     if params[:id] == 1
-      flash[:error] = t('messages.users.destroy_error')
+      flash.now[:error] = t('messages.users.destroy_error')
       redirect_to(users_url) and return false
     end
 

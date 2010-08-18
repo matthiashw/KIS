@@ -1,0 +1,9 @@
+- title t('diagnosis.edit')
+
+= render :partial => 'form'
+
+.action-links
+    - if authorize?('delete_diagnosis')
+        = link_to t('action.destroy'), @diagnosis, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
+    - if authorize?('view_diagnosis')
+        = link_to t('action.back'), diagnoses_path, :class => 'acts_as_button darkgray'

@@ -18,4 +18,5 @@
         = t('color-legend.case_file.view_case')
 
 .action-links
-    = link_to t('case_file.new'), new_patient_case_file_path(:patient_id => current_active_patient.id), :class => 'acts_as_button', :confirm => t('case_file.new_confirm')
+    - if authorize?('create_casefile')
+        = link_to t('case_file.new'), new_patient_case_file_path(:patient_id => current_active_patient.id), :class => 'acts_as_button', :confirm => t('case_file.new_confirm')

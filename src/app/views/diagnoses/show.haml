@@ -1,0 +1,20 @@
+- title @diagnosis.description
+
+.fields
+    .field
+        .field-label
+            =t('diagnosis.description')
+        .field-content
+            = h @diagnosis.description
+    .field
+        .field-label
+            =t('diagnosis.case_file')
+        .field-content
+            = h @diagnosis.case_file_id
+
+.action-links
+    - if authorize?('view_diagnosis')
+        = link_to t('action.back'), diagnoses_path, :class => 'acts_as_button darkgray'
+    - if authorize?('edit_diagnosis')
+        = link_to t('action.edit'), edit_diagnosis_path(@diagnosis), :class => 'acts_as_button'
+

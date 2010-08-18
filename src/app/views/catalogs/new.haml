@@ -1,25 +1,14 @@
 - title t('admin.catalog.import')
 
-- form_for :catalog, @catalog,:url => {:action=> 'create'}, :html => {:onSubmit => "showAjaxLoadingBar()", :multipart => true } do |f|
+- semantic_form_for @catalog, :url => {:action=> 'create'}, :html => {:onSubmit => "showAjaxLoadingBar()", :multipart => true } do |f|
   = f.error_messages
-  %p
-    = f.label :year,t('formtastic.labels.catalog.year')
-    %br/
-    = f.text_field :year
-  %p
-    = f.label :language, t('formtastic.labels.catalog.language')
-    %br/
-    = f.text_field :language
-  %p
-    = f.label :catalog_type_id,t('formtastic.labels.catalog.catalog_type_id')
-    %br/
-    = f.collection_select( :catalog_type_id, CatalogType.find(:all),:id,:name )
-  %p
-    = f.label :dump ,t('formtastic.labels.catalog.dump')
-    %br/
-    = f.file_field :dump
+
+  - f.inputs do
+    = f.input :year
+    = f.input :language
+    = f.input :catalog_type_id, :as => :select, :collection => CatalogType.find(:all)
+    = f.input :dump, :as => :file
   = render :partial => 'shared/loading_bar_element'
-  %p
-    = f.submit t('admin.catalog.import')
-    %br/
+  = f.buttons
+
 = link_to t('action.back'), catalogs_path

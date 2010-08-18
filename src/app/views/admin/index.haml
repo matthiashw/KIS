@@ -1,25 +1,33 @@
 -title(t('admin.admin_area'))
 
-%dl.admin-list.user-management
-    %dt=t('admin.user_management')
-    %dd=link_to image_tag("users.png", :alt => "Users") + t('admin.users'), users_path
-    %dd=link_to image_tag("domains.png", :alt => "Domains") + t('admin.domains'), domains_path
-    %dd.last=link_to image_tag("permissions.png", :alt => "Permissions") + t('admin.permissions'), permissions_path
+- if authorize?('view_user') || authorize?('view_domain') || authorize?('set_permissions')
+    %dl.admin-list.user-management
+        %dt=t('admin.user_management')
+        - if authorize?('view_user')
+            %dd=link_to image_tag("users.png", :alt => "Users") + t('admin.users'), users_path
+        - if authorize?('view_domain')
+            %dd=link_to image_tag("domains.png", :alt => "Domains") + t('admin.domains'), domains_path
+        - if authorize?('set_permissions')
+            %dd.last=link_to image_tag("permissions.png", :alt => "Permissions") + t('admin.permissions'), permissions_path
 
-%dl.admin-list.catalog-management
-    %dt=t('admin.catalog_management')
-    %dd=link_to image_tag("catalogs.png", :alt => "Catalogs") + t('admin.catalogs'), catalogs_path
-    %dd.last=link_to image_tag("catalog_types.png", :alt => "Catalog Types") + t('admin.catalog.types'), catalog_types_path
+- if authorize?('administer_catalog')
+    %dl.admin-list.catalog-management
+        %dt=t('admin.catalog_management')
+        %dd=link_to image_tag("catalogs.png", :alt => "Catalogs") + t('admin.catalogs'), catalogs_path
+        %dd.last=link_to image_tag("catalog_types.png", :alt => "Catalog Types") + t('admin.catalog.types'), catalog_types_path
 
-%dl.admin-list.medical-report-management
-    %dt=t('admin.medical_reports.report')
-    %dd.last=link_to image_tag("reportheader.png", :alt => "Header festlegen") + t('admin.medical_reports.header'), {:controller => "report_headers", :action => "index"}
+- if authorize?('view_medical_report')
+    %dl.admin-list.medical-report-management
+        %dt=t('admin.medical_reports.report')
+        %dd.last=link_to image_tag("reportheader.png", :alt => "Header festlegen") + t('admin.medical_reports.header'), {:controller => "report_headers", :action => "index"}
 
-%dl.admin-list.medical-template-management
-    %dt=t('admin.medical_template.template')
-    %dd.last=link_to image_tag("medical_template.png", :alt => "Medical Template") + t('admin.medical_template.medical_template'), {:controller => "medical_templates", :action => "index"}
+- if authorize?('view_medical_templates')
+    %dl.admin-list.medical-template-management
+        %dt=t('admin.medical_template.template')
+        %dd.last=link_to image_tag("medical_template.png", :alt => "Medical Template") + t('admin.medical_template.medical_template'), {:controller => "medical_templates", :action => "index"}
 
-%dl.admin-list.file-management
-    %dt=t('admin.file_management')
-    %dd=link_to image_tag("backup.png", :alt => "Export") + t('admin.export'), {:controller => "database_backup", :action => "export"}
-    %dd.last=link_to image_tag("export.png", :alt => "Import") + t('admin.import'), {:controller => "database_backup", :action => "import"}
+- if authorize?('backup_recover')
+    %dl.admin-list.file-management
+        %dt=t('admin.file_management')
+        %dd=link_to image_tag("backup.png", :alt => "Export") + t('admin.export'), {:controller => "database_backup", :action => "export"}
+        %dd.last=link_to image_tag("export.png", :alt => "Import") + t('admin.import'), {:controller => "database_backup", :action => "import"}

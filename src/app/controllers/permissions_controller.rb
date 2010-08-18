@@ -31,15 +31,12 @@ class PermissionsController < ApplicationController
     if params[:perms]
       # now set the permissions
       params[:perms].each do |perm|
-
         da = perm.split(/;/)
         domainname = da[0]
         action = da[1]
-        #domainname = perm.match('^\w\s*;')[0].chomp(';')
-        #action = perm.match(';[a-z_]*')[0].delete ";"
         d = Domain.find(:first, :conditions => "name = '#{domainname}'")
         d.permissions << Permission.new(:action => action, :granted => true) unless d == nil
-        flash[:notice] = t('messages.permissions.updated')
+        flash.now[:notice] = t('messages.permissions.updated')
       end
     end
     

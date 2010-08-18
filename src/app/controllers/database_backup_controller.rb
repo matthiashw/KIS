@@ -1,9 +1,11 @@
 class DatabaseBackupController < ApplicationController
   def export
+    return false unless authorize(permissions = ["backup_recover"])
   end
 
 
   def import
+    return false unless authorize(permissions = ["backup_recover"])
   end
 
 
@@ -14,20 +16,20 @@ class DatabaseBackupController < ApplicationController
       # dump db to db/data.yml
       YamlDb::dump(path)
     rescue
-      flash[:notice] = t('database_backup.export.failure')
+      flash.now[:error] = t('database_backup.export.failure')
       format.html {render :action => "export"}
       format.xml {render :status => :unprocessable_entity}
     else
       if File.exist?(path)
         respond_to do |format|
-          flash[:notice] = t('database_backup.export.success')
+          flash.now[:notice] = t('database_backup.export.success')
           format.html {render :action => "export"}
           format.xml {render :status => :success}
         end
         send_file path
       else
         respond_to do |format|
-          flash[:notice] = t('database_backup.export.failure')
+          flash.now[:error] = t('database_backup.export.failure')
           format.html {render :action => "export"}
           format.xml {render :status => :unprocessable_entity}
         end
@@ -40,7 +42,7 @@ class DatabaseBackupController < ApplicationController
     upload = params[:post]
     if !upload
       respond_to do |format|
-        flash[:notice] = t('database_backup.import.noFile')
+        flash.now[:error] = t('database_backup.import.noFile')
         format.html {render :action => "import"}
         format.xml {render :status => :unprocessable_entity}
       end
@@ -56,13 +58,13 @@ class DatabaseBackupController < ApplicationController
         YamlDb::load(path)
       rescue
         respond_to do |format|
-          flash[:notice] = t('database_backup.import.failure')
+          flash.now[:error] = t('database_backup.import.failure')
           format.html {render :action => "import"}
           format.xml {render :status => :unprocessable_entity}
         end
       else
         respond_to do |format|
-          flash[:notice] = t('database_backup.import.success')
+          flash.now[:notice] = t('database_backup.import.success')
           format.html {render :action => "import"}
           format.xml {render :status => :success}
         end

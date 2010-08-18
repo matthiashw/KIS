@@ -57,7 +57,7 @@ class InstallController < ApplicationController
           @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
 
           if @user.save
-            flash[:notice] = t('messages.users.registration_success')
+            flash.now[:notice] = t('messages.users.registration_success')
             step = session[:step] = "3"
             session[:admin_finished] = 1
 

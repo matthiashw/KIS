@@ -3,6 +3,7 @@ class MedicalReportsController < ApplicationController
   # GET /medical_reports
   # GET /medical_reports.xml
   def index
+    return false unless authorize(permissions = ["view_medical_report"])
     @medical_reports = MedicalReport.all
 
     respond_to do |format|
@@ -14,6 +15,7 @@ class MedicalReportsController < ApplicationController
   # GET /medical_reports/1
   # GET /medical_reports/1.xml
   def show
+    return false unless authorize(permissions = ["view_medical_report"])
     @medical_report = MedicalReport.find(params[:id])
 
     @config = YAML::load(File.open("#{RAILS_ROOT}/config/report.yml"))
@@ -54,6 +56,7 @@ class MedicalReportsController < ApplicationController
   # GET /medical_reports/new
   # GET /medical_reports/new.xml
   def new
+    return false unless authorize(permissions = ["create_medical_report"])
     @medical_report = MedicalReport.new
     @patient = Patient.find(session[:active_patient_id])
     
@@ -74,12 +77,14 @@ class MedicalReportsController < ApplicationController
 
   # GET /medical_reports/1/edit
   def edit
+    return false unless authorize(permissions = ["edit_medical_report"])
     @medical_report = MedicalReport.find(params[:id])
   end
 
   # POST /medical_reports
   # POST /medical_reports.xml
   def create
+    return false unless authorize(permissions = ["create_medical_report"])
     @medical_report = MedicalReport.new(params[:medical_report])
     @patient = Patient.find(session[:active_patient_id])
 
@@ -101,7 +106,7 @@ class MedicalReportsController < ApplicationController
 
     respond_to do |format|
       if @medical_report.save
-        flash[:notice] = 'MedicalReport was successfully created.'
+        flash.now[:notice] = 'MedicalReport was successfully created.'
         format.html { redirect_to(@medical_report) }
         format.xml  { render :xml => @medical_report, :status => :created, :location => @medical_report }
       else
@@ -114,11 +119,12 @@ class MedicalReportsController < ApplicationController
   # PUT /medical_reports/1
   # PUT /medical_reports/1.xml
   def update
+    return false unless authorize(permissions = ["edit_medical_report"])
     @medical_report = MedicalReport.find(params[:id])
 
     respond_to do |format|
       if @medical_report.update_attributes(params[:medical_report])
-        flash[:notice] = 'MedicalReport was successfully updated.'
+        flash.now[:notice] = 'MedicalReport was successfully updated.'
         format.html { redirect_to(@medical_report) }
         format.xml  { head :ok }
       else
@@ -131,6 +137,7 @@ class MedicalReportsController < ApplicationController
   # DELETE /medical_reports/1
   # DELETE /medical_reports/1.xml
   def destroy
+    return false unless authorize(permissions = ["delete_medical_report"])
     @medical_report = MedicalReport.find(params[:id])
     @medical_report.destroy
 

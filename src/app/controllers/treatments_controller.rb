@@ -4,6 +4,7 @@ class TreatmentsController < ApplicationController
   # GET /treatments
   # GET /treatments.xml
   def index
+    return false unless authorize(permissions = ["view_treatment"])
     @treatments = Treatment.find_all_by_case_file_id(params[:case_file_id])
     
     respond_to do |format|
@@ -15,6 +16,7 @@ class TreatmentsController < ApplicationController
   # GET /treatments/1
   # GET /treatments/1.xml
   def show
+    return false unless authorize(permissions = ["view_treatment"])
     @treatment = Treatment.find(params[:id])
     #@case_file = CaseFile.find(@treatment.case_file_id);
     #@patient = Patient.find(@case_file.patient_id);
@@ -28,8 +30,8 @@ class TreatmentsController < ApplicationController
   # GET /treatments/new
   # GET /treatments/new.xml
   def new
+    return false unless authorize(permissions = ["create_treatment"])
     @current_stage = "step_1"
-    @catalog = CatalogManager.instance.catalog 'treat'
     @treatment = Treatment.new
     
     if session.has_key?(:active_patient_id)
@@ -206,6 +208,7 @@ class TreatmentsController < ApplicationController
 
   # GET /treatments/1/edit
   def edit
+    return false unless authorize(permissions = ["edit_treatment"])
     @diagnoses = Diagnosis.find_all_by_case_file_id get_case_for_view
     @catalog = CatalogManager.instance.catalog 'ops'
     @treatment = Treatment.find(params[:id])
@@ -214,6 +217,7 @@ class TreatmentsController < ApplicationController
   # POST /treatments
   # POST /treatments.xml
   def create
+    return false unless authorize(permissions = ["create_treatment"])
     get_partial_treatment_from_session
     
     @current_active_patient = Patient.find(session[:active_patient_id])
@@ -222,7 +226,7 @@ class TreatmentsController < ApplicationController
 
     respond_to do |format|
       if @treatment.save
-        flash[:notice] = 'Treatment was successfully created.'
+        flash.now[:notice] = 'Treatment was successfully created.'
         format.html { redirect_to patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => @treatment.case_file_id, :id => @treatment) }
         format.xml  { render :xml => @treatment, :status => :created, :location => @treatment }
       else
@@ -237,12 +241,13 @@ class TreatmentsController < ApplicationController
   # PUT /treatments/1
   # PUT /treatments/1.xml
   def update
+    return false unless authorize(permissions = ["edit_treatment"])
     @treatment = Treatment.find(params[:id])
     @treatment.ops_entry_id = params[:opscode]
 
     respond_to do |format|
       if @treatment.update_attributes(params[:treatment])
-        flash[:notice] = 'Treatment was successfully updated.'
+        flash.now[:notice] = 'Treatment was successfully updated.'
         format.html { redirect_to patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => @treatment.case_file_id, :id => @treatment) }
         format.xml  { head :ok }
       else
@@ -255,6 +260,7 @@ class TreatmentsController < ApplicationController
   # DELETE /treatments/1
   # DELETE /treatments/1.xml
   def destroy
+    return false unless authorize(permissions = ["delete_treatment"])
     @treatment = Treatment.find(params[:id])
     @treatment.destroy
 

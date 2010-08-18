@@ -5,6 +5,7 @@ class CatalogsController < ApplicationController
   # GET /catalogs
   # GET /catalogs.xml
   def index
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalogs = Catalog.all
     @catalog_types = CatalogType.all
     respond_to do |format|
@@ -16,6 +17,7 @@ class CatalogsController < ApplicationController
   # GET /catalogs/1
   # GET /catalogs/1.xml
   def show
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalog = Catalog.find(params[:id])
 
     if params.has_key?(:node)
@@ -38,6 +40,7 @@ class CatalogsController < ApplicationController
   # GET /catalogs/new
   # GET /catalogs/new.xml
   def new
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalog = Catalog.new
 
     respond_to do |format|
@@ -48,22 +51,24 @@ class CatalogsController < ApplicationController
 
   # GET /catalogs/1/edit
   def edit
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalog = Catalog.find(params[:id])
   end
 
   # POST /catalogs
   # POST /catalogs.xml
   def create
+    return false unless authorize(permissions = ["administer_catalog"])
     file = params[:catalog][:dump]
     params[:catalog].delete(:dump)
     @catalog = Catalog.new( params[:catalog])
     importer=ImporterManager.instance.import_methods[@catalog.catalog_type.import_method]
     if file
-        begin
+        #begin
           importer.import @catalog,file
-        rescue
-         @catalog.errors.add_to_base t("admin.catalog.errors.import_file_invalid")
-        end
+        #rescue
+         #@catalog.errors.add_to_base t("admin.catalog.errors.import_file_invalid")
+        #end
         
     else
       if importer.class!=Importer::DummyCatalogImporter
@@ -75,7 +80,7 @@ class CatalogsController < ApplicationController
      
     respond_to do |format|
       if @catalog.errors.empty?
-        flash[:notice] = t('admin.catalog.flash.created')
+        flash.now[:notice] = t('admin.catalog.flash.created')
         if(!@catalog.catalog_type.active_catalog)
             @catalog.catalog_type.active_catalog_id = @catalog.id
             @catalog.catalog_type.save
@@ -94,11 +99,12 @@ class CatalogsController < ApplicationController
   # PUT /catalogs/1
   # PUT /catalogs/1.xml
   def update
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalog = Catalog.find(params[:id])
 
     respond_to do |format|
       if @catalog.update_attributes(params[:catalog])
-        flash[:notice] = t('admin.catalog.flash.updated')
+        flash.now[:notice] = t('admin.catalog.flash.updated')
         format.html { redirect_to(@catalog) }
         format.xml  { head :ok }
       else
@@ -108,13 +114,10 @@ class CatalogsController < ApplicationController
     end
   end
 
-
- 
-
-
   # DELETE /catalogs/1
   # DELETE /catalogs/1.xml
   def destroy
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalog = Catalog.find(params[:id])
     @catalog.destroy
 
@@ -125,11 +128,12 @@ class CatalogsController < ApplicationController
   end
 
   def activate
+    return false unless authorize(permissions = ["administer_catalog"])
     @catalog = Catalog.find(params[:id])
     @catalog.catalog_type.active_catalog_id = @catalog.id
     @catalog.catalog_type.save
     respond_to do |format|
-      flash[:notice] = t('admin.catalog.flash.activated')
+      flash.now[:notice] = t('admin.catalog.flash.activated')
       format.html { redirect_to(catalogs_url) }
       format.xml  { head :ok }
     end
@@ -147,7 +151,7 @@ class CatalogsController < ApplicationController
      respond_to do |format|
        if params.has_key?("delete_field_entry")
           @edit_field_entry.destroy
-          flash[:notice] = t('admin.catalog.user_defined.destroy_field_entry.ok')
+          flash.now[:notice] = t('admin.catalog.user_defined.destroy_field_entry.ok')
            format.html { redirect_to(@catalog) }
         else
            format.html { render :action => "edit_field_entry" }
@@ -160,28 +164,28 @@ class CatalogsController < ApplicationController
   end
 
   def update_field_entry
-      @catalog = Catalog.find(params[:id])
-      @edit_field_entry=Entry.find(params[:node_to_edit])
-      @edit_field_entry.code = params[:code]
-      @edit_field_entry.name= params[:name]
-      @edit_field_entry.description= params[:description]
-      if @edit_field_entry.instance_of? FieldEntry
-        @edit_field_entry.field_definition.input_type=params[:input_type]
-        @edit_field_entry.field_definition.additional_type_info=params[:additional_type_info]
-        @edit_field_entry.field_definition.save
-      end
-     respond_to do |format|
-      if  @edit_field_entry.save 
-        flash[:notice] = t('admin.catalog.user_defined.update_field_entry.ok')
+    @catalog = Catalog.find(params[:id])
+    @edit_field_entry=Entry.find(params[:node_to_edit])
+    @edit_field_entry.code = params[:code]
+    @edit_field_entry.name= params[:name]
+    @edit_field_entry.description= params[:description]
+    if @edit_field_entry.instance_of? FieldEntry
+      @edit_field_entry.field_definition.input_type=params[:input_type]
+      @edit_field_entry.field_definition.additional_type_info=params[:additional_type_info]
+      @edit_field_entry.field_definition.save
+    end
+    respond_to do |format|
+      if  @edit_field_entry.save
+        flash.now[:notice] = t('admin.catalog.user_defined.update_field_entry.ok')
         format.html { redirect_to(@catalog) }
         format.xml  { head :ok }
 
       else
-        flash[:error] = t('admin.catalog.user_defined.update_field_entry.error')
+        flash.now[:error] = t('admin.catalog.user_defined.update_field_entry.error')
          format.html { render :action => "add_field_entry" }
          format.xml  { head :error  }
       end
-     end
+    end
   end
 
   def create_field_entry
@@ -195,12 +199,12 @@ class CatalogsController < ApplicationController
     respond_to do |format|
     if fieldentry.save
       FieldDefinition.create(:input_type => input_type, :field_entry_id => fieldentry.id, :additional_type_info => additional_type_info )
-      flash[:notice] = t('admin.catalog.user_defined.create_field_entry.ok')
+      flash.now[:notice] = t('admin.catalog.user_defined.create_field_entry.ok')
       format.html { redirect_to(@catalog) }
       format.xml  { head :ok }
       
     else
-      flash[:error] = t('admin.catalog.user_defined.create_field_entry.error')
+      flash.now[:error] = t('admin.catalog.user_defined.create_field_entry.error')
        format.html { render :action => "add_field_entry" }
        format.xml  { head :error  }
     end
@@ -227,7 +231,6 @@ class CatalogsController < ApplicationController
    end
 
   def getnodes
-
     if params.has_key?(:entry_ids)
       entry_ids=params[:entry_ids].split(",")
       entries=Entry.find :all, :conditions => { :id=>entry_ids }
@@ -237,7 +240,6 @@ class CatalogsController < ApplicationController
     end
 
   end
-
 
 end
 

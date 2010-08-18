@@ -16,4 +16,5 @@
                 %td= link_to t('action.show'), temp
                 %td= link_to t('action.destroy'), temp, :confirm => t('delete_confirmation'), :method => :delete
 .action-links
-    = link_to t('template.new_button'), new_medical_template_path, :class => 'acts_as_button'
+    - if authorize?('view_medical_templates')
+        = link_to t('template.new_button'), new_medical_template_path, :class => 'acts_as_button'

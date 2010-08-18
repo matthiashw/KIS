@@ -3,4 +3,5 @@
 = render :partial => 'form'
 
 .action-links
-    = link_to t('action.back'), medical_templates_path, :class => 'acts_as_button darkgray'
+    - if authorize?('view_medical_templates')
+        = link_to t('action.back'), medical_templates_path, :class => 'acts_as_button darkgray'

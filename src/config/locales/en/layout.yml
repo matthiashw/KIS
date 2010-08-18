@@ -55,6 +55,9 @@ en:
       delete_success:        "Patient successfully deleted"
     permissions:
       updated:                "Permissions updated."
+    user_session:
+      logged_in:              "Successfully logged in."
+      logged_out:             "Successfully logged out."
 
   color-legend:
     case_file:
@@ -107,6 +110,8 @@ en:
       report_headers:     "Report Headers"
       medical_templates:  "Medical Templates"
       status_report:      "Status Report"
+      export:             "Create Backup"
+      import:             "Recover Database"
     tabs:
       master_data:    "Master Data"
       anamnesis:      "Anamnesis"
@@ -115,23 +120,6 @@ en:
       treatment:      "Treatment"
       tasks:          "Tasks"
       diagnoses:      "Diagnoses"
-
-  user:
-    listing:                "Listing users"
-    username:               "Username"
-    first_name:             "First name"
-    family_name:            "Family name"
-    role:                   "Role"
-    email:                  "E-mail"
-    address:                "Address"
-    phone:                  "Phone"
-    new_button:             "Create new user"
-    new:                    "New User"
-    edit:                   "Editing User"
-    setup:
-      setup:                  "Setup Admin User"
-      choose_from_current_user: "Choose a existing User or"
-      new_admin_user:         "Create a new Administration User"
 
   template:
     heading:            "Template: "
