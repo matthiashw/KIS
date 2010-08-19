@@ -326,6 +326,12 @@ a.links-link {
     .password_field {
         width:240px;
     }
+
+    .hint {
+        font-size:11px;
+        font-style:italic;
+        color:$mediumgray;
+    }
 }
 
 /**

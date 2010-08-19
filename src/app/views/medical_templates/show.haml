@@ -48,4 +48,4 @@
     - if authorize?('view_medical_templates')
         = link_to t('action.back'), medical_templates_path, :class => 'acts_as_button darkgray'
     - if authorize?('edit_medical_templates')
-        = link_to t('action.back'), edit_medical_template_path(@medical_template), :class => 'acts_as_button darkgray'
+        = link_to t('action.edit'), edit_medical_template_path(@medical_template), :class => 'acts_as_button darkgray'

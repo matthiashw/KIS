@@ -49,7 +49,7 @@ class DomainsController < ApplicationController
 
     respond_to do |format|
       if @domain.save
-        flash.now[:notice] = 'Domain was successfully created.'
+        flash.now[:notice] = t('domain.messages.create_success')
         format.html { redirect_to(@domain) }
         format.xml  { render :xml => @domain, :status => :created, :location => @domain }
       else
@@ -67,7 +67,7 @@ class DomainsController < ApplicationController
 
     respond_to do |format|
       if @domain.update_attributes(params[:domain])
-        flash.now[:notice] = 'Domain was successfully updated.'
+        flash.now[:notice] = t('domain.messages.update_success')
         format.html { redirect_to(@domain) }
         format.xml  { head :ok }
       else

@@ -36,7 +36,7 @@ class PermissionsController < ApplicationController
         action = da[1]
         d = Domain.find(:first, :conditions => "name = '#{domainname}'")
         d.permissions << Permission.new(:action => action, :granted => true) unless d == nil
-        flash.now[:notice] = t('messages.permissions.updated')
+        flash.now[:notice] = t('permissions.messages.updated')
       end
     end
     

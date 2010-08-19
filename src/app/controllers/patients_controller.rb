@@ -51,10 +51,10 @@ class PatientsController < ApplicationController
     return false unless authorize(permissions = ["create_comment"])
     mycomment = params[:comment]
     if mycomment[:comment].blank?
-      flash.now[:error] = t('messages.patients.comment_blank')
+      flash.now[:error] = t('patient.messages.comment_blank')
     else
       Patient.find(params[:id]).comments.create(params[:comment])
-      flash.now[:notice] = t('messages.patients.comment_added')
+      flash.now[:notice] = t('patient.messages.comment_added')
     end
     redirect_to :action => "show", :id => params[:id]
   end
@@ -96,7 +96,7 @@ class PatientsController < ApplicationController
           session[:active_patient_id] = @patient.id
 
           @case_file.update_attributes(:patient_id => @patient.id)
-          flash.now[:notice] = t("messages.patients.create_success")
+          flash.now[:notice] = t("patient.messages.create_success")
           format.html { redirect_to(@patient) }
           format.xml  { render :xml => @patient, :status => :created, :location => @patient }
         else
@@ -120,7 +120,7 @@ class PatientsController < ApplicationController
 
     respond_to do |format|
       if @patient.update_attributes(params[:patient])
-        flash.now[:notice] = t("messages.patients.update_success")
+        flash.now[:notice] = t("patient.messages.update_success")
         format.html { redirect_to(@patient) }
         format.xml  { head :ok }
       else
@@ -138,7 +138,7 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
     
     if @patient.destroy
-      flash.now[:notice] = t("messages.patients.delete_success")
+      flash.now[:notice] = t("patient.messages.delete_success")
 
       if session[:active_patient_id] == @patient.id
         session[:active_patient_id] = nil

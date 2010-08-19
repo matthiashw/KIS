@@ -10,7 +10,7 @@
     - @medical_reports.each do |medical_report|
       %tr
         %td{:onclick=>"location.href='#{url_for edit_medical_report_path(medical_report)}';",:style=>"cursor:pointer;"}=h medical_report.description
-        %td{:onclick=>"location.href='#{url_for edit_medical_report_path(medical_report)}';",:style=>"cursor:pointer;"}=h medical_report.created_at
+        %td{:onclick=>"location.href='#{url_for edit_medical_report_path(medical_report)}';",:style=>"cursor:pointer;"}=h show_datetime(medical_report.created_at)
         %td
           = link_to t('medical_reports.print_view'), patient_medical_report_path(:patient_id => @patient, :id => medical_report.id), :target =>'blank'
 

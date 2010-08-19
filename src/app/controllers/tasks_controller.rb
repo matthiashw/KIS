@@ -87,7 +87,7 @@ class TasksController < ApplicationController
       if session.has_key?(:active_patient_id)
 
         if params[:domain][:id] == ""
-          flash.now[:error] = 'Please select a valid Domain'
+          flash.now[:error] = t('task.messages.select_valid_domain')
           format.html { redirect_to :action => "new" }
           format.xml  { render :xml => @domain }
         else
@@ -98,7 +98,7 @@ class TasksController < ApplicationController
           format.xml  { render :xml => @task }
         end
       else
-         flash.now[:error] = 'No active Patient'
+         flash.now[:error] = t('task.messages.no_active_patient')
          format.html { redirect_to :action => "new" }
          format.xml  { render :xml => @task }
       end
@@ -181,11 +181,11 @@ class TasksController < ApplicationController
           end
         end
 
-        flash.now[:notice] = 'Task was successfully created.'
+        flash.now[:notice] = t('task.messages.create_successfull')
         format.html { redirect_to(@task) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
-        flash.now[:error] = 'Task could not be created.'
+        flash.now[:error] = t('task.messages.create_failed')
         format.html { render :action => "new" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
       end
@@ -200,7 +200,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        flash.now[:notice] = 'Task was successfully updated.'
+        flash.now[:notice] = t('task.messages.update_successfull')
         format.html { redirect_to(@task) }
         format.xml  { head :ok }
       else
@@ -229,7 +229,7 @@ class TasksController < ApplicationController
 
 
     end
-    flash.now[:notice] = 'Task was successfully destroyed.'
+    flash.now[:notice] = t('task.messages.delete_successfull')
     respond_to do |format|
       format.html { redirect_to(tasks_url) }
       format.xml  { head :ok }
@@ -247,7 +247,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.state == Task.state_closed
 
-       flash.now[:error] = 'Task is closed'
+       flash.now[:error] = t('task.messages.state_closed')
        format.html { redirect_to :action => "results" }
        format.xml  { render :xml => @task }
 
@@ -282,9 +282,9 @@ class TasksController < ApplicationController
       if params.has_key?('upload')
         if params.has_key?('file')
           if UploadedFile.savefile(params[:file],@task.id)
-            flash[:notice] = 'Fileupload complete'
+            flash[:notice] = t('task.messages.upload_complete')
           else
-            flash[:error] = 'Fileupload failed'
+            flash[:error] = t('task.messages.upload_failed')
           end
 
         end
@@ -330,7 +330,7 @@ class TasksController < ApplicationController
             @task.update_attribute(:state, Task.state_closed)
           end
 
-          flash.now[:notice] = 'Task successfully completed.'
+          flash.now[:notice] = t('task.messages.complete_success')
                 format.html { redirect_to(@task) }
                 format.xml  { head :ok }
 

@@ -69,7 +69,7 @@ class CaseFilesController < ApplicationController
             end
             
 
-            flash.now[:notice] = t("case_file.success")
+            flash.now[:notice] = t("case_file.messages.success")
             format.html { redirect_to patient_case_file_path(:patient_id => params[:patient_id], :id => @case_file.id) }
             format.xml  { render :xml => @case_file, :status => :created, :location => @case_file }
           else
@@ -78,7 +78,7 @@ class CaseFilesController < ApplicationController
           end
 
         else
-            flash.now[:error] = t("case_file.no_active_patient")
+            flash.now[:error] = t("case_file.messages.no_active_patient")
             format.html { render :action => "new" }
             format.xml  { head :error  }
         end
@@ -94,7 +94,7 @@ class CaseFilesController < ApplicationController
 
     respond_to do |format|
       if @case_file.update_attributes(params[:case_file])
-        flash.now[:notice] = t("case.update_success")
+        flash.now[:notice] = t("case_file.messages.update_success")
         format.html { redirect_to(@case_file) }
         format.xml  { head :ok }
       else
@@ -125,7 +125,7 @@ class CaseFilesController < ApplicationController
     casefile = CaseFile.find(params[:id])
     session[:case_view_id] = casefile.id unless casefile.nil?
 
-    flash.now[:notice] = t("case_file.activated")
+    flash.now[:notice] = t("case_file.messages.activated")
 
     respond_to do |format|
         format.html { redirect_to(patient_case_files_url)  }
