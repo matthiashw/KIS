@@ -14,16 +14,27 @@
                         =link_to t('patient.new'), new_patient_path, :class => is_active?('patients', 'new')
     %li{:class => "main-navigation-leaf"}
         - if authorize?('view_own_task')
-            =link_to make_image_link(t('navi.main.tasks'), 'navi-img navi-img-aufgabe'), mytasks_path(:user_id => current_user.id), :class => is_active?('usertasks')
-            - if is_controller_active?('usertasks')
+            =link_to make_image_link(t('navi.main.mytasks'), 'navi-img navi-img-aufgabe'), mytasks_path(:user_id => current_user.id), :class => is_active_multiple_controller?('usertasks', 'domaintasks')
+            - if is_controller_active?('usertasks', 'domaintasks')
                 =image_tag "main_navi_active.png", :alt => 'active menu', :class => "navi-img-active"
-            - if is_controller_active?('usertasks')
-                %ul.main-subnavigation
+        - elsif authorize?('view_domain_task')
+            =link_to make_image_link(t('navi.main.domaintasks'), 'navi-img navi-img-aufgabe'), domaintasks_path(:user_id => current_user.id), :class => is_active_multiple_controller?('usertasks', 'domaintasks')
+            - if is_controller_active?('usertasks', 'domaintasks')
+                =image_tag "main_navi_active.png", :alt => 'active menu', :class => "navi-img-active"
+
+        - if is_controller_active?('usertasks', 'domaintasks')
+            %ul.main-subnavigation
+                - if authorize?('view_own_task')
                     %li{:class => "main-subnavigation-leaf"}
-                        =link_to t('navi.main.tasks-all'), mytasks_path(:user_id => current_user.id), :class => is_active?('usertasks', 'index')
-                    - if authorize?('create_task')
-                        %li{:class => "main-subnavigation-leaf"}
-                            = link_to t('navi.main.task-new'), new_user_task_path(:user_id => current_user.id), :class => is_active?('usertasks', 'new')
+                        =link_to t('navi.main.tasks-all'), mytasks_path(:user_id => current_user.id), :class => is_active?('usertasks')
+                - if authorize?('view_domain_task')
+                    %li{:class => "main-subnavigation-leaf"}
+                        =link_to t('navi.main.tasks-domain'), domaintasks_path(:user_id => current_user.id), :class => is_active?('domaintasks')
+
+                - if authorize?('create_task')
+                    %li{:class => "main-subnavigation-leaf"}
+                        = link_to t('navi.main.task-new'), new_user_task_path(:user_id => current_user.id), :class => is_active?('usertasks', 'new')
+
     %li{:class => "main-navigation-leaf"}
         - if authorize?('view_appointment')
             =link_to make_image_link(t('navi.main.appointments'), 'navi-img navi-img-termin'), appointments_path, :class => is_active?('appointments')
