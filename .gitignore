@@ -51,6 +51,7 @@ src/public/stylesheets/install.css
 .sass-cache
 src/tmp/*
 schema.rb
+src/config/report.yml
 
 # images #
 ##########
