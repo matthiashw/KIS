@@ -179,6 +179,13 @@ en:
       findings:             "Findings"
       treatments:           "Treatment"
       diagnoses:            "Diagnoses"
+      icd:                  "ICD-Code"
+      name:                 "Name"
+      description:          "Description"
+      atc:                  "ATC"
+      ops:                  "OPS"
+      medication:           "Medication"
+      start_date:           "Start date"
 
   medical_reports:
     listing:                "Medical Reports"
@@ -192,6 +199,7 @@ en:
     title:                  "Title"
     actions:                "Actions"
     created:                "Created at"
+    print_view:             "Print view"
     no_header:              "Standard header for medical reports missing. Please contact your administrator."
 
   patient:
