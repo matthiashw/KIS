@@ -14,7 +14,7 @@
 
 %h2.floatingheadline=t('task.fields')
 
-- semantic_form_for @task, :url => { :action => "createentries" , :id => @task.id } do |f|
+- semantic_form_for @task, :url => { :action => "createentries" , :id => @task.id }, :html => {:multipart => true} do |f|
     = f.error_messages
 
     #templates
@@ -28,37 +28,55 @@
                         %thead
                             %tr
                                 %th=t('task.name')
-                                %th=t('task.creatorcomment')
+                                %th=t('task.creator_comment')
                                 %th=t('task.value')
                                 %th=t('task.unit')
                                 %th=t('task.comment')
                         %tbody
                             -v.each do |x,y|
+                                - @x = x
+                                - @y = y
+                                - @fielddef = FieldDefinition.find(@y.field_definition_id)
                                 %tr.template-field
-                                    - fielddef = FieldDefinition.find(y.field_definition_id)
-                                    %td= Entry.find(fielddef.field_entry_id).name
+                                    %td= Entry.find(@fielddef.field_entry_id).name
                                     %td= y.comment
-                                    - fields_for y do |fi|
+                                    - fields_for @y do |fi|
                                         -if @task.state == Task.state_inprogress
-                                            - measuredvalue = MeasuredValue.find_by_field_id(x)
-                                            %td= text_field 'values',x, :value => measuredvalue.value, :size => '20', :maxlength => '20'
-                                            -if y.ucum_entry_id.nil?
+                                            - @measuredvalue = MeasuredValue.find_by_field_id(@x)
+                                            = render :partial => InputTypeManager.input_type_partial(@fielddef.input_type,true)
+                                            -if @y.ucum_entry_id.nil?
                                                 %td= '-'
                                             -else
-                                                -ucum = Entry.find(y.ucum_entry_id)
+                                                -ucum = Entry.find(@y.ucum_entry_id)
                                                 %td= ucum.description
-                                            %td= text_field 'comments',x, :value => measuredvalue.comment, :size => '20', :maxlength => '30'
+                                            %td= text_field 'comments',@x, :value => @measuredvalue.comment, :size => '20', :maxlength => '30'
                                         -else
-                                            %td= text_field 'values',x, :size => '20', :maxlength => '20'
-                                            -if y.ucum_entry_id.nil?
+                                            = render :partial => InputTypeManager.input_type_partial(@fielddef.input_type,false)
+                                            -if @y.ucum_entry_id.nil?
                                                 %td= '-'
                                             -else
-                                                -ucum = Entry.find(y.ucum_entry_id)
+                                                -ucum = Entry.find(@y.ucum_entry_id)
                                                 %td= ucum.description
-                                            %td= text_field 'comments',x, :size => '20', :maxlength => '30'
+                                            %td= text_field 'comments',@x, :size => '20', :maxlength => '30'
     %h2
-        =t('task.additional_information')
+        = t('task.file_upload')
+    .fields
+        .box
+            .box-inner
+                .field
+                    = file_field :file, :datafile
+                    = submit_tag t('task.upload'), :name=>'upload'
+                - unless @taskfiles.nil?
+                    - @taskfiles.each do |tf|
+                        .field
+                            .field-label
+                                = tf.name
+                            .field-content
+                                = 'hier vielleicht delete oder descr'
+
+    %h2.floatingheadline=t('task.additional_information')
+
     - f.inputs do
         = f.input :executor_comment
-    = submit_tag t('task.save'), :name=>'save'
-    = submit_tag t('task.save_and_close'), :name=> 'saveandclose'
+        = submit_tag t('task.save'), :name=>'save'
+        = submit_tag t('task.save_and_close'), :name=> 'saveandclose'

@@ -34,7 +34,13 @@
                                 - fielddef = FieldDefinition.find(field.field_definition_id)
                                 %td= Entry.find(fielddef.field_entry_id).name
                                 %td= field.comment
-                                %td= y.value
+                                - if fielddef.input_type == 2
+                                    -if y.value == '1'
+                                        %td=t('task.y')
+                                    -else
+                                        %td=t('task.n')
+                                - else
+                                    %td= y.value
                                 -if field.ucum_entry_id.nil?
                                     %td= '-'
                                 -else
