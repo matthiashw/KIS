@@ -65,6 +65,7 @@ ActionController::Routing::Routes.draw do |map|
     patient.resources :comments
     patient.resources :medical_reports
     patient.resources :tasks
+    patient.resources :findings
   end
 
   map.resources :users do |user|

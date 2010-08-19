@@ -3,7 +3,7 @@
         %tr
             %th=t('task.state')
             %th=t('task.domain')
-            - if !showmytasks.nil? && showmytasks == 1
+            - if !showmytasks.nil? && showmytasks == 1 && authorize?('view_patient')
                 %th=t('task.patient')
             - else
                 %th=t('task.creator')
@@ -34,7 +34,7 @@
 
 
                     %td= h domain.name
-                    - if !showmytasks.nil? && showmytasks == 1
+                    - if !showmytasks.nil? && showmytasks == 1 && authorize?('view_patient')
                         %td= h(patient.first_name + " " + patient.family_name)
                     - else
                         %td= h creator.username
@@ -61,7 +61,7 @@
                             %span.task-closed
                                 = h t('task.closed')
                     %td= h domain.name
-                    - if !showmytasks.nil? && showmytasks == 1
+                    - if !showmytasks.nil? && showmytasks == 1 && authorize?('view_patient')
                         %td= h(patient.first_name + " " + patient.family_name)
                     - else
                         %td= h creator.username
