@@ -2,7 +2,10 @@
     =hidden_field_tag "current_stage", "#{@current_stage}"
     %div
         %p
-            = checkbox_tree @catalog, 'step3' , 'medications'
+            - if @catalog
+                = checkbox_tree @catalog, 'step3' , 'medications'
+            - else
+                = no_catalog_available 'atc'
 
         .task-select-domain-submit
             = submit_tag t('treatment.nextstep'), :name => "continue"

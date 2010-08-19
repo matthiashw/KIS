@@ -54,6 +54,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :patients do |patient|
     patient.resources :case_files do |case_file|
+      case_file.resources :diagnoses
       case_file.connect "treatments/new_step2", :controller => "treatments", :action => "new_step2"
       case_file.connect "treatments/new_step3", :controller => "treatments", :action => "new_step3"
       case_file.connect "treatments/new_step4", :controller => "treatments", :action => "new_step4"

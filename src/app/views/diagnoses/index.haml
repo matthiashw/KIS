@@ -1,13 +1,17 @@
 - title t('diagnosis.listing')
 %table
     %tr
+        %th=t('diagnosis.catalog_entry')
         %th=t('diagnosis.description')
-        %th=t('diagnosis.case_file')
+        %th=t('diagnosis.user')
+        %th=t('diagnosis.created_at')
     - @diagnoses.each do |diagnosis|
-        %tr{:onclick=>"location.href='#{url_for :controller => 'diagnosis', :action => 'show', :id => diagnosis.id}';",:style=>"cursor:pointer;"}
-            %td= h diagnosis.description
-            %td= h diagnosis.case_file_id
+        %tr{:onclick=>"location.href='#{url_for patient_case_file_diagnosis_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => diagnosis.id)}';",:style=>"cursor:pointer;"}
+            %td= h diagnosis.icd_entry.name + " (" + diagnosis.icd_entry.code + ")"
+            %td= h truncate(diagnosis.description, :omission => "...", :length => 40)
+            %td= h diagnosis.user.first_name+" "+ diagnosis.user.family_name
+            %td= h diagnosis.created_at
 
 .action-links
     - if authorize?('create_diagnosis')
-        = link_to t('diagnosis.new_button'), new_diagnosis_path, :class => 'acts_as_button'
+        = link_to t('diagnosis.new_button'), new_patient_case_file_diagnosis_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id]), :class => 'acts_as_button'

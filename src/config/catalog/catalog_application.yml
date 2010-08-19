@@ -12,15 +12,12 @@ template:
 ucum_units:
    name: Ucum units
    entry_classname: UcumEntry
-treat:
-   name: Treatment Catalog
-   entry_classname: OpsEntry
+diagnosis:
+   name: Diagnosis Catalog (ICD)
+   entry_classname: IcdEntry
 atc:
- name: ATC Catalog
- entry_classname: AtcEntry
+   name: ATC Catalog
+   entry_classname: AtcEntry
 ops:
- name: OPS Catalog
- entry_classname: OpsEntry
-icd:
-  name: ICD Catalog
-  entry_classname: IcdEntry
+   name: Treatment Catalog (OPS)
+   entry_classname: OpsEntry
