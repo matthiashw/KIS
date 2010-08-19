@@ -5,6 +5,7 @@ class MedicalReportsController < ApplicationController
   def index
     return false unless authorize(permissions = ["view_medical_report"])
     @medical_reports = MedicalReport.find_all_by_patient_id current_active_patient
+    @patient = current_active_patient
 
     @config = YAML::load(File.open("#{RAILS_ROOT}/config/report.yml"))
     if @config["header"] && ReportHeader.find_by_id(@config["header"])
@@ -53,7 +54,7 @@ class MedicalReportsController < ApplicationController
    
 
     respond_to do |format|
-      format.html
+      format.html { render :layout => 'medical_report'}
       #format.html {render :layout => 'medical_report'}# show.html.erb
       format.xml  { render :xml => @medical_report }
     end
@@ -142,7 +143,7 @@ class MedicalReportsController < ApplicationController
     respond_to do |format|
       if not flash[:error] and @medical_report.save
         flash.now[:notice] = 'MedicalReport was successfully created.'
-        format.html { redirect_to(@medical_report) }
+        format.html { redirect_to(:action => "index") }
         format.xml  { render :xml => @medical_report, :status => :created, :location => @medical_report }
       else
         format.html { render :action => "new" }
