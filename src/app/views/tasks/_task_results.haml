@@ -6,7 +6,10 @@
         %tr
             %th=t('task.state')
             %th=t('task.domain')
-            %th=t('task.creator')
+            - if !showmytasks.nil? && showmytasks == 1 && authorize?('view_patient')
+                %th=t('task.patient')
+            - else
+                %th=t('task.creator')
             %th=t('task.deadline')
             %th=t('task.creator_comment')
             %th=t('task.executor_comment')
@@ -14,6 +17,9 @@
             %th=t('task.fill')
         - taskresults.each do |task|
             - domain = Domain.find_by_id(task.domain_id)
+            - if !showmytasks.nil? && showmytasks == 1
+                - casefile = CaseFile.find_by_id(task.case_file_id)
+                - patient = Patient.find_by_id(casefile.patient_id)
             - creator = User.find_by_id(task.creator_user_id)
             - if current_active_patient
                 %tr{:onclick=>"location.href='#{patient_task_path(:patient_id => current_active_patient.id ,:id => task.id)}';",:style=>"cursor:pointer;"}
@@ -30,7 +36,10 @@
 
 
                     %td= h domain.name
-                    %td= h creator.username
+                    - if !showmytasks.nil? && showmytasks == 1 && authorize?('view_patient')
+                        %td= h(patient.first_name + " " + patient.family_name)
+                    - else
+                        %td= h creator.username
                     %td= h show_date(task.deadline)
                     %td= h truncate(task.creator_comment, :omission => "...", :length => 50)
                     %td= h truncate(task.executor_comment, :omission => "...", :length => 50)
@@ -53,7 +62,10 @@
                         - else
                             %span.task-closed
                                 = h t('task.closed')
-                    %td= h domain.name
+                    - if !showmytasks.nil? && showmytasks == 1 && authorize?('view_patient')
+                        %td= h(patient.first_name + " " + patient.family_name)
+                    - else
+                        %td= h creator.username
                     %td= h creator.username
                     %td= h show_date(task.deadline)
                     %td= h truncate(task.creator_comment, :omission => "...", :length => 50)

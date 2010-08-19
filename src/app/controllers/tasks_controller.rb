@@ -26,7 +26,7 @@ class TasksController < ApplicationController
   def mytasks
     return authorize unless task_authorize?('view_task', 'view_domain_task', 'view_own_task')
 
-    @tasks = my_tasks
+    @tasks = get_my_tasks
 
     respond_to do |format|
       format.html # search.haml
@@ -36,10 +36,10 @@ class TasksController < ApplicationController
 
   def mytaskssearch
 
-    @tasks = my_tasks
-
+    @tasks = get_my_tasks
+    showmytasks = 1
     if request.xhr?
-         render :partial => "task_results", :layout => false, :locals => {:taskresults => @tasks}
+         render :partial => "task_results", :layout => false, :locals => { :taskresults => @tasks, :showmytasks => showmytasks }
     else
         respond_to do |format|
         format.html # search.haml
@@ -503,6 +503,19 @@ class TasksController < ApplicationController
         nil
       end
     end
+  end
+
+  def get_my_tasks
+    tasks = nil
+
+    if authorize?('view_domain_task')
+      tasks = domain_tasks
+    end
+
+    if authorize?('view_own_task') && (tasks.nil? || tasks.empty?)
+      tasks = my_tasks
+    end
     
+    tasks
   end
 end

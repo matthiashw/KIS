@@ -422,3 +422,6 @@ en:
     messages:
       logged_in:                      "Successfully logged in."
       logged_out:                     "Successfully logged out."
+
+  finding:
+    index:                            "All Findings"
