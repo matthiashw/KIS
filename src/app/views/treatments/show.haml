@@ -50,4 +50,4 @@
         = link_to t('action.back'), patient_case_file_treatments_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment), :class => 'acts_as_button darkgray'
     - if authorize?('edit_treatment')
         = link_to t('action.edit'), edit_patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment), :class => 'acts_as_button'
-    
+        = link_to t('treatment.edit_medication'), patient_case_file_treatment_medications_path(:treatment_id => @treatment), :class => 'acts_as_button'

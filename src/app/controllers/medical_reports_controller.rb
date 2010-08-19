@@ -104,11 +104,11 @@ class MedicalReportsController < ApplicationController
     @medical_report.patient_id = current_active_patient.id
 
     if not params[:special]
-      flash[:error] = 'No cases or properties selected'
+      flash[:error] = t('medical_reports.messages.no_cases_properties')
     elsif not params[:special][:CaseFile]
-      flash[:error] = 'No case selected'
+      flash[:error] = t('medical_reports.messages.no_cases')
     elsif not params[:special][:MedicalReportsProperties]
-      flash[:error] = 'No properties selected'
+      flash[:error] = t('medical_reports.messages.no_properties')
     end
 
     init_fields
@@ -142,7 +142,7 @@ class MedicalReportsController < ApplicationController
 
     respond_to do |format|
       if not flash[:error] and @medical_report.save
-        flash.now[:notice] = 'MedicalReport was successfully created.'
+        flash.now[:notice] = t('medical_reports.messages.success_create')
         format.html { redirect_to(:action => "index") }
         format.xml  { render :xml => @medical_report, :status => :created, :location => @medical_report }
       else
@@ -160,7 +160,7 @@ class MedicalReportsController < ApplicationController
 
     respond_to do |format|
       if @medical_report.update_attributes(params[:medical_report])
-        flash.now[:notice] = 'MedicalReport was successfully updated.'
+        flash.now[:notice] = t('medical_reports.messages.success_create')
         format.html { redirect_to(:action => "index") }
         format.xml  { head :ok }
       else

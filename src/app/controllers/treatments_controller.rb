@@ -71,7 +71,7 @@ class TreatmentsController < ApplicationController
           @treatment.case_file_id = get_case_for_view
 
           if params[:task][:id] == "" and not params[:skip]
-            flash[:error] = 'Please select a valid task'
+            flash[:error] = t('treatment.messages.valid_task')
             format.html { redirect_to :action => "new" }
             format.xml  { render :xml => @treatment }
           else
@@ -88,7 +88,7 @@ class TreatmentsController < ApplicationController
         end
 
       else
-           flash[:error] = 'No active Patient'
+           flash[:error] = t('treatment.messages.no_patient')
            format.html { redirect_to :action => "new" }
            format.xml  { render :xml => @treatment }
       end
@@ -108,7 +108,7 @@ class TreatmentsController < ApplicationController
         if params[:current_stage] == 'step_2'
           if (params[:continue])
             if params[:medications] == ""
-              flash[:error] = 'Please select a valid medication'
+              flash[:error] = t('treatment.messages.valid_medication')
               format.html { redirect_to :action => "new_step2" }
               format.xml  { render :xml => @treatment }
             else
@@ -132,7 +132,7 @@ class TreatmentsController < ApplicationController
           format.xml  { render :xml => @treatment }
         end
       else
-        flash[:error] = 'No active Patient'
+        flash[:error] = t('treatment.messages.no_patient')
            format.html { redirect_to :action => "new" }
            format.xml  { render :xml => @treatment }
       end
@@ -162,7 +162,7 @@ class TreatmentsController < ApplicationController
         format.html # taskcreation.html.erb
         format.xml  { render :xml => @treatment }
       else
-       flash[:error] = 'No active Patient'
+       flash[:error] = t('treatment.messages.no_patient')
        format.html { redirect_to :action => "new" }
        format.xml  { render :xml => @treatment }
       end
@@ -181,7 +181,7 @@ class TreatmentsController < ApplicationController
       if session.has_key?(:active_patient_id)
         if params[:current_stage] == 'step_4'
           if params[:treatment] == "" and not params[:skip]
-            flash[:error] = 'Please select a valid task'
+            flash[:error] = t('treatment.messages.valid_treatment')
             format.html { redirect_to :action => "new_step4" }
             format.xml  { render :xml => @treatment }
           elsif params[:skip]
@@ -197,7 +197,7 @@ class TreatmentsController < ApplicationController
           format.xml  { render :xml => @treatment }
         end
       else
-        flash[:error] = 'No active Patient'
+        flash[:error] = t('treatment.messages.no_patient')
            format.html { redirect_to :action => "new" }
            format.xml  { render :xml => @treatment }
       end
@@ -226,7 +226,7 @@ class TreatmentsController < ApplicationController
 
     respond_to do |format|
       if @treatment.save
-        flash.now[:notice] = 'Treatment was successfully created.'
+        flash.now[:notice] = t('treatment.messages.success_create')
         format.html { redirect_to patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => @treatment.case_file_id, :id => @treatment) }
         format.xml  { render :xml => @treatment, :status => :created, :location => @treatment }
       else
@@ -247,7 +247,7 @@ class TreatmentsController < ApplicationController
 
     respond_to do |format|
       if @treatment.update_attributes(params[:treatment])
-        flash.now[:notice] = 'Treatment was successfully updated.'
+        flash.now[:notice] = t('treatment.messages.success_update')
         format.html { redirect_to patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => @treatment.case_file_id, :id => @treatment) }
         format.xml  { head :ok }
       else

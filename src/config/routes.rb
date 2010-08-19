@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :medications
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   #######################
@@ -55,7 +57,9 @@ ActionController::Routing::Routes.draw do |map|
       case_file.connect "treatments/new_step3", :controller => "treatments", :action => "new_step3"
       case_file.connect "treatments/new_step4", :controller => "treatments", :action => "new_step4"
       case_file.connect "treatments/new_step5", :controller => "treatments", :action => "new_step5"
-      case_file.resources :treatments
+      case_file.resources :treatments do |treatment|
+        treatment.resources :medications
+      end
     end
  
     patient.resources :comments

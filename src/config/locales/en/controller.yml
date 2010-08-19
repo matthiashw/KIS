@@ -221,6 +221,13 @@ en:
     created:                          "Created at"
     print_view:                       "Print view"
     no_header:                        "Standard header for medical reports missing. Please contact your administrator."
+    messages:
+      no_cases_properties:            "No cases or properties selected"
+      no_cases:                       "No case selected"
+      no_properties:                  "No properties selected"
+      success_create:                 "MedicalReport was successfully created."
+      success_update:                 "MedicalReport was successfully updated."
+      
 
   patient:
     listing:                          "Listing patients"
@@ -240,6 +247,16 @@ en:
       create_success:                 "Patient successfully created"
       update_success:                 "Patient successfully updated"
       delete_success:                 "Patient successfully deleted"
+
+  medication:
+    edit:                             "Editing medication"
+    listing:                          "Listing medications"
+    atc:                              "ATC"
+    description:                      "Description"
+    new:                              "New medication"
+    messages:
+      success_create:                 "Medication was successfully created."
+      success_update:                 "Medication was successfully updated."
 
   treatment:
     listing:                          "Listing treatment"
@@ -283,6 +300,15 @@ en:
     creator_comment:                  "Creator Comment"
     executor_comment:                 "Executor Comment"
     state:                            "State"
+    edit_medication:                  "Edit medication"
+    messages:
+      valid_task:                     "Please select a valid task"
+      no_patient:                     "No active Patient"
+      valid_medication:               "Please select a valid medication"
+      valid_treatment:                "Please select a valid treatment"
+      success_create:                 "Treatment was successfully created."
+      success_update:                 "Treatment was successfully updated."
+
 
   diagnosis:
     listing:                          "Listing diagnoses"

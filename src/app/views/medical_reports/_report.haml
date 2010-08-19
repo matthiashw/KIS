@@ -116,7 +116,7 @@
               &minus;
         -if treatment.medications.length > 0
           %tr
-            %td
+            %td{:valign =>"top"}
               =t('medical_report.medication')
             %td
               -treatment.medications.each do |medication|

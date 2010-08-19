@@ -49,6 +49,14 @@ en:
         language:                     "Language"
         role:                         "Role"
         domain:                       "Domain"
+      treatment:
+        description:                  "Description"
+        start_date:                   "Start date"
+        diagnoses:                    "Diagnoses"
+        treatment:                    "Treatment"
+      medication:
+        description:                  "Description"
+        atc:                          "ATC Catalog"
     hints:
       appointment:
         start_date:                   "Start Date"
