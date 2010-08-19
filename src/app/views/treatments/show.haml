@@ -3,31 +3,51 @@
 .fields
     .field
         .field-label
-            =t('treatment.description')
-        .field-content
-            = h @treatment.description
-    .field
-        .field-label
             =t('treatment.starting_date')
         .field-content
             = h @treatment.start_date
 
     .field
         .field-label
-            =t('treatment.ops_name')
+            =t('treatment.description')
         .field-content
-            = h @treatment.ops_entry.name
+            = h @treatment.description
+
+    .field
+        .field-label
+            =t('treatment.ops')
+        .field-content
+            -if @treatment.ops_entry
+                = h @treatment.ops_entry.name
+            -else
+                &minus;
 
     .field
         .field-label
             =t('treatment.diagnosis')
         .field-content
-            -@treatment.diagnoses.each do |diagnosis|
-                =diagnosis.description
+            -if @treatment.diagnoses.length > 0
+                -@treatment.diagnoses.each do |diagnosis|
+                    = link_to diagnosis.icd_entry.name, patient_case_file_diagnosis_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id],:id => diagnosis.id)
+                    %br
+            -else
+                &minus;
+    .field
+        .field-label
+            =t('treatment.medication')
+        .field-content
+            -if @treatment.medications.length > 0
+                -@treatment.medications.each do |med|
+                    = med.atc_entry.name
+                    ,
+                    = med.description
+                    %br
+            -else
+                &minus;
 
 .action-links
     - if authorize?('view_treatment')
         = link_to t('action.back'), patient_case_file_treatments_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment), :class => 'acts_as_button darkgray'
     - if authorize?('edit_treatment')
         = link_to t('action.edit'), edit_patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @treatment), :class => 'acts_as_button'
-    
+        = link_to t('treatment.edit_medication'), patient_case_file_treatment_medications_path(:treatment_id => @treatment), :class => 'acts_as_button'

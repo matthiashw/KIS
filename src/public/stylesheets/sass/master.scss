@@ -20,6 +20,7 @@ $darkgray:#666666;
 $mediumgray:#999999;
 $lightgray:#cccccc;
 $verylightgray:#eeeeee;
+$veryverylightgray:#f6f6f6;
 
 $red:#ee6633;
 $green:#8cc746;
@@ -168,11 +169,15 @@ table {
     }
 
     tr.odd td {
-        background:none repeat scroll 0 0 #FFFFFF;
+        background-color:transparent;
 
         &.active {
             background:none repeat scroll 0 0 #ECF8FC;
         }
+    }
+
+    tr.even td {
+        background-color:$veryverylightgray;
     }
 
     tr:hover {
@@ -262,8 +267,8 @@ abbr {
 
 #frontpage {
     #container {
-        max-width:240px;
-        width:240px;
+        max-width:340px;
+        width:340px;
     }
 
     &.page-users,
@@ -427,9 +432,11 @@ form .errorExplanation {
 textarea {
     border:1px solid $mediumgray;
     padding:4px 6px;
+    background-color:$veryverylightgray;
 
     &:focus {
-        background-color:$verylightgray;
+        background-color:#fff;
+        border-color:$mediumgray;
     }
 }
 

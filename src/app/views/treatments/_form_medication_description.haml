@@ -1,0 +1,10 @@
+- form_tag 'new_step4', :html => { :id => 'step4' }, :id => 'step4', :class => 'taskcreation'  do
+    =hidden_field_tag "current_stage", "#{@current_stage}"
+    %div
+        -@treatment.medications.each do |med|
+            %p
+                =label_tag med.atc_entry.name
+                =text_field_tag 'description[]', med.description, :id=>med
+        %p
+            .task-select-domain-submit
+                = submit_tag t('treatment.nextstep'), :name => "continue"

@@ -64,6 +64,83 @@
 
   -if properties.include?("3")
     %h3=t('medical_report.diagnoses')
+    -case_file.diagnoses.each do |diagnose|
+      %table
+        %tr
+          %td
+            =t('medical_report.icd')
+          %td
+            -if diagnose.icd_entry
+              =diagnose.icd_entry.code
+            -else
+              &minus;
+        %tr
+          %td
+            =t('medical_report.name')
+          %td
+            -if diagnose.icd_entry
+              =diagnose.icd_entry.name
+            -else
+              &minus;
+        %tr
+          %td
+            =t('medical_report.description')
+          %td
+            =diagnose.description
+      %br
+        
 
   -if properties.include?("4")
     %h3=t('medical_report.treatments')
+    -case_file.treatments.each do |treatment|
+      %table
+        %tr
+          %td
+            =t('medical_report.start_date')
+          %td
+            =treatment.start_date
+        %tr
+          %td
+            =t('medical_report.description')
+          %td
+            =treatment.description
+        %tr
+          %td
+            =t('medical_report.ops')
+          %td
+            -if treatment.ops_entry
+              =treatment.ops_entry.code
+              ,
+              =treatment.ops_entry.name
+            -else
+              &minus;
+        -if treatment.medications.length > 0
+          %tr
+            %td{:valign =>"top"}
+              =t('medical_report.medication')
+            %td
+              -treatment.medications.each do |medication|
+                %table
+                  %tr
+                    %td
+                      =t('medical_report.atc')
+                    %td
+                      -if medication.atc_entry
+                        =medication.atc_entry.code
+                      -else
+                        &minus;
+                  %tr
+                    %td
+                      =t('medical_report.name')
+                    %td
+                      -if medication.atc_entry
+                        =medication.atc_entry.name
+                      -else
+                        &minus;
+                  %tr
+                    %td
+                      =t('medical_report.description')
+                    %td
+                      =medication.description
+                %br
+      %br

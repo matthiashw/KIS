@@ -1,0 +1,9 @@
+- form_tag 'new_step2', :class => 'taskcreation' do
+    =hidden_field_tag "current_stage", "#{@current_stage}"
+    %div
+        .task-select-domain
+            = collection_select :task, :id, @tasks, :id, :creator_comment, options ={:prompt => t('treatment.choose_task_select')}, :class =>"domain"
+        .task-select-domain-submit
+            = submit_tag t('treatment.nextstep')
+        .task-select-domain-submit
+            = submit_tag t('treatment.nextstep_notasks'), :name => "skip"

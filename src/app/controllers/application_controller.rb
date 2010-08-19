@@ -111,7 +111,7 @@ class ApplicationController < ActionController::Base
   # render access denied if user has no permission
   # to view the page
   def access_denied
-    flash.now[:error] = t('messages.application.no_permission')
+    flash.now[:error] = t('application.messages.no_permission')
     render :partial => 'shared/error403', :status => 403, :layout => true and return false
   end
 

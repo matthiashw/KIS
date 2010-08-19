@@ -20,5 +20,7 @@
   
 
 .action-links
+  - if authorize?('delete_reportheader')
+    = link_to t('action.destroy'), @report_header, :confirm => 'Are you sure?', :method => :delete, :class => 'acts_as_button lightgray'
   - if authorize?('edit_reportheader')
     = link_to t('action.back'), report_headers_path , :class => 'acts_as_button darkgray'

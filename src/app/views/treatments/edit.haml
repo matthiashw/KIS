@@ -6,11 +6,14 @@
     - f.inputs do
         = f.input :description, :input_html => { :rows => 4, :cols => 30 }
         = f.input :start_date, :as => :calendar
-        = f.input :diagnoses, :label_method => :description
-        - if @catalog
-            = radio_tree @catalog, 'treadform' , 'opscode', @treatment.ops_entry
+        = f.input :diagnoses, :as => :select, :collection => @diagnoses, :label_method => :description
+        = f.label :treatment
+        - if @catalog && @treatment.ops_entry
+            = radio_tree @catalog, 'treadform' , 'opscode', @treatment.ops_entry.id
+        - elsif @catalog
+            = radio_tree @catalog, 'treadform' , 'opscode'
         - else
-            = no_catalog_available 'treat'
+            = no_catalog_available 'ops'
     = f.buttons
 
 .action-links

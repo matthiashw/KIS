@@ -1,6 +1,16 @@
-- title @diagnosis.description
+- title @diagnosis.icd_entry.name
 
 .fields
+    .field
+        .field-label
+            =t('diagnosis.catalog_entry')
+        .field-content
+            = h @diagnosis.icd_entry.name
+    .field
+        .field-label
+            = t('diagnosis.catalog_entry_code')
+        .field-content
+            = h @diagnosis.icd_entry.code
     .field
         .field-label
             =t('diagnosis.description')
@@ -8,13 +18,32 @@
             = h @diagnosis.description
     .field
         .field-label
-            =t('diagnosis.catalog_entry')
+            =t('diagnosis.created_at')
         .field-content
-            = h @diagnosis.icd_entry.name
+            = h @diagnosis.created_at
+    .field
+        .field-label
+            =t('diagnosis.user')
+        .field-content
+            -if authorize?('view_users')
+                = link_to (h(@diagnosis.user.first_name+" "+ @diagnosis.user.family_name)) , @diagnosis.user
+            - else
+                h @diagnosis.user.first_name+" "+ @diagnosis.user.family_name
+    .field
+        .field-label
+            =t('diagnosis.treatments')
+        .field-content
+            -if @diagnosis.treatments.length > 0
+                -@diagnosis.treatments.each do |treatment|
+                    = link_to truncate(treatment.description, :omission => "...", :length => 80), patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id],:id => treatment.id)
+                  
+                    %br
+            -else
+                &minus;
 
 .action-links
     - if authorize?('view_diagnosis')
-        = link_to t('action.back'), diagnoses_path, :class => 'acts_as_button darkgray'
+        = link_to t('action.back'), patient_case_file_diagnoses_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id]), :class => 'acts_as_button darkgray'
     - if authorize?('edit_diagnosis')
-        = link_to t('action.edit'), edit_diagnosis_path(@diagnosis), :class => 'acts_as_button'
+        = link_to t('action.edit'), edit_patient_case_file_diagnosis_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => @diagnosis), :class => 'acts_as_button'
 

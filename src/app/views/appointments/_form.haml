@@ -6,4 +6,5 @@
         = f.input :end_date, :as => :calendar
         = f.input :name
         = f.input :description, :input_html => { :rows => 4, :cols => 30 }
+        = f.input :task, :as => :select, :collection => @tasks, :include_blank => true
     = f.buttons

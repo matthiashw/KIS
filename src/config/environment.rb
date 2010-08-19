@@ -50,4 +50,7 @@ Rails::Initializer.run do |config|
   config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*','*.{rb,yml}').to_s]
   config.i18n.default_locale = :en
 
+  #save session data in db
+  config.action_controller.session_store = :active_record_store
+
 end

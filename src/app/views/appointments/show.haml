@@ -21,12 +21,21 @@
             =t('appointment.description')
         .field-content
             = h @appointment.description
+    - if @appointment.task
+        .field
+            .field-label
+                =t('appointment.task')
+            .field-content
+                -if current_active_patient
+                    = link_to @appointment.task.to_label, patient_task_path(:patient_id => current_active_patient.id ,:id => @appointment.task.id)
+                - else
+                    = link_to @appointment.task.to_label, task_path(:id => @appointment.task.id)
 
 .action-links
     - if authorize?('view_appointment')
         = link_to t('action.back'), appointments_path, :class => 'acts_as_button darkgray'
     - if authorize?('view_appointment')
-        = link_to t('appointment.calendar'), calendar_path
+        = link_to t('appointment.calendar'), calendar_path, :class => 'acts_as_button darkyellow'
     - if authorize?('edit_appointment')
         = link_to t('action.edit'), edit_appointment_path(@appointment), :class => 'acts_as_button'
     

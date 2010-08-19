@@ -1,7 +1,21 @@
 - title t('diagnosis.new')
 
-= render :partial => 'form'
+- semantic_form_for(@diagnosis, :html => { :id => 'icd_catalog_radio_tree' }, :url => patient_case_file_diagnoses_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id])) do |f|
+    = f.error_messages
+
+    - f.inputs do
+        = f.input :description, :input_html => { :rows => 4, :cols => 30 }
+        - if @catalog && @diagnosis.icd_entry
+            = radio_tree @catalog, 'icd_catalog_radio_tree' , 'icdcode', @diagnosis.icd_entry.id
+        - elsif @catalog
+            = radio_tree @catalog, 'icd_catalog_radio_tree' , 'icdcode'
+        - else
+            = no_catalog_available 'diagnosis'
+
+    = f.buttons
+
 
 .action-links
     - if authorize?('view_diagnosis')
-        = link_to t('action.back'), diagnoses_path, :class => 'acts_as_button darkgray'
+        = link_to t('action.back'), patient_case_file_diagnoses_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id]), :class => 'acts_as_button darkgray'
+  

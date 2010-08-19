@@ -28,6 +28,7 @@ class AppointmentsController < ApplicationController
   def new
     return false unless authorize(permissions = ["create_appointment"])
     @appointment = Appointment.new
+    @tasks = get_tasks
     
     respond_to do |format|
       format.html # new.html.erb
@@ -39,6 +40,7 @@ class AppointmentsController < ApplicationController
   def edit
     return false unless authorize(permissions = ["edit_appointment"])
     @appointment = Appointment.find(params[:id])
+    @tasks = get_tasks
   end
 
   # POST /appointments
@@ -46,10 +48,11 @@ class AppointmentsController < ApplicationController
   def create
     return false unless authorize(permissions = ["create_appointment"])
     @appointment = Appointment.new(params[:appointment])
-
+    @tasks = get_tasks
+    
     respond_to do |format|
       if @appointment.save
-        flash.now[:notice] = 'Appointment was successfully created.'
+        flash.now[:notice] = t('appointment.messages.create_success')
         format.html { redirect_to(@appointment) }
         format.xml  { render :xml => @appointment, :status => :created, :location => @appointment }
       else
@@ -64,10 +67,11 @@ class AppointmentsController < ApplicationController
   def update
     return false unless authorize(permissions = ["edit_appointment"])
     @appointment = Appointment.find(params[:id])
+    @tasks = get_tasks
 
     respond_to do |format|
       if @appointment.update_attributes(params[:appointment])
-        flash.now[:notice] = 'Appointment was successfully updated.'
+        flash.now[:notice] = t('appointment.messages.update_success')
         format.html { redirect_to(@appointment) }
         format.xml  { head :ok }
       else
@@ -102,6 +106,9 @@ class AppointmentsController < ApplicationController
     #first day of week where Sunday is 0, Monday is 1...
     @first_day_of_week = 1;
     @event_strips = Appointment.event_strips_for_month(@shown_month, @first_day_of_week)
-    logger.debug("Anzahl an Appointments: #{@event_strips.count}")
+  end
+
+  def get_tasks
+    Task.find(:all, :order => 'state ASC, deadline ASC', :conditions => { :creator_user_id => current_user.id })
   end
 end

@@ -1,4 +1,4 @@
-- title t('permission_listing')
+- title t('permissions.listing')
 
 - form_tag update_all_permissions_permissions_path, :method => :put do
   %table
@@ -17,5 +17,5 @@
           - @domains.each do |d|
             %td= check_box_tag "perms[]", d.name + ";" + p, d.has_permission?(p)
 
-  = submit_tag t('permissions_update')
+  = submit_tag t('permissions.update')
 

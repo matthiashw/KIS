@@ -3,4 +3,5 @@ class Diagnosis < ActiveRecord::Base
    belongs_to :user
    belongs_to :case_files
    has_and_belongs_to_many :treatments
+   validates_presence_of :user,:description,:icd_entry
 end

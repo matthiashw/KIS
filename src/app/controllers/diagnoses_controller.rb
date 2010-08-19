@@ -49,10 +49,12 @@ class DiagnosesController < ApplicationController
     @diagnosis = Diagnosis.new(params[:diagnosis])
     @diagnosis.case_file_id = params[:case_file_id]
     @diagnosis.icd_entry_id = params[:icdcode]
+    @diagnosis.user = current_user
+    @catalog = CatalogManager.instance.catalog 'diagnosis'
     respond_to do |format|
       if @diagnosis.save
-        flash.now[:notice] = 'Diagnosis was successfully created.'
-        format.html { redirect_to patient_case_file_diagnosis_path(:patient_id => params[:patient_id], :case_file_id => @diagnosis.case_file_id, :id => @diagnosis) }
+        flash.now[:notice] = t('diagnosis.messages.create_success')
+        format.html {redirect_to patient_case_file_diagnosis_path(:patient_id => params[:patient_id], :case_file_id => @diagnosis.case_file_id, :id => @diagnosis) }
         format.xml  { render :xml => @diagnosis, :status => :created, :location => @diagnosis }
       else
         format.html { render :action => "new" }
@@ -67,9 +69,10 @@ class DiagnosesController < ApplicationController
     return false unless authorize(permissions = ["edit_diagnosis"])
     @diagnosis = Diagnosis.find(params[:id])
     @diagnosis.icd_entry_id = params[:icdcode]
+    @catalog = CatalogManager.instance.catalog 'diagnosis'
     respond_to do |format|
       if @diagnosis.update_attributes(params[:diagnosis])
-        flash.now[:notice] = 'Diagnosis was successfully updated.'
+        flash.now[:notice] = t('diagnosis.messages.update_success')
         format.html { redirect_to patient_case_file_diagnosis_path(:patient_id => params[:patient_id], :case_file_id => @diagnosis.case_file_id, :id => @diagnosis) }
         format.xml  { head :ok }
       else
@@ -87,7 +90,7 @@ class DiagnosesController < ApplicationController
     @diagnosis.destroy
 
     respond_to do |format|
-      format.html { redirect_to(diagnoses_url) }
+      format.html { redirect_to patient_case_file_diagnoses_path(:patient_id => params[:patient_id], :case_file_id => @diagnosis.case_file_id) }
       format.xml  { head :ok }
     end
   end
