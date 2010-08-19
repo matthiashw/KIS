@@ -61,7 +61,7 @@
                     %li{:class => "main-subnavigation-leaf"}
                         =link_to t("navi.main.status_report"), {:controller => "admin", :action => "status"}, :class => is_active?('admin', 'status')
                     %li{:class => "main-subnavigation-leaf"}
-                        =link_to t("navi.main.export"), {:controller => "database_backup", :action => "export"}, :class => is_active?('database_backup')
+                        =link_to t("navi.main.export"), {:controller => "database_backup", :action => "export"}, :class => is_active?('database_backup', 'export')
                     %li{:class => "main-subnavigation-leaf"}
-                        =link_to t("navi.main.import"), {:controller => "database_backup", :action => "import"}, :class => is_active?('database_backup')
+                        =link_to t("navi.main.import"), {:controller => "database_backup", :action => "import"}, :class => is_active?('database_backup', 'import')
     

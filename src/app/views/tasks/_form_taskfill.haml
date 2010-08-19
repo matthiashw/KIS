@@ -37,7 +37,7 @@
                                 - @x = x
                                 - @y = y
                                 - @fielddef = FieldDefinition.find(@y.field_definition_id)
-                                %tr.template-field
+                                %tr.template-field{ :class => cycle('odd', 'even')}
                                     %td= Entry.find(@fielddef.field_entry_id).name
                                     %td= y.comment
                                     - fields_for @y do |fi|

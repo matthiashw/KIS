@@ -14,7 +14,6 @@ module InstallHelper
   end
 
   def install_finished?
-    logger.debug "session finished #{session[:install_finished]}\n"
     if session[:install_finished] == 1
       return true
     end

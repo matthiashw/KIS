@@ -51,3 +51,12 @@ src/public/stylesheets/install.css
 .sass-cache
 src/tmp/*
 schema.rb
+
+# images #
+##########
+src/public/taskfiles
+src/public/taskfiles/*
+
+
+
+
