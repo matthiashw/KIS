@@ -101,7 +101,7 @@ class MedicalReportsController < ApplicationController
 
     @patient = current_active_patient
     @medical_report = MedicalReport.new(params[:medical_report])
-    @medical_report.patient_id = current_active_patient
+    @medical_report.patient_id = current_active_patient.id
 
     if not params[:special]
       flash[:error] = 'No cases or properties selected'
