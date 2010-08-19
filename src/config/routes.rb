@@ -50,7 +50,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :patients do |patient|
     patient.resources :case_files do |case_file|
-      case_file.resources :treatments
+      case_file.resources :treatments, :diagnoses
     end
  
     patient.resources :comments

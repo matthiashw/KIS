@@ -1,12 +1,16 @@
 - title t('diagnosis.listing')
 %table
     %tr
+        %th=t('diagnosis.catalog_entry')
         %th=t('diagnosis.description')
-        %th=t('diagnosis.case_file')
+        %th=t('diagnosis.user_id')
+        %th=t('diagnosis.date')
     - @diagnoses.each do |diagnosis|
         %tr{:onclick=>"location.href='#{url_for :controller => 'diagnosis', :action => 'show', :id => diagnosis.id}';",:style=>"cursor:pointer;"}
+            %td= h diagnosis.icd_entry.name
             %td= h diagnosis.description
-            %td= h diagnosis.case_file_id
+            %td= h diagnosis.user.first_name+" "+ diagnosis.user.family_name
+            %td= h diagnosis.created_at
 
 .action-links
     - if authorize?('create_diagnosis')

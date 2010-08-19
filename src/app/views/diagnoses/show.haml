@@ -8,9 +8,9 @@
             = h @diagnosis.description
     .field
         .field-label
-            =t('diagnosis.case_file')
+            =t('diagnosis.catalog_entry')
         .field-content
-            = h @diagnosis.case_file_id
+            = h @diagnosis.icd_entry.name
 
 .action-links
     - if authorize?('view_diagnosis')
