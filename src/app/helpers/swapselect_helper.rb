@@ -25,14 +25,19 @@ module SwapselectHelper
 		return buff
 	end
 
-  def swapselectmanual( object_name, items, name, id, params = {:size => 8 } )
+  def swapselectmanual( object_name, items, name, id, choices, params = {:size => 8 } )
 		size = params[:size]
 
 		buff = "<script type='text/javascript'>"
 		buff += "new SwapSelect('#{'special'}[#{items[0].class.to_s}][]', new Array("
 
 		items.each do |elem|
-			buff += "new Array( '#{elem.send id}', '#{elem.send name}', #{false} ),"
+      elem_id = elem.send id
+      elem_name = elem.send name
+
+      is_selected = choices.any? { |item| item.to_s == elem_id.to_s }
+
+			buff += "new Array( '#{elem_id}', '#{elem_name}', #{is_selected} ),"
 		end
 
 		buff.slice!( buff.length - 1 )

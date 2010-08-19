@@ -1,0 +1,10 @@
+- form_tag 'new_step3', :html => { :id => 'step3' }, :id => 'step3', :class => 'taskcreation'  do
+    =hidden_field_tag "current_stage", "#{@current_stage}"
+    %div
+        %p
+            = checkbox_tree @catalog, 'step3' , 'medications'
+
+        .task-select-domain-submit
+            = submit_tag t('treatment.nextstep'), :name => "continue"
+        .task-select-domain-submit
+            = submit_tag t('treatment.nextstep_nomeds'), :name => "skip"

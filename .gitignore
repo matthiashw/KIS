@@ -32,6 +32,7 @@ src/nbproject/*
 *.sql
 *.sqlite
 database.yml
+src/db/data.yml
 
 # OS generated files #
 ######################
@@ -50,3 +51,12 @@ src/public/stylesheets/install.css
 .sass-cache
 src/tmp/*
 schema.rb
+
+# images #
+##########
+src/public/taskfiles
+src/public/taskfiles/*
+
+
+
+

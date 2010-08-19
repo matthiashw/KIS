@@ -7,14 +7,15 @@
         %th=t('appointment.description')
     - @appointments.each do |appointment|
         %tr{:onclick=>"location.href='#{url_for :controller => 'appointments', :action => 'show', :id => appointment.id}';",:style=>"cursor:pointer;"}
-            %td= h appointment.start_date
-            %td= h appointment.end_date
+            %td= h show_datetime(appointment.start_date)
+            %td= h show_datetime(appointment.end_date)
             %td= h appointment.name
             %td= h appointment.description
 
 .action-links
+    - if authorize?('view_appointment')
+        = link_to t('appointment.calendar'), calendar_path, :class => 'acts_as_button darkyellow'
     - if authorize?('create_appointment')
         = link_to t('appointment.new_button'), new_appointment_path, :class => 'acts_as_button'
-    - if authorize?('view_appointment')
-        = link_to t('appointment.calendar'), calendar_path
+    
 

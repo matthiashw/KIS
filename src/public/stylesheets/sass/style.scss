@@ -306,16 +306,31 @@ a.links-link {
 }
 
 #frontpage {
+    .content {
+        background-color:transparent;
+    }
+
     .inner-bg {
         -moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
         -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
         box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
-        border:1px solid $lightgray;
+        border:8px solid $darkgray;
+
+        border-radius:6px;
+        -moz-border-radius:6px;
+        -webkit-border-radius:6px;
+        padding:0;
     }
 
     .text_field,
     .password_field {
-        width:190px;
+        width:240px;
+    }
+
+    .hint {
+        font-size:11px;
+        font-style:italic;
+        color:$mediumgray;
     }
 }
 
@@ -580,7 +595,7 @@ a.links-link {
     }
 
     .template-toggle {
-        background-color:$darkgray;
+        background:$darkgray url('/images/overlay.png') repeat-x;
         border-radius:4px;
         -moz-border-radius:4px;
         -webkit-border-radius:4px;
@@ -610,7 +625,7 @@ a.links-link {
         cursor:pointer;
         color:#fff;
         text-decoration: underline;
-        font-size:16px;
+        font-size:14px;
         margin-left:18px;
         display:block;
         float:left;
@@ -630,6 +645,30 @@ a.links-link {
 
     .template-content {
         margin:0 9px 9px 18px;
+
+        table {
+            border-color:$darkgray;
+
+            th {
+                background-color:$mediumgray;
+                text-shadow:none;
+                color:#fff;
+                border-color:$darkgray;
+            }
+
+            td {
+                border-color:$mediumgray;
+            }
+        }
+
+        .template-field-check {
+            width:20px;
+            text-align:center;
+        }
+
+        .template-field-comment {
+            width:200px;
+        }
     }
 
 }
@@ -1145,7 +1184,13 @@ ul.x-tree-root-ct {
             color:$verydarkgray;
             font-size:14px;
         }
+
+        a {
+            text-decoration:none;
+        }
     }
+
+
 
     ul.x-tree-node-ct {
         list-style:none;

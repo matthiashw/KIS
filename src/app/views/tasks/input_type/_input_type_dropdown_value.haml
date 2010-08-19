@@ -1,0 +1,10 @@
+- dropvalueshash ||= {}
+- i = 0
+- selectedindex = 0
+- @fielddef.additional_type_info.split(';').each do |v|
+    - dropvalueshash[v] = i
+    - if @measuredvalue.value == v
+        - selectedindex = i
+    - i += 1
+
+%td= select_tag 'values['+ @x.to_s+ ']', options_for_select(dropvalueshash, selectedindex)

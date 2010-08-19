@@ -1,0 +1,19 @@
+%h1=t('medication.new')
+
+- semantic_form_for(@medication, :html => { :id => 'newmed' }, :url => patient_case_file_treatment_medications_path) do |f|
+  = f.error_messages
+
+  - f.inputs do
+    = f.label :atc
+    - if @catalog && @medication.atc_entry
+      = radio_tree @catalog, 'newmed' , 'atccode', @medication.atc_entry.id
+    - elsif @catalog
+      = radio_tree @catalog, 'newmed' , 'atccode'
+    - else
+      = no_catalog_available 'atc'
+    %br
+    = f.input :description, :input_html => { :rows => 4, :cols => 30 }
+  = f.buttons
+
+.action-links
+  = link_to t('action.back'),  patient_case_file_treatment_medications_path(:treatment_id => params[:treatment_id]), :class => 'acts_as_button darkgray'

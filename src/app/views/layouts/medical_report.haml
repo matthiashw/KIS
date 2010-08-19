@@ -9,26 +9,4 @@
         = stylesheet_link_tag 'style'
         = javascript_include_tag 'prototype', 'jquery' , 'jstree' ,'application', :cache => true
     %body
-        #wrapper
-            #container
-                #header
-                    /%img.logo{:src => "/images/logo.png", :alt => "Hopen Logo"}
-                    /= render :partial => 'shared/header'
-                #sidebar
-                    /= render :partial => 'shared/main_navigation'
-                #center
-                    #squeeze
-                        .content
-                            = render :partial => 'shared/tab_navigation'
-                            .inner-bg
-                                .inner
-                                    - flash.each do |name, msg|
-                                        %div{ :class => "messages #{name}"}
-                                            = content_tag :p, msg, :id => "flash_#{name}"
-
-                                    - if show_title?
-                                        %h1=h yield(:title)
-                                    .main-content
-                                        = yield
-
-        = render :partial => 'shared/footer'
+        = yield

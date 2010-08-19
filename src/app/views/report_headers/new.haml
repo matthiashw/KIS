@@ -1,6 +1,6 @@
 = javascript_include_tag :ckeditor
 
--title 'New report_header'
+-title t('admin.medical_reports.new')
 
 - semantic_form_for(@report_header) do |f|
   = f.error_messages
@@ -15,7 +15,7 @@
     = f.cktext_area :html, :toolbar=>'Full', :width=>'70%', :heigth=>'200px'
 
   %p
-    = f.submit 'Create'
+    = f.submit t('action.create')
 
 
 .action-links

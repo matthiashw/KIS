@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :medications
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   #######################
@@ -18,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.taskfill "/tasks/taskfill/:id", :controller => "tasks", :action => "taskfill"
   map.connect "/tasks/createentries", :controller => "tasks", :action => "createentries"
   map.mytasks "users/:user_id/mytasks", :controller => "tasks", :action => "mytasks"
+
 
   ###########
   # Patient #
@@ -50,12 +53,19 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :patients do |patient|
     patient.resources :case_files do |case_file|
-      case_file.resources :treatments
+      case_file.connect "treatments/new_step2", :controller => "treatments", :action => "new_step2"
+      case_file.connect "treatments/new_step3", :controller => "treatments", :action => "new_step3"
+      case_file.connect "treatments/new_step4", :controller => "treatments", :action => "new_step4"
+      case_file.connect "treatments/new_step5", :controller => "treatments", :action => "new_step5"
+      case_file.resources :treatments do |treatment|
+        treatment.resources :medications
+      end
     end
  
     patient.resources :comments
     patient.resources :medical_reports
     patient.resources :tasks
+    patient.resources :findings
   end
 
   map.resources :users do |user|

@@ -1,0 +1,9 @@
+- form_tag 'new_step5', :html => { :id => 'step5' }, :id => 'step5', :class => 'taskcreation' do
+    =hidden_field_tag "current_stage", "#{@current_stage}"
+    %div
+        = radio_tree @catalog, 'step5' , 'treatment'
+        
+        .task-select-domain-submit
+            = submit_tag t('task.nextstep')
+        .task-select-domain-submit
+            = submit_tag t('treatment.nextstep_notreatment'), :name => "skip"

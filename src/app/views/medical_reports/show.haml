@@ -1,22 +1,4 @@
-= javascript_include_tag :ckeditor
+= @medical_report.file
 
--title @medical_report.description
-
-.fields
-    %p
-        %b
-            Description:
-        =h @medical_report.description
-
-    %p
-        %b
-            Report:
-            = render :partial => "readonly_editor"
-
-
-
-.action-links
-    - if authorize?('view_medical_report')
-        = link_to t('action.back'), medical_reports_path, :class => 'acts_as_button darkgray'
-    - if authorize?('edit_medical_report')
-        = link_to t('action.edit'), edit_medical_report_path(@medical_report), :class => 'acts_as_button'
+%script{:type => "text/javascript", :charset => "utf-8"}
+    window.print()

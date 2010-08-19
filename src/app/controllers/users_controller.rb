@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
       if @user.save
         update_admin(@user)
-        flash.now[:notice] = t('messages.users.registration_success')
+        flash.now[:notice] = t('user.messages.registration_success')
         render :action => 'show'
       else
         render :action => 'setup'
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
 
     if @user.save
-      flash.now[:notice] = t('messages.users.registration_success')
+      flash.now[:notice] = t('user.messages.registration_success')
       render :action => 'show'
     else
       render :action => 'new'
@@ -87,7 +87,7 @@ class UsersController < ApplicationController
         I18n.locale = @user.language
       end
 
-      flash.now[:notice] = t('messages.users.update_success')
+      flash.now[:notice] = t('user.messages.update_success')
       render :action => 'show'
     else
       render :action => 'edit'
@@ -99,7 +99,7 @@ class UsersController < ApplicationController
   def destroy
     return false unless authorize(permissions = ["delete_user"])
     if params[:id] == 1
-      flash.now[:error] = t('messages.users.destroy_error')
+      flash.now[:error] = t('user.messages.destroy_error')
       redirect_to(users_url) and return false
     end
 

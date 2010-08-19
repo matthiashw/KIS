@@ -2,25 +2,24 @@
 
 %table
   %tr
-    %th Titel
-    %th Standard
-    %th Actions
+    %th=t('admin.medical_reports.title')
+    %th=t('admin.medical_reports.standard')
+    %th=t('admin.medical_reports.actions')
 
   -@report_headers.each do |report_header|
     - if @standard == report_header
       - rh = '<img src="/images/check.png" alt="check" />'
     - else
       - rh =  '-'
-    %tr
+    %tr{:onclick=>"location.href='#{url_for report_header}';",:style=>"cursor:pointer;"}
       %td= h report_header.title
       %td= rh
       %td
-        =link_to 'Show', report_header
-        =link_to 'Edit', edit_report_header_path(report_header)
-        =link_to 'Standard', :action => 'standard', :id => report_header
-        =link_to 'Destroy', report_header, :confirm => 'Are you sure?', :method => :delete
-
+        - if @standard == report_header
+          &minus;
+        - else
+          =link_to t('action.standard'), :action => 'standard', :id => report_header
 
 .action-links
   - if authorize?('create_reportheader')
-    = link_to 'New report_header', new_report_header_path , :class => 'acts_as_button'
+    = link_to t('action.create'), new_report_header_path , :class => 'acts_as_button'
