@@ -135,6 +135,7 @@ en:
       success:              "Database successfully recovered."
       failure:              "Database couldn't be recovered."
       noFile:               "Please choose a backup-file first."
+      warning:              "If you import another database file, your current data will be lost! Use with care!"
     export:
       title:                "Export Database"
       label:                "Creating a backup of the database could take a while, depeding on the size of your database!"
