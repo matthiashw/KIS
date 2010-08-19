@@ -161,7 +161,7 @@ class MedicalReportsController < ApplicationController
     respond_to do |format|
       if @medical_report.update_attributes(params[:medical_report])
         flash.now[:notice] = 'MedicalReport was successfully updated.'
-        format.html { redirect_to(@medical_report) }
+        format.html { redirect_to(:action => "index") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -178,7 +178,7 @@ class MedicalReportsController < ApplicationController
     @medical_report.destroy
 
     respond_to do |format|
-      format.html { redirect_to(medical_reports_url) }
+      format.html { redirect_to(patient_medical_reports_path) }
       format.xml  { head :ok }
     end
   end

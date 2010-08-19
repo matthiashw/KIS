@@ -2,25 +2,25 @@
 
 -title t('medical_reports.edit')
 
-- semantic_form_for(@medical_report) do |f|
+- semantic_form_for(@medical_report, :url => patient_medical_report_path(params[:patient_id])) do |f|
   = f.error_messages
 
   %p
-    = f.label :title
+    = f.label t('medical_reports.title')
     %br
     = f.text_field :description
 
   %p
-    = f.label :file 
+    = f.label t('medical_reports.report')
     %br
     = f.cktext_area :file, :toolbar=>'Full', :width=>'70%', :heigth=>'200px'
 
 
   %p
-    = f.submit 'Update'
+    = f.submit t('action.update')
 
 .action-links
   - if authorize?('delete_medical_report')
-    = link_to t('action.destroy'), @medical_report, :confirm => 'Are you sure?', :method => :delete, :class => 'acts_as_button darkgray'
+    = link_to t('action.destroy'), patient_medical_report_path, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button darkgray'
   - if authorize?('view_medical_report')
-    = link_to t('action.back'), medical_reports_path, :class => 'acts_as_button darkgray'
+    = link_to t('action.back'), patient_medical_reports_path, :class => 'acts_as_button darkgray'
