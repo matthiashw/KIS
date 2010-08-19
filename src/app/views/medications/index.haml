@@ -1,0 +1,20 @@
+- title t('medication.listing')
+
+%table
+    %tr
+        %th=t('medication.description')
+        %th=t('medication.atc')
+    - @medications.each do |medication|
+        %tr{:onclick=>"location.href='#{url_for edit_patient_case_file_treatment_medication_path(:id => medication)}';",:style=>"cursor:pointer;"}
+            %td= h medication.description
+
+            %td
+                -if medication.atc_entry
+                    = h medication.atc_entry.name
+                -else
+                    &minus;
+
+.action-links
+    - if authorize?('create_medication')
+        = link_to t('action.create'), new_patient_case_file_treatment_medication_path(:treatment_id => params[:treatment_id]), :class => 'acts_as_button'
+    = link_to t('action.back'), patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => params[:treatment_id]), :class => 'acts_as_button darkgray'
