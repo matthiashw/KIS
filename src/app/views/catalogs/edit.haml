@@ -8,4 +8,5 @@
     = f.buttons
 
 .action-links
+    = link_to t('action.destroy'), @catalog, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
     = link_to t('action.back'), catalogs_path, :class => 'acts_as_button darkgray'

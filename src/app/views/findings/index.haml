@@ -1,5 +1,15 @@
 -title t('finding.index')
 
+#history{:style => "display:none;"}
+    die history
+
+
+
+.box
+    .box-inner
+        = select_tag 'fields', options_for_select(@fieldhash)
+        = facebox_link("Show History", "#history")
+
 #tasks
     %table
         %tr
