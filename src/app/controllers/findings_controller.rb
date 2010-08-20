@@ -60,8 +60,6 @@ class FindingsController < ApplicationController
       next if feid.to_s != params[:field_id]
 
       if ctype.application != "user_defined"
-        h = { entry.name => fid }
-
         @output.push({
           'date' =>  mv.created_at.strftime("%d. %b %Y - %H:%M"),
           'value' => mv.value

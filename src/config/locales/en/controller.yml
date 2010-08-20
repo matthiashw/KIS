@@ -206,6 +206,8 @@ en:
       ops:                            "OPS"
       medication:                     "Medication"
       start_date:                     "Start date"
+      date:                           "Date"
+      value:                          "Value"
 
   medical_reports:
     listing:                          "Medical Reports"
@@ -221,6 +223,10 @@ en:
     created:                          "Created at"
     print_view:                       "Print view"
     no_header:                        "Standard header for medical reports missing. Please contact your administrator."
+    anamnesis:                        "Anamnesis"
+    findings:                         "Findings"
+    diagnoses:                        "Diagnoses"
+    treatments:                       "Treatments"
     messages:
       no_cases_properties:            "No cases or properties selected"
       no_cases:                       "No case selected"
