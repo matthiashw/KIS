@@ -65,14 +65,17 @@
             .box-inner
                 .field
                     = file_field :file, :datafile
+                    = '- ' + t('task.comment')
+                    = text_field 'comments', 'filecomment', :size=> '20', :maxlength => '30'
                     = submit_tag t('task.upload'), :name=>'upload'
                 - unless @taskfiles.nil?
                     - @taskfiles.each do |tf|
                         .field
                             .field-label
-                                = tf.name
+                                = link_to tf.name, tf.path
+                                = submit_tag t('task.delete'), :name=>'delete['+tf.id.to_s + ']'
                             .field-content
-                                = 'hier vielleicht delete oder descr'
+                                = tf.description
 
     %h2.floatingheadline=t('task.additional_information')
 

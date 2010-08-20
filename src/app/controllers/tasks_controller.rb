@@ -320,13 +320,22 @@ class TasksController < ApplicationController
 
       if params.has_key?('upload')
         if params.has_key?('file')
-          if UploadedFile.savefile(params[:file],@task.id)
+          if UploadedFile.savefile(params[:file],@task.id,@comments[:filecomment])
             flash[:notice] = t('task.messages.upload_complete')
           else
             flash[:error] = t('task.messages.upload_failed')
           end
 
         end
+          format.html { redirect_to :action => 'taskfill', :id => @task.id  }
+          format.xml  { render :xml => @task}
+
+      else if params.has_key?('delete')
+          if UploadedFile.deletefile(params[:delete])
+             flash[:notice] = 'ok'
+          else
+             flash[:notice] = 'not ok'
+          end
 
           format.html { redirect_to :action => 'taskfill', :id => @task.id  }
           format.xml  { render :xml => @task}
@@ -383,6 +392,7 @@ class TasksController < ApplicationController
         end
       end
     end
+   end
   end
 
   # for viewing the tasks values and results
@@ -391,6 +401,7 @@ class TasksController < ApplicationController
     return authorize unless task_creator_authorize?(@task.creator_user_id, "show_result_own_task") || task_authorize?('show_result_task')
     @values = MeasuredValue.find_all_by_task_id(@task.id)
     @domain = Domain.find_by_id(@task.domain_id)
+    @taskfiles = UploadedFile.find_all_by_task_id(@task.id)
 
     #fieldshash stuff is done for processing the fields in the view
     @valueshash = {}
