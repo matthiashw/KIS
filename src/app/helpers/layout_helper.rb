@@ -59,10 +59,22 @@ module LayoutHelper
 
     if controller_name == "usertasks"
       if action_name != ""
-        activeclass = "active" if params[:action] == action_name && params[:controller] == "tasks" && params[:user_id]
+        activeclass = "active" if params[:action] == action_name && params[:controller] == "tasks" && (params[:action] == "mytasks" || params[:action] == "mytaskssearch")
       else
-        activeclass = "active" if params[:controller] == "tasks" && params[:user_id]
+        activeclass = "active" if params[:controller] == "tasks" && (params[:action] == "mytasks" || params[:action] == "mytaskssearch")
       end
+    end
+
+    if controller_name == "domaintasks"
+      if action_name != ""
+        activeclass = "active" if params[:controller] == "tasks" && (params[:action] == "domaintasks" || params[:action] == "domaintaskssearch")
+      else
+        activeclass = "active" if params[:controller] == "tasks" && (params[:action] == "domaintasks" || params[:action] == "domaintaskssearch")
+      end
+    end
+
+    if controller_name == "findings"
+      activeclass = "active" if params[:controller] == "tasks" && params[:action] == "results"
     end
 
     if activeclass == ""
@@ -86,6 +98,13 @@ module LayoutHelper
       if is_usertask(a) != ""
         activeclass = is_usertask(a)
       end
+      if is_domaintask(a) != ""
+        activeclass = is_domaintask(a)
+      end
+
+      if a == "findings"
+        activeclass = "active" if params[:controller] == "tasks" && params[:action] == "results"
+      end
 
     end
     
@@ -104,6 +123,7 @@ module LayoutHelper
 
       return true if is_usertask_active?(a)
       return true if is_patienttask_active?(a)
+      return true if is_domaintask_active?(a)
     end
     return false
   end
@@ -122,7 +142,18 @@ module LayoutHelper
   def is_usertask(task)
     cssclass = ""
     if task == "usertasks"
-      if params[:controller] == "tasks" && params[:user_id]
+      if params[:controller] == "tasks" && (params[:action] == "mytasks" || params[:action] == "mytaskssearch")
+        cssclass = "active"
+      end
+    end
+
+    cssclass
+  end
+
+  def is_domaintask(task)
+    cssclass = ""
+    if task == "domaintasks"
+      if params[:controller] == "tasks" && (params[:action] == "domaintasks" || params[:action] == "domaintaskssearch")
         cssclass = "active"
       end
     end
@@ -142,7 +173,17 @@ module LayoutHelper
 
   def is_usertask_active?(task)
     if task == "usertasks"
-      if params[:controller] == "tasks" && params[:user_id]
+      if params[:controller] == "tasks" && (params[:action] == "mytasks" || params[:action] == "mytaskssearch")
+        return true
+      end
+    end
+
+    return false
+  end
+
+  def is_domaintask_active?(task)
+    if task == "domaintasks"
+      if params[:controller] == "tasks" && (params[:action] == "domaintasks" || params[:action] == "domaintaskssearch")
         return true
       end
     end

@@ -14,7 +14,7 @@ include FormStyleHelper
     @current_controller_help_title = "help." + request.path_parameters['controller'] + "." + request.path_parameters['action'] + ".title"
   end
   
-  def facebox_link(name, url, cssclass)
+  def facebox_link(name, url, cssclass = "facebox-link")
     link_to(name, url, :rel => "facebox", :class => cssclass)
   end
 

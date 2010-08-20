@@ -1,0 +1,9 @@
+-title t('task.domaintasks')
+
+- showmytasks = 2
+
+.filters.task-filter
+    = render :partial => 'tasks/filter/task_filter_case', :locals => { :showmytasks => showmytasks }
+    = render :partial => 'tasks/filter/task_filter_state', :locals => { :showmytasks => showmytasks }
+
+= render :partial => 'task_index', :locals => { :showmytasks => showmytasks }

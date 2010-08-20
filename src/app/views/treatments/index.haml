@@ -9,7 +9,7 @@
     - @treatments.each do |treatment|
         %tr{:onclick=>"location.href='#{url_for patient_case_file_treatment_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id], :id => treatment)}';",:style=>"cursor:pointer;"}
             %td= h show_date(treatment.start_date)
-            %td= h treatment.description
+            %td= h truncate(treatment.description, :omission => "...", :length => 40)
             
             %td
                 -if treatment.ops_entry
@@ -19,7 +19,7 @@
             %td
                 -if treatment.diagnoses.length > 0
                     -treatment.diagnoses.each do |diagnosis|
-                        = link_to diagnosis.description, diagnoses_path(:id => diagnosis.id)
+                        = link_to diagnosis.icd_entry.name, patient_case_file_diagnosis_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id],:id => diagnosis.id)
                         %br
                 -else
                     &minus;

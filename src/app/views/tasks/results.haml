@@ -48,7 +48,5 @@
                                     %td= ucum.description
                                 %td= y.comment
 .action-links
-    -if current_active_patient
-        = link_to t('action.back'), patient_tasks_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'
-    -else
-        = link_to t('action.back'), tasks_path, :class => 'acts_as_button darkgray'
+    - if authorize?('access_finding') && current_active_patient
+        = link_to t('action.back'), patient_findings_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'

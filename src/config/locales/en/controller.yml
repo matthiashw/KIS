@@ -316,7 +316,11 @@ en:
     new:                              "New diagnosis"
     new_button:                       "Add new diagnosis"
     description:                      "Description"
-    case_file:                        "Case File"
+    user:                             "Doctor diagnosed"
+    created_at:                       "Date of diagnosis"
+    catalog_entry:                    "Classification of Disease (ICD)"
+    catalog_entry_code:                    "Catalog Code"
+    treatments:                       "Related treatments"
     messages:
       create_success:                 "Diagnosis was successfully created."
       update_success:                 "Diagnosis was successfully updated."
@@ -324,6 +328,7 @@ en:
   task:
     patient_task_index:               "All Tasks of Patient"
     mytasks:                          "All my Tasks"
+    domaintasks:                      "All Tasks of my Domain"
     new_task:                         "New Task"
     edit_task:                        "Edit Task"
     choose_domain:                    "Target Patient and Domain"
@@ -373,7 +378,7 @@ en:
     filter:
       all:                            "All"
       search_fail:                    "No Task found"
-      select_state:                   "View Task State"
+      select_state:                   "Task State"
       select_domain:                  "Select Domain"
       select_case:                    "Show only Tasks of active cases"
     messages:
