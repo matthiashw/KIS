@@ -375,6 +375,8 @@ en:
     n:                                "No"
     file_upload:                      "Upload File for Task"
     upload:                           "Upload"
+    delete:                           "Delete"
+    attached_files:                   "Attached Files"
     filter:
       all:                            "All"
       search_fail:                    "No Task found"
