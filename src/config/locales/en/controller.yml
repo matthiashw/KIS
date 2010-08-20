@@ -463,5 +463,5 @@ en:
 
   finding:
     index:                            "All Findings"
-    history:                          "View History of choosen field"
+    history:                          "View History"
     select_history_value:             "All Measured Values"
