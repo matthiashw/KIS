@@ -79,7 +79,7 @@ ActionController::Routing::Routes.draw do |map|
   ############
   # root url #
   ############
-  map.root :controller => "patients", :action => "index"
+  map.root :controller => "application", :action => "rootpage"
 
   ###########
   # default #

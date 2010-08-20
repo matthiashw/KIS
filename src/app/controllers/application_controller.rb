@@ -13,6 +13,16 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
 
+  def rootpage
+    homepage = current_user.homepage
+
+    if homepage.nil? || homepage.empty?
+      redirect_to patients_url
+    else
+      redirect_to homepage
+    end
+  end
+
   def set_locale
   # if params[:locale] is nil then I18n.default_locale will be used
     I18n.locale = params[:locale]
@@ -111,8 +121,8 @@ class ApplicationController < ActionController::Base
   # render access denied if user has no permission
   # to view the page
   def access_denied
-    flash.now[:error] = t('application.messages.no_permission')
-    render :partial => 'shared/error403', :status => 403, :layout => true and return false
+    #flash.now[:error] = t('application.messages.no_permission')
+    render :partial => 'shared/errors/error403', :status => 403, :layout => true and return false
   end
 
   private

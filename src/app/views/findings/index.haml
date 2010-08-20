@@ -4,11 +4,12 @@
     die history
 
 
-
-.box
-    .box-inner
-        = select_tag 'fields', options_for_select(@fieldhash)
-        = facebox_link("Show History", "#history")
+#history-select
+    .box
+        .box-inner
+            %span.history-select-text= t("finding.select_history_value")
+            = select_tag 'fields-history', options_for_select(@fieldhash)
+            = facebox_link(t("finding.history"), "#history", "acts_as_button darkyellow link-history")
 
 #tasks
     %table

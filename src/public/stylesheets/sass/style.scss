@@ -292,6 +292,7 @@ a.links-link {
     }
 }
 
+
 /*CONTENT
 -------------------------------------------------------- */
 
@@ -509,6 +510,49 @@ a.links-link {
     .box-inner {
         margin:9px;
     }
+}
+
+/*
+ * history
+ */
+
+ #history-select {
+    .box {
+        padding-bottom:9px;
+    }
+}
+
+.history-select-text {
+    float:left;
+    font-size:12px;
+    color:$darkgray;
+    text-shadow:1px 1px 0 #fff;
+    padding-top:4px;
+    margin-right:9px;
+}
+
+
+a.link-history {
+    width:180px;
+    height:19px;
+    display:block;
+    background:transparent url('/images/chart.png') no-repeat 96% 50%;
+    text-decoration:none;
+    border:none;
+    float:left;
+    margin-left:36px;
+    margin-top:-3px;
+    padding-right:26px;
+    padding-top:5px;
+    text-decoration:none;
+    font-size:12px;
+    color:#fff;
+    
+}
+
+#fields-history {
+    float:left;
+    
 }
 
 /*TASK AND TEMPLATES
