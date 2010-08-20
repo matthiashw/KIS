@@ -405,6 +405,13 @@ en:
     edit:                             "Editing User"
     address:                          "Address"
     phone:                            "Phone"
+    homepage:
+      patient_index:                  "Patients index"
+      task_index:                     "Tasks index"
+      task_mytasks:                   "My tasks"
+      task_domaintasks:               "Domain tasks"
+      appointment_index:              "Appointments index"
+      administration:                 "Administration Area"
     setup:
       setup:                          "Setup Admin User"
       choose_from_current_user:       "Choose a existing User or"
@@ -456,3 +463,5 @@ en:
 
   finding:
     index:                            "All Findings"
+    history:                          "View History of choosen field"
+    select_history_value:             "All Measured Values"
