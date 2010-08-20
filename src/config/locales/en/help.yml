@@ -4,10 +4,10 @@ en:
     admin:
       index:
         title:              "Administration Area"
-        text:               ""
+        text:               "N/A"
       status:
-        title:              ""
-        text:               ""
+        title:              "Hopen Status"
+        text:               "N/A"
           
     appointments:
       calendar:
@@ -238,8 +238,9 @@ en:
         title:              ""
         text:               ""
       index:
-        title:              ""
-        text:               ""
+        title:              "Listing treatments"
+        text:               "This page represents a list of all treatments matching
+                            the currently selected case."
       new:
         title:              ""
         text:               ""
@@ -249,22 +250,23 @@ en:
 
     user_sessions:
       new:
-        title:              ""
-        text:               ""
+        title:              "Login"
+        text:               "Please enter the username and password.
+                            <br/><i>An administrator is needed to create new accounts.<i/>"
 
     users:
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing a user's details"
+        text:               "N/A"
       index:
-        title:              ""
-        text:               ""
+        title:              "Listing users"
+        text:               "N/A"
       new:
-        title:              ""
-        text:               ""
+        title:              "Creating a new user"
+        text:               "N/A"
       setup:
-        title:              ""
-        text:               ""
+        title:              "Setup the admin user"
+        text:               "N/A"
       show:
-        title:              ""
-        text:               ""
+        title:              "User-Details"
+        text:               "N/A"

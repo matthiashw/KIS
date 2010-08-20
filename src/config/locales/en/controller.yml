@@ -259,7 +259,7 @@ en:
       success_update:                 "Medication was successfully updated."
 
   treatment:
-    listing:                          "Listing treatment"
+    listing:                          "Listing treatments"
     edit:                             "Editing treatment"
     action:                           "Action"
     new_button:                       "Add new treatment"
