@@ -49,6 +49,7 @@ en:
         language:                     "Language"
         role:                         "Role"
         domain:                       "Domain"
+        homepage:                     "Homepage"
       treatment:
         description:                  "Description"
         start_date:                   "Start date"
@@ -93,9 +94,10 @@ en:
         family_name:                  "Family name"
         address:                      "Address"
         phone:                        "Phone"
-        language:                     "Language"
+        language:                     "Choose your interface language"
         role:                         "Role"
         domain:                       "Domain"
+        homepage:                     "Choose the page you want to be redirected to after login. If you change your language you need to save first and change your homepage again. The default redirect page is the Patient index."
     actions:
       create:                         "Create {{model}}"
       update:                         "Save changes"

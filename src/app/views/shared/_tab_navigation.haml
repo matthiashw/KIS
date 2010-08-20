@@ -19,7 +19,7 @@
 
         - if authorize?('view_treatment')
             %li{:class => "secondary-navigation-leaf"}
-                =link_to t('navi.tabs.treatment'), patient_case_file_treatments_path(:case_file_id => current_active_patient.active_case_file_id, :patient_id => current_active_patient.id), :class => is_active?('treatments')
+                =link_to t('navi.tabs.treatment'), patient_case_file_treatments_path(:case_file_id => get_case_for_view, :patient_id => current_active_patient.id), :class => is_active?('treatments')
 
         - if authorize?('view_task')
             %li{:class => "secondary-navigation-leaf"}
@@ -27,4 +27,4 @@
 
         - if authorize?('view_diagnosis')
             %li{:class => "secondary-navigation-leaf"}
-                =link_to t('navi.tabs.diagnoses'), diagnoses_path, :class => is_active?('diagnoses')
+                =link_to t('navi.tabs.diagnoses'), patient_case_file_diagnoses_path(:case_file_id => get_case_for_view, :patient_id => current_active_patient.id), :class => is_active?('diagnoses')

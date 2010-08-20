@@ -56,6 +56,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @domains = Domain.all :conditions => { :is_role => 1 }
   end
   
   def create

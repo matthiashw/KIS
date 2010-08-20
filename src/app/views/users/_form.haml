@@ -18,6 +18,7 @@
                 = t('formtastic.hints.user.language')
 
         = f.input :domains, :as => :check_boxes, :collection => @domains
+        = f.input :homepage, :as => :select, :collection => homepages(@user.id)
     = f.buttons
 
 
