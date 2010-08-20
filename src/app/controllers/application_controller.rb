@@ -13,6 +13,14 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
 
+  unless ActionController::Base.consider_all_requests_local
+    rescue_from Exception,                           :with => :render_error
+    rescue_from ActiveRecord::RecordNotFound,         :with => :render_not_found
+    rescue_from ActionController::RoutingError,          :with => :render_not_found
+    rescue_from ActionController::UnknownController,     :with => :render_not_found
+    rescue_from ActionController::UnknownAction,        :with => :render_not_found
+  end
+
   def rootpage
     homepage = current_user.homepage
 
@@ -219,6 +227,16 @@ class ApplicationController < ActionController::Base
       o.force_encoding(Encoding::UTF_8) if o.respond_to?(:force_encoding)
     end
     traverse.call(params, force_encoding)
+  end
+
+  def render_not_found(exception)
+    log_error(exception)
+    render :partial => "shared/errors/error404", :status => 404, :layout => true
+  end
+
+  def render_error(exception)
+    log_error(exception)
+    render :partial => "shared/errors/error500", :status => 500, :layout => true
   end
 
 end

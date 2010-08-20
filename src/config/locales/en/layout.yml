@@ -62,6 +62,8 @@ en:
     link_homepage:                    "Go to homepage"
     403_text:                         "You are not allowed to view this page.<br />
                                       Contact your Administrator if you want access to this page, or you normally have access to it."
+    404_text:                         "The page you wanted to view could not be found."
+    500_text:                         "Application error. Please contact your Administrator."
 
   action:
     create:                           "Create"
