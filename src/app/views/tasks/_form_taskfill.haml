@@ -38,7 +38,12 @@
                                 - @y = y
                                 - @fielddef = FieldDefinition.find(@y.field_definition_id)
                                 %tr.template-field{ :class => cycle('odd', 'even')}
-                                    %td= Entry.find(@fielddef.field_entry_id).name
+                                    - if  @field_error_ids &&  @field_error_ids.include?(@x.to_s)
+                                        %td{:class => 'field-error' }
+                                            = Entry.find(@fielddef.field_entry_id).name
+                                    -else
+                                        %td
+                                            = Entry.find(@fielddef.field_entry_id).name
                                     %td= y.comment
                                     - fields_for @y do |fi|
                                         -if @task.state == Task.state_inprogress
@@ -66,7 +71,7 @@
                 .field.fileupload
                     = file_field :file, :datafile
                     %span= t('task.comment')
-                    = text_field 'comments', 'filecomment', :size=> '20', :maxlength => '30'
+                    = text_field "comments", "filecomment", :size=> '20', :maxlength => '30'
                     = submit_tag t('task.upload'), :name=>'upload'
                 - unless @taskfiles.nil?
                     - @taskfiles.each do |tf|

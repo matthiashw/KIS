@@ -401,7 +401,9 @@ en:
       upload_complete:                "Fileupload complete"
       upload_failed:                  "Fileupload failed"
       complete_success:               "Task successfully completed."
-
+      file_deleted_success:                   "File was successfully deleted."
+      file_deleted_fail:                   "File was successfully deleted."
+      must_be_number:                 "Marked fields must be numbers."
   user:
     listing:                          "Listing users"
     username:                         "Username"
@@ -458,6 +460,7 @@ en:
       checkbox:                       "Checkbox"
       multiline:                      "Multi-Line input"
       dropdown:                       "Drop-Down list"
+      number:                         "Number input"
       
   permissions:
     listing:                          "Listing permissions"
