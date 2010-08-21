@@ -1,6 +1,8 @@
 <script type="text/javascript">
 <!--
 
+var units = [<%  @units.each do |unit| %>'<%=  unit %>', <%  end %>]
+
 function updateChart(){
   var field = Ext.get('fields-history')
   var fieldId = field.getValue(true);
@@ -8,7 +10,7 @@ function updateChart(){
   
   var store = getChartStore('findings/chartdata/' + fieldId + '.json');
   store.load();
-  var panel = getChartPanel(store, name);
+  var panel = getChartPanel(store, name, units[field.dom.selectedIndex]);
 
   var window = new Ext.Window({
     title:  'Findings - Statistic',

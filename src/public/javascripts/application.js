@@ -195,7 +195,7 @@ function getChartStore(url){
     });
 }
 
-function getChartPanel(store, title){
+function getChartPanel(store, title, unit){
     return  new Ext.Panel({
         title: title,
         width:500,
@@ -207,6 +207,9 @@ function getChartPanel(store, title){
             store: store,
             xField: 'date',
             yField: 'value',
+            tipRenderer : function(chart, record){
+                return record.data.value + ' ' + unit + ', ' + record.data.date;
+            },
 			listeners: {
 				itemclick: function(o){
 					var rec = store.getAt(o.index);

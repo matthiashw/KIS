@@ -6,6 +6,7 @@ class FindingsController < ApplicationController
     @measured_values = MeasuredValue.all :conditions => { :task_id => @findings}
 
     @fieldhash = {}
+    @units = []
 
     @measured_values.each do |mv|
       fid = mv.field_id
@@ -26,6 +27,11 @@ class FindingsController < ApplicationController
 
         if not @fieldhash.has_key?(entry.name)
           @fieldhash.merge! h
+          if(field.ucum_entry)
+            @units.push field.ucum_entry.description
+          else
+            @units.push ''
+          end
         end
       end
 
