@@ -206,6 +206,8 @@ en:
       ops:                            "OPS"
       medication:                     "Medication"
       start_date:                     "Start date"
+      date:                           "Date"
+      value:                          "Value"
 
   medical_reports:
     listing:                          "Medical Reports"
@@ -221,6 +223,10 @@ en:
     created:                          "Created at"
     print_view:                       "Print view"
     no_header:                        "Standard header for medical reports missing. Please contact your administrator."
+    anamnesis:                        "Anamnesis"
+    findings:                         "Findings"
+    diagnoses:                        "Diagnoses"
+    treatments:                       "Treatments"
     messages:
       no_cases_properties:            "No cases or properties selected"
       no_cases:                       "No case selected"
@@ -328,6 +334,7 @@ en:
   task:
     patient_task_index:               "All Tasks of Patient"
     mytasks:                          "All my Tasks"
+    domaintasks:                      "All Tasks of my Domain"
     new_task:                         "New Task"
     edit_task:                        "Edit Task"
     choose_domain:                    "Target Patient and Domain"
@@ -374,10 +381,13 @@ en:
     n:                                "No"
     file_upload:                      "Upload File for Task"
     upload:                           "Upload"
+    delete:                           "Delete"
+    attached_files:                   "Attached Files"
+    no_attached_files:                "No Files attached."
     filter:
       all:                            "All"
       search_fail:                    "No Task found"
-      select_state:                   "View Task State"
+      select_state:                   "Task State"
       select_domain:                  "Select Domain"
       select_case:                    "Show only Tasks of active cases"
     messages:
@@ -404,6 +414,13 @@ en:
     edit:                             "Editing User"
     address:                          "Address"
     phone:                            "Phone"
+    homepage:
+      patient_index:                  "Patients index"
+      task_index:                     "Tasks index"
+      task_mytasks:                   "My tasks"
+      task_domaintasks:               "Domain tasks"
+      appointment_index:              "Appointments index"
+      administration:                 "Administration Area"
     setup:
       setup:                          "Setup Admin User"
       choose_from_current_user:       "Choose a existing User or"
@@ -455,3 +472,5 @@ en:
 
   finding:
     index:                            "All Findings"
+    history:                          "View History"
+    select_history_value:             "All Measured Values"

@@ -61,6 +61,21 @@
 
   -if properties.include?("2")
     %h3=t('medical_report.findings')
+    -findings.each do |finding|
+      -current_finding = finding[1]
+      %h4=current_finding['name']
+      %table
+        %tr
+          %td
+            =t('medical_report.date')
+          %td
+            =t('medical_report.value')
+        -current_finding['values'].each do |item|
+          %tr
+            %td
+              =item['date']
+            %td
+              =item['value']
 
   -if properties.include?("3")
     %h3=t('medical_report.diagnoses')

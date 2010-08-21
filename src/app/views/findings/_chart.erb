@@ -1,0 +1,22 @@
+<script type="text/javascript">
+<!--
+
+function updateChart(){
+  var field = Ext.get('fields-history')
+  var fieldId = field.getValue(true);
+  var name = field.dom[field.dom.selectedIndex].innerHTML;
+  
+  var store = getChartStore('findings/chartdata/' + fieldId + '.json');
+  store.load();
+  var panel = getChartPanel(store, name);
+
+  var window = new Ext.Window({
+    title:  'Findings - Statistic',
+    items: [panel]
+  });
+
+  window.show();
+}
+
+//-->
+</script>

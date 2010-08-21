@@ -20,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.taskfill "/tasks/taskfill/:id", :controller => "tasks", :action => "taskfill"
   map.connect "/tasks/createentries", :controller => "tasks", :action => "createentries"
   map.mytasks "users/:user_id/mytasks", :controller => "tasks", :action => "mytasks"
+  map.domaintasks "users/:user_id/domaintasks", :controller => "tasks", :action => "domaintasks"
 
 
   ###########
@@ -62,6 +63,8 @@ ActionController::Routing::Routes.draw do |map|
         treatment.resources :medications
       end
     end
+
+    patient.connect "findings/chartdata/:field_id.:format", :controller => "findings", :action => "chartdata"
  
     patient.resources :comments
     patient.resources :medical_reports
@@ -78,7 +81,7 @@ ActionController::Routing::Routes.draw do |map|
   ############
   # root url #
   ############
-  map.root :controller => "patients", :action => "index"
+  map.root :controller => "application", :action => "rootpage"
 
   ###########
   # default #

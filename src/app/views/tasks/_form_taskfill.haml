@@ -63,16 +63,19 @@
     .fields
         .box
             .box-inner
-                .field
+                .field.fileupload
                     = file_field :file, :datafile
+                    %span= t('task.comment')
+                    = text_field 'comments', 'filecomment', :size=> '20', :maxlength => '30'
                     = submit_tag t('task.upload'), :name=>'upload'
                 - unless @taskfiles.nil?
                     - @taskfiles.each do |tf|
-                        .field
+                        .field.show-file
                             .field-label
-                                = tf.name
+                                %span.file-link= link_to tf.name, tf.path
                             .field-content
-                                = 'hier vielleicht delete oder descr'
+                                %span.file-desc= tf.description
+                                %span.file-delete= submit_tag t('task.delete'), :name=>'delete['+tf.id.to_s + ']', :class => "lightgray"
 
     %h2.floatingheadline=t('task.additional_information')
 

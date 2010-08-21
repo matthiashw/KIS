@@ -1,0 +1,12 @@
+
+= render :partial => 'shared/errors/default_error'
+
+%h2.error-detail-headline=t('error_pages.headline_error_details')
+.error-detail
+    %p
+        =t('error_pages.500_text')
+
+%h2.error-options-headline=t('error_pages.headline_error_options')
+.error-options
+    %p
+        = link_to t("error_pages.link_homepage"), root_path

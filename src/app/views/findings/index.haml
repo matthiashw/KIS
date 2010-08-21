@@ -1,32 +1,32 @@
 -title t('finding.index')
 
+#history{:style => "display:none;"}
+
+
+#history-select
+    .box
+        .box-inner
+            %span.history-select-text= t("finding.select_history_value")
+            = select_tag 'fields-history', options_for_select(@fieldhash)
+            = link_to t("finding.history"), "#", :onclick=>"javascript:updateChart()", :class=>"acts_as_button darkyellow link-history"
+
 #tasks
     %table
         %tr
-            %th=t('task.state')
             %th=t('task.domain')
             %th=t('task.creator')
             %th=t('task.deadline')
             %th=t('task.creator_comment')
             %th=t('task.executor_comment')
-            %th=t('task.results')
-            %th=t('task.fill')
         - @findings.each do |task|
             - domain = Domain.find_by_id(task.domain_id)
-            - if !showmytasks.nil? && showmytasks == 1
-                - casefile = CaseFile.find_by_id(task.case_file_id)
-                - patient = Patient.find_by_id(casefile.patient_id)
             - creator = User.find_by_id(task.creator_user_id)
 
-            %tr{:onclick=>"location.href='#{patient_task_path(:patient_id => current_active_patient.id ,:id => task.id)}';",:style=>"cursor:pointer;"}
+            %tr{:onclick=>"location.href='#{taskresults_path(:id => task.id)}';",:style=>"cursor:pointer;"}
                 %td= h domain.name
                 %td= h creator.username
                 %td= h show_date(task.deadline)
                 %td= h truncate(task.creator_comment, :omission => "...", :length => 40)
                 %td= h truncate(task.executor_comment, :omission => "...", :length => 40)
-                %td
-                    - if !task_is_open?(task.state) && !task_is_inprogress?(task.state) && (authorize?('show_result_task') || (authorize?('show_result_own_task') && is_creator?(task.creator_user_id)))
-                        = link_to t('task.showresults'), taskresults_path(:id => task.id)
-                %td
-                    - if task_is_open?(task.state) || task_is_inprogress?(task.state) && (authorize?('fill_every_task') || (authorize?('fill_own_domain_task') && is_in_domain?(task.domain_id)))
-                        = link_to t('task.fill'), taskfill_path(:id => task.id)
+
+= render :partial => 'chart'

@@ -19,7 +19,12 @@
             %td
                 -if treatment.diagnoses.length > 0
                     -treatment.diagnoses.each do |diagnosis|
-                         = link_to diagnosis.icd_entry.name, patient_case_file_diagnosis_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id],:id => diagnosis.id)
+                        - if CatalogManager.instance.catalog 'diagnosis' && diagnosis.icd_entry.nil?
+                            = link_to diagnosis.icd_entry.name, patient_case_file_diagnosis_path(:patient_id => params[:patient_id], :case_file_id => params[:case_file_id],:id => diagnosis.id)
+                        - elsif CatalogManager.instance.catalog 'diagnosis'
+                            &minus;
+                        - else
+                            = no_catalog_available 'diagnosis'
                         %br
                 -else
                     &minus;

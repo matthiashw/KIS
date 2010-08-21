@@ -52,8 +52,18 @@ en:
   password_confirmation:              "Password confirmation"
   delete_confirmation:                "Are you sure?"
   no_access:                          "No Access"
-  forbidden:                          "Forbidden! You have no access to this page"
   js_needed:                          "Note: Javascript must be enabled!"
+
+  error_pages:
+    default_headline:                 "Hopen Systems - Error page"
+    default:                          "There was an error trying to view this page. You find more Information below."
+    headline_error_details:           "Error details"
+    headline_error_options:           "Options"
+    link_homepage:                    "Go to homepage"
+    403_text:                         "You are not allowed to view this page.<br />
+                                      Contact your Administrator if you want access to this page, or you normally have access to it."
+    404_text:                         "The page you wanted to view could not be found."
+    500_text:                         "Application error. Please contact your Administrator."
 
   action:
     create:                           "Create"
@@ -76,8 +86,10 @@ en:
       patients:                       "Patients"
       search_patient:                 "Search Patient"
       admission_patient:              "Admission"
-      tasks:                          "My Tasks"
+      mytasks:                        "My Tasks"
+      domaintasks:                    "Domain Tasks"
       tasks-all:                      "All my Tasks"
+      tasks-domain:                   "All Domain Tasks"
       task-new:                       "New Task"
       appointments:                   "Appointments"
       administration:                 "Administration"

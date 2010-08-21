@@ -30,7 +30,6 @@ Domain:
 
 Task:
   create_task: Create a Task
-  view_task: View Tasks
   view_own_task: View own Tasks
   view_all_tasks: View all Tasks of every domain
   view_domain_task: View only own domain Tasks

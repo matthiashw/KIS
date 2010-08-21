@@ -5,6 +5,10 @@ class ReportHeadersController < ApplicationController
     return false unless authorize(permissions = ["view_reportheader"])
     @report_headers = ReportHeader.all
 
+    if not File.exist?("#{RAILS_ROOT}/config/report.yml")
+      FileUtils.cp "#{RAILS_ROOT}/config/report.yml.original", "#{RAILS_ROOT}/config/report.yml"
+    end
+
     @config = YAML::load(File.open("#{RAILS_ROOT}/config/report.yml"))
     @standard = ReportHeader.find_by_id(@config["header"])
     

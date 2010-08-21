@@ -1,10 +1,5 @@
 class TasksController < ApplicationController
-  before_filter :filter_tasks, :only => :index
-  before_filter :filter_session, :only => [:search, :mytaskssearch]
-  
-  def filter_tasks
-    @tasks = get_tasks  
-  end
+  before_filter :filter_session, :only => [:search, :mytaskssearch, :domaintaskssearch]
 
   def filter_session
     session[:selected_task_state] = params[:task_state].strip if params[:task_state]
@@ -15,7 +10,9 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.xml
   def index
-    return authorize unless task_authorize?('view_task', 'view_domain_task', 'view_own_task')
+    return authorize unless task_authorize?('view_all_tasks', 'view_domain_task', 'view_own_task')
+
+    @tasks = get_tasks
 
     respond_to do |format|
       format.html # search.haml
@@ -24,7 +21,7 @@ class TasksController < ApplicationController
   end
 
   def mytasks
-    return authorize unless task_authorize?('view_task', 'view_domain_task', 'view_own_task')
+    return false unless authorize(permissions = ["view_own_task"])
 
     @tasks = get_my_tasks
 
@@ -34,9 +31,36 @@ class TasksController < ApplicationController
     end
   end
 
+  def domaintasks
+    return false unless authorize(permissions = ["view_domain_task"])
+
+    @tasks = get_domain_tasks
+
+    respond_to do |format|
+      format.html # search.haml
+      format.xml  { render :xml => @tasks }
+    end
+  end
+
+  def domaintaskssearch
+
+    @tasks = get_domain_tasks
+
+    showmytasks = 2
+    if request.xhr?
+         render :partial => "task_results", :layout => false, :locals => { :taskresults => @tasks, :showmytasks => showmytasks }
+    else
+        respond_to do |format|
+        format.html # search.haml
+        format.xml  { render :xml => @tasks }
+        end
+    end
+  end
+
   def mytaskssearch
 
     @tasks = get_my_tasks
+
     showmytasks = 1
     if request.xhr?
          render :partial => "task_results", :layout => false, :locals => { :taskresults => @tasks, :showmytasks => showmytasks }
@@ -52,8 +76,9 @@ class TasksController < ApplicationController
 
     @tasks = get_tasks
 
+    showmytasks = 0
     if request.xhr?
-         render :partial => "task_results", :layout => false, :locals => {:taskresults => @tasks}
+         render :partial => "task_results", :layout => false, :locals => {:taskresults => @tasks, :showmytasks => showmytasks }
     else
         respond_to do |format|
         format.html # search.haml
@@ -182,7 +207,12 @@ class TasksController < ApplicationController
         end
 
         flash.now[:notice] = t('task.messages.create_successfull')
-        format.html { redirect_to(@task) }
+
+        if current_active_patient
+          format.html { redirect_to patient_task_url(:id => @task.id, :patient_id => current_active_patient.id)  }
+        else
+          format.html { redirect_to @task }
+        end
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
         flash.now[:error] = t('task.messages.create_failed')
@@ -201,7 +231,11 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update_attributes(params[:task])
         flash.now[:notice] = t('task.messages.update_successfull')
-        format.html { redirect_to(@task) }
+        if current_active_patient
+          format.html { redirect_to patient_task_url(:id => @task.id, :patient_id => current_active_patient.id)  }
+        else
+          format.html { redirect_to @task }
+        end
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -231,7 +265,12 @@ class TasksController < ApplicationController
     end
     flash.now[:notice] = t('task.messages.delete_successfull')
     respond_to do |format|
-      format.html { redirect_to(tasks_url) }
+      if current_active_patient
+        format.html { redirect_to patient_tasks_url(:patient_id => current_active_patient.id) }
+      else
+        format.html { redirect_to(tasks_url) }
+      end
+      
       format.xml  { head :ok }
     end
   end
@@ -281,13 +320,22 @@ class TasksController < ApplicationController
 
       if params.has_key?('upload')
         if params.has_key?('file')
-          if UploadedFile.savefile(params[:file],@task.id)
+          if UploadedFile.savefile(params[:file],@task.id,@comments[:filecomment])
             flash[:notice] = t('task.messages.upload_complete')
           else
             flash[:error] = t('task.messages.upload_failed')
           end
 
         end
+          format.html { redirect_to :action => 'taskfill', :id => @task.id  }
+          format.xml  { render :xml => @task}
+
+      else if params.has_key?('delete')
+          if UploadedFile.deletefile(params[:delete])
+             flash[:notice] = 'ok'
+          else
+             flash[:notice] = 'not ok'
+          end
 
           format.html { redirect_to :action => 'taskfill', :id => @task.id  }
           format.xml  { render :xml => @task}
@@ -331,8 +379,12 @@ class TasksController < ApplicationController
           end
 
           flash.now[:notice] = t('task.messages.complete_success')
-                format.html { redirect_to(@task) }
-                format.xml  { head :ok }
+          if current_active_patient
+            format.html { redirect_to patient_task_url(:id => @task.id, :patient_id => current_active_patient.id)  }
+          else
+            format.html { redirect_to @task }
+          end
+          format.xml  { head :ok }
 
         else
           format.html { render :action => "edit" }
@@ -340,6 +392,7 @@ class TasksController < ApplicationController
         end
       end
     end
+   end
   end
 
   # for viewing the tasks values and results
@@ -348,6 +401,7 @@ class TasksController < ApplicationController
     return authorize unless task_creator_authorize?(@task.creator_user_id, "show_result_own_task") || task_authorize?('show_result_task')
     @values = MeasuredValue.find_all_by_task_id(@task.id)
     @domain = Domain.find_by_id(@task.domain_id)
+    @taskfiles = UploadedFile.find_all_by_task_id(@task.id)
 
     #fieldshash stuff is done for processing the fields in the view
     @valueshash = {}
@@ -488,34 +542,34 @@ class TasksController < ApplicationController
   end
 
   def get_tasks
-    if get_case_for_view.nil?
-      if authorize?('view_own_task')
-        own_tasks
-      end
+    if authorize?('view_all_tasks')
+      all_tasks
+    elsif authorize?('view_domain_task')
+      domain_tasks
+    elsif authorize?('view_own_task')
+      own_tasks
     else
-      if authorize?('view_all_tasks')
-        all_tasks
-      elsif authorize?('view_domain_task')
-        domain_tasks
-      elsif authorize?('view_own_task')
-        own_tasks
-      else
-        nil
-      end
+      nil
     end
   end
 
   def get_my_tasks
     tasks = nil
 
+    if authorize?('view_own_task')
+      tasks = my_tasks
+    end
+    
+    tasks
+  end
+
+  def get_domain_tasks
+    tasks = nil
+
     if authorize?('view_domain_task')
       tasks = domain_tasks
     end
 
-    if authorize?('view_own_task') && (tasks.nil? || tasks.empty?)
-      tasks = my_tasks
-    end
-    
     tasks
   end
 end

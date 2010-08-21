@@ -1,4 +1,7 @@
--title t('task.patient_task_index') + " " + current_active_patient.first_name + " " + current_active_patient.family_name
+- if current_active_patient
+    -title t('task.patient_task_index') + " " + current_active_patient.first_name + " " + current_active_patient.family_name
+- else
+    -title t('task.patient_task_index')
 
 - showmytasks = 0
 
