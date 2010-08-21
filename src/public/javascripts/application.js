@@ -207,6 +207,9 @@ function getChartPanel(store, title, unit){
             store: store,
             xField: 'date',
             yField: 'value',
+            yAxis: new Ext.chart.NumericAxis({
+                title: unit
+            }),
             tipRenderer : function(chart, record){
                 return record.data.value + ' ' + unit + ', ' + record.data.date;
             },
