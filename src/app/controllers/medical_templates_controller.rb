@@ -8,6 +8,7 @@ class MedicalTemplatesController < ApplicationController
   def edit_field_definition
     @medical_template = MedicalTemplate.find(params[:id])
     @field_definition = FieldDefinition.find(params[:field_id])
+    @catalog = CatalogManager.instance.catalog('ucum_units')
   end
 
   def update_field_definition

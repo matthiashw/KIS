@@ -368,7 +368,7 @@ en:
     save:                             "Save Task"
     save_and_close:                   "Save and Close Task"
     in_progress:                      "In Progress"
-    creator:                          "physician in charge"
+    creator:                          "Physician in charge"
     patient:                          "Patient"
     y:                                "Yes"
     n:                                "No"
