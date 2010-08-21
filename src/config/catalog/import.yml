@@ -9,11 +9,11 @@
 dummy:
         importer_classname: Importer::DummyCatalogImporter
         entry_classname: FieldEntry
-        importer_name: No Import (User Defined Fields/Template System)
+        importer_name: No Import (User Defined Fields) [Template System]
 loinc:
         importer_classname: Importer::LoincCatalogImporter
         entry_classname: FieldEntry
-        importer_name: Loinc Catalog Importer (Template System)
+        importer_name: Loinc Catalog Importer [Template System]
 ucum:
         importer_classname: Importer::UcumCatalogImporter
         entry_classname: UcumEntry
