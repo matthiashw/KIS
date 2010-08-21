@@ -2,7 +2,7 @@ class FindingsController < ApplicationController
   def index
     return false unless authorize(permissions = ["access_finding"])
 
-    @findings = Task.all :conditions => { :state => Task.state_closed, :case_file_id => get_case_for_view }
+    @findings = Task.all :conditions => { :state => Task.state_closed, :case_file_id => get_case_for_view }, :order => 'updated_at DESC'
     @measured_values = MeasuredValue.all :conditions => { :task_id => @findings}
 
     @fieldhash = {}

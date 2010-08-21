@@ -555,6 +555,9 @@ a.link-history {
     
 }
 
+
+
+
 /*TASK AND TEMPLATES
 -------------------------------------------------------- */
 
@@ -715,6 +718,49 @@ a.link-history {
         }
     }
 
+}
+
+.fileupload {
+    span {
+        margin:0 9px 0 2%;
+    }
+
+    .button {
+        margin-left:9px;
+    }
+}
+
+.results-show-file.even {
+    border-top:1px solid $lightgray;
+    border-bottom:1px solid $lightgray;
+    padding:18px 0;
+}
+
+.field.show-file {
+
+    border-top:1px solid $lightgray;
+    padding-top:18px;
+
+    .field-label {
+        width:42%;
+    }
+
+    .field-content {
+        width:57%;
+
+        .file-desc {
+            display:block;
+            width:80%;
+            float:left;
+        }
+
+        .file-delete {
+            display:block;
+            width:20%;
+            float:right;
+        }
+    }
+    
 }
 
 

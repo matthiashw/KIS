@@ -383,6 +383,7 @@ en:
     upload:                           "Upload"
     delete:                           "Delete"
     attached_files:                   "Attached Files"
+    no_attached_files:                "No Files attached."
     filter:
       all:                            "All"
       search_fail:                    "No Task found"
