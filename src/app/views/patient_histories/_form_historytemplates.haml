@@ -1,10 +1,7 @@
-- semantic_form_for @task do |f|
+- semantic_form_for @task,:url => { :action => "createhistoryfields" , :id => @task } do |f|
     = f.error_messages
 
-    %h2
-        %span.task-step.step2
-            = t('task.step2')
-        =t('task.select_template')
+
     #templates
         - @templates.each do |t|
 
@@ -22,22 +19,10 @@
                             %tr
                                 %th=t('task.selected')
                                 %th=t('task.name')
-                                %th=t('task.comment')
                         %tbody
                             - t.field_definitions.each do |f|
                                 %tr.template-field{ :class => cycle('odd', 'even')}
                                     - fields_for f do |fcheck|
                                         %td{ :class => "template-field-check"}= check_box_tag "fields[]", f.id.to_s + ";" + t.id.to_s
                                     %td=  Entry.find(f.field_entry_id).name
-                                    %td{ :class => "template-field-comment" }= text_field 'comments', f.id, :size => '20' , :maxlength => '30'
-                        
-
-    %h2
-        %span.task-step.step3
-            = t('task.step3')
-        =t('task.additional_information')
-    - f.inputs do
-        = f.input :deadline, :as => :calendar
-        = f.input :creator_comment
-    - f.buttons do
-        = f.commit_button :button_html => { :disable_with => t('please_wait') }
+    = submit_tag t('patient_history.tofill')

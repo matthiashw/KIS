@@ -3,4 +3,5 @@
     - f.inputs do
         = f.input :name
         = f.input :domain_id, :as => :select , :collection => Domain.userdomains
-    = f.buttons
+    - f.buttons do
+        = f.commit_button :button_html => { :disable_with => t('please_wait') }

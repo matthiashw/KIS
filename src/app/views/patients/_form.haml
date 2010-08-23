@@ -4,7 +4,8 @@
         = f.input :first_name
         = f.input :family_name
         = f.input :sex
-        = f.input :birthdate, :as => :calendar
+        = f.input :birthdate, :as => :calendar, :year_range => 120.years.ago..0.years.from_now
         = f.input :address, :input_html => { :rows => 4, :cols => 30 }
         = f.input :phone
-    = f.buttons
+    - f.buttons do
+        = f.commit_button :button_html => { :disable_with => t('please_wait') }

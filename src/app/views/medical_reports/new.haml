@@ -17,7 +17,7 @@
     =swapselectmanual :medical_report, @properties, :name, :id, @properties_sel, params = {:size => 6}
 
   %p
-    = f.submit t('action.create')
+    = f.submit t('action.create'), :disable_with => t('please_wait')
 
 .action-links
   - if authorize?('view_medical_report')

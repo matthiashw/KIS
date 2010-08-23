@@ -14,5 +14,7 @@
             = f.input :phone
             = f.input :language, :as => :select, :collection => I18n.available_locales.to_a.map{ |locale| [t('name', :locale => locale), locale] }, :include_blank => false
             = f.input :domains, :as => :check_boxes, :collection => @domains
+            = f.input :homepage, :as => :select, :collection => homepages(@user.id)
             = hidden_field_tag 'newuser'
-        = f.buttons
+        - f.buttons do
+            = f.commit_button :button_html => { :disable_with => t('please_wait') }

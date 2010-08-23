@@ -7,4 +7,5 @@
         = f.input :name
         = f.input :description, :input_html => { :rows => 4, :cols => 30 }
         = f.input :task, :as => :select, :collection => @tasks, :include_blank => true
-    = f.buttons
+    - f.buttons do
+        = f.commit_button :button_html => { :disable_with => t('please_wait') }

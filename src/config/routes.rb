@@ -15,13 +15,13 @@ ActionController::Routing::Routes.draw do |map|
   ########
   # Task #
   ########
-  map.connect "/patient/:id/tasks/taskcreation/:task_id", :controller => "tasks", :action => "taskcreation"
+  map.taskcreation "/patient/:id/tasks/taskcreation/:task_id", :controller => "tasks", :action => "taskcreation"
   map.taskresults "/tasks/results/:id", :controller => "tasks", :action => "results"
   map.taskfill "/tasks/taskfill/:id", :controller => "tasks", :action => "taskfill"
   map.connect "/tasks/createentries", :controller => "tasks", :action => "createentries"
   map.mytasks "users/:user_id/mytasks", :controller => "tasks", :action => "mytasks"
   map.domaintasks "users/:user_id/domaintasks", :controller => "tasks", :action => "domaintasks"
-
+  map.patienthistories "/patient_histories/fill", :controller => "patient_histories", :action => "fill"
 
   ###########
   # Patient #
@@ -70,6 +70,7 @@ ActionController::Routing::Routes.draw do |map|
     patient.resources :medical_reports
     patient.resources :tasks
     patient.resources :findings
+    patient.resources :patient_histories
   end
 
   map.resources :users do |user|

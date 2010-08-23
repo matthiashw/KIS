@@ -378,6 +378,8 @@ fieldset {
 div {
   &.messages {
     margin: 0 0 9px 0;
+    float:left;
+    width:100%;
     p {
       padding:9px;
       margin:0; }
@@ -434,7 +436,8 @@ form .errorExplanation {
 
 .text_field,
 .password_field,
-textarea {
+textarea,
+.calendar input {
     border:1px solid $mediumgray;
     padding:4px 6px;
     background-color:$veryverylightgray;

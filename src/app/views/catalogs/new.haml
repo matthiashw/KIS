@@ -9,7 +9,8 @@
     = f.input :catalog_type_id, :as => :select, :collection => CatalogType.find(:all)
     = f.input :dump, :as => :file
   = render :partial => 'shared/loading_bar_element'
-  = f.buttons
+  - f.buttons do
+    = f.commit_button
 
 .actions-links
   = link_to t('action.back'), catalogs_path, :class => 'acts_as_button darkgray'

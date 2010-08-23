@@ -12,6 +12,8 @@ class InputTypeManager
            description=I18n.t('field_definition.input_type.checkbox')
       when 3
            description=I18n.t('field_definition.input_type.dropdown')
+      when 4
+           description=I18n.t('field_definition.input_type.number')
       else
            description=I18n.t('field_definition.input_type.default')
     end
@@ -24,6 +26,7 @@ class InputTypeManager
       desc[I18n.t('field_definition.input_type.multiline')] = 1
       desc[I18n.t('field_definition.input_type.checkbox')] = 2
       desc[I18n.t('field_definition.input_type.dropdown')] = 3
+      desc[I18n.t('field_definition.input_type.number')] = 4
       desc
   end
 
@@ -38,6 +41,8 @@ class InputTypeManager
            partial+="input_type_checkbox"
       when 3
            partial+="input_type_dropdown"
+      when 4
+           partial+="input_type_number"
       else
            partial+="input_type_default"
     end

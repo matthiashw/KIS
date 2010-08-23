@@ -7,4 +7,5 @@
     = f.input :application, :as => :select, :collection => CatalogManager.instance.application_names, :include_blank => true
     - if edit
       = f.input :active_catalog, :as => :select, :collection => @catalog_type.catalogs, :label_method => :catalog_select_name
-  = f.buttons
+  - f.buttons do
+    = f.commit_button :button_html => { :disable_with => t('please_wait') }

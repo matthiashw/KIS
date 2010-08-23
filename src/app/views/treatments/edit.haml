@@ -14,7 +14,8 @@
             = radio_tree @catalog, 'treadform' , 'opscode'
         - else
             = no_catalog_available 'ops'
-    = f.buttons
+    - f.buttons do
+        = f.commit_button :button_html => { :disable_with => t('please_wait') }
 
 .action-links
     - if authorize?('delete_treatment')

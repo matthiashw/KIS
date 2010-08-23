@@ -15,7 +15,8 @@
                     .field-content
                         = h @medical_template.domain.name
             .field
-                = link_to t('action.edit'), edit_medical_template_path(@medical_template), :class => 'acts_as_button'
+                - if authorize?('edit_medical_templates')
+                    = link_to t('action.edit'), edit_medical_template_path(@medical_template), :class => 'acts_as_button'
     .field
         %table
             %tr
@@ -38,14 +39,13 @@
                     %td= link_to t('action.edit') ,{ :controller => "medical_templates" , :action => "edit_field_definition" , :id => @medical_template.id , :field_id => definition.id}
                     %td= link_to t('action.destroy'), { :controller => "medical_templates" , :action => "delete_field" , :id => @medical_template.id , :field_id=> definition.id }, :confirm => t('delete_confirmation')
 
-    - form_tag  :controller => "medical_templates" , :action => "change_fields" , :id => @medical_template.id do
-        .field
-            .field-label
-                = submit_tag t('template.fields.edit_button'), :class => 'acts_as_button'
-            .field-content
-                = select_tag :catalog_source, options_for_select(@catalog_sources)
+    - unless @catalog_sources.nil? || @catalog_sources.empty?
+        - form_tag  :controller => "medical_templates" , :action => "change_fields" , :id => @medical_template.id do
+            .field
+                .field-label
+                    = submit_tag t('template.fields.edit_button'), :class => 'acts_as_button'
+                .field-content
+                    = select_tag :catalog_source, options_for_select(@catalog_sources)
 .action-links
     - if authorize?('view_medical_templates')
         = link_to t('action.back'), medical_templates_path, :class => 'acts_as_button darkgray'
-    - if authorize?('edit_medical_templates')
-        = link_to t('action.edit'), edit_medical_template_path(@medical_template), :class => 'acts_as_button darkgray'

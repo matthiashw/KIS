@@ -91,6 +91,7 @@ en:
         added_field_success:          "Fields successfully added."
         create_template_success:      "Template was successfully created."
         update_template_success:      "Template was successfully updated."
+        destroy_error:                "The Template with the ID 1 can not be deleted!"
     medical_reports:
       report:                         "Medical report"
       header:                         "Report headers"
@@ -98,6 +99,8 @@ en:
       standard:                       "Standard"
       actions:                        "Actions"
       new:                            "New report header"
+      edit:                           "Editing report header"
+      
 
   appointment:
     listing:                          "Listing appointments"
@@ -180,7 +183,7 @@ en:
     name:                             "Domain name"
     result_name:                      "Result name"
     is_role:                          "Is Role"
-    is_userdomain:                    "Is Domain"
+    is_userdomain:                    "Is Template Domain"
     new_domain:                       "New domain"
     new_button:                       "Add new Domain"
     yes_true:                         "Yes"
@@ -188,6 +191,7 @@ en:
     messages:
       create_success:                 "Domain was successfully created."
       update_success:                 "Domain was successfully updated."
+      destroy_error:                  "The Domain with the ID 1 can not be deleted!"
 
   finding:
     index:                            "All Findings"
@@ -198,14 +202,19 @@ en:
     install:                          "Hopen Installation"
     save_continue:                    "Save and Continue"
     admin_user:                       "Create Administration User"
+    domain:                           "Domain for patient history"
+    domain_description:               "You now need to create a domain for anamnese templates.
+                                      For that you need to specify a Name (for example <em>Anamnese</em> or <em>Patient History</em>)."
     select_language:                  "Choose installation language"
     finish:                           "Finish installation"
     install_finish:                   'Installation is finished. <a href="/login">Click here to login</a>.'
     install_warning:                  "Installation could not be finished. Please start from the beginning."
     admin_finish:                     "Administration User successfully created."
+    domain_finish:                    "Anamnese Domain successfully created."
     steps:
       language:                       "Language"
       user:                           "Admin User"
+      domain:                         "Anamnese Domain"
       finish:                         "Finish"
 
   medical_report:
@@ -417,6 +426,7 @@ en:
     field_definitions:
       edit_button:                    "Edit fields"
       title:                          "Edit fields"
+      ucum_unit:                      "Select a Ucum Unit"
       catalog:                        "From Catalog"
       field_name:                     "Field"
       input_type:                     "Input type"
@@ -426,6 +436,9 @@ en:
       edit_button:                    "Add fields from catalog"
       title:                          "Add fields from catalog"
       catalog_source:                 "Catalog source"
+      file_deleted_success:           "File was successfully deleted."
+      file_deleted_fail:              "File was successfully deleted."
+      must_be_number:                 "Marked fields must be numbers."
 
   user:
     listing:                          "Listing users"
@@ -455,12 +468,14 @@ en:
       update_success:                 "Successfully updated profile."
       registration_success:           "Registration successful."
 
+  
   field_definition:
     input_type:
       default:                        "Text field"
       checkbox:                       "Checkbox"
       multiline:                      "Multi-Line input"
       dropdown:                       "Drop-Down list"
+      number:                         "Number input"
       
   permissions:
     listing:                          "Listing permissions"
@@ -472,3 +487,10 @@ en:
     messages:
       logged_in:                      "Successfully logged in."
       logged_out:                     "Successfully logged out."
+
+  patient_history:
+     fill:                            "Patient History"
+     save:                            "Save"
+     template:                        "Select Fields for Patient History"
+     tofill:                          "Fill Patient History"
+     change:                          "Add Fields"

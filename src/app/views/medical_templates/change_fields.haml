@@ -4,7 +4,7 @@
     
     = checkbox_tree @catalog_source, 'add_from_catalog' , 'new_field_ids'
     %br
-    = submit_tag t('template.fields.edit_button'), :class => 'acts_as_button'
+    = submit_tag t('template.fields.edit_button'), :class => 'acts_as_button', :disable_with => t('please_wait')
 
 .action-links
     - if authorize?('view_medical_templates')
