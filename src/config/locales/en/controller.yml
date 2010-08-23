@@ -159,6 +159,21 @@ en:
       success:                        "Successfully backed up database"
       failure:                        "There was an error while trying to create a backup of your database."
 
+  diagnosis:
+    listing:                          "Listing diagnoses"
+    edit:                             "Editing diagnosis"
+    new:                              "New diagnosis"
+    new_button:                       "Add new diagnosis"
+    description:                      "Description"
+    user:                             "Doctor diagnosed"
+    created_at:                       "Date of diagnosis"
+    catalog_entry:                    "Classification of Disease (ICD)"
+    catalog_entry_code:                    "Catalog Code"
+    treatments:                       "Related treatments"
+    messages:
+      create_success:                 "Diagnosis was successfully created."
+      update_success:                 "Diagnosis was successfully updated."
+
   domain:
     listing:                          "All Domains"
     edit:                             "Edit domain"
@@ -173,6 +188,9 @@ en:
     messages:
       create_success:                 "Domain was successfully created."
       update_success:                 "Domain was successfully updated."
+
+  finding:
+    index:                            "All Findings"
 
   install:
     install:                          "Hopen Installation"
@@ -227,7 +245,16 @@ en:
       no_properties:                  "No properties selected"
       success_create:                 "MedicalReport was successfully created."
       success_update:                 "MedicalReport was successfully updated."
-      
+
+  medication:
+    edit:                             "Editing medication"
+    listing:                          "Listing medications"
+    atc:                              "ATC"
+    description:                      "Description"
+    new:                              "New medication"
+    messages:
+      success_create:                 "Medication was successfully created."
+      success_update:                 "Medication was successfully updated."
 
   patient:
     listing:                          "Listing patients"
@@ -247,16 +274,6 @@ en:
       create_success:                 "Patient successfully created"
       update_success:                 "Patient successfully updated"
       delete_success:                 "Patient successfully deleted"
-
-  medication:
-    edit:                             "Editing medication"
-    listing:                          "Listing medications"
-    atc:                              "ATC"
-    description:                      "Description"
-    new:                              "New medication"
-    messages:
-      success_create:                 "Medication was successfully created."
-      success_update:                 "Medication was successfully updated."
 
   treatment:
     listing:                          "Listing treatments"
@@ -308,22 +325,6 @@ en:
       valid_treatment:                "Please select a valid treatment"
       success_create:                 "Treatment was successfully created."
       success_update:                 "Treatment was successfully updated."
-
-
-  diagnosis:
-    listing:                          "Listing diagnoses"
-    edit:                             "Editing diagnosis"
-    new:                              "New diagnosis"
-    new_button:                       "Add new diagnosis"
-    description:                      "Description"
-    user:                             "Doctor diagnosed"
-    created_at:                       "Date of diagnosis"
-    catalog_entry:                    "Classification of Disease (ICD)"
-    catalog_entry_code:                    "Catalog Code"
-    treatments:                       "Related treatments"
-    messages:
-      create_success:                 "Diagnosis was successfully created."
-      update_success:                 "Diagnosis was successfully updated."
 
   task:
     patient_task_index:               "All Tasks of Patient"
@@ -393,27 +394,6 @@ en:
       upload_failed:                  "Fileupload failed"
       complete_success:               "Task successfully completed."
 
-  user:
-    listing:                          "Listing users"
-    username:                         "Username"
-    first_name:                       "First name"
-    family_name:                      "Family name"
-    role:                             "Role"
-    email:                            "E-mail"
-    new_button:                       "Create new user"
-    new:                              "New User"
-    edit:                             "Editing User"
-    address:                          "Address"
-    phone:                            "Phone"
-    setup:
-      setup:                          "Setup Admin User"
-      choose_from_current_user:       "Choose a existing User or"
-      new_admin_user:                 "Create a new Administration User"
-    messages:
-      destroy_error:                  "The User with the ID 1 can not be deleted!"
-      update_success:                 "Successfully updated profile."
-      registration_success:           "Registration successful."
-
   template:
     heading:                          "Template: "
     listing:                          "Listing templates"
@@ -436,6 +416,27 @@ en:
       title:                          "Add fields from catalog"
       catalog_source:                 "Catalog source"
 
+  user:
+    listing:                          "Listing users"
+    username:                         "Username"
+    first_name:                       "First name"
+    family_name:                      "Family name"
+    role:                             "Role"
+    email:                            "E-mail"
+    new_button:                       "Create new user"
+    new:                              "New User"
+    edit:                             "Editing User"
+    address:                          "Address"
+    phone:                            "Phone"
+    setup:
+      setup:                          "Setup Admin User"
+      choose_from_current_user:       "Choose a existing User or"
+      new_admin_user:                 "Create a new Administration User"
+    messages:
+      destroy_error:                  "The User with the ID 1 can not be deleted!"
+      update_success:                 "Successfully updated profile."
+      registration_success:           "Registration successful."
+
   field_definition:
     input_type:
       default:                        "Text field"
@@ -453,6 +454,3 @@ en:
     messages:
       logged_in:                      "Successfully logged in."
       logged_out:                     "Successfully logged out."
-
-  finding:
-    index:                            "All Findings"

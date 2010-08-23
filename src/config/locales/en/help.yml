@@ -11,90 +11,193 @@ en:
           
     appointments:
       calendar:
-        title:              ""
-        text:               ""
+        title:              "Appointment Calendar"
+        text:               "This calendar server as an overview over your own
+                            appointments with the current day highlighted in
+                            blue.
+                            <br/>
+                            <br/>- Clicking an appointment shows it's details.
+                            <br/>- To add further appointments, press the button
+                            labeled <b>Add new appointment</b>"
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing an appointment"
+        text:               "- An appointment's start and end date can be
+                            changed by clicking the small calendar-icon next to
+                            the field. This will present you with a
+                            <i>date picker</i>.
+                            - It is possible to connect an appointment with a
+                            task to ease navigation to the it."
       index:
-        title:              ""
-        text:               ""
+        title:              "Appointments"
+        text:               "Through appointments a user can simplify his
+                            management of custom calendar events.
+                            <br/>
+                            <br/>An appointment consists of
+                            <br/>- a start date,
+                            <br/>- an end date,
+                            <br/>- a name and
+                            <br/>- a description <i>(optional)</i>
+                            <br/>
+                            <br/>The <b>Calendar</b> button shows the
+                            appointments within a calendar view.
+                            <br/>s
+                            <br/>Further appointments can be added by pressing
+                            the button labeled <b>Add new appointment</b>"
       new:
-        title:              ""
-        text:               ""
+        title:              "New Appointment"
+        text:               "Appointments consists of
+                            <br/>- a start date,
+                            <br/>- an end date,
+                            <br/>- a name and
+                            <br/>- a description <i>(optional)</i>
+                            <br/>
+                            <br/>- An appointment's start and end date can be
+                            changed by clicking the small calendar-icon next to
+                            the field. This will present you with a
+                            <i>date picker</i>.
+                            <br/>- An optional description can be added to help
+                            users understand what the appointment is about.
+                            <br/>- To connect a task to the appointment, it
+                            can be chosen from a dropdown menu. <i>(if a task is
+                            available)</i>"
       show:
-        title:              ""
-        text:               ""
+        title:              "Show Appointment"
+        text:               "This view shows the details of an appointment.
+                            <br/>
+                            <br/><i>If the appointment is connected to a task, a
+                            link will be shown which allows you to jump directly
+                            to the task.</i>
+                            <br/>
+                            <br/>The appointment's details can be changed by
+                            pressing the <b>Edit</b> button"
 
     case_files:
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing a case"
+        text:               "A case always has an <i>entry date</i> which
+                            represents the date when the patient arrived at the
+                            hospital.
+                            <br/>The <i>leave date</i> marks a date, on which
+                            the patients case has been closed.
+                            <br/>
+                            <br/>Both dates can be changed by clicking the
+                            small calendar icon next to their fields
+                            <br/>
+                            <br/>The whole case can also be deleted by pressing
+                            the <b>delete</b> button on the bottom. <i>(Please
+                            use with caution!)</i>"
+
       index:
-        title:              ""
-        text:               ""
+        title:              "Patient Cases"
+        text:               "Every time a patient arrives at a hospital, a new
+                            <i>case</i> needs to be opened. This <i>case</i>
+                            capsules all relevant data like findings, treaments,
+                            tasks and diagnoses.
+                            <br/>
+                            <br/>A case always has an <i>entry date</i> which
+                            represents the date when the patient arrived at the
+                            hospital.
+                            <br/>The <i>leave date</i> marks a date, on which
+                            the patients case has been closed.
+                            <br/>
+                            <br/>The currently selected <i>case</i> is
+                            highlighted in blue. To change the currently visible
+                            case, click on one of the cases and in the appearing
+                            view on <b>activate for view</b>.
+                            <br/>
+                            <br/>To add further cases, please press the <b>new
+                            case</b> button on the bottom."
       new:
-        title:              ""
-        text:               ""
+        title:              "Creating a new case"
+        text:               "<br/>A case always has an <i>entry date</i> which
+                            represents the date when the patient arrived at the
+                            hospital.
+                            <br/>
+                            <br/>The entry date can be changed by clicking the
+                            small calendar icon next to it's field"
       show:
-        title:              ""
-        text:               ""
+        title:              "A case's details"
+        text:               "A case always has an <i>entry date</i> which
+                            represents the date when the patient arrived at the
+                            hospital.
+                            <br/>The <i>leave date</i> marks a date, on which
+                            the patients case has been closed.
+                            <br/>
+                            <br/>Any of these values, can be changed by pressing
+                            the <b>edit</b> button.
+                            <br/>
+                            <br/>To make the shown case to the currently active
+                            case, click on <b>activate for view</b>."
 
     catalog_types:
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing a catalog type"
+        text:               "N/A"
       index:
-        title:              ""
-        text:               ""
+        title:              "Catalog types"
+        text:               "N/A"
       new:
-        title:              ""
-        text:               ""
+        title:              "Creating a new catalog type"
+        text:               "N/A"
       show:
-        title:              ""
-        text:               ""
+        title:              "A catalog type's details"
+        text:               "N/A"
 
     catalogs:
       add_field_entry:
-        title:              ""
-        text:               ""
+        title:              "Adding a new entry to an existing catalog"
+        text:               "N/A"
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing a catalog's details"
+        text:               "N/A"
       edit_field_entry:
-        title:              ""
-        text:               ""
+        title:              "Editing an entry of an existing catalog"
+        text:               "N/A"
       index:
-        title:              ""
-        text:               ""
+        title:              "Catalogs"
+        text:               "N/A"
       new:
-        title:              ""
-        text:               ""
+        title:              "Creating a new catalog"
+        text:               "N/A"
       show:
-        title:              ""
-        text:               ""
+        title:              "A catalogs details"
+        text:               "N/A"
 
     comments:
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing a comment"
+        text:               "Every comment needs a minimum of one character in
+                            length.
+                            <br/>
+                            <br/>To remove the whole comment, please press the
+                            <b>delete</b> button."
       index:
-        title:              ""
-        text:               ""
+        title:              "Comments"
+        text:               "A user can add a comment to a patient in ordner to
+                            add additional information, in the case that there
+                            isn't a category for this kind of information, yet.
+                            <br/>
+                            <br/>New comments can be added by pressing the
+                            <b>add new comment</b> button."
       new:
-        title:              ""
-        text:               ""
+        title:              "Creating a new comment"
+        text:               "Every comment needs a minimum of one character in
+                            length."
       show:
-        title:              ""
-        text:               ""
+        title:              "A comment's details"
+        text:               "Every comment consists of a text and the date at
+                            which it was created.
+                            <br/>
+                            <br/>A comment's text can be changed by pressing the
+                            <b>edit</b> button."
 
     database_backup:
       export:
-        title:              ""
-        text:               ""
+        title:              "Backing up the database"
+        text:               "N/A"
       import:
-        title:              ""
-        text:               ""
+        title:              "Recovering the database from a backup"
+        text:               "N/A"
 
     diagnoses:
       edit:
@@ -121,6 +224,11 @@ en:
         title:              ""
         text:               ""
       show:
+        title:              ""
+        text:               ""
+
+    findings:
+      index:
         title:              ""
         text:               ""
 
@@ -160,6 +268,17 @@ en:
         title:              ""
         text:               ""
       show:
+        title:              ""
+        text:               ""
+
+    medication:
+      edit:
+        title:              ""
+        text:               ""
+      index:
+        title:              ""
+        text:               ""
+      new:
         title:              ""
         text:               ""
 
@@ -208,6 +327,9 @@ en:
         text:               ""
         
     tasks:
+      domaintasks:
+        title:              ""
+        text:               ""
       edit:
         title:              ""
         text:               ""
@@ -239,9 +361,21 @@ en:
         text:               ""
       index:
         title:              "Listing treatments"
-        text:               "This page represents a list of all treatments matching
-                            the currently selected case."
+        text:               "This page represents a list of all treatments
+                            matching the currently selected case."
       new:
+        title:              ""
+        text:               ""
+      new_step2:
+        title:              ""
+        text:               ""
+      new_step3:
+        title:              ""
+        text:               ""
+      new_step4:
+        title:              ""
+        text:               ""
+      new_step5:
         title:              ""
         text:               ""
       show:
@@ -252,7 +386,8 @@ en:
       new:
         title:              "Login"
         text:               "Please enter the username and password.
-                            <br/><i>An administrator is needed to create new accounts.<i/>"
+                            <br/><i>An administrator is needed to create new
+                            accounts.<i/>"
 
     users:
       edit:
