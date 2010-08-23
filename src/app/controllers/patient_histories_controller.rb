@@ -47,7 +47,12 @@ class PatientHistoriesController < ApplicationController
   def createhistoryfields
 
     respond_to do |format|
-    @task = Task.find(params[:id])
+
+    if params.has_key?("id")
+      @task = Task.find(params[:id])
+    else
+      @task = nil
+    end
     @selectedfields = params[:fields]
     unless @task.nil?
       unless @selectedfields.nil?
@@ -177,7 +182,8 @@ class PatientHistoriesController < ApplicationController
                     end
 
                   #if the task has allready been filled use existing measured values and update
-                  if @task.state == Task.state_inprogress
+                  measuredvalue = MeasuredValue.find_by_field_id(k)
+                  if @task.state == Task.state_inprogress && !measuredvalue.nil?
 
                     measuredvalue = MeasuredValue.find_by_field_id(k)
 

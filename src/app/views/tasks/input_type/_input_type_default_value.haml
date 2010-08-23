@@ -1,1 +1,4 @@
-%td= text_field 'values',@x, :value => @measuredvalue.value, :size => '20', :maxlength => '20'
+- unless @measuredvalue.nil?
+    %td= text_field 'values',@x, :value => @measuredvalue.value, :size => '20', :maxlength => '20'
+- else
+    %td= text_field 'values',@x, :value => '', :size => '20', :maxlength => '20'

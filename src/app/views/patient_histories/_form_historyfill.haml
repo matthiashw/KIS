@@ -23,8 +23,8 @@
                                 %tr.template-field{ :class => cycle('odd', 'even')}
                                     %td= Entry.find(@fielddef.field_entry_id).name
                                     - fields_for @y do |fi|
-                                        -if @task.state == Task.state_inprogress
-                                            - @measuredvalue = MeasuredValue.find_by_field_id(@x)
+                                        - @measuredvalue = MeasuredValue.find_by_field_id(@x)
+                                        -if @task.state == Task.state_inprogress && !@measuredvalue.nil?
                                             = render :partial => InputTypeManager.input_type_partial(@fielddef.input_type,true)
                                             -if @y.ucum_entry_id.nil?
                                                 %td= '-'
