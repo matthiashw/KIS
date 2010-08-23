@@ -4,7 +4,7 @@
   - f.inputs do
     = f.input :input_type, :as => :select , :collection => InputTypeManager.input_type_descriptions
     = f.input :additional_type_info
-    %br
+    %h2=t('template.field_definitions.ucum_unit')
     - if @catalog
       - if @field_definition.example_ucum_id
         = radio_tree @catalog,'field_definitions_form', 'example_ucum_unit' ,@field_definition.example_ucum_id
