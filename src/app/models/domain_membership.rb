@@ -13,7 +13,7 @@ class DomainMembership < ActiveRecord::Base
   belongs_to :roleable, :polymorphic => true
   
   validates_presence_of :roleable_id, :roleable_type, :domain_id
-  validates_uniqueness_of :domain_id, :scope => [:roleable_id, :roleable_type]
+  #validates_uniqueness_of :domain_id, :scope => [:roleable_id, :roleable_type]
   validates_numericality_of :roleable_id, :domain_id
   validates_format_of :roleable_type, :with => /^[A-Z]{1}[a-z0-9]+([A-Z]{1}[a-z0-9]+)*$/
   validate :domain_does_not_belong_to_itself_in_a_loop

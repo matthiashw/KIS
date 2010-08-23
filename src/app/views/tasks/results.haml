@@ -1,4 +1,7 @@
-- title @domain.result_name
+- if @domain.result_name != ""
+    - title @domain.result_name
+- else
+    - title t("task.task_for") + " " + @domain.name
 .fields
     .box
         .box-inner
