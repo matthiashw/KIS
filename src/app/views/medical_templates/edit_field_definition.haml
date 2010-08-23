@@ -13,7 +13,8 @@
     - else
       = no_catalog_available 'ucum_units'
 
-  = f.buttons
+  - f.buttons do
+    = f.commit_button :button_html => { :disable_with => t('please_wait') }
 .action-links
   - if authorize?('view_medical_templates')
     = link_to t('action.back'), @medical_template, :class => 'acts_as_button darkgray'

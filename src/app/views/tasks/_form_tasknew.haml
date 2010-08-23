@@ -3,4 +3,4 @@
         .task-select-domain
             = collection_select :domain, :id, @domains, :id, :name, options ={:prompt => t('task.choose_domain_select')}, :class =>"domain"
         .task-select-domain-submit
-            = submit_tag t('task.nextstep')
+            = submit_tag t('task.nextstep'), :disable_with => t('please_wait')

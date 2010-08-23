@@ -16,7 +16,7 @@
     = f.cktext_area :html, :toolbar=>'Full', :width=>'70%', :heigth=>'200px'
 
   %p
-    = f.submit t('action.update')
+    = f.submit t('action.update'), :disable_with => t('please_wait')
   
 
 .action-links

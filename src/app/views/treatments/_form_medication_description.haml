@@ -9,4 +9,4 @@
                         =text_field_tag 'description[]', med.description, :id=>med
         %p
             .task-select-domain-submit
-                = submit_tag t('treatment.nextstep'), :name => "continue"
+                = submit_tag t('treatment.nextstep'), :name => "continue", :disable_with => t('please_wait')
