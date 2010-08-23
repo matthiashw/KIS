@@ -17,5 +17,5 @@
           - @domains.each do |d|
             %td= check_box_tag "perms[]", d.name + ";" + p, d.has_permission?(p)
 
-  = submit_tag t('permissions.update')
+  = submit_tag t('permissions.update'), :disable_with => t('please_wait')
 

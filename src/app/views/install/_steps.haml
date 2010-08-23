@@ -22,9 +22,18 @@
 
     - if step == 3
         %a{ :href => "/install?locale=#{get_locale}&step=3", :class => "active-step"}
-            = t('install.steps.finish')
+            = t('install.steps.domain')
     - elsif step >= 3 || session[:admin_finished] == 1
         %a{ :href => "/install?locale=#{get_locale}&step=3"}
+            = t('install.steps.domain')
+    - else
+        %span= t('install.steps.domain')
+
+    - if step == 4
+        %a{ :href => "/install?locale=#{get_locale}&step=4", :class => "active-step"}
+            = t('install.steps.finish')
+    - elsif step >= 4 || session[:domain_finished] == 1
+        %a{ :href => "/install?locale=#{get_locale}&step=4"}
             = t('install.steps.finish')
     - else
         %span= t('install.steps.finish')

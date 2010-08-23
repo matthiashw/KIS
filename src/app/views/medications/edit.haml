@@ -14,7 +14,8 @@
         %br
         = f.input :description, :input_html => { :rows => 4, :cols => 30 }
         
-    = f.buttons
+    - f.buttons do
+        = f.commit_button :button_html => { :disable_with => t('please_wait') }
 
 .action-links
     - if authorize?('delete_medication')

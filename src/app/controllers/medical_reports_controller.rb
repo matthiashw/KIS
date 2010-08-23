@@ -1,11 +1,16 @@
 
 class MedicalReportsController < ApplicationController
+
   # GET /medical_reports
   # GET /medical_reports.xml
   def index
     return false unless authorize(permissions = ["view_medical_report"])
     @medical_reports = MedicalReport.find_all_by_patient_id current_active_patient
     @patient = current_active_patient
+
+    if not File.exist?("#{RAILS_ROOT}/config/report.yml")
+      FileUtils.cp "#{RAILS_ROOT}/config/report.yml.original", "#{RAILS_ROOT}/config/report.yml"
+    end
 
     @config = YAML::load(File.open("#{RAILS_ROOT}/config/report.yml"))
     if @config["header"] && ReportHeader.find_by_id(@config["header"])
@@ -82,10 +87,10 @@ class MedicalReportsController < ApplicationController
     @properties_sel = []
 
     @properties = Array.new
-    @properties.push(MedicalReportsProperties.new(1, "anamnesis"));
-    @properties.push(MedicalReportsProperties.new(2, "findings"));
-    @properties.push(MedicalReportsProperties.new(3, "diagnoses"));
-    @properties.push(MedicalReportsProperties.new(4, "treatments"));
+    @properties.push(MedicalReportsProperties.new(1, t('medical_reports.anamnesis')))
+    @properties.push(MedicalReportsProperties.new(2, t('medical_reports.findings')))
+    @properties.push(MedicalReportsProperties.new(3, t('medical_reports.diagnoses')))
+    @properties.push(MedicalReportsProperties.new(4, t('medical_reports.treatments')))
   end
 
   # GET /medical_reports/1/edit
@@ -135,6 +140,7 @@ class MedicalReportsController < ApplicationController
         :locals => {:page => self,
                     :patient => @patient,
                     :case_files => @cases,
+                    :findings => get_findings_data,
                     :properties => params[:special][:MedicalReportsProperties]})
 
       @medical_report.file = @cached_content
@@ -182,7 +188,60 @@ class MedicalReportsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def get_findings_data
+    @findings = Task.all :conditions => { :state => Task.state_closed, :case_file_id => get_case_for_view }
+    @measured_values = MeasuredValue.all :conditions => { :task_id => @findings}
+
+    @fieldhash = {}
+    @measured_values.each do |mv|
+
+      fid = mv.field_id
+      field = Field.find_by_id(fid)
+      fdid = field.field_definition_id
+      field_def = FieldDefinition.find_by_id(fdid)
+      feid = field_def.field_entry_id
+
+      entry = Entry.find_by_id(feid)
+      cid = entry.catalog_id
+      cat = Catalog.find_by_id(cid)
+      ctid = cat.catalog_type_id
+      ctype = CatalogType.find_by_id(ctid)
+
+      if ctype.application != "user_defined"
+
+        unit = ""
+        if field.ucum_entry_id.nil?
+          unit = ""
+        else
+          ucum = Entry.find(field.ucum_entry_id)
+          unit = ucum.description
+        end
+
+        h = {
+              feid => {
+                'name'    => entry.name,
+                'values'  => [{
+                     'date'    =>  mv.created_at.strftime("%d. %b %Y - %H:%M"),
+                     'value'   =>  mv.value + " " + unit
+                }]
+             }
+        }
+
+        if @fieldhash.has_key?(feid)
+          @fieldhash[feid]['values'].push h[feid]['values'][0]
+        else
+          @fieldhash.merge! h
+        end
+      end
+    end
+
+    return @fieldhash
+  end # bla
+
 end
+
+
 
 class MedicalReportsProperties
   def initialize(id, name)

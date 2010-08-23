@@ -5,7 +5,8 @@
     - f.inputs do
         = f.input :year
         = f.input :language
-    = f.buttons
+    - f.buttons do
+        = f.commit_button :button_html => { :disable_with => t('please_wait') }
 
 .action-links
     = link_to t('action.destroy'), @catalog, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'

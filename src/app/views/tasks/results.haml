@@ -51,9 +51,11 @@
 .fields
     .box
         .box-inner
-            - unless @taskfiles.nil?
+            - if @taskfiles.nil? || @taskfiles.empty?
+                %div= t('task.no_attached_files')
+            - else
                 - @taskfiles.each do |tf|
-                    .field
+                    .field.results-show-file{:class => cycle('odd', 'even')}
                         .field-label
                             = link_to tf.name, tf.path
                         .field-content

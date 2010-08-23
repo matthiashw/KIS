@@ -178,14 +178,20 @@ en:
     install:                          "Hopen Installation"
     save_continue:                    "Save and Continue"
     admin_user:                       "Create Administration User"
+    domain:                           "Domain for patient history"
+    domain_description:               "You now need to create a domain for anamnese templates. 
+                                      For that you need to specify a Name (for example <em>Anamnese</em> or <em>Patient History</em>).
+                                      <br />You can also optionally fill the <em>Result Name</em> which is shown when you view a filled out task."
     select_language:                  "Choose installation language"
     finish:                           "Finish installation"
     install_finish:                   'Installation is finished. <a href="/login">Click here to login</a>.'
     install_warning:                  "Installation could not be finished. Please start from the beginning."
     admin_finish:                     "Administration User successfully created."
+    domain_finish:                    "Anamnese Domain successfully created."
     steps:
       language:                       "Language"
       user:                           "Admin User"
+      domain:                         "Anamnese Domain"
       finish:                         "Finish"
 
   medical_report:
@@ -206,6 +212,8 @@ en:
       ops:                            "OPS"
       medication:                     "Medication"
       start_date:                     "Start date"
+      date:                           "Date"
+      value:                          "Value"
 
   medical_reports:
     listing:                          "Medical Reports"
@@ -221,6 +229,10 @@ en:
     created:                          "Created at"
     print_view:                       "Print view"
     no_header:                        "Standard header for medical reports missing. Please contact your administrator."
+    anamnesis:                        "Anamnesis"
+    findings:                         "Findings"
+    diagnoses:                        "Diagnoses"
+    treatments:                       "Treatments"
     messages:
       no_cases_properties:            "No cases or properties selected"
       no_cases:                       "No case selected"
@@ -369,7 +381,7 @@ en:
     save:                             "Save Task"
     save_and_close:                   "Save and Close Task"
     in_progress:                      "In Progress"
-    creator:                          "physician in charge"
+    creator:                          "Physician in charge"
     patient:                          "Patient"
     y:                                "Yes"
     n:                                "No"
@@ -377,6 +389,7 @@ en:
     upload:                           "Upload"
     delete:                           "Delete"
     attached_files:                   "Attached Files"
+    no_attached_files:                "No Files attached."
     filter:
       all:                            "All"
       search_fail:                    "No Task found"
@@ -394,7 +407,9 @@ en:
       upload_complete:                "Fileupload complete"
       upload_failed:                  "Fileupload failed"
       complete_success:               "Task successfully completed."
-
+      file_deleted_success:                   "File was successfully deleted."
+      file_deleted_fail:                   "File was successfully deleted."
+      must_be_number:                 "Marked fields must be numbers."
   user:
     listing:                          "Listing users"
     username:                         "Username"
@@ -451,6 +466,7 @@ en:
       checkbox:                       "Checkbox"
       multiline:                      "Multi-Line input"
       dropdown:                       "Drop-Down list"
+      number:                         "Number input"
       
   permissions:
     listing:                          "Listing permissions"
@@ -465,10 +481,10 @@ en:
 
   finding:
     index:                            "All Findings"
-    history:                          "View History of choosen field"
+    history:                          "View History"
     select_history_value:             "All Measured Values"
 
-  patient_history:
+   patient_history:
      fill:                            "Patient History"
      save:                            "Save"
      template:                        "Select Fields for Patient History"

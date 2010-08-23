@@ -53,6 +53,7 @@ en:
   delete_confirmation:                "Are you sure?"
   no_access:                          "No Access"
   js_needed:                          "Note: Javascript must be enabled!"
+  please_wait:                        "Please wait..."
 
   error_pages:
     default_headline:                 "Hopen Systems - Error page"

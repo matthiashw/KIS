@@ -28,4 +28,12 @@ module InstallHelper
 
     return false
   end
+
+  def domain_finished?
+    if session[:domain_finished] == 1
+      return true
+    end
+
+    return false
+  end
 end

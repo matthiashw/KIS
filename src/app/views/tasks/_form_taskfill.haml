@@ -38,7 +38,12 @@
                                 - @y = y
                                 - @fielddef = FieldDefinition.find(@y.field_definition_id)
                                 %tr.template-field{ :class => cycle('odd', 'even')}
-                                    %td= Entry.find(@fielddef.field_entry_id).name
+                                    - if  @field_error_ids &&  @field_error_ids.include?(@x.to_s)
+                                        %td{:class => 'field-error' }
+                                            = Entry.find(@fielddef.field_entry_id).name
+                                    -else
+                                        %td
+                                            = Entry.find(@fielddef.field_entry_id).name
                                     %td= y.comment
                                     - fields_for @y do |fi|
                                         -if @task.state == Task.state_inprogress
@@ -63,23 +68,23 @@
     .fields
         .box
             .box-inner
-                .field
+                .field.fileupload
                     = file_field :file, :datafile
-                    = '- ' + t('task.comment')
-                    = text_field 'comments', 'filecomment', :size=> '20', :maxlength => '30'
+                    %span= t('task.comment')
+                    = text_field "comments", "filecomment", :size=> '20', :maxlength => '30'
                     = submit_tag t('task.upload'), :name=>'upload'
                 - unless @taskfiles.nil?
                     - @taskfiles.each do |tf|
-                        .field
+                        .field.show-file
                             .field-label
-                                = link_to tf.name, tf.path
-                                = submit_tag t('task.delete'), :name=>'delete['+tf.id.to_s + ']'
+                                %span.file-link= link_to tf.name, tf.path
                             .field-content
-                                = tf.description
+                                %span.file-desc= tf.description
+                                %span.file-delete= submit_tag t('task.delete'), :name=>'delete['+tf.id.to_s + ']', :class => "lightgray"
 
     %h2.floatingheadline=t('task.additional_information')
 
     - f.inputs do
         = f.input :executor_comment
-        = submit_tag t('task.save'), :name=>'save'
-        = submit_tag t('task.save_and_close'), :name=> 'saveandclose'
+        = submit_tag t('task.save'), :name=>'save', :disable_with => t('please_wait')
+        = submit_tag t('task.save_and_close'), :name=> 'saveandclose', :disable_with => t('please_wait')

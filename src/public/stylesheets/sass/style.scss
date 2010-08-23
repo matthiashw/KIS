@@ -533,7 +533,7 @@ a.links-link {
 
 
 a.link-history {
-    width:180px;
+    width:110px;
     height:19px;
     display:block;
     background:transparent url('/images/chart.png') no-repeat 96% 50%;
@@ -554,6 +554,9 @@ a.link-history {
     float:left;
     
 }
+
+
+
 
 /*TASK AND TEMPLATES
 -------------------------------------------------------- */
@@ -625,7 +628,9 @@ a.link-history {
     color:$red;
 }
 
-
+.field-error {
+    color:$red;
+}
 
 #templates {
     margin-bottom:18px;
@@ -715,6 +720,49 @@ a.link-history {
         }
     }
 
+}
+
+.fileupload {
+    span {
+        margin:0 9px 0 2%;
+    }
+
+    .button {
+        margin-left:9px;
+    }
+}
+
+.results-show-file.even {
+    border-top:1px solid $lightgray;
+    border-bottom:1px solid $lightgray;
+    padding:18px 0;
+}
+
+.field.show-file {
+
+    border-top:1px solid $lightgray;
+    padding-top:18px;
+
+    .field-label {
+        width:42%;
+    }
+
+    .field-content {
+        width:57%;
+
+        .file-desc {
+            display:block;
+            width:80%;
+            float:left;
+        }
+
+        .file-delete {
+            display:block;
+            width:20%;
+            float:right;
+        }
+    }
+    
 }
 
 

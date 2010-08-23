@@ -5,7 +5,8 @@
 
     - f.inputs do
         = f.input :entry_date, :as => :calendar
-    = f.buttons
+    - f.buttons do
+        = f.commit_button :button_html => { :disable_with => t('please_wait') }
 
 .action-links
     - if authorize?('view_casefile')

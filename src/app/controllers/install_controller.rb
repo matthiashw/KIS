@@ -60,8 +60,34 @@ class InstallController < ApplicationController
             flash.now[:notice] = t('user.messages.registration_success')
             step = session[:step] = "3"
             session[:admin_finished] = 1
+          end
 
-            if session[:lang_finished] == 1
+          render :action => 'index'
+        end
+      end
+    end
+
+    ##########
+    # STEP 3 #
+    ##########
+    if step == "3"
+      if system_has_domain?
+        session[:domain_finished] = 1
+        step = session[:step] = "4"
+      else
+        if !params.has_key?(:domain)
+          @domain = Domain.new(params[:domain])
+        else
+          @domain = Domain.new(params[:domain])
+          @domain.is_role = 0
+          @domain.is_userdomain = 1
+          
+          if @domain.save
+            flash.now[:notice] = t('domain.messages.create_success')
+            step = session[:step] = "4"
+            session[:domain_finished] = 1
+
+            if session[:lang_finished] == 1 && session[:admin_finished] == 1
               session[:install_finished] = 1
             end
           end
@@ -69,23 +95,20 @@ class InstallController < ApplicationController
           render :action => 'index'
         end
       end
-      
-
     end
 
     ##########
-    # STEP 3 #
+    # STEP 4 #
     ##########
-    if session[:admin_finished] == 1 && session[:lang_finished] == 1
+    if session[:admin_finished] == 1 && session[:lang_finished] == 1 && session[:domain_finished] == 1
       session[:install_finished] = 1
     end
 
-    if step == "3"
+    if step == "4"
       if session[:install_finished] == 1
         install_finish
       end
     end
-
   end
 
   def install_finish
@@ -102,6 +125,16 @@ class InstallController < ApplicationController
     admin = User.find_by_id(1)
 
     if admin.nil?
+      return false
+    end
+
+    return true
+  end
+
+  def system_has_domain?
+    domain = Domain.find_by_id(1)
+    
+    if domain.nil?
       return false
     end
 

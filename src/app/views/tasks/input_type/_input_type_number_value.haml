@@ -1,0 +1,4 @@
+%td
+    - @measuredvalue.errors.each_error do |attr,err|
+        %div{:class => 'field_error'} =err.type
+    = text_field 'values',@x, :value => @measuredvalue.value, :size => '20', :maxlength => '20'

@@ -95,7 +95,7 @@ class CaseFilesController < ApplicationController
     respond_to do |format|
       if @case_file.update_attributes(params[:case_file])
         flash.now[:notice] = t("case_file.messages.update_success")
-        format.html { redirect_to(@case_file) }
+        format.html { redirect_to patient_case_file_path(:patient_id => params[:patient_id], :id => params[:id]) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

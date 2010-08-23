@@ -4,6 +4,6 @@
         .task-select-domain
             = collection_select :task, :id, @tasks, :id, :creator_comment, options ={:prompt => t('treatment.choose_task_select')}, :class =>"domain"
         .task-select-domain-submit
-            = submit_tag t('treatment.nextstep')
+            = submit_tag t('treatment.nextstep'), :disable_with => t('please_wait')
         .task-select-domain-submit
-            = submit_tag t('treatment.nextstep_notasks'), :name => "skip"
+            = submit_tag t('treatment.nextstep_notasks'), :name => "skip", :disable_with => t('please_wait')

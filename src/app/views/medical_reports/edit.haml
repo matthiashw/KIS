@@ -17,7 +17,7 @@
 
 
   %p
-    = f.submit t('action.update')
+    = f.submit t('action.update'), :disable_with => t('please_wait')
 
 .action-links
   - if authorize?('delete_medical_report')

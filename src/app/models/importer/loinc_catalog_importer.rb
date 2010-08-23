@@ -46,7 +46,7 @@ class Importer::LoincCatalogImporter
               if !(class_name.starts_with? "PANEL.") #Panel Elements
                  # Create Entry
                   entry = FieldEntry.new(:code => code,:name => name, :description => description , :catalog =>catalog)
-                  fielddef = FieldDefinition.new(:is_active => false,:input_type => 0,:field_entry => entry)
+                  fielddef = FieldDefinition.new(:is_active => false,:input_type => 4,:field_entry => entry)
 
                   if !class_name_hash.has_key?(class_name)
                      # First Occurence of Class
