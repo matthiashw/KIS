@@ -20,7 +20,7 @@ class MedicalTemplatesController < ApplicationController
     end
     respond_to do |format|
       if @field_definition.update_attributes(params[:field_definition])
-        flash.now[:notice] = t('medical_template.messages.update_fielddef_success')
+        flash[:notice] = t('admin.medical_template.messages.update_fielddef_success')
         format.html { redirect_to(@medical_template) }
       else
         format.html { render :action => "edit_field_definition" }
@@ -57,7 +57,7 @@ class MedicalTemplatesController < ApplicationController
         end
        }
        @medical_template.save
-       flash.now[:notice] = t('medical_template.messages.added_field_success')
+       flash[:notice] = t('admin.medical_template.messages.added_field_success')
     end
 
     respond_to do |format|
@@ -106,7 +106,7 @@ class MedicalTemplatesController < ApplicationController
 
     respond_to do |format|
       if @medical_template.save
-        flash.now[:notice] = t('medical_template.messages.create_template_success')
+        flash[:notice] = t('admin.medical_template.messages.create_template_success')
         format.html { redirect_to(@medical_template) }
         format.xml  { render :xml => @medical_template, :status => :created, :location => @medical_template }
       else
@@ -122,7 +122,7 @@ class MedicalTemplatesController < ApplicationController
 
     respond_to do |format|
       if @medical_template.update_attributes(params[:medical_template])
-        flash.now[:notice] = t('medical_template.messages.update_template_success')
+        flash[:notice] = t('admin.medical_template.messages.update_template_success')
         format.html { redirect_to(@medical_template) }
         format.xml  { head :ok }
       else
@@ -134,6 +134,11 @@ class MedicalTemplatesController < ApplicationController
 
   def destroy
     return false unless authorize(permissions = ["delete_medical_templates"])
+    if params[:id] == "1"
+      flash[:error] = t('admin.medical_template.messages.destroy_error')
+      redirect_to(medical_templates_url) and return false
+    end
+
     @medical_template = MedicalTemplate.find(params[:id])
     @medical_template.destroy
 

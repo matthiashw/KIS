@@ -81,6 +81,10 @@ class DomainsController < ApplicationController
   # DELETE /domains/1.xml
   def destroy
     return false unless authorize(permissions = ["delete_domain"])
+    if params[:id] == "1"
+      flash[:error] = t('domain.messages.destroy_error')
+      redirect_to(domains_url) and return false
+    end
     @domain = Domain.find(params[:id])
     @domain.destroy
 

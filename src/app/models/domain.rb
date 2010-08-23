@@ -9,8 +9,8 @@ class Domain < ActiveRecord::Base
   has_many :medical_templates
   has_many :tasks
 
-  validates_uniqueness_of :name
-  validates_presence_of :name
+  #validates_uniqueness_of :name, :scope => :id
+  #validates_presence_of :name
   
   acts_as_permissible
 

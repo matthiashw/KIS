@@ -91,6 +91,7 @@ en:
         added_field_success:          "Fields successfully added."
         create_template_success:      "Template was successfully created."
         update_template_success:      "Template was successfully updated."
+        destroy_error:                "The Template with the ID 1 can not be deleted!"
     medical_reports:
       report:                         "Medical report"
       header:                         "Report headers"
@@ -175,6 +176,7 @@ en:
     messages:
       create_success:                 "Domain was successfully created."
       update_success:                 "Domain was successfully updated."
+      destroy_error:                  "The Domain with the ID 1 can not be deleted!"
 
   install:
     install:                          "Hopen Installation"
