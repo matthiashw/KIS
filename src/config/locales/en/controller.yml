@@ -178,14 +178,20 @@ en:
     install:                          "Hopen Installation"
     save_continue:                    "Save and Continue"
     admin_user:                       "Create Administration User"
+    domain:                           "Domain for patient history"
+    domain_description:               "You now need to create a domain for anamnese templates. 
+                                      For that you need to specify a Name (for example <em>Anamnese</em> or <em>Patient History</em>).
+                                      <br />You can also optionally fill the <em>Result Name</em> which is shown when you view a filled out task."
     select_language:                  "Choose installation language"
     finish:                           "Finish installation"
     install_finish:                   'Installation is finished. <a href="/login">Click here to login</a>.'
     install_warning:                  "Installation could not be finished. Please start from the beginning."
     admin_finish:                     "Administration User successfully created."
+    domain_finish:                    "Anamnese Domain successfully created."
     steps:
       language:                       "Language"
       user:                           "Admin User"
+      domain:                         "Anamnese Domain"
       finish:                         "Finish"
 
   medical_report:

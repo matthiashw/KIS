@@ -378,6 +378,8 @@ fieldset {
 div {
   &.messages {
     margin: 0 0 9px 0;
+    float:left;
+    width:100%;
     p {
       padding:9px;
       margin:0; }

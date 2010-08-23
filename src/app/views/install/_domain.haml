@@ -1,0 +1,17 @@
+%h2.floatingheadline= t('install.domain')
+
+%p= t('install.domain_description')
+
+- if !domain_finished?
+
+    - if @domain != nil
+        - semantic_form_for @domain, :url => { :controller => "install" , :action => "index"} do |f|
+            = f.error_messages
+
+            - f.inputs do
+                = f.input :name
+                = f.input :result_name
+            = f.buttons
+- else
+    .messages.notice.floatingheadline
+        %p=t('install.domain_finish')
