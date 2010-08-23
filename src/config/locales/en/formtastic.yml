@@ -58,6 +58,9 @@ en:
       medication:
         description:                  "Description"
         atc:                          "ATC Catalog"
+      report_header:
+        title:                        "Title"
+        html:                         "Content"
     hints:
       appointment:
         start_date:                   "Start Date"

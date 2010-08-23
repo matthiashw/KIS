@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   ########
   # Task #
   ########
-  map.connect "/patient/:id/tasks/taskcreation/:task_id", :controller => "tasks", :action => "taskcreation"
+  map.taskcreation "/patient/:id/tasks/taskcreation/:task_id", :controller => "tasks", :action => "taskcreation"
   map.taskresults "/tasks/results/:id", :controller => "tasks", :action => "results"
   map.taskfill "/tasks/taskfill/:id", :controller => "tasks", :action => "taskfill"
   map.connect "/tasks/createentries", :controller => "tasks", :action => "createentries"

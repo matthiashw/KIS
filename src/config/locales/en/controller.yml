@@ -98,6 +98,8 @@ en:
       standard:                       "Standard"
       actions:                        "Actions"
       new:                            "New report header"
+      edit:                           "Editing report header"
+      
 
   appointment:
     listing:                          "Listing appointments"
@@ -450,6 +452,7 @@ en:
     field_definitions:
       edit_button:                    "Edit fields"
       title:                          "Edit fields"
+      ucum_unit:                      "Select a Ucum Unit"
       catalog:                        "From Catalog"
       field_name:                     "Field"
       input_type:                     "Input type"

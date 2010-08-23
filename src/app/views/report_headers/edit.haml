@@ -1,6 +1,6 @@
 = javascript_include_tag :ckeditor
 
--title 'Editing report_header'
+-title t('admin.medical_reports.edit')
 
 - semantic_form_for(@report_header) do |f|
   = f.error_messages
@@ -16,11 +16,11 @@
     = f.cktext_area :html, :toolbar=>'Full', :width=>'70%', :heigth=>'200px'
 
   %p
-    = f.submit 'Update', :disable_with => t('please_wait')
+    = f.submit t('action.update'), :disable_with => t('please_wait')
   
 
 .action-links
   - if authorize?('delete_reportheader')
-    = link_to t('action.destroy'), @report_header, :confirm => 'Are you sure?', :method => :delete, :class => 'acts_as_button lightgray'
+    = link_to t('action.destroy'), @report_header, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'
   - if authorize?('edit_reportheader')
     = link_to t('action.back'), report_headers_path , :class => 'acts_as_button darkgray'

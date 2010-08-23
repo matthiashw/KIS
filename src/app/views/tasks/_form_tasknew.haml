@@ -1,4 +1,4 @@
-- form_tag url_for( :controller => "tasks" , :action => "taskcreation"), :class => 'taskcreation' do
+- form_tag taskcreation_path(:id => current_active_patient.id, :task_id => current_active_patient.id), :class => 'taskcreation' do
     %div
         .task-select-domain
             = collection_select :domain, :id, @domains, :id, :name, options ={:prompt => t('task.choose_domain_select')}, :class =>"domain"
