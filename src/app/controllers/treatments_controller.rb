@@ -107,7 +107,7 @@ class TreatmentsController < ApplicationController
       if session.has_key?(:active_patient_id)
         if params[:current_stage] == 'step_2'
           if (params[:continue])
-            if params[:medications] == ""
+            if (not params[:medications]) || params[:medications] == ""
               flash[:error] = t('treatment.messages.valid_medication')
               format.html { redirect_to :action => "new_step2" }
               format.xml  { render :xml => @treatment }
@@ -180,7 +180,7 @@ class TreatmentsController < ApplicationController
     respond_to do |format|
       if session.has_key?(:active_patient_id)
         if params[:current_stage] == 'step_4'
-          if params[:treatment] == "" and not params[:skip]
+          if ((not params[:treatment]) || params[:treatment] == "") and not params[:skip]
             flash[:error] = t('treatment.messages.valid_treatment')
             format.html { redirect_to :action => "new_step4" }
             format.xml  { render :xml => @treatment }
