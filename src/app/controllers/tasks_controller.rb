@@ -208,11 +208,8 @@ class TasksController < ApplicationController
 
         flash.now[:notice] = t('task.messages.create_successfull')
 
-        if current_active_patient
-          format.html { redirect_to patient_task_url(:id => @task.id, :patient_id => current_active_patient.id)  }
-        else
-          format.html { redirect_to @task }
-        end
+
+        format.html { render :action => "fill", :id => @task.id }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
         flash.now[:error] = t('task.messages.create_failed')

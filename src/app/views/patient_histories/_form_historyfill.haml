@@ -1,0 +1,45 @@
+- semantic_form_for @task, :url => { :action => "createhistoryentries" , :id => @task.id } do |f|
+    = f.error_messages
+
+    #templates
+        - unless @fieldshash.nil?
+            - @fieldshash.each do |k,v|
+                .template-toggle
+                    .template-toggle-inner
+                        = MedicalTemplate.find(k).name
+                .template-content{:id=>"t#{k}"}
+                    %table
+                        %thead
+                            %tr
+                                %th=t('task.name')
+                                %th=t('task.value')
+                                %th=t('task.unit')
+                                %th=t('task.comment')
+                        %tbody
+                            -v.each do |x,y|
+                                - @x = x
+                                - @y = y
+                                - @fielddef = FieldDefinition.find(@y.field_definition_id)
+                                %tr.template-field{ :class => cycle('odd', 'even')}
+                                    %td= Entry.find(@fielddef.field_entry_id).name
+                                    - fields_for @y do |fi|
+                                        - @measuredvalue = MeasuredValue.find_by_field_id(@x)
+                                        -if @task.state == Task.state_inprogress && !@measuredvalue.nil?
+                                            = render :partial => InputTypeManager.input_type_partial(@fielddef.input_type,true)
+                                            -if @y.ucum_entry_id.nil?
+                                                %td= '-'
+                                            -else
+                                                -ucum = Entry.find(@y.ucum_entry_id)
+                                                %td= ucum.description
+                                            %td= text_field 'comments',@x, :value => @measuredvalue.comment, :size => '20', :maxlength => '30'
+                                        -else
+                                            = render :partial => InputTypeManager.input_type_partial(@fielddef.input_type,false)
+                                            -if @y.ucum_entry_id.nil?
+                                                %td= '-'
+                                            -else
+                                                -ucum = Entry.find(@y.ucum_entry_id)
+                                                %td= ucum.description
+                                            %td= text_field 'comments',@x, :size => '20', :maxlength => '30'
+
+        = submit_tag t('patient_history.save')
+        = link_to t('patient_history.change'), :controller => 'patient_histories', :action => 'index', :change => @task.id
