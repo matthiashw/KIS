@@ -98,6 +98,8 @@ en:
       standard:                       "Standard"
       actions:                        "Actions"
       new:                            "New report header"
+      edit:                           "Editing report header"
+      
 
   appointment:
     listing:                          "Listing appointments"

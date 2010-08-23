@@ -16,9 +16,11 @@ class DatabaseBackupController < ApplicationController
       # dump db to db/data.yml
       YamlDb::dump(path)
     rescue
-      flash.now[:error] = t('database_backup.export.failure')
-      format.html {render :action => "export"}
-      format.xml {render :status => :unprocessable_entity}
+      respond_to do |format|
+        flash.now[:error] = t('database_backup.export.failure')
+        format.html {render :action => "export"}
+        format.xml {render :status => :unprocessable_entity}
+      end
     else
       if File.exist?(path)
         respond_to do |format|
