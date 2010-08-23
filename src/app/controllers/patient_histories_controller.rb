@@ -5,7 +5,7 @@ class PatientHistoriesController < ApplicationController
     #return authorize unless task_authorize?('view_all_tasks', 'view_domain_task', 'view_own_task')
 
     respond_to do |format|
-      @domain = Domain.find_by_name ("anamnesis")
+      @domain = Domain.find(1)
 
       if params.has_key?("change")
         @task = Task.find(params[:change])
@@ -79,7 +79,7 @@ class PatientHistoriesController < ApplicationController
       @task = Task.new(params[:task])
       @task.state = Task.state_open
       @task.creator_user_id = current_user.id
-      @domain = Domain.find_by_name ("anamnesis")
+      @domain = Domain.find(1)
       @task.domain_id = @domain.id
 
       if session.has_key?(:active_patient_id)

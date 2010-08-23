@@ -484,7 +484,7 @@ en:
     history:                          "View History"
     select_history_value:             "All Measured Values"
 
-   patient_history:
+  patient_history:
      fill:                            "Patient History"
      save:                            "Save"
      template:                        "Select Fields for Patient History"
