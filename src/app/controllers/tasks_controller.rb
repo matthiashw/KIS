@@ -151,7 +151,7 @@ class TasksController < ApplicationController
       session[:origin] = nil
     end
     
-    @domains = Domain.find_all_by_is_userdomain("1")
+    @domains = Domain.find(:all,:conditions => [ "is_userdomain = ? AND id > ?", 1, 1 ])
 
      respond_to do |format|
        if @current_active_patient == nil

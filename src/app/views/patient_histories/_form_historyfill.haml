@@ -42,4 +42,3 @@
                                             %td= text_field 'comments',@x, :size => '20', :maxlength => '30'
 
         = submit_tag t('patient_history.save')
-        = link_to t('patient_history.change'), :controller => 'patient_histories', :action => 'index', :change => @task.id
