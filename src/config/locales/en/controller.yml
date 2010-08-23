@@ -181,9 +181,8 @@ en:
     save_continue:                    "Save and Continue"
     admin_user:                       "Create Administration User"
     domain:                           "Domain for patient history"
-    domain_description:               "You now need to create a domain for anamnese templates. 
-                                      For that you need to specify a Name (for example <em>Anamnese</em> or <em>Patient History</em>).
-                                      <br />You can also optionally fill the <em>Result Name</em> which is shown when you view a filled out task."
+    domain_description:               "You now need to create a domain for anamnese templates.
+                                      For that you need to specify a Name (for example <em>Anamnese</em> or <em>Patient History</em>)."
     select_language:                  "Choose installation language"
     finish:                           "Finish installation"
     install_finish:                   'Installation is finished. <a href="/login">Click here to login</a>.'

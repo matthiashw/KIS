@@ -16,12 +16,7 @@ class FindingsController < ApplicationController
       feid = field_def.field_entry_id
       entry = Entry.find_by_id(feid)
 
-      cid = entry.catalog_id
-      cat = Catalog.find_by_id(cid)
-      ctid = cat.catalog_type_id
-      ctype = CatalogType.find_by_id(ctid)
-
-      if ctype.application != "user_defined"
+      if field_def.input_type == 4
 
         h = { entry.name => feid }
 

@@ -15,7 +15,8 @@
                     .field-content
                         = h @medical_template.domain.name
             .field
-                = link_to t('action.edit'), edit_medical_template_path(@medical_template), :class => 'acts_as_button'
+                - if authorize?('edit_medical_templates')
+                    = link_to t('action.edit'), edit_medical_template_path(@medical_template), :class => 'acts_as_button'
     .field
         %table
             %tr
@@ -47,5 +48,3 @@
 .action-links
     - if authorize?('view_medical_templates')
         = link_to t('action.back'), medical_templates_path, :class => 'acts_as_button darkgray'
-    - if authorize?('edit_medical_templates')
-        = link_to t('action.edit'), edit_medical_template_path(@medical_template), :class => 'acts_as_button darkgray'

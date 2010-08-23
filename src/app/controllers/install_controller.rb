@@ -55,14 +55,11 @@ class InstallController < ApplicationController
         else
           @user = User.new(params[:user])
           @user.attributes = {'domain_ids' => []}.merge(params[:user] || {})
-
           if @user.save
             flash.now[:notice] = t('user.messages.registration_success')
             step = session[:step] = "3"
             session[:admin_finished] = 1
           end
-
-          render :action => 'index'
         end
       end
     end
@@ -76,7 +73,7 @@ class InstallController < ApplicationController
         step = session[:step] = "4"
       else
         if !params.has_key?(:domain)
-          @domain = Domain.new(params[:domain])
+          @domain = Domain.new
         else
           @domain = Domain.new(params[:domain])
           @domain.is_role = 0
@@ -87,12 +84,16 @@ class InstallController < ApplicationController
             step = session[:step] = "4"
             session[:domain_finished] = 1
 
+            @medical_template = MedicalTemplate.new
+            @medical_template.domain = @domain
+            @medical_template.name = @domain.name
+            @medical_template.save!
+
             if session[:lang_finished] == 1 && session[:admin_finished] == 1
               session[:install_finished] = 1
             end
           end
 
-          render :action => 'index'
         end
       end
     end
