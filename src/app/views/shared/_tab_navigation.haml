@@ -6,7 +6,7 @@
 
         - if authorize?('access_anamnese')
             %li{:class => "secondary-navigation-leaf"}
-                =link_to t("navi.tabs.anamnesis"), patienthistories_path, :class => is_active?('patient_histories')
+                =link_to t("navi.tabs.anamnesis"), patient_patient_histories_path(:patient_id => current_active_patient.id), :class => is_active?('patient_histories')
 
         - if authorize?('view_casefile')
             %li{:class => "secondary-navigation-leaf"}
