@@ -208,12 +208,12 @@ class TasksController < ApplicationController
 
         flash.now[:notice] = t('task.messages.create_successfull')
 
-
         if current_active_patient
           format.html { redirect_to patient_task_url(:id => @task.id, :patient_id => current_active_patient.id)  }
         else
           format.html { redirect_to @task }
         end
+
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
         flash.now[:error] = t('task.messages.create_failed')
@@ -321,6 +321,7 @@ class TasksController < ApplicationController
     @comments = params[:comments]
     field_errors = nil
     @measured_values=Array.new
+    @task.attributes = params[:task]
     
     respond_to do |format|
 
@@ -333,53 +334,22 @@ class TasksController < ApplicationController
           end
 
         end
-          format.html { redirect_to :action => 'taskfill', :id => @task.id  }
-          format.xml  { render :xml => @task}
 
-      else if params.has_key?('delete')
+          field_errors = measuredvaluecreation(field_errors)
+          @task.state=Task.state_inprogress
+
+      elsif params.has_key?('delete')
           if UploadedFile.deletefile(params[:delete])
              flash[:notice] = t('task.messages.file_deleted_success')
           else
              flash[:notice] = t('task.messages.file_deleted_fail')
           end
 
-          format.html { redirect_to :action => 'taskfill', :id => @task.id  }
-          format.xml  { render :xml => @task}
+          field_errors = measuredvaluecreation(field_errors)
+          @task.state=Task.state_inprogress
+
       else
-        @task.attributes = params[:task]
-        unless @values.nil?
-            @values.each do |k,v|
-              f = Field.find(k)
-
-              unless f.nil?
-
-                  #get value of dropdown for storage(if it is a dropdown field)
-                  if FieldDefinition.find(f.field_definition_id).input_type == 3
-                    v = InputTypeManager.dropdown_value_return(f.field_definition_id,v)
-                  end
-                 measuredvalue = nil
-                #if the task has allready been filled use existing measured values and update
-                begin
-                  measuredvalue = MeasuredValue.find_by_field_id(k)
-                  measuredvalue.update_attributes(:value => v,:comment => @comments[k],
-                                   :task_id => @task.id, :field_id => k, :medical_template_id => f.medical_template_id )
-                  
-                rescue
-                  measuredvalue = MeasuredValue.new(:value => v,:comment => @comments[k],
-                                   :task_id => @task.id, :field_id => k, :medical_template_id => f.medical_template_id )
-                  
-                end
-               @measured_values.push measuredvalue
-                  measuredvalue.save
-                  if !measuredvalue.valid? # error flag
-                    field_errors = measuredvalue.errors.on_base
-                  end
-                
-                
-               end
-
-            end
-          end
+          field_errors = measuredvaluecreation(field_errors)
 
           if params.has_key?('save')
             @task.state=Task.state_inprogress
@@ -388,19 +358,27 @@ class TasksController < ApplicationController
           if params.has_key?('saveandclose')
             @task.state=Task.state_closed
           end
+      end
         
         if @task.valid? && field_errors==nil
           @task.save
           @measured_values.each { |mv|
               mv.save
               }
-          flash[:notice] = t('task.messages.complete_success')
-          if current_active_patient
-            format.html { redirect_to patient_task_url(:id => @task.id, :patient_id => current_active_patient.id)  }
+          
+          if params.has_key?('upload') || params.has_key?('delete')
+            format.html { redirect_to :action => 'taskfill', :id => @task.id  }
+            format.xml  { render :xml => @task}
           else
-            format.html { redirect_to @task }
+            flash[:notice] = t('task.messages.complete_success')
+            if current_active_patient
+              format.html { redirect_to patient_task_url(:id => @task.id, :patient_id => current_active_patient.id)  }
+            else
+              format.html { redirect_to @task }
+            end
+            format.xml  { head :ok }
           end
-          format.xml  { head :ok }
+
 
         else
           if field_errors!=nil
@@ -416,9 +394,42 @@ class TasksController < ApplicationController
           format.html { redirect_to :action => 'taskfill', :id => @task.id , :field_error_ids => field_error_ids }
           format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
         end
-      end
     end
-   end
+  end
+
+  #does the actual creation of MeasuredValues
+  def measuredvaluecreation(field_errors)
+      unless @values.nil?
+          @values.each do |k,v|
+            f = Field.find(k)
+
+            unless f.nil?
+
+                #get value of dropdown for storage(if it is a dropdown field)
+                if FieldDefinition.find(f.field_definition_id).input_type == 3
+                  v = InputTypeManager.dropdown_value_return(f.field_definition_id,v)
+                end
+               measuredvalue = nil
+              #if the task has allready been filled use existing measured values and update
+              begin
+                measuredvalue = MeasuredValue.find_by_field_id(k)
+                measuredvalue.update_attributes(:value => v,:comment => @comments[k],
+                                 :task_id => @task.id, :field_id => k, :medical_template_id => f.medical_template_id )
+
+              rescue
+                measuredvalue = MeasuredValue.new(:value => v,:comment => @comments[k],
+                                 :task_id => @task.id, :field_id => k, :medical_template_id => f.medical_template_id )
+
+              end
+             @measured_values.push measuredvalue
+                measuredvalue.save
+                if !measuredvalue.valid? # error flag
+                  field_errors = measuredvalue.errors.on_base
+                end
+             end
+          end
+      end
+      field_errors
   end
 
   # for viewing the tasks values and results
