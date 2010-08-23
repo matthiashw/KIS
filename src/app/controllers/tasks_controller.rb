@@ -154,8 +154,14 @@ class TasksController < ApplicationController
     @domains = Domain.find_all_by_is_userdomain("1")
 
      respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @domain }
+       if @current_active_patient == nil
+         flash[:error] = t('task.messages.no_active_patient')
+         format.html { redirect_to :controller => 'patients', :origin=> 'tasks'}
+         format.xml  { render :xml => @task }
+       else
+         format.html # new.html.erb
+         format.xml  { render :xml => @domain }
+       end
      end
   end
 
