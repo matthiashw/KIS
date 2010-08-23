@@ -4,19 +4,19 @@
 #    entry_classname: Max
 # The default 'template' and 'user_defined' entry should always be present !!
 user_defined:
-   name: User Defined Catalog (Template system)
+   name: User Defined Catalog [Template system]
    entry_classname: FieldEntry
 template:
-   name: Laboratory Catalog  (Template system)
+   name: Laboratory Catalog  (LOINC) [Template system]
    entry_classname: FieldEntry
 ucum_units:
-   name: Ucum units
+   name: Units Catalog (UCUM)
    entry_classname: UcumEntry
 diagnosis:
    name: Diagnosis Catalog (ICD)
    entry_classname: IcdEntry
 atc:
-   name: ATC Catalog
+   name: Medication Catalog (ATC)
    entry_classname: AtcEntry
 ops:
    name: Treatment Catalog (OPS)

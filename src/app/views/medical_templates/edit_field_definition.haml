@@ -5,11 +5,14 @@
     = f.input :input_type, :as => :select , :collection => InputTypeManager.input_type_descriptions
     = f.input :additional_type_info
     %br
-    - if CatalogManager.instance.catalog('ucum_units')
+    - if @catalog
       - if @field_definition.example_ucum_id
-        = radio_tree CatalogManager.instance.catalog('ucum_units'),'field_definitions_form', 'example_ucum_unit' ,@field_definition.example_ucum_id
+        = radio_tree @catalog,'field_definitions_form', 'example_ucum_unit' ,@field_definition.example_ucum_id
       - else
-        = radio_tree CatalogManager.instance.catalog('ucum_units'),'field_definitions_form', 'example_ucum_unit'
+        = radio_tree @catalog,'field_definitions_form', 'example_ucum_unit'
+    - else
+      = no_catalog_available 'ucum_units'
+
   = f.buttons
 .action-links
   - if authorize?('view_medical_templates')

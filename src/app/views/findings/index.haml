@@ -1,14 +1,14 @@
 -title t('finding.index')
 
 #history{:style => "display:none;"}
-    die history
 
 
-
-.box
-    .box-inner
-        = select_tag 'fields', options_for_select(@fieldhash)
-        = facebox_link("Show History", "#history")
+#history-select
+    .box
+        .box-inner
+            %span.history-select-text= t("finding.select_history_value")
+            = select_tag 'fields-history', options_for_select(@fieldhash)
+            = link_to t("finding.history"), "#", :onclick=>"javascript:updateChart()", :class=>"acts_as_button darkyellow link-history"
 
 #tasks
     %table
@@ -28,4 +28,5 @@
                 %td= h show_date(task.deadline)
                 %td= h truncate(task.creator_comment, :omission => "...", :length => 40)
                 %td= h truncate(task.executor_comment, :omission => "...", :length => 40)
-                
+
+= render :partial => 'chart'

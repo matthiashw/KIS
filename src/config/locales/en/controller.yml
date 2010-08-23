@@ -191,6 +191,8 @@ en:
 
   finding:
     index:                            "All Findings"
+    history:                          "View History"
+    select_history_value:             "All Measured Values"
 
   install:
     install:                          "Hopen Installation"
@@ -224,6 +226,8 @@ en:
       ops:                            "OPS"
       medication:                     "Medication"
       start_date:                     "Start date"
+      date:                           "Date"
+      value:                          "Value"
 
   medical_reports:
     listing:                          "Medical Reports"
@@ -239,6 +243,10 @@ en:
     created:                          "Created at"
     print_view:                       "Print view"
     no_header:                        "Standard header for medical reports missing. Please contact your administrator."
+    anamnesis:                        "Anamnesis"
+    findings:                         "Findings"
+    diagnoses:                        "Diagnoses"
+    treatments:                       "Treatments"
     messages:
       no_cases_properties:            "No cases or properties selected"
       no_cases:                       "No case selected"
@@ -258,7 +266,7 @@ en:
 
   patient:
     listing:                          "Listing patients"
-    admission:                        "Admission of patient"
+    admission:                        "Admission of a patient"
     new_button:                       "Create new patient"
     new:                              "New Patient"
     edit:                             "Editing Patient"
@@ -370,12 +378,15 @@ en:
     save:                             "Save Task"
     save_and_close:                   "Save and Close Task"
     in_progress:                      "In Progress"
-    creator:                          "physician in charge"
+    creator:                          "Physician in charge"
     patient:                          "Patient"
     y:                                "Yes"
     n:                                "No"
     file_upload:                      "Upload File for Task"
     upload:                           "Upload"
+    delete:                           "Delete"
+    attached_files:                   "Attached Files"
+    no_attached_files:                "No Files attached."
     filter:
       all:                            "All"
       search_fail:                    "No Task found"
@@ -428,6 +439,13 @@ en:
     edit:                             "Editing User"
     address:                          "Address"
     phone:                            "Phone"
+    homepage:
+      patient_index:                  "Patients index"
+      task_index:                     "Tasks index"
+      task_mytasks:                   "My tasks"
+      task_domaintasks:               "Domain tasks"
+      appointment_index:              "Appointments index"
+      administration:                 "Administration Area"
     setup:
       setup:                          "Setup Admin User"
       choose_from_current_user:       "Choose a existing User or"

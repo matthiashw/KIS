@@ -201,185 +201,514 @@ en:
 
     diagnoses:
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing a diagnosis"
+        text:               "Every description must have a minimum of one
+                            characters in length.
+                            <br/>
+                            <br/>Select a diagnosis from the catalog tree. The
+                            tree is separated according to the code within the
+                            diagnosis-catalog (icd). To expand (or fold) a
+                            category, please single-click on the <b>+</b> symbol
+                            (or <b>-</b> symbol), or double-click on the line.
+                            <br/>
+                            <br/>If you know the name of a diagnosis you can also
+                            search for it by clicking the <b>search</b>-tab.
+                            <br/>
+                            <br/>If an error appears regarding a missing
+                            Diagnosis Catalog (ICD), please advise your system
+                            administrator to add a diagnosis catalog.</i>"
       index:
-        title:              ""
-        text:               ""
+        title:              "Diagnoses"
+        text:               "This list is a representation of all diagnoses
+                            regarding the currently active case of the selected
+                            patient.
+                            <br/>
+                            <br/>Further diagnoses can be added by pressing the
+                            <b>add new diagnosis</b> button."
       new:
-        title:              ""
-        text:               ""
+        title:              "Creating a new diagnosis"
+        text:               "Enter a description for further informations about
+                            the diagnosis.
+                            <br/>
+                            <br/>Select a diagnosis from the catalog tree. The
+                            tree is separated according to the code within the
+                            diagnosis-catalog (icd). To expand (or fold) a
+                            category, please single-click on the '+'-symbol (or
+                            '-'-symbol), or double-click on the line.
+                            <br/>
+                            <br/>If you know the name of a diagnosis you can also
+                            search for it by clicking the <b>search</b>-tab.
+                            <br/>
+                            <br/>If an error appears regarding a missing
+                            Diagnosis Catalog (ICD), please advise your system
+                            administrator to add a diagnosis catalog.</i>"
       show:
-        title:              ""
-        text:               ""
+        title:              "A diganosis's details"
+        text:               "This page gives a detailed overview over a
+                            diagnosis. These consist of information about the
+                            diagnosis within the diagnosis-catalog (ICD), the
+                            description of the diagnosis, the date when the
+                            diagnosis was created and the doctor who created it.
+                            <br/>
+                            <br/>If treatments have already been conducted and
+                            connected to this diagnosis, a list of these
+                            treatments allows you to jump right to them."
 
     domains:
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing a domain"
+        text:               "N/A"
       index:
-        title:              ""
-        text:               ""
+        title:              "Domains"
+        text:               "N/A"
       new:
-        title:              ""
-        text:               ""
+        title:              "Creating a new domain"
+        text:               "N/A"
       show:
-        title:              ""
-        text:               ""
+        title:              "A domain's details"
+        text:               "N/A"
 
     findings:
       index:
-        title:              ""
-        text:               ""
+        title:              "Findings"
+        text:               "This view presents a list of all <i>findings</i>
+                            of the <i>active patient</i>, resulting from closed
+                            tasks.
+                            <br/>Further findings are being added by fulfilling
+                            <i>tasks</i>.
+                            <br/>
+                            <br/>It is possible to get an overview about how
+                            the <i>measured values</i> changed over time by
+                            selecting the respective type from the
+                            <b>dropdown menu</b> and then clicking the
+                            <b>view history</b> button.
+                            <br/>A popup will appear showing a graph of
+                            <i>measured values</i>."
 
     install:
       index:
-        title:              ""
-        text:               ""
+        title:              "Installation"
+        text:               "N/A"
 
     medical_reports:
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing a medical report"
+        text:               "This view allows you to customize a medical report
+                            with elements for formating and building tables. To
+                            commit your changes, please press the <b>update</b>
+                            button."
       index:
-        title:              ""
-        text:               ""
+        title:              "Medical Reports"
+        text:               "Medical Reports are collections of selected parts
+                            of informations about a patient. This includes
+                            master data, like <i>family name</i> and
+                            <i>address</i>, as well as case-specific data like
+                            <i>findings</i> and <i>treatments</i>.
+                            <br/>
+                            <br/>Every medical report has a <b>print view</b>
+                            button which shows you a version of the medical
+                            report without the hopen-menus to ease printing.
+                            <br/>
+                            <br/>Further medical reports can be added by
+                            pressing the <b>create</b> button."
       new:
-        title:              ""
-        text:               ""
-      show:
-        title:              ""
-        text:               ""
+        title:              "Creating a new medical Report"
+        text:               "Medical Reports are collections of selected parts
+                            of informations about a patient. This includes
+                            master data, like <i>family name</i> and
+                            <i>address</i>, as well as case-specific data like
+                            <i>findings</i> and <i>treatments</i>.
+                            <br/>
+                            <br/>The cases and properties in the right boxes
+                            have already been added to the medical report.
+                            Further cases and properties can be added by either
+                            <b>double-clicking</b> an entry or <b>selecting</b>
+                            the entry and then pressing the <b>single-arrow</b>
+                            button facing to the right. Alternatively, all cases
+                            or properties can be added at once by clicking the
+                            <b>double-arrow</b> button.
+                            <br/>Removing entries works likewise."
 
     medical_templates:
       change_fields:
-        title:              ""
-        text:               ""
+        title:              "Changing fields"
+        text:               "N/A"
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing a medical template"
+        text:               "N/A"
       edit_field_definition:
-        title:              ""
-        text:               ""
+        title:              "Editing a field definition"
+        text:               "N/A"
       index:
-        title:              ""
-        text:               ""
+        title:              "Medical Templates"
+        text:               "N/A"
       new:
-        title:              ""
-        text:               ""
+        title:              "Creating a new medical template"
+        text:               "N/A"
       show:
-        title:              ""
-        text:               ""
+        title:              "A medical template's details"
+        text:               "N/A"
 
-    medication:
+    medications:
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing a medication"
+        text:               "To edit a medication, please select a catalog
+                            entry. An additional description can be added to
+                            the medication, if necessary.
+                            <br/>
+                            <br/>Select a medication from the catalog tree. The
+                            tree is separated according to the code within the
+                            atc-catalog. To expand (or fold) a category, please
+                            single-click on the <b>+</b> symbol
+                            (or <b>-</b> symbol), or double-click on the line.
+                            <br/>
+                            <br/>If you know the name of an <i>Anatomical
+                            Therapeutical Chemical (ATC)</i>, you can also
+                            search for it by clicking the <b>search</b>-tab."
       index:
-        title:              ""
-        text:               ""
+        title:              "Medications"
+        text:               "This page lists all medications belonging to a
+                            treatment. A medication consists of an optional
+                            additional description and an <i>Anatomical
+                            Therapeutical Chemical (ATC)</i>"
       new:
-        title:              ""
-        text:               ""
+        title:              "Adding a medication"
+        text:               "To add a medication to the current treatment,
+                            please select a catalog entry. An additional
+                            description can be added to the medication, if
+                            necessary.
+                            <br/>
+                            <br/>Select a medication from the catalog tree. The
+                            tree is separated according to the code within the
+                            atc-catalog. To expand (or fold) a category, please
+                            single-click on the <b>+</b> symbol
+                            (or <b>-</b> symbol), or double-click on the line.
+                            <br/>
+                            <br/>If you know the name of an <i>Anatomical
+                            Therapeutical Chemical (ATC)</i>, you can also
+                            search for it by clicking the <b>search</b>-tab."
 
     patients:
       admission:
-        title:              ""
-        text:               ""
+        title:              "Admission of a patient"
+        text:               "There are two ways to admit a patient:
+                            <br/>1. If the person has not been a patient before,
+                            admission is done by pressing the <b>Create new
+                            patient</b> button. This will add him as a new
+                            patient and automatically create the first case.
+                            <br/>2. If the person has already been a patient,
+                            he can be found within the patient-list and a new
+                            case needs to be opened by pressing the <b>New case
+                            </b> link in his line.
+                            <br/>
+                            <br/>Clicking on a patients line instead of the 
+                            <b>New case</b> link will only make him the active
+                            patient. A new case needs to be opened afterwards.
+                            <br/>
+                            <br/>The <b>searchbar</b> can be used to search for
+                            a patient using <i>either</i> his first name <i>or
+                            </i> his family name. It is not necessary to press
+                            the enter or return key, since the list is being
+                            reloaded with every letter entered.
+                            <br/>
+                            <br/>There are only 3 patients shown per page.
+                            <br/>Switching between pages is possible
+                            by using the <b>previous/next</b> buttons below the
+                            patient list. It is also possible to jump to a
+                            specific page by pressing the <b>number</b> buttons."
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing a patient's details"
+        text:               "A patient requires a <i>first name</i>, a
+                            <i>Family Name</i>, a <i>gender</i>, a
+                            <i>birthdate</i>, an <i>address</i> and a
+                            <i>phone number</i>.
+                            <br/>
+                            <br/>The birthdate of the patient can be changed by
+                            clicking the small <b>calendar icon</b> next to
+                            the field.
+                            <br/>
+                            <br/>To remove a patient, press the <b>delete</b>
+                            button. <i>(Please use with caution!)</i>"
       index:
-        title:    "Test-Title"
-        text:     "This is a Placeholder_Label This is a Placeholder_Label This
-                  is a Placeholder_Label This is a Placeholder_Label<br/>
-                  This is a Placeholder_LabelThis is a Placeholder_Label
-                  <br/> This is a Placeholder_LabelThis is a Placeholder_Label
-                  <br/> This is a Placeholder_LabelThis is a Placeholder_Label
-                  <br/> This is a Placeholder_LabelThis is a Placeholder_Label"
+        title:              "Listing patients"
+        text:               "This page represents a list of all registered
+                            patients. 
+                            <br/>
+                            <br/>Clicking on a patients line will make him the 
+                            active patient.
+                            <br/>
+                            <br/>If a person has not been a patient before,
+                            admission is done by pressing the <b>Create new
+                            patient</b> button. This will add him as a new
+                            patient and automatically create the first case.
+                            <br/>
+                            <br/>The <b>searchbar</b> can be used to search for
+                            a patient using <i>either</i> his first name <i>or
+                            </i> his family name. It is not necessary to press
+                            the enter or return key, since the list is being
+                            reloaded with every letter entered.
+                            <br/>
+                            <br/>There are only 3 patients shown per page.
+                            <br/>Switching between pages is possible
+                            by using the <b>previous/next</b> buttons below the
+                            patient list. It is also possible to jump to a
+                            specific page by pressing the <b>number</b> buttons."
       new:
-        title:              ""
-        text:               ""
-      search:
-        title:              ""
-        text:               ""
+        title:              "Creating a new Patient"
+        text:               "A patient requires a <i>first name</i>, a
+                            <i>Family Name</i>, a <i>gender</i>, a
+                            <i>birthdate</i>, an <i>address</i> and a
+                            <i>phone number</i>.
+                            <br/>
+                            <br/>The birthdate of the patient can be changed by
+                            clicking the small <b>calendar icon</b> next to
+                            the field."
       show:
-        title:              ""
-        text:               ""
+        title:              "A patient's details"
+        text:               "This page shows a patient's master data and
+                            additional comments created by doctors.
+                            <br/>
+                            <br/>The patient's master data can be changed by
+                            pressing the <b>Edit</b> button.
+                            <br/>
+                            <br/>It is also possible to generate Medical Reports
+                            which are collections of a patient's informations,
+                            including master data, like <i>family name</i> and
+                            <i>address</i>, as well as case-specific data like
+                            <i>findings</i> and <i>treatments</i>.
+                            <br/>
+                            <br/>Comments are a way to add additional
+                            information to a patient. To write a comment,
+                            simply enter the text into the comment box and press
+                            the <b>add new comment</b> button.
+                            <br/>
+                            <br/>There are only 3 comments shown per page.
+                            <br/>Switching between pages is possible
+                            by using the <b>previous/next</b> buttons below the
+                            patient list. It is also possible to jump to a
+                            specific page by pressing the <b>number</b> buttons.
+                            <br/>
+                            <br/>To view the full list of comments regarding the
+                            current patient, please press the <b>View list of
+                            comments</b> link."
 
     permissions:
       index:
-        title:              ""
-        text:               ""
+        title:              "Editing permissions"
+        text:               "Permissions can only be set for <i>roles</i>.
+                            New user-<i>roles</i> can be created under
+                            <i>Domains</i> in the administration area."
 
     report_headers:
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing a report header's details"
+        text:               "N/A"
       index:
-        title:              ""
-        text:               ""
+        title:              "Report Header"
+        text:               "N/A"
       new:
-        title:              ""
-        text:               ""
+        title:              "Creating a new report header"
+        text:               "N/A"
       show:
-        title:              ""
-        text:               ""
+        title:              "Report header details"
+        text:               "N/A"
         
     tasks:
       domaintasks:
-        title:              ""
-        text:               ""
+        title:              "All tasks of my domain"
+        text:               "This page displays all <i>tasks</i> matching the
+                            user's domain.
+                            <br/>Tasks help to tell co-workers what needs to be
+                            done.
+                            <br/>(For example: taking blood samples)
+                            <br/>
+                            <br/>Tasks can be filtered depending on their
+                            <i>state</i> and whether they belong to an <i>active
+                            case</i>.
+                            <br/>States alternate between <i>open</i>, <i>in
+                            progress</i> and <i>closed</i>.
+                            <br/>
+                            <br/>If the case is <i>closed</i>, a <b>result</b>
+                            page can be opened to see the <i>measured values</i>
+                            and <i>attached files</i>.
+                            <br/>Otherwise, if the task is <i>open</i> or <i>in
+                            progress</i>, a doctor has the option to <b>fill the
+                            task</b>. This means he is able to enter measured
+                            values, write an executor comment and attach files."
       edit:
-        title:              ""
-        text:               ""
+        title:              "Editing a task"
+        text:               "<br/>To change the deadline of the task, please
+                            click the small <b>calendar</b>-icon next to the
+                            field.
+                            <br/>
+                            <br/>As creator of the tasks you can specify
+                            additional informations within the
+                            <b>creator comment</b> field."
       index:
-        title:              ""
-        text:               ""
+        title:              "A patient's tasks"
+        text:               "This page will display all <i>tasks</i> regarding
+                            the <i>active patient</i>'s <i>currently selected
+                            case</i>.
+                            <br/>Tasks help to tell co-workers what needs to be
+                            done.
+                            <br/>(For example: taking blood samples)
+                            <br/>
+                            <br/>Tasks can be filtered depending on their
+                            <i>domains</i> and their <i>state</i>.
+                            <br/>States alternate between <i>open</i>, <i>in
+                            progress</i> and <i>closed</i>.
+                            <br/>
+                            <br/>If the case is <i>closed</i>, a <b>result</b>
+                            page can be opened to see the <i>measured values</i>
+                            and <i>attached files</i>.
+                            <br/>Otherwise, if the task is <i>open</i> or <i>in
+                            progress</i>, a doctor has the option to <b>fill the
+                            task</b>. This means he is able to enter measured
+                            values, write an executor comment and attach files."
       mytasks:
-        title:              ""
-        text:               ""
+        title:              "My tasks"
+        text:               "This page displays all <i>tasks</i> matching the
+                            user.
+                            <br/>Tasks help to tell co-workers what needs to be
+                            done.
+                            <br/>(For example: taking blood samples)
+                            <br/>
+                            <br/>Tasks can be filtered depending on their
+                            <i>domains</i>, their <i>state</i> and whether they
+                            belong to an <i>active case</i>.
+                            <br/>States alternate between <i>open</i>, <i>in
+                            progress</i> and <i>closed</i>.
+                            <br/>
+                            <br/>If the case is <i>closed</i>, a <b>result</b>
+                            page can be opened to see the <i>measured values</i>
+                            and <i>attached files</i>.
+                            <br/>Otherwise, if the task is <i>open</i> or <i>in
+                            progress</i>, a doctor has the option to <b>fill the
+                            task</b>. This means he is able to enter measured
+                            values, write an executor comment and attach files."
       new:
-        title:              ""
-        text:               ""
+        title:              "Creating a new task"
+        text:               "A task is always connected to a patient.
+                            By default, creating a new task will connect the
+                            task to the currently active partient.
+                            <br/>
+                            <br/>Pressing <b>Select another Patient</b> will
+                            show you a list of all patients to choose from.
+                            Selecting a patient will open his <i>Master
+                            Data</i> page from which you can return by clicking
+                            the <b>Back to Task-Creation</b> button.
+                            <br/>
+                            <br/>Every task needs a domain. If there aren't any
+                            possible domains in the dropdown menu, please refer
+                            to your system administrator for creating new
+                            domains.
+                            <br/>
+                            <br/>To get to the next steps of creating a new task,
+                            press the <b>Ok and Continue</b> button."
       results:
-        title:              ""
-        text:               ""
+        title:              "Task results"
+        text:               "This page displays all results which occured while
+                            executing a task. This includes <i>measured values
+                            </i> as well as <i>attached files</i>."
       show:
-        title:              ""
-        text:               ""
+        title:              "Task details"
+        text:               "A task's details consist of a <i>state</i>, which
+                            alternates between 'open', 'in progress' and closed,
+                            possibly a <i>deadline</i>, a <i>creator comment</i>
+                            and an <i>executor comment</i>.
+                            <br/>
+                            <br/>These values can be changed by pressing the
+                            <b>Edit</b> button.
+                            <br/>
+                            <br/>If the case is <i>closed</i>, a <b>result</b>
+                            page can be opened to see the <i>measured values</i>
+                            and <i>attached files</i>.
+                            <br/>Otherwise, if the task is <i>open</i> or <i>in
+                            progress</i>, a doctor has the option to <b>fill the
+                            task</b>. This means he is able to enter measured
+                            values, write an executor comment and attach files."
       taskcreation:
-        title:              ""
-        text:               ""
+        title:              "Further steps for creating a new task"
+        text:               "<i>All values on this page are optional, but
+                            strongly recommend</i>
+                            <br/>Tasks can be connected to whole templates or
+                            fields from templates. This is optional but allows
+                            to create tasks with official actions.
+                            <br/>
+                            <br/>Activating the <b>checkbox</b> of a template
+                            selects the whole template.
+                            <br/>
+                            <br/>It is also possible to select only some fields
+                            of a template. To do so, please click the line of
+                            the respective template and activate the
+                            <b>checkboxes</b> next to the wanted entries.
+                            <br/>This will also allow you to add <b>comments<b/>.
+                            <br/>
+                            <br/>To change the deadline of the task, please
+                            click the small <b>calendar</b>-icon next to the
+                            field.
+                            <br/>
+                            <br/>As creator of the tasks you can specify
+                            additional informations within the
+                            <b>Creator comment</b> field.
+                            <br/>
+                            <br/>The <b>create comment</b> button will finish
+                            the process of creating a new task and open up the
+                            task-overview again."
       taskfill:
-        title:              ""
-        text:               ""
+        title:              "Filling a task"
+        text:               "A tasks needs to be filled, once it has been
+                            executed.
+                            In case that the task was connected with
+                            <i>template fields</i> which needed to measure a
+                            value, the result can be entered in the according
+                            <b>Value</b> field. Additional <b>comments</b> are
+                            optional.
+                            <br/>
+                            <br/>If the task's executor wants to attach a file
+                            (like a radiogram) to a task, he needs to choose
+                            the file, optionally add a comment and press the
+                            <b>Upload</b> button.
+                            <br/>
+                            <br/>Once uploaded, attached files can be deleted
+                            by using the <b>Delete</b> buttons.
+                            <br/>
+                            <br/>An executor is able to choose between whether
+                            he wants to <b>close</b> the task after saving his
+                            entries or to keep it open. This is important if
+                            many users are working together on the same task.
+                            <br/>
+                            <br/><b>Closing</b> will <i>not</i> allow further
+                            changes to the task but creates a <i>result</i>
+                            page on which other users can see the final
+                            result of the task and will list the measured values
+                            under a patient's <i>findings</i>."
 
     treatments:
       edit:
-        title:              ""
+        title:              "Editing a treatment"
         text:               ""
       index:
         title:              "Listing treatments"
         text:               "This page represents a list of all treatments
                             matching the currently selected case."
       new:
-        title:              ""
+        title:              "Creating a new treatment (Step 1/5)"
         text:               ""
       new_step2:
-        title:              ""
+        title:              "Creating a new treatment (Step 2/5)"
         text:               ""
       new_step3:
-        title:              ""
+        title:              "Creating a new treatment (Step 3/5)"
         text:               ""
       new_step4:
-        title:              ""
+        title:              "Creating a new treatment (Step 4/5)"
         text:               ""
       new_step5:
-        title:              ""
+        title:              "Creating a new treatment (Step 5/5)"
         text:               ""
       show:
-        title:              ""
+        title:              "A treatment's details"
         text:               ""
 
     user_sessions:

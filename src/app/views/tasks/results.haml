@@ -47,6 +47,19 @@
                                     -ucum = Entry.find(field.ucum_entry_id)
                                     %td= ucum.description
                                 %td= y.comment
+%h2.floatingheadline= t('task.attached_files')
+.fields
+    .box
+        .box-inner
+            - if @taskfiles.nil? || @taskfiles.empty?
+                %div= t('task.no_attached_files')
+            - else
+                - @taskfiles.each do |tf|
+                    .field.results-show-file{:class => cycle('odd', 'even')}
+                        .field-label
+                            = link_to tf.name, tf.path
+                        .field-content
+                            = tf.description
 .action-links
     - if authorize?('access_finding') && current_active_patient
         = link_to t('action.back'), patient_findings_path(:patient_id => current_active_patient.id), :class => 'acts_as_button darkgray'

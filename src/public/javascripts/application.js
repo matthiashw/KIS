@@ -184,7 +184,49 @@ function uncheckNodeFromSearch(grid, records, action, groupId) {
     }
 }
 
+/*############## Charts START ####################*/
+
+Ext.chart.Chart.CHART_URL = '/ext/resources/charts.swf';
+
+function getChartStore(url){
+    return store = new Ext.data.JsonStore({
+        url: url,
+        fields:['date', 'value']
+    });
+}
+
+function getChartPanel(store, title, unit){
+    return  new Ext.Panel({
+        title: title,
+        width:500,
+        height:300,
+        layout:'fit',
+
+        items: {
+            xtype: 'linechart',
+            store: store,
+            xField: 'date',
+            yField: 'value',
+            yAxis: new Ext.chart.NumericAxis({
+                title: unit
+            }),
+            tipRenderer : function(chart, record){
+                return record.data.value + ' ' + unit + ', ' + record.data.date;
+            },
+			listeners: {
+				itemclick: function(o){
+					var rec = store.getAt(o.index);
+					Ext.example.msg('Item Selected', 'You chose {0}.', rec.get('name'));
+				}
+			}
+        }
+    });
+}
+
+
+
 Ext.onReady(function(){
+
    if (Ext.get('catalog_tree')) {
     root = new Ext.tree.AsyncTreeNode({
         text: 'Invisible Root',

@@ -13,6 +13,24 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
 
+  unless ActionController::Base.consider_all_requests_local
+    rescue_from Exception,                           :with => :render_error
+    rescue_from ActiveRecord::RecordNotFound,         :with => :render_not_found
+    rescue_from ActionController::RoutingError,          :with => :render_not_found
+    rescue_from ActionController::UnknownController,     :with => :render_not_found
+    rescue_from ActionController::UnknownAction,        :with => :render_not_found
+  end
+
+  def rootpage
+    homepage = current_user.homepage
+
+    if homepage.nil? || homepage.empty?
+      redirect_to patients_url
+    else
+      redirect_to homepage
+    end
+  end
+
   def set_locale
   # if params[:locale] is nil then I18n.default_locale will be used
     I18n.locale = params[:locale]
@@ -111,8 +129,8 @@ class ApplicationController < ActionController::Base
   # render access denied if user has no permission
   # to view the page
   def access_denied
-    flash.now[:error] = t('application.messages.no_permission')
-    render :partial => 'shared/error403', :status => 403, :layout => true and return false
+    #flash.now[:error] = t('application.messages.no_permission')
+    render :partial => 'shared/errors/error403', :status => 403, :layout => true and return false
   end
 
   private
@@ -209,6 +227,16 @@ class ApplicationController < ActionController::Base
       o.force_encoding(Encoding::UTF_8) if o.respond_to?(:force_encoding)
     end
     traverse.call(params, force_encoding)
+  end
+
+  def render_not_found(exception)
+    log_error(exception)
+    render :partial => "shared/errors/error404", :status => 404, :layout => true
+  end
+
+  def render_error(exception)
+    log_error(exception)
+    render :partial => "shared/errors/error500", :status => 500, :layout => true
   end
 
 end
