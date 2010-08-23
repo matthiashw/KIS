@@ -168,7 +168,7 @@ en:
     name:                             "Domain name"
     result_name:                      "Result name"
     is_role:                          "Is Role"
-    is_userdomain:                    "Is Domain"
+    is_userdomain:                    "Is Template Domain"
     new_domain:                       "New domain"
     new_button:                       "Add new Domain"
     yes_true:                         "Yes"
