@@ -4,7 +4,7 @@
 %p
     %label{:for => "upload_file"}=t('database_backup.export.label')
 = render :partial => 'shared/loading_bar_element'
-= submit_tag t('database_backup.export.submit'), :disable_with => t('please_wait')
+= submit_tag t('database_backup.export.submit')
 = form_tag
 
 .action-links
