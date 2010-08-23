@@ -13,7 +13,8 @@
       = no_catalog_available 'atc'
     %br
     = f.input :description, :input_html => { :rows => 4, :cols => 30 }
-  = f.buttons
+  - f.buttons do
+    = f.commit_button :button_html => { :disable_with => t('please_wait') }
 
 .action-links
   = link_to t('action.back'),  patient_case_file_treatment_medications_path(:treatment_id => params[:treatment_id]), :class => 'acts_as_button darkgray'

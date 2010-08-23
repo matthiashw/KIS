@@ -19,6 +19,7 @@
 
         = f.input :domains, :as => :check_boxes, :collection => @domains
         = f.input :homepage, :as => :select, :collection => homepages(@user.id)
-    = f.buttons
+    - f.buttons do
+        = f.commit_button :button_html => { :disable_with => t('please_wait') }
 
 

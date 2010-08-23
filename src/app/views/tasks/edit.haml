@@ -6,7 +6,8 @@
     - f.inputs do
         = f.input :deadline, :as => :calendar
         = f.input :creator_comment
-    = f.buttons
+    - f.buttons do
+        = f.commit_button :button_html => { :disable_with => t('please_wait') }
 
 .action-links
     = link_to t('action.destroy'), @task, :confirm => t('delete_confirmation'), :method => :delete, :class => 'acts_as_button lightgray'

@@ -86,5 +86,5 @@
 
     - f.inputs do
         = f.input :executor_comment
-        = submit_tag t('task.save'), :name=>'save'
-        = submit_tag t('task.save_and_close'), :name=> 'saveandclose'
+        = submit_tag t('task.save'), :name=>'save', :disable_with => t('please_wait')
+        = submit_tag t('task.save_and_close'), :name=> 'saveandclose', :disable_with => t('please_wait')

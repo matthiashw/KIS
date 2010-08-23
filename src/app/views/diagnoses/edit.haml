@@ -12,7 +12,8 @@
         - else
             = no_catalog_available 'diagnosis'
 
-    = f.buttons
+    - f.buttons do
+        = f.commit_button :button_html => { :disable_with => t('please_wait') }
 
 
 .action-links

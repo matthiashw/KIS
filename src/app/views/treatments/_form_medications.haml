@@ -8,6 +8,6 @@
                 = no_catalog_available 'atc'
 
         .task-select-domain-submit
-            = submit_tag t('treatment.nextstep'), :name => "continue"
+            = submit_tag t('treatment.nextstep'), :name => "continue", :disable_with => t('please_wait')
         .task-select-domain-submit
-            = submit_tag t('treatment.nextstep_nomeds'), :name => "skip"
+            = submit_tag t('treatment.nextstep_nomeds'), :name => "skip", :disable_with => t('please_wait')
