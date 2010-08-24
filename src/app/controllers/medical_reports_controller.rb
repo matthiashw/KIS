@@ -128,6 +128,8 @@ class MedicalReportsController < ApplicationController
       end
     end
 
+    @anamnesis = MedicalTemplate.find_by_domain_id(Domain.find(1).id).field_definitions
+    
     if not flash[:error]
       @cases = Array.new
       params[:special][:CaseFile].each { |item|
@@ -141,6 +143,7 @@ class MedicalReportsController < ApplicationController
                     :patient => @patient,
                     :case_files => @cases,
                     :findings => get_findings_data,
+                    :anamnesis => @anamnesis,
                     :properties => params[:special][:MedicalReportsProperties]})
 
       @medical_report.file = @cached_content

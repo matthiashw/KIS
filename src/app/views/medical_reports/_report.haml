@@ -31,6 +31,19 @@
     %td
       = patient.phone
 
+-if properties.include?("1") && anamnesis.length > 0
+  %h2=t('medical_report.anamnesis')
+  %table
+    - anamnesis.each do |f|
+      - Field.find_all_by_field_definition_id(f.id).each do |field|
+        %tr
+          -mValue = MeasuredValue.find_by_field_id(field.id)
+          -if mValue
+            %td
+              =  Entry.find(f.field_entry_id).name
+            %td
+              =mValue.value
+
 - i=0
 - case_files.each do |case_file|
   -i+=1
@@ -56,10 +69,7 @@
       %td
         =case_file.leave_date
 
-  -if properties.include?("1")
-    %h3=t('medical_report.anamnesis')
-
-  -if properties.include?("2")
+  -if properties.include?("2") && findings.length > 0
     %h3=t('medical_report.findings')
     -findings.each do |finding|
       -current_finding = finding[1]
@@ -77,7 +87,7 @@
             %td
               =item['value']
 
-  -if properties.include?("3")
+  -if properties.include?("3") && case_file.diagnoses.length > 0
     %h3=t('medical_report.diagnoses')
     -case_file.diagnoses.each do |diagnose|
       %table
@@ -105,7 +115,7 @@
       %br
         
 
-  -if properties.include?("4")
+  -if properties.include?("4")  && case_file.treatments.length > 0
     %h3=t('medical_report.treatments')
     -case_file.treatments.each do |treatment|
       %table
