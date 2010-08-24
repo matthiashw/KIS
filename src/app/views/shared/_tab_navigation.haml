@@ -20,7 +20,7 @@
             %li{:class => "secondary-navigation-leaf"}
                 =link_to t('navi.tabs.treatment'), patient_case_file_treatments_path(:case_file_id => get_case_for_view, :patient_id => current_active_patient.id), :class => is_active?('treatments')
 
-        - if authorize?('view_task')
+        - if authorize?('view_own_task') || authorize?('view_all_tasks') || authorize?('view_domain_task')
             %li{:class => "secondary-navigation-leaf"}
                 =link_to t('navi.tabs.tasks'), patient_tasks_path(:patient_id => current_active_patient.id), :class => is_active?('patienttasks')
 

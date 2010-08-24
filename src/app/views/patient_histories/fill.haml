@@ -4,3 +4,4 @@
 
 .action-links
     = link_to t('action.back'), patients_path, :class => 'acts_as_button darkgray'
+    = link_to t('patient_history.change'), url_for(:controller => 'patient_histories', :action => 'index', :change => @task.id), :class => 'acts_as_button'
