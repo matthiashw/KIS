@@ -1,0 +1,31 @@
+@CHARSET "ISO-8859-1";
+/*-------------------------------------------+
+|                                            |
+|             INSTALL STYLESHEET             |
+|                                            |
++-------------------------------------------*/
+/*
+
+COLOUR REFERENCES
+-------------------------------------------------------- */
+/* -------------------------------------------------------- */
+#install .install-steps {
+  border-bottom: 1px solid #cccccc;
+  padding: 3px 0;
+  margin: 9px 0 18px; }
+  #install .install-steps span {
+    color: #999999; }
+  #install .install-steps a {
+    color: #666666;
+    font-weight: bold;
+    text-decoration: none; }
+    #install .install-steps a.active-step {
+      color: #7690cf; }
+  #install .install-steps span, #install .install-steps a {
+    margin-right: 9px; }
+#install .language-select {
+  text-align: center; }
+  #install .language-select .select {
+    margin: 9px 0; }
+    #install .language-select .select select {
+      width: 100px; }

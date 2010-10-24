@@ -1,0 +1,928 @@
+@CHARSET "ISO-8859-1";
+/*-------------------------------------------+
+|                                            |
+|             STYLE STYLESHEET               |
+|             master overrides               |
+|                                            |
++-------------------------------------------*/
+/*
+
+COLOUR REFERENCES
+-------------------------------------------------------- */
+/*MAIN NAVIGATION
+-------------------------------------------------------- */
+.main-navigation {
+  background-color: #414141;
+  margin: 40px 0 0 0;
+  padding: 10px 0;
+  list-style: none;
+  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
+  -webkit-border-top-left-radius: 12px;
+  -webkit-border-bottom-left-radius: 12px;
+  -moz-border-radius-topleft: 12px;
+  -moz-border-radius-bottomleft: 12px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  float: left;
+  width: 140px; }
+
+.main-navigation-leaf {
+  margin: 0;
+  list-style: none;
+  float: left; }
+  .main-navigation-leaf a {
+    background: #caae28 url("/images/overlay.png") repeat-x bottom left;
+    width: 132px;
+    height: 20px;
+    padding: 5px 4px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    float: left; }
+    .main-navigation-leaf a:hover, .main-navigation-leaf a.active {
+      background: #bf1399 url("/images/overlay.png") repeat-x bottom left; }
+
+.navi-img {
+  width: 96px;
+  height: 26px;
+  display: block;
+  float: left;
+  padding: 6px 0 0 34px;
+  margin: -5px 8px 0 4px;
+  background-image: url("/images/navi_img_all.png");
+  background-repeat: no-repeat; }
+
+.navi-img-patient {
+  background-position: 0 -30px; }
+
+.navi-img-termin {
+  background-position: 0 -60px; }
+
+.navi-img-aufgabe {
+  background-position: 0 0; }
+
+.navi-img-verwaltung {
+  background-position: 0 -90px; }
+
+.navi-img-active {
+  float: right;
+  margin-top: -25px; }
+
+/**
+ * subnavi
+ */
+.main-subnavigation {
+  margin: 0 0 0 16px;
+  list-style: none;
+  font-size: 12px; }
+
+.main-subnavigation-leaf {
+  margin: 0;
+  list-style: none; }
+  .main-subnavigation-leaf a {
+    background: none;
+    background-color: transparent; }
+    .main-subnavigation-leaf a:hover, .main-subnavigation-leaf a.active {
+      background: none;
+      background-color: transparent; }
+    .main-subnavigation-leaf a:hover, .main-subnavigation-leaf a.active {
+      text-decoration: underline; }
+
+/*SECONDARY TAB NAVIGATION
+-------------------------------------------------------- */
+.secondary-navigation {
+  margin: -4px 0 0 0;
+  padding: 0;
+  border-bottom: 1px solid #e2e2e2;
+  list-style: none;
+  height: 30px;
+  width: 100%;
+  background: #e7e7e7 url("/images/bg_tab.png") repeat-x top left;
+  -webkit-border-top-left-radius: 6px;
+  -moz-border-radius-topleft: 6px;
+  border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  border-top-right-radius: 6px; }
+  .secondary-navigation.inactive .secondary-navigation-leaf a {
+    color: #cccccc; }
+
+.secondary-navigation-leaf {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-right: 1px solid #e2e2e2;
+  display: inline;
+  float: left; }
+  .secondary-navigation-leaf a {
+    background: #e7e7e7 url("/images/bg_tab.png") repeat-x top left;
+    height: 20px;
+    padding: 5px 16px;
+    display: block;
+    color: #666666;
+    text-decoration: none; }
+    .secondary-navigation-leaf a:hover {
+      background: none;
+      background-color: #fff; }
+    .secondary-navigation-leaf a.active {
+      background: none;
+      background-color: #fff;
+      border-bottom: 1px solid #fff;
+      color: #bf1399; }
+
+/*HEADER
+-------------------------------------------------------- */
+/**
+ * logo
+ */
+.logo {
+  float: right;
+  margin-top: 18px; }
+
+/**
+ * user, domain
+ */
+.user-info, .domain-info {
+  width: 100px;
+  height: 62px;
+  float: left; }
+  .user-info a, .domain-info a {
+    text-decoration: none; }
+  .user-info .name, .domain-info .name {
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px #eeeeee;
+    color: #666666;
+    display: block;
+    text-align: center;
+    margin-top: 33px; }
+
+.user-info {
+  background: transparent url("/images/user.png") no-repeat top center;
+  margin: 18px 0 0 140px; }
+
+.domain-info {
+  background: transparent url("/images/domain.png") no-repeat top center;
+  margin: 18px 0 0 18px; }
+
+.active-patient,
+.active-case {
+  padding: 4px 5px;
+  display: inline;
+  max-width: 500px;
+  float: left;
+  margin: 9px 0 0 140px;
+  text-align: left;
+  background-color: #eeeeee;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  font-size: 12px;
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
+  .active-patient span,
+  .active-case span {
+    color: #666666;
+    font-weight: normal; }
+  .active-patient a,
+  .active-case a {
+    margin-left: 5px;
+    text-shadow: none;
+    font-size: 12px;
+    font-weight: normal; }
+  .active-patient:hover,
+  .active-case:hover {
+    background-color: #bbddff;
+    cursor: pointer; }
+
+.active-case {
+  margin: 9px 0 0 18px;
+  background-color: #ffee66;
+  color: #666666; }
+  .active-case span {
+    color: #666666; }
+  .active-case:hover span {
+    color: #666666; }
+
+/**
+ * logout, help
+ */
+.links {
+  text-align: right;
+  float: right;
+  width: 100%;
+  margin-bottom: 18px; }
+
+a.links-link {
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0px #eeeeee;
+  color: #666666;
+  text-decoration: none;
+  margin: 18px 8px 0;
+  float: right; }
+
+.link-help {
+  float: right;
+  width: 24px;
+  height: 24px;
+  display: block;
+  background: transparent url("/images/help.png") no-repeat top left;
+  text-decoration: none;
+  border: none; }
+  .link-help:hover {
+    background-position: bottom left; }
+
+/*CONTENT
+-------------------------------------------------------- */
+.content {
+  background-color: #fff;
+  padding-bottom: 18px;
+  min-height: 100px; }
+
+.main-content {
+  float: left;
+  width: 100%; }
+
+#frontpage .content {
+  background-color: transparent; }
+#frontpage .inner-bg {
+  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
+  border: 8px solid #666666;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  padding: 0; }
+#frontpage .text_field,
+#frontpage .password_field {
+  width: 240px; }
+#frontpage .hint {
+  font-size: 11px;
+  font-style: italic;
+  color: #999999; }
+
+/**
+ * links
+ */
+.action-links {
+  float: left;
+  width: 100%;
+  margin: 18px 0 0; }
+  .action-links a {
+    margin-right: 9px; }
+  .action-links .delete {
+    float: right; }
+  .action-links.task-step1 {
+    margin-top: 36px; }
+
+/**
+ * comments
+ */
+#comments {
+  float: right;
+  width: 39%; }
+  #comments .comments-list {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+  #comments .comment {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px; }
+    #comments .comment .comment-body {
+      background-color: #eeeeee;
+      padding: 9px;
+      border-radius: 6px;
+      -moz-border-radius: 6px;
+      -webkit-border-radius: 6px; }
+    #comments .comment .comment-date {
+      color: #cccccc;
+      font-size: 12px;
+      display: inline;
+      margin: 0 18px 0 9px;
+      float: right; }
+    #comments .comment .comment-link-edit-wrapper {
+      display: inline;
+      margin: 0 18px 0 9px; }
+  #comments .comment_form {
+    margin: 18px 0 18px; }
+    #comments .comment_form textarea {
+      width: 90%; }
+    #comments .comment_form input {
+      margin-top: 9px; }
+  #comments .comment_form_headline {
+    margin: 18px 0 9px;
+    padding-top: 9px;
+    border-top: 1px solid #eeeeee; }
+  #comments .comment-link-edit {
+    font-size: 12px; }
+  #comments .comment-link-view-wrapper {
+    font-size: 12px;
+    margin: -36px 0 9px;
+    text-align: right; }
+
+/**
+ * override fields
+ */
+#page-patients.show-action .fields {
+  width: 50%; }
+#page-patients.show-action .action-links {
+  width: 55%; }
+#page-patients.admission-action .action-links {
+  margin-bottom: 18px; }
+
+/**
+ * search
+ */
+#search_form {
+  float: left;
+  width: 100%;
+  text-align: center; }
+  #search_form label {
+    font-size: 12px;
+    color: #caae28; }
+  #search_form .patient-search {
+    margin: 0 auto;
+    width: 200px;
+    border: 4px solid #cccccc;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    text-align: left; }
+    #search_form .patient-search .text_field {
+      border: none;
+      background-color: #fff;
+      width: 158px; }
+    #search_form .patient-search img {
+      width: 20px;
+      height: 20px;
+      float: right;
+      margin: 2px 6px 0 0; }
+
+#search_results {
+  margin-top: 18px;
+  float: left;
+  width: 100%; }
+
+/**
+ * box
+ */
+.box {
+  background-color: #eeeeee;
+  float: left;
+  width: 100%;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  margin-bottom: 18px; }
+  .box .box-inner {
+    margin: 9px; }
+
+/*
+ * history
+ */
+#history-select .box {
+  padding-bottom: 9px; }
+
+.history-select-text {
+  float: left;
+  font-size: 12px;
+  color: #666666;
+  text-shadow: 1px 1px 0 #fff;
+  padding-top: 4px;
+  margin-right: 9px; }
+
+a.link-history {
+  width: 110px;
+  height: 19px;
+  display: block;
+  background: transparent url("/images/chart.png") no-repeat 96% 50%;
+  text-decoration: none;
+  border: none;
+  float: left;
+  margin-left: 36px;
+  margin-top: -3px;
+  padding-right: 26px;
+  padding-top: 5px;
+  text-decoration: none;
+  font-size: 12px;
+  color: #fff; }
+
+#fields-history {
+  float: left; }
+
+/*TASK AND TEMPLATES
+-------------------------------------------------------- */
+.task-patient .task-patient-name {
+  display: inline; }
+.task-patient .task-patient-switch {
+  display: inline;
+  margin-left: 18px; }
+
+.taskcreation {
+  margin-top: 18px; }
+  .taskcreation .task-select-domain-submit {
+    margin-top: 18px; }
+
+.task-step {
+  color: #bf1399;
+  font-size: 16px;
+  margin-bottom: 18px; }
+
+.field.box.task-state {
+  width: 50%; }
+  .field.box.task-state .box-inner {
+    float: left;
+    width: 100%; }
+  .field.box.task-state .field-label {
+    width: 58%; }
+  .field.box.task-state .field-content {
+    width: 30%; }
+
+.task-open {
+  color: #8cc746; }
+
+.task-inprogress {
+  color: #caae28; }
+
+.task-closed {
+  color: #ee6633; }
+
+.field-error {
+  color: #ee6633; }
+
+#templates {
+  margin-bottom: 18px;
+  float: left;
+  width: 100%; }
+  #templates .template-collapsible {
+    margin: 1px 0;
+    float: left;
+    width: 100%; }
+  #templates .template-toggle {
+    background: #666666 url("/images/overlay.png") repeat-x;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    padding: 4px 0 5px;
+    float: left;
+    width: 100%; }
+    #templates .template-toggle .select-all-fields {
+      float: left;
+      margin-left: 4px;
+      margin-top: 2px; }
+    #templates .template-toggle .fields-select-all,
+    #templates .template-toggle .fields-select-none {
+      float: left;
+      color: #fff;
+      width: 80px;
+      font-size: 12px;
+      margin-left: 4px; }
+  #templates .template-toggle-link {
+    background: url("/images/arrow-expanded.png") no-repeat scroll 0 50% transparent;
+    padding-left: 18px;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: underline;
+    font-size: 14px;
+    margin-left: 18px;
+    display: block;
+    float: left;
+    width: 80%; }
+  #templates .template-toggle-inner {
+    color: #fff;
+    font-size: 16px;
+    padding-left: 18px; }
+  #templates .template-collapsible.collapsed .template-toggle-link {
+    background: url("/images/arrow-collapsed.png") no-repeat scroll 0 50% transparent; }
+  #templates .template-content {
+    margin: 0 9px 9px 18px; }
+    #templates .template-content table {
+      border-color: #666666; }
+      #templates .template-content table th {
+        background-color: #999999;
+        text-shadow: none;
+        color: #fff;
+        border-color: #666666; }
+      #templates .template-content table td {
+        border-color: #999999; }
+    #templates .template-content .template-field-check {
+      width: 20px;
+      text-align: center; }
+    #templates .template-content .template-field-comment {
+      width: 200px; }
+
+.fileupload span {
+  margin: 0 9px 0 2%; }
+.fileupload .button {
+  margin-left: 9px; }
+
+.results-show-file.even {
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  padding: 18px 0; }
+
+.field.show-file {
+  border-top: 1px solid #cccccc;
+  padding-top: 18px; }
+  .field.show-file .field-label {
+    width: 42%; }
+  .field.show-file .field-content {
+    width: 57%; }
+    .field.show-file .field-content .file-desc {
+      display: block;
+      width: 80%;
+      float: left; }
+    .field.show-file .field-content .file-delete {
+      display: block;
+      width: 20%;
+      float: right; }
+
+/*FOOTER
+-------------------------------------------------------- */
+#footer p {
+  color: #999999;
+  margin: 4px 0 0 0;
+  font-size: 10px;
+  text-align: center; }
+#footer a {
+  color: #999999; }
+
+/*DIALOG
+-------------------------------------------------------- */
+.popup table {
+  border: none;
+  background-color: transparent;
+  -moz-box-shadow: none;
+  margin: 0; }
+  .popup table td, .popup table th {
+    border: none;
+    padding: 0;
+    text-shadow: none; }
+  .popup table tr:hover td, .popup table tr:hover th {
+    background-color: transparent; }
+  .popup table tr:hover td {
+    background-color: transparent; }
+.popup .title_window {
+  padding-top: 2px; }
+.popup .dialog_content {
+  background-color: #bbddff;
+  color: #333333;
+  font-size: 12px; }
+.popup td.dialog_content {
+  min-height: 282px !important;
+  min-width: 282px !important; }
+.popup div.dialog_content {
+  float: left;
+  width: auto !important;
+  height: auto !important;
+  min-height: 282px !important;
+  min-width: 282px !important;
+  margin: 9px; }
+
+/*CALENDAR
+-------------------------------------------------------- */
+/* Outer most container */
+.ec-calendar {
+  font-size: 11px;
+  line-height: 14px;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #d5d5d5;
+  /* Month name header & links */
+  /* Containers */
+  /* Day names */
+  /* Rows container and Row */
+  /* Background */
+  /* Left and right arrows */
+  /* Doesn't work in IE6, use bg images instead */
+  /* remove this to not have a bullet */
+  /* don't look as good in ie */ }
+  .ec-calendar table {
+    -moz-box-shadow: none;
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    line-height: 14px;
+    margin: 0;
+    width: 100%;
+    float: none; }
+    .ec-calendar table td, .ec-calendar table th {
+      border: none;
+      padding: 0;
+      vertical-align: middle; }
+    .ec-calendar table th {
+      background-color: transparent;
+      color: #666666;
+      font-weight: normal;
+      text-align: left;
+      text-shadow: none; }
+    .ec-calendar table thead th {
+      border-color: transparent; }
+    .ec-calendar table tr:hover td {
+      background-color: transparent; }
+  .ec-calendar table.ec-calendar-header {
+    padding: 5px 0;
+    width: 100%;
+    table-layout: fixed; }
+    .ec-calendar table.ec-calendar-header th.ec-month-name {
+      font-size: 16px;
+      font-weight: bold; }
+    .ec-calendar table.ec-calendar-header th {
+      text-align: center;
+      padding: 5px 0; }
+  .ec-calendar .ec-body {
+    position: relative;
+    border-right: 1px solid #999999;
+    white-space: nowrap; }
+  .ec-calendar table.ec-day-names {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    table-layout: fixed;
+    padding: 2px 0;
+    background-color: #999999;
+    color: white; }
+    .ec-calendar table.ec-day-names th.ec-day-name, .ec-calendar table.ec-day-names td.ec-day-name {
+      text-align: center;
+      font-weight: normal;
+      color: #fff;
+      background-color: #999999; }
+  .ec-calendar .ec-rows {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    overflow: hidden;
+    border-right: 1px solid #d5d5d5; }
+  .ec-calendar .ec-row {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden; }
+  .ec-calendar table.ec-row-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    table-layout: fixed; }
+    .ec-calendar table.ec-row-bg td.ec-day-bg {
+      border-left: 1px solid #d5d5d5; }
+    .ec-calendar table.ec-row-bg td.ec-today-bg {
+      background-color: #ffffdd; }
+    .ec-calendar table.ec-row-bg td.ec-today-bg {
+      background-color: #bbddff; }
+  .ec-calendar table.ec-row-table {
+    position: relative;
+    width: 100%;
+    table-layout: fixed;
+    /* Day header */
+    /* Event cell and container */
+    /* used to distinguish non-all_day events */ }
+    .ec-calendar table.ec-row-table .ec-day-header {
+      color: #444;
+      text-align: right;
+      padding: 0 5px;
+      line-height: 16px;
+      border-top: 1px solid #d5d5d5;
+      border-left: 1px solid #d5d5d5;
+      border-bottom: 1px dotted #bbbbbb;
+      background-color: #ecede2;
+      overflow: hidden; }
+    .ec-calendar table.ec-row-table a.ec-day-link {
+      color: #444; }
+    .ec-calendar table.ec-row-table .ec-today-header {
+      background-color: #d7d7ba; }
+    .ec-calendar table.ec-row-table .ec-today-header {
+      background-color: #7690cf; }
+    .ec-calendar table.ec-row-table .ec-other-month-header {
+      background-color: #efefef;
+      color: #777; }
+    .ec-calendar table.ec-row-table .ec-event-cell {
+      cursor: pointer;
+      vertical-align: top;
+      padding-right: 1px;
+      padding-left: 2px; }
+    .ec-calendar table.ec-row-table .ec-event-cell a {
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%; }
+    .ec-calendar table.ec-row-table .ec-no-event-cell {
+      cursor: default; }
+    .ec-calendar table.ec-row-table .ec-event {
+      color: white;
+      padding-right: 1px;
+      padding-left: 11px;
+      -webkit-border-radius: 3px;
+      -khtml-border-radius: 3px;
+      -moz-border-radius: 3px;
+      overflow: hidden;
+      white-space: nowrap; }
+    .ec-calendar table.ec-row-table .ec-event :hover {
+      /* doesn't look as good as js highlighting */
+      /* background-color: #2eac6a; */ }
+    .ec-calendar table.ec-row-table .ec-event-bg a {
+      color: white; }
+    .ec-calendar table.ec-row-table .ec-event-no-bg {
+      position: relative;
+      /* padding-left: 5px; */ }
+    .ec-calendar table.ec-row-table .ec-event-no-bg a {
+      /* isn't implemented in all browsers */
+      color: inherit; }
+    .ec-calendar table.ec-row-table .ec-event-time {
+      font-size: 85%;
+      font-weight: bold;
+      padding-right: 3px; }
+  .ec-calendar .ec-left-arrow, .ec-calendar .ec-right-arrow {
+    position: relative;
+    top: 3px;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    margin-bottom: -8px;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent; }
+  .ec-calendar .ec-left-arrow {
+    margin-left: -7px;
+    margin-right: auto;
+    border-right: 4px solid white; }
+  .ec-calendar .ec-right-arrow {
+    margin-left: auto;
+    margin-right: 3px;
+    border-left: 4px solid white; }
+  .ec-calendar .ec-bullet {
+    position: absolute;
+    top: 7px;
+    width: 4px;
+    height: 4px;
+    margin-left: -7px;
+    margin-right: auto;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    -moz-border-radius: 2px; }
+
+.calendar_date_select .cds_header {
+  padding: 2px 0; }
+  .calendar_date_select .cds_header a.next,
+  .calendar_date_select .cds_header a.prev {
+    margin-top: 2px; }
+.calendar_date_select table {
+  -moz-box-shadow: none;
+  background-color: transparent;
+  border: none;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0;
+  width: 100%;
+  float: none; }
+  .calendar_date_select table td, .calendar_date_select table th {
+    border: none;
+    padding: 0;
+    vertical-align: middle; }
+  .calendar_date_select table th {
+    background-color: transparent;
+    color: #666666;
+    font-weight: normal;
+    text-align: left;
+    text-shadow: none; }
+  .calendar_date_select table thead th {
+    border-bottom: none;
+    border-top: none;
+    text-align: center; }
+  .calendar_date_select table thead th {
+    border-color: transparent; }
+  .calendar_date_select table td.today {
+    border: none;
+    background-color: #bbddff; }
+  .calendar_date_select table td.weekend {
+    border-left: none;
+    border-right: none; }
+
+/*ADMIN AREA
+-------------------------------------------------------- */
+.admin-list {
+  float: left;
+  width: 45%;
+  margin: 0 2% 36px;
+  padding-bottom: 18px; }
+  .admin-list dt {
+    margin: 0 0 9px;
+    font-size: 16px;
+    line-height: 18px;
+    color: #666666;
+    font-family: "Lucida Grande", "Lucida Sans", Verdana, "Lucida Sans Unicode", sans-serif;
+    font-weight: bold;
+    float: left;
+    width: 100%; }
+  .admin-list dd {
+    float: left;
+    width: 100%;
+    margin: 10px 0 0;
+    padding: 9px 0;
+    border-bottom: 1px solid #eeeeee; }
+    .admin-list dd.last {
+      border: none; }
+    .admin-list dd a {
+      text-decoration: none;
+      float: left; }
+      .admin-list dd a img {
+        text-decoration: none;
+        margin-right: 18px;
+        float: left;
+        margin-top: -10px; }
+
+/**
+ * permissions
+ */
+tr.permission-group td {
+  background-color: #eeeeee; }
+
+td.permission-group {
+  font-weight: bold; }
+
+td.permission {
+  padding-left: 18px; }
+
+/**
+* Catalog Show
+*/
+#node-description {
+  font-size: 12px;
+  font-style: italic;
+  color: #666666; }
+
+#node-id {
+  font-weight: bold; }
+
+.show-catalog-tree {
+  float: left;
+  width: 100%; }
+
+.catalog_edit_action {
+  float: left;
+  width: 100%;
+  margin-top: 18px; }
+
+ul.x-tree-root-ct {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  ul.x-tree-root-ct li.x-tree-node {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    ul.x-tree-root-ct li.x-tree-node a span {
+      color: #333333;
+      font-size: 14px; }
+    ul.x-tree-root-ct li.x-tree-node a {
+      text-decoration: none; }
+  ul.x-tree-root-ct ul.x-tree-node-ct {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+
+#catalog_tree_select {
+  width: 90%; }
+  #catalog_tree_select table {
+    -moz-box-shadow: none;
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    line-height: 14px;
+    margin: 0;
+    width: 100%;
+    float: none; }
+    #catalog_tree_select table td, #catalog_tree_select table th {
+      border: none;
+      padding: 0;
+      vertical-align: middle; }
+    #catalog_tree_select table th {
+      background-color: transparent;
+      color: #666666;
+      font-weight: normal;
+      text-align: left;
+      text-shadow: none; }
+    #catalog_tree_select table thead th {
+      border-bottom: none;
+      border-top: none;
+      text-align: center; }
+    #catalog_tree_select table thead th {
+      border-color: transparent; }
+    #catalog_tree_select table tr:hover td {
+      background-color: transparent; }
+  #catalog_tree_select ul {
+    list-style: none;
+    margin: 0; }
+
+ul.x-menu-list {
+  list-style: none;
+  margin: 0; }
